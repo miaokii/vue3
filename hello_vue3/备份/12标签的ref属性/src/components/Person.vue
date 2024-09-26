@@ -5,8 +5,16 @@
     </div>
 </template>
 
+<!-- 这个script标签用于配置组件名 -->
+<script lang="ts">
+
+export default {
+    name: 'Person'
+}
+</script>
+
 <!-- 语法糖实现setup -->
-<script setup lang="ts" name = 'Person'>
+<script setup lang="ts">
 // 引入响应式，监视
 import { ref, defineExpose } from 'vue'
 
