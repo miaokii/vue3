@@ -1,40 +1,48 @@
 <template>
-    <div class="person">
-        <h2>{{ sheetTitle }}</h2>
-        <ul>
-            <li v-for="item in persons" :key="item.id">{{ item.name }} {{ item.age }}</li>
-        </ul>
-
-        <h2>女性集合</h2>
-        <ul>
-            <li v-for="item in womens" :key="item.id">{{ item.name }}  {{ item.age }}</li>
-        </ul>
+   <div class="person">
+        <h2>当前值：{{ sum }}</h2>
+        <button @click="changeSum">sum+1</button>
     </div>
 </template>
 
 <!-- 语法糖实现setup -->
 <script setup lang="ts" name='Person'>
+import { ref } from 'vue'
+import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
 
-// 导入类型时，必须用type标记
-import { type PersonInterface, type PersonList } from '@/types'
-import { defineProps, reactive } from 'vue'
+let sum = ref(0)
 
-// 接收父组件传入的数据，组件可能传入多个数据，用数组接收
-// defineProps(['sheetTitle', 'persons', 'mans'])
+function changeSum() {
+    sum.value += 1
+}
 
-// 接收父组件传入的数据，同时保存起来
-// 解构
-// let {sheetTitle, persons} = defineProps(['sheetTitle', 'persons'])
-// console.log(sheetTitle, persons);
+console.log('创建Person');
 
-// 接受数据，并限定传入数据的类型
-// defineProps<{persons: PersonList}>()
-
-// 接收数据，限制类型，限制必填，设置默认值
-withDefaults(defineProps<{sheetTitle?:string, persons:PersonList, womens?:PersonList}>(), {
-    womens: ()=>[{name:'李姐', age:12, id:'00005', gender:1}],
-    sheetTitle: ()=> "值日表"
+onBeforeMount(()=>{
+    console.log('挂载前');
 })
+
+onMounted(()=>{
+    console.log('挂载完毕');
+})
+
+onBeforeUpdate(()=>{
+    console.log('更新前');
+})
+
+onUpdated(()=>{
+    console.log('更新完毕');
+})
+
+onBeforeUnmount(()=>{
+    console.log('卸载前');
+})
+
+onUnmounted(()=>{
+    console.log('卸载完毕');
+})
+
+
 
 </script>
 
