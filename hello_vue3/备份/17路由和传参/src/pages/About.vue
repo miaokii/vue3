@@ -4,6 +4,16 @@
 
 <script setup lang="ts" name="About">
 
+import { onMounted, onUnmounted } from 'vue';
+
+onMounted(()=>{
+    console.log('挂载');
+})
+
+onUnmounted(()=>{
+    console.log('卸载');
+})
+
 </script>
 
 <style scoped>
