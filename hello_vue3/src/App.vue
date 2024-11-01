@@ -9,7 +9,13 @@
             <div class="col-xs-3 col-md-3 col-lg-3 col-xl-3">
                 <RouterLink active-class="active" class="list-group-item" to="/props">1. props</RouterLink>
                 <RouterLink active-class="active" class="list-group-item" to="/event">2. 自定义事件</RouterLink>
-                <RouterLink active-class="active" class="list-group-item" to="/mitt">2. mitt</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/mitt">3. mitt</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/vmodel">4. v-model</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/attrs">5. $attrs</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/refsParent">6. $refs-$parent</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/provideInject">7. provide-inject</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/pinia">8. pinia</RouterLink>
+                <RouterLink active-class="active" class="list-group-item" to="/slot">9. slot</RouterLink>
             </div>
 
             <div class="col-xs-9 col-md-9 col-lg-9 col-xl-9">

@@ -955,5 +955,264 @@ export const useLoveStore = defineStore('love', () => {
 - 父组件传子组件：属性值是**非函数**
 - 子组件传父组件：属性值是**函数**
 
+父组件
+```html
+<template>
+    <Child :car="car" :sendToy="getToy"></Child>
+</template>
+
+<script lang="ts" setup name="Father">
+import Child from './Child.vue';
+let car = ref('小米SU7 Ultra')
+let toy = ref('')
+
+function getToy(value: string) {
+    toy.value = value
+}
+</script>
+
+<style scoped></style>
+```
+
+子组件
+
+```html
+<template>
+    <button @click="sendToy(toy)">将玩具传给父组件</button>
+</template>
+
+<script lang="ts" setup name="Child">
+/// 声明接收car和发送数据的方法
+defineProps(['car', 'sendToy'])
+let toy = ref('托宝战士')
+
+</script>
+
+<style scoped></style>
+```
+
 ### 4.2 自定义事件
+
+自定义事件常用语父组件向子组件传递事件，注意区分原生事件和自定义事件
+- 原生事件：
+  - 事件名是特定的（`click`、`input`等）
+  - 事件对象`$event`：是包含事件相关信息的对象（`pageX`、`pageY`、`target`、`keyCode`）
+- 自定义事件：
+  - 事件名任意
+  - 事件对象`$event`：是调用emit时所提供的参数，可以是任意类型
+
+```html
+<!-- 命名遵循烤串命名 -->
+<!-- 给子组件绑定sendToy事件，当这个事件触发时，执行getToy函数 -->
+<Child @send-toy="getToy"></Child>
+```
+
+子组件通过`emit`执行自定义事件
+```html
+<template>
+    <button @click="emit('send-toy', toy)">传出玩具</button>
+</template>
+
+<script lang="ts" setup name="Child">
+let toy = ref('变形金刚')
+// 申明事件
+let emit = defineEmits(['send-toy'])
+</script>
+<style scoped></style>
+```
+
+### 4.3 mitt
+
+使用`npm i mitt`安装`mitt`，`mitt`实现任意组件间的通讯，消息订阅与发布机制
+
+创建`src/utils/emitter.ts`文件
+
+```ts
+import mitt from "mitt";
+// 调用mitt得到emitter，绑定事件，触发事件
+const emitter = mitt()
+// 暴露emitter
+export default emitter
+```
+
+在接收数据的组件中绑定事件，并在组件卸载时解绑事件
+
+``` html
+<script lang="ts" setup name="Father">
+import emitter from '@/utils/emitter';
+
+let toy = ref('')
+
+/// 绑定事件
+emitter.on('send-toy', (value: string) => {
+    toy.value = value
+})
+
+/// 解绑事件
+onUnmounted(()=>{
+    emitter.off('send-toy')
+})
+
+</script>
+```
+
+在提供数据组件中，触发事件
+
+```html
+<template>
+    <button @click="emitter.emit('send-toy', toy)">发送玩具</button>
+</template>
+
+<script lang="ts" setup name="Child">
+import emitter from '@/utils/emitter';
+import { ref } from 'vue';
+
+let toy = ref('旋风冲锋')
+</script>
+
+```
+
+### 4.4 v-model双向绑定
+
+`v-model`用于实现父组件和子组件的相互通信
+
+#### 4.1 v-model的本质
+
+```html
+<!-- v-model用在html标签上 -->
+<input type="text" v-model="userName">
+<!-- 本质执行如下代码 -->
+<input type="text" :value="userName" @input="userName=(<HTMLInputElement>$event.target).value">
+```
+
+#### 4.2 使自定义组件中支持v-model
+
+在组件中使用`v-model`，实际上为
+
+```html
+<!-- v-model用在组件标签上 -->
+<CusInput v-model="userName"></CusInput>
+<!-- 等价于 -->
+<CusInput :modelValue="userName" @update:modelValue="userName = $event"></CusInput>
+
+```
+其中`modelValue`是默认的参数名，`update:modelValue`是默认的方法名
+
+在`CusInput`组件中
+
+```html
+<template>
+    <!-- :value：将接收的value传递给input的value属性 -->
+    <!-- @input：将input元素绑定给原生input事件，触发此事件是，会执行update:modelValue事件 -->
+    <input type="text" 
+    :value="modelValue"
+    @input="emit('update:modelValue', (<HTMLInputElement>$event.target).value)">
+</template>
+
+<script setup lang="ts" name="CusInput">
+// 接收props
+defineProps(['modelValue'])
+// 声明事件
+let emit = defineEmits(['update:modelValue'])
+</script>
+```
+
+#### 4.3 更改v-model中modelValue名
+
+`modelValue`可以更改为其他名字，这样组件可以使用多个`v-model`
+
+```html
+<!-- Input定义了mingzi和mima两个属性 -->
+<Input v-model:mingzi="userName" v-model:mima="passWord"></Input>
+```
+在`Input`组件中
+
+```html
+<template>
+    <input type="text" :value="mingzi" @input="emit('update:mingzi', (<HTMLInputElement>$event.target).value)">
+    <br>
+    <input type="text" :value="mima" @input="emit('update:mima', (<HTMLInputElement>$event.target).value)">
+</template>
+
+<script setup lang="ts" name="Input">
+
+defineProps(['mingzi', 'mima'])
+let emit = defineEmits(['update:mingzi', 'update:mima'])
+
+</script>
+```
+
+### 4.5 $attrs
+
+`$attra`用于向爷祖组件之间的通讯  
+`$attra`是一个对象，包含所有父组件传入的标签属性
+> `$attra`会自动排除props中申明的属性
+
+父组件
+```html
+<Child :a="a" :b="b" v-bind="{'c':100, 'd':90}" :changeA="changeA"/>
+```
+
+子组件
+```html
+<template>
+    <!-- $attra中不包括a属性 -->
+    <GrandChild v-bind="$attrs"/>
+</template>
+
+<script setup lang="ts" name="Child">
+import GrandChild from './GrandChild.vue';
+defineProps(['a'])
+</script>
+```
+
+孙组件
+```html
+<template>
+    <h5>【b：{{b}}】【c：{{c}}】</h5>
+    <button @click="changeA(4)">a+4</button>
+</template>
+
+<script setup lang="ts" name="GrandChild">
+defineProps(['b', 'c', 'changeA'])
+</script>
+```
+
+### 4.6 \$refs和\$parent
+
+- `$refs`用于父元素向子元素传递数据，其值为数组，包含所有被`ref`属性标识的`DOM`元素或组件实例
+- `$parent`用于子元素向父元素传递数据，其值为对象，表示当前父组件这个实例对象
+
+### 4.7 provide和inject
+
+`provide`和`inject`用于实现祖孙组件之间的通讯
+
+1. 现在祖先组件中通过`provide`配置向后代组件提供数据
+2. 在后代组件中通过`inject`配置来声明接收数据
+
+父组件中
+
+```ts
+let money = ref(100)
+let car = reactive({
+    brand: '奔驰',
+    price: 20
+})
+
+function changeMoney(value: number) {
+    money.value -= value
+}
+
+provide('moneyContext', {money, changeMoney})
+provide('car', car)
+```
+
+后代组件中，使用`inject`接收数据
+
+```js
+// 第一个参数表示参数名，第二个参数表示默认值
+let {money, changeMoney} = inject('moneyContext', {money:0, changeMoney:(x:number)=>{}})
+let car = inject('car', {brand:'', price:0})
+```
+
 
