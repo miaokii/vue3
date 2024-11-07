@@ -1215,4 +1215,286 @@ let {money, changeMoney} = inject('moneyContext', {money:0, changeMoney:(x:numbe
 let car = inject('car', {brand:'', price:0})
 ```
 
+### 4.8 插槽
 
+#### 4.8.1 默认插槽
+
+插槽用于在父组件向子组件指定位置插入html结构
+
+子组件
+
+```html
+<template>
+    <div class="category">
+        <h2>{{title}}</h2>
+        <!-- html插入到这里 -->
+        <slot/>
+    </div>
+</template>
+<script setup lang="ts" name="Category">
+// 接收属性
+defineProps(['title'])
+</script>
+```
+
+父组件
+
+```html
+<!-- 默认插槽 -->
+<Category title="热门影视">
+    <video :src="videoUrl" controls></video>
+</Category>
+```
+默认插槽也是有名字的，名字是`default`
+
+#### 4.8.2 具名插槽
+
+具名插槽可以使用多个`slot`，但是分别要指定名字
+
+子组件
+
+```html
+<template>
+    <div class="category">
+        <!-- 具名插槽 -->
+        <slot name="s1"/>
+        <slot name="s2"/>
+    </div>
+</template>
+```
+
+父组件
+
+```html
+<NameCategory>
+    <!-- 插槽语法糖 -->
+    <template #s2>
+        <img :src="imageUrl" alt=""></img>
+    </template>
+    <template v-slot:s1>
+        <h2>热门城市</h2>
+    </template>
+</NameCategory>
+```
+
+#### 4.8.3 作用域插槽
+
+数据在子组件自身中，根据数据生成的结构需要组件的使用者来决定
+
+```html
+<template>
+    <div class="category">
+        <h2>热门游戏</h2>
+        <!-- 作用域插槽，子组件向父组件提供数据 -->
+        <slot :games="games" :x="100" :y="10"/>
+    </div>
+</template>
+
+<script setup lang="ts" name="Game">
+import { reactive } from 'vue';
+import { nanoid } from 'nanoid';
+
+let games = reactive([
+    { id: nanoid(), name: '英雄联盟' },
+    { id: nanoid(), name: '守望先锋' },
+    { id: nanoid(), name: '穿越火线' }
+])
+
+</script>
+```
+
+父组件
+
+```html
+<Game>
+   <template v-slot="params">
+   <!-- 解构 -->
+   <!-- <template v-slot="{games}"> -->
+       <ol>
+           <li v-for="game in params.games" :key="game.id">{{ game.name }}</li>
+       </ol>
+   </template>
+</Game>
+
+```
+
+## 5. 其他API
+
+### 5.1 shallowRef与shallowReactive
+
+`shallowRef`用于创建一个响应式数据，但只对顶层属性进行响应式处理，只追踪引用值的变化，不关心值内部的属性变化
+
+`shallowReactive`创建一个浅层响应式对象，只对对象顶层属性进行响应式处理，对象内部嵌套的属性不会变成响应式
+
+```ts
+// 都不可以改
+let car = shallowRef({
+    'brand': '宝马',
+    'price': 100,
+    'option': {
+        'color': 'red',
+        'power': 512
+    }
+})
+// name和age可以更改，score内属性不可以改，但score整体可以改
+let student = shallowReactive({
+    'name': 'xiaofei',
+    'age': 20,
+    'score': {
+        'math': 134,
+        'english': 120,
+        'chinese': 132
+    }
+})
+```
+
+> 二者创建的响应式对象，只在顶层属性是响应式的，避免对每一个内部属性做响应式带来的性能损失，使得属性访问更快，提升性能
+
+### 5.2 readonly和shallowReadonly
+
+1. 作用：`readonly`用于创建一个对象的只读副本
+2. 使用
+   ```ts
+   let n = shallowRef(20)
+   let num = readonly(n)
+   ```
+3. 特点：
+   1. 创建后对象嵌套的所有属性都将变为只读
+   2. 任何尝试修改对象的操作都会被阻止
+4. 场景
+   1. 创建不可变的状态快照
+   2. 保护全局状态或配置不被修改
+   
+`shallowReadonly`
+
+1. 作用：与`readonly`类似，但制作用于对象的顶层属性
+2. 用法：
+   ```ts
+   let c = reactive({
+    'brand': '宝马',
+    'option': {
+        'color': 'red',
+        'power': 512
+    }
+    })
+    let car = shallowReadonly(c)
+
+    // 控制台警告
+    car.brand = '奔驰'
+    // 允许修改
+    car.option.color = 'green'
+   ```
+3. 特点：
+   1. 只将对象的顶层属性设置为只读，对象内部的嵌套仍然是可变的
+   2. 适用于只需保护对象顶层属性的场景
+
+### 5.3 toRaw和markRaw
+
+`toRaw`用于获取一个响应式对象的原始对象，返回的对象不再是响应式的，不会触发视图更新
+
+> 官网描述：这是一个可以用于临时读取而不引起代理访问/跟踪开销，或是写入而不触发特殊方法。不建议保存对原始对象的持久引用
+> 何时使用：在需要将响应式对象传递给非`Vue`的库或外部系统时，使用`toRaw`可以确保他们接收到的是普通对象
+
+`markRaw`标记一个对象，使其永远不会变成响应式的对象
+
+```ts
+let c = reactive({
+    'brand': '宝马',
+    'option': {
+        'color': 'red',
+        'power': 512
+    }
+})
+
+// 原始对象
+let rawCar = toRaw(c)
+
+let cities = markRaw([
+    {id:'jlfndxa1', name:'北京'},
+    {id:'jlfndxa2', name:'上海'},
+    {id:'jlfndxa3', name:'成都'},
+])
+// 创建失败，因为cities被标记，不可转变为响应式对象
+let reactiveCities = reactive(cities)
+console.log(reactiveCities);
+```
+
+### 5.4 customRef
+
+customRef用于创建自定义ref，并对齐依赖项跟踪和更新触发进行逻辑控制
+
+实现防抖效果控制`useMsgRef.ts`
+```ts
+import { customRef } from "vue"
+// customRef定义响应式数据
+export default function(initValue: string, delay: number = 1000) {
+    // 计时器
+    let timer: number
+    // track跟踪
+    // trigger触发
+    let msg = customRef((track, trigger) => {
+        return {
+            // 当msg被读取的时候，调用get函数
+            get() {
+                // 告诉Vue持续追踪msg，当msg变化的时候就要进行更新
+                track()
+                return initValue
+            },
+            // 当msg被修改的时候，调用set函数
+            set(value) {
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    initValue = value
+                // 通知Vue msg数据变化了
+                trigger()
+                }, delay);
+            },
+        }
+    })
+    return {msg}
+}
+
+// 使用
+let {msg} = useMsgRef('你好', 2000)
+```
+
+## 6. Vue3新组件
+
+### 6.1 teleport
+
+`teleport`用于将组件的html结构移动到指定位置
+
+```html
+<template>
+    <button @click="isShow = true">展示弹窗</button>
+    <!-- 在body中展示 -->
+    <teleport to="body">
+        <div class="modal" v-show="isShow">
+            <h2>弹窗标题</h2>
+            <p>弹窗内容</p>
+            <button @click="isShow = false">关闭弹窗</button>
+        </div>
+    </teleport>
+</template>
+```
+
+### 6.2 suspense
+
+等待异步组件时渲染一些额外内容，提升用户体验
+
+```html
+ <div class="app">
+        <h2>App组件</h2>
+        <!-- 使用Suspense包裹异步组件 -->
+        <Suspense>
+            <!-- 配置default -->
+            <template v-slot:default>
+                <Child/>
+            </template>
+            <!-- 配置fallback，加载时展示 -->
+            <template v-slot:fallback>
+                <h3>加载中...</h3>
+            </template>
+        </Suspense>
+    </div>
+```
