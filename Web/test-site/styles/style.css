@@ -1,0 +1,17 @@
+html {
+    background-color: green;
+    color: azure;
+    font-size: 20px;
+  }
+  
+  /* 无序列表 */
+  ul {
+    background: darkred;
+    padding: 10px;
+    border: 1px solid black;
+  }
+  
+  /* 列表项 */
+  li {
+    margin-left: 20px;
+  }

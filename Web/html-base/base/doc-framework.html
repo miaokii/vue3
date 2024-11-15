@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>文档和网页架构</title>
+</head>
+
+<body>
+    <!-- 基本组成部分 -->
+
+    <!-- header：页眉 -->
+    <!-- nav：导航栏 -->
+    <!-- main：主内容 -->
+    <!-- aside：侧边栏，经常嵌套在main中 -->
+    <!-- footer：页脚 -->
+
+    <!-- 为body的子元素时，就是全站的页眉 -->
+    <header>
+        <h1>张三的博客</h1>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">文章</a></li>
+            <li><a href="#">分类</a></li>
+            <li><a href="#">收藏</a></li>
+            <li><a href="#">我的</a></li>
+        </ul>
+
+        <form action="">
+            <input type="text" name="key" placeholder="输入想要搜索的内容">
+            <input type="submit" value="搜索">
+        </form>
+    </nav>
+
+    <!-- 每个页面独有的内容，每个页面只能用一次main，且直接位于body中，不要嵌入其他元素 -->
+    <main>
+        <!-- 一片文章，与页面其他元素无关 -->
+        <article>
+            <h2>搭建开发环境</h2>
+            <p>工欲善其事，必先利其器。搭建环境是入门的第一步，巴拉吧啦...</p>
+            <h3>下载软件Xcode</h3>
+            <p>从AppStore下载Xcode，等待安装完成，大概要2个小时。安装结束愉快的写代码吧</p>
+            <h3>Hello World</h3>
+            <p>新建工程/工程名/保存路径/Hello World/运行</p>
+        </article>
+
+        <aside>
+            <h2>相关链接</h2>
+            <ul>
+                <li><a href="https://www.github.com">GitHub</a></li>
+                <li><a href="https://www.mi.com">小米</a></li>
+                <li><a href="https://www.huawei.com">华为</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>© 2050 保留所有权利 | 宇 PPP 备 0054444944 号</p>
+    </footer>
+
+
+    <!-- 细节 -->
+    <h2>无语义元素</h2>
+    <!-- span：内联无语义元素，当无法找到更好的语义元素来包含内容、或者不想增加特定的含义时使用 -->
+    <p>国王喝得酩酊大醉，在凌晨 1 点时才回到自己的房间，踉跄地走过门口。<span class="editor-note">[编辑批注：此刻舞台灯光变暗]</span></p>
+    <!-- div：块级无语义元素， 当找不到更好的块级元素、或者不想增加特定的意义时使用 -->
+
+    <!-- 这里不应使用 <aside>，因为它和主内容并没有必要的联系（你想在任何地方都能看到它）。
+        甚至不能用 <section> ，因为它也不是页面上主内容的一部分。
+        所以在这种情况下就应使用 <div>，为满足无障碍使用特征，还应为购物车的标题设置一个可读标签 -->
+    <div class="shopping-cart">
+        <h3>购物车</h3>
+        <ul>
+            <li>
+                <p><img src="../test-site/favicon.ico" alt="Silver earrings"><a href="">银耳环</a>：1299</p>
+            </li>
+        </ul>
+        <p>总价：12992</p>
+    </div>
+
+    <h2>换行与水平分割线</h2>
+    <!-- br：在段落中换行，也是唯一能生存短行的结构 -->
+    <p>床前明月光，疑是地上霜。<br>举头望明月，低头思故乡。</p>
+    <!-- hr：生成水平的线，分隔内容，表示主题的变化 -->
+    <hr>
+    <p>敕勒川，阴山下。<br>天似穹庐，笼盖四野。<br>天苍苍，野茫茫。<br>风吹草低见牛羊。</p>
+
+    <h2></h2>
+</body>
+
+</html>

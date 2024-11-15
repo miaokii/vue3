@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片嵌入</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>在HTML中插入图片</h1>
+
+    <h2>img元素</h2>
+    <!-- src：图片路径 -->
+    <!-- alt：图片加载失败时占位文字 -->
+    <!-- title：鼠标悬停时图片显示的文字 -->
+    <!-- width：height：指定图片宽高 -->
+    <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" alt="恐龙的照片" title="恐龙">
+
+    <h2>img title标题图片</h2>
+    <!-- 此方法不能说明图片和标题的关联性 -->
+    <div>
+        <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" alt="恐龙的照片" title="恐龙">
+        <p>恐龙化石</p>
+    </div>
+
+    <!-- 图片语义描述元素 -->
+    <figure>
+        <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" alt="恐龙的照片" title="恐龙">
+        <!-- 描述figure -->
+        <figcaption>恐龙的化石</figcaption>
+    </figure>
+    
+</body>
+</html>

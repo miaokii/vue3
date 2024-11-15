@@ -1,0 +1,96 @@
+.timer {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.timerLabel,
+.currentDateLabel {
+    padding: 10px;
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 2em;
+    text-align: right;
+    letter-spacing: 2px;
+}
+
+.btns {
+    padding: 10px;
+    padding-top: 0;
+}
+
+.resetTimer,
+.stopTimer,
+.startTimer {
+    flex: 1;
+    height: 40px;
+    border-radius: 2px;
+    border-style: none;
+    font-size: 1em;
+}
+
+.wouldLabel {
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    padding-top: 0;
+    margin: 5px;
+}
+
+.game {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gamebar {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.gamebar p,
+.gamebar button {
+    margin: 0;
+    font-size: 1.5em;
+    border: 5px solid;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.p1,
+.p2 {
+    border: 3px solid red;
+    color: red;
+    background-color: white;
+    align-self: flex-start;
+}
+
+.p1 {
+    order: 0;
+}
+
+.middlebar {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.p2 {
+    order: 2;
+}
+
+.loading {
+    padding: 50px;
+}
+
+.gamebar .gameresult {
+    border: none;
+}

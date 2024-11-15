@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas画板</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .topBar {
+            height: 40px;
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            border-bottom: 1px dashed gray;
+        }
+        
+        .topBar input {
+            margin-right: 20px;
+        }
+        
+        .topBar p {
+            margin-right: 5px;
+        }
+        
+        .chooseColor {
+            width: 100px;
+        }
+        
+        .clearCanvas {
+            height: 40px;
+        }
+        
+        .topBar div {
+            width: 30;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topBar">
+        <input type="color" class="chooseColor" value="black">
+        <div>
+            <p class="rangeValue">30</p>
+        </div>
+        <input type="range" min='2' max='50' value="30" aria-label="select pen size" class="rangeBar">
+
+        <button class="clearCanvas">Clear Canvas</button>
+
+    </div>
+
+    <canvas>
+        <p>不支持Canvas</p>
+    </canvas>
+</body>
+<script src="script.js"></script>
+
+</html>

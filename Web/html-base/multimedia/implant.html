@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从对象到iframe - 其他嵌入技术</title>
+</head>
+
+<body>
+    <h1>嵌入技术</h1>
+
+    <h2>iframe嵌入bilibili视频</h2>
+    <!-- iframe 将其他web文档嵌入到当前文档 -->
+    <!-- allowfullscree 允许全屏 -->
+    <!-- frameborder 嵌入文档带边框 -->
+    <!-- src 嵌入文档路径 -->
+    <!-- width 和 height 嵌入文档的宽高 -->
+    <!-- 使用js加载src，可以提高页面加载时间 -->
+    <iframe src="https://player.bilibili.com/player.html?aid=19390801&cid=31621681&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    <p>改革春风吹满地</p>
+
+    <h2>embed嵌入Flash</h2>
+    <!-- <embed src="recourse/whoosh.swf" quality="medium" bgcolor="#ffffff" width="550" height="400" name="whoosh"
+        align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash"
+        pluginspage="http://www.macromedia.com/go/getflashplayer"> -->
+
+    <h2>object嵌入PDF</h2>
+    <object data="recourse/mypdf.pdf" type="application/pdf" width="800" height="1200" typemustmatch></object>
+</body>
+
+</html>

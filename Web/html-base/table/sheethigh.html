@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="minitable.css">
+    <style>
+        tbody {
+            font-size: 90%;
+            font-style: italic;
+        }
+        
+        tfoot {
+            font-weight: bold;
+        }
+    </style>
+    <title>表格高级特性和可访问性</title>
+</head>
+
+<body>
+    <h1>表格高级特性和可访问性</h1>
+    <h2>表格标题</h2>
+    <table>
+        <caption style="font-size: 30px;">成绩表</caption>
+        <tr>
+            <td>&emsp;</td>
+            <!-- id 列标题 -->
+            <th id="语文">语文</th>
+            <th>数学</th>
+            <th>英语</th>
+            <th>理科综合</th>
+        </tr>
+        <tr>
+            <!-- id 行标题 -->
+            <th id="zf">张峰</th>
+            <!-- headers 给单元格明确的行列定义 -->
+            <td headers="语文 zf">112</td>
+            <td>145</td>
+            <td>121</td>
+            <td>245</td>
+        </tr>
+        <tr>
+            <th>胡萝卜</th>
+            <td>132</td>
+            <td>115</td>
+            <td>122</td>
+            <td>215</td>
+        </tr>
+        <tr>
+            <th>前锋</th>
+            <td>96</td>
+            <td>132</td>
+            <td>112</td>
+            <td>198</td>
+        </tr>
+        <tr>
+            <th>王丽</th>
+            <td>124</td>
+            <td>145</td>
+            <td>133</td>
+            <td>276</td>
+        </tr>
+
+    </table>
+
+    <h2>表头、表尾、表体</h2>
+    <table>
+        <thead>How I chose to spend my money</thead>
+        <tfoot>
+            <tr>
+                <td colspan="4">SUM</td>
+                <td>118</td>
+            </tr>
+        </tfoot>
+        <tr>
+            <!-- scope  col列标题 row行标题 -->
+            <th scope="col">Purchase</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Evaluation</th>
+            <th>Cost (€)</th>
+        </tr>
+
+        <tr>
+            <td>Haircut</td>
+            <td>Hairdresser</td>
+            <td>12/09</td>
+            <td>Great idea</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Lasagna</td>
+            <td>Restaurant</td>
+            <td>12/09</td>
+            <td>Regrets</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>Shoes</td>
+            <td>Shoeshop</td>
+            <td>13/09</td>
+            <td>Big regrets</td>
+            <td>65</td>
+        </tr>
+        <tr>
+            <td>Toothpaste</td>
+            <td>Supermarket</td>
+            <td>13/09</td>
+            <td>Good</td>
+            <td>5</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

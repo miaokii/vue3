@@ -1,0 +1,159 @@
+html {
+    background-color: yellow;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    width: 700px;
+    border: 5px solid black;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 0 20px;
+    font-size: 3rem;
+}
+
+h1,
+.goodNameBar p,
+.goodPriceView {
+    font-family: 'Cherry Swash', cursive;
+    font-weight: bold;
+}
+
+header img {
+    width: 40px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-top: 5px solid black;
+}
+
+aside {
+    border-right: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.goodsPage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.gridEle {
+    position: relative;
+}
+
+.goodImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.goodNameBar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.goodNameBar p {
+    color: yellow;
+    margin: 0;
+}
+
+.goodNameBar img {
+    width: 30px;
+    object-fit: cover;
+}
+
+.goodPriceView {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.goodPriceShadow {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.goodPriceView p {
+    color: yellow;
+}
+
+footer {
+    border-top: 5px solid black;
+    padding: 20px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input,
+select {
+    margin-top: 10px;
+}
+
+input {
+    height: 25px;
+    background-color: black;
+    color: yellow;
+    font-size: 1rem;
+    padding-left: 5px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.filterBtn {
+    margin-top: 30px;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: yellow;
+    padding: 5px 0px;
+    border: none;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 400px;
+    }
+    .container {
+        display: block;
+    }
+    aside {
+        border: 0;
+        border-bottom: 5px solid black;
+    }
+}

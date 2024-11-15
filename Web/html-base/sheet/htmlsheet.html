@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造HTML表单</title>
+    <link rel="stylesheet" href="simplepay.css">
+</head>
+
+<body>
+    <h1>构造HTML表单</h1>
+    <h2>fieldset 和 legend</h2>
+    <form action="#" method="post">
+        <!-- 复选框 选择型号-->
+        <fieldset style="width: 200px;">
+            <!-- 说明 -->
+            <legend>选择产品型号</legend>
+            <div>
+                <input type="radio" name="model" id="v1" value="A">
+                <label for="v1">A型号</label>
+            </div>
+            <div>
+                <input type="radio" name="model" id="v2" value="B">
+                <label for="v2">B型号</label>
+            </div>
+            <div>
+                <input type="radio" name="model" id="v3" value="C">
+                <label for="v3">C型号</label>
+            </div>
+        </fieldset>
+    </form>
+
+    <h2>复选框</h2>
+    <form action="#">
+        <p>
+            <!-- 正确关联标签和输入框的id时，点击标签也可以激活输入框 -->
+            <label for="cd">成都市</label>
+            <input type="checkbox" name="city" id="cd">
+        </p>
+        <p>
+            <label for="xa">西安市</label>
+            <input type="checkbox" name="city" id="xa">
+        </p>
+    </form>
+
+    <h1>简单的支付表单</h1>
+    <form action="#">
+        <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
+        <section>
+            <h2>Contact information</h2>
+            <fieldset>
+                <legend>Title</legend>
+                <ul>
+                    <li>
+                        <label for="title_1">
+                            <input type="radio" id="title_1" name="title" value="K">
+                            King
+                        </label>
+                    </li>
+                    <li>
+                        <label for="title_2">
+                            <input type="radio" name="title" id="title_2" value="Q">
+                            Queen
+                        </label>
+                    </li>
+                    <li>
+                        <label for="title_3">
+                            <input type="radio" id="title_3" name="title" value="J">
+                            Joker
+                        </label>
+                    </li>
+                </ul>
+            </fieldset>
+            <p>
+                <label for="name">
+                    <span>Name:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="text" name="username" id="name">
+            </p>
+            <p>
+                <label for="mail">
+                    <span>E-mail:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="email" id="mail" name="usermail">
+            </p>
+            <p>
+                <label for="pwd">
+                    <span>Password:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="password" name="password" id="pwd">
+            </p>
+        </section>
+        <section>
+            <h2>Payment information</h2>
+            <p>
+                <label for="card">
+                    <span>Card Type:</span>
+                </label>
+                <select name="usercard" id="card">
+                    <option value="visa">Visa</option>
+                    <option value="mc">Mastercard</option>
+                    <option value="amex">American Express</option>
+                </select>
+            </p>
+            <p>
+                <label for="number">
+                    <span>Card number:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="number" name="cardnumber" id="number">
+            </p>
+            <p>
+                <label for="date">
+                  <span>Expiration date:</span>
+                  <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="date" id="date" name="expiration" required="true" placeholder="MM/YY">
+            </p>
+        </section>
+        <section>
+            <p>
+                <button type="submit">Validate the payment</button>
+            </p>
+        </section>
+    </form>
+</body>
+
+</html>

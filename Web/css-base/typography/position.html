@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位布局</title>
+
+    <style>
+        body {
+            width: 500px;
+            margin: 0 atuo;
+        }
+        
+        p {
+            background: aqua;
+            border: 3px solid blue;
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        span {
+            background: red;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<!-- 更改子元素绝对定位的上下文 -->
+
+<body style="position: relative;">
+    <h1 style="position: fixed; background-color: white;">定位布局</h1>
+
+    <h2>静态定位</h2>
+    <p>I am a basic block level element. My adjacent block level elements sit on new lines below me.</p>
+    <p>By default we span 100% of the width of our parent element, and we are as tall as our child content. Our total width and height is our content + padding + border width/height.</p>
+    <p>We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our margins, not both.</p>
+    <p>inline elements <span>like this one</span> and <span>this one</span> sit on the same line as one another, and adjacent text nodes, if there is space on the same line. Overflowing inline elements will <span>wrap onto a new line if possible (like this one containing text)</span>,
+        or just go on to a new line if not, much like this image will do: <img src="https://mdn.mozillademos.org/files/13360/long.jpg"></p>
+
+    <h2>相对定位</h2>
+    <p>I am a basic block level element. My adjacent block level elements sit on new lines below me.</p>
+    <!-- 在原布局基础上，偏移 -->
+    <p style="position: relative; top: 50px; left: 50px;">By default we span 100% of the width of our parent element, and we are as tall as our child content. Our total width and height is our content + padding + border width/height.</p>
+    <p>We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our margins, not both.</p>
+    <p>inline elements <span>like this one</span> and <span>this one</span> sit on the same line as one another, and adjacent text nodes, if there is space on the same line. Overflowing inline elements will <span>wrap onto a new line if possible (like this one containing text)</span>,
+        or just go on to a new line if not, much like this image will do: <img src="https://mdn.mozillademos.org/files/13360/long.jpg"></p>
+
+    <h2>绝对定位</h2>
+    <!-- 适用于弹窗、反转面板、拖放ui等 -->
+    <p>I am a basic block level element. My adjacent block level elements sit on new lines below me.</p>
+    <!-- 显示在距离body视图 顶部50，左边50的位置了 -->
+    <!-- absolute默认会包含在初始块元素中，和屏幕一样的大小， -->
+    <!-- 当更改了包含元素的position属性时，absolute绝对定位会相对于父元素定位和调整大小 -->
+    <!-- 将body的position属性改为relative就会看到效果 -->
+    <!-- 下面这两个元素都会脱离布局流，跑到body顶部，并且z-index设置了第一个元素会展示在第二个元素上面 -->
+    <p style="position: absolute; top: 50px; left: 50px; z-index: 1;">By default we span 100% of the width of our parent element, and we are as tall as our child content. Our total width and height is our content + padding + border width/height.</p>
+    <p style="position: absolute; top: 80px; left: 40px; background-color: chartreuse;">We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our margins, not both.</p>
+    <p>We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our margins, not both.</p>
+    <p>inline elements <span>like this one</span> and <span>this one</span> sit on the same line as one another, and adjacent text nodes, if there is space on the same line. Overflowing inline elements will <span>wrap onto a new line if possible (like this one containing text)</span>,
+        or just go on to a new line if not, much like this image will do: <img src="https://mdn.mozillademos.org/files/13360/long.jpg"></p>
+
+    <h2>固定定位</h2>
+    <!-- 适用于菜单栏 -->
+    <!-- 查看h1标题 -->
+    <h2>浮动定位</h2>
+    <a href="test/sticky.html">浮动定位</a>
+
+</body>
+
+
+</html>

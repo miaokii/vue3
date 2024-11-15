@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超时和时间间隔</title>
+
+    <link rel="stylesheet" href="timer.css">
+</head>
+
+<body>
+    <h2>计时器</h2>
+    <div class="timer">
+        <p class="timerLabel">00:00:0</p>
+        <div class="btns" style="display: flex;">
+            <button class="startTimer">开始</button>
+            <button class="stopTimer" disabled=true>暂停</button>
+            <button class="resetTimer">重置</button>
+        </div>
+        <div class="times"></div>
+    </div>
+
+    <h2>当前时间</h2>
+    <div class="timer">
+        <p class="currentDateLabel">--</p>
+    </div>
+
+    <h2>反应游戏</h2>
+    <section class="game">
+        <div class="gamebar">
+            <p class="p1">Player1:'A'</p>
+            <p class="p2">Player2:'L'</p>
+            <div class="midbar">
+                <button class="start">开始游戏</button>
+                <p class="gameresult"></p>
+            </div>
+        </div>
+        <div>
+            <img class="loading" src="loading.svg" alt="">
+        </div>
+    </section>
+</body>
+
+<script src="timer.js"></script>
+<script src="date.js"></script>
+<script src="game.js"></script>
+
+</html>

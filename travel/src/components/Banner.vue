@@ -33,10 +33,7 @@
             </div>
         </div>
 
-        <swiper class="banner-swiper" direction="horizontal" :slides-per-view="1" :space-between="0" :autoplay="{
-            delay: 2000,
-            disableOnInteraction: false
-        }" navigation:loop="true">
+        <swiper :slides-per-view="3" :space-between="20" :navigation="true" :modules="modules" :pagination="true" @swiper="onSwiper" @slide-change="onSlideChange">
             <swiper-slide v-for="index in 9" :key="index">
                 <img class="swiper-image" :src="getAssetsImages(`cat${index}.jpg`)" alt="">
             </swiper-slide>
@@ -51,6 +48,15 @@ import { onMounted, reactive, ref } from 'vue';
 import SvgIcon from './SvgIcon.vue';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
+
+// 导航切换，分页显示，
+let modules = [Navigation, Pagination, A11y, autoPlay]
 
 let bannerList = reactive([
     { id: nanoid(), url: 'img1.jpg' },
@@ -91,6 +97,15 @@ function changeArrow(left: boolean) {
 onMounted(() => {
     // autoPlay()
 })
+
+function onSwiper(swiper: typeof Swiper) {
+
+}
+
+function onSlideChange(swiper: typeof Swiper) {
+    console.log(swiper);
+    
+}
 
 </script>
 
@@ -239,5 +254,21 @@ onMounted(() => {
     100% {
         transform: translateX(-100%);
     }
+}
+
+.swiper {
+    height: 500px;
+    width: 100%;
+
+    fill: var(--bgcolor);
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    object-fit: cover;
+    overflow: hidden;
 }
 </style>

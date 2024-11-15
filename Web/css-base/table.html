@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UK punk bands</title>
+    <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=Waterfall" type="text/css">
+    <style>
+        table {
+            table-layout: fixed;
+            width: 100%;
+            /* 将边框合成一条，取消单元格之间的默认间隔 */
+            border-collapse: collapse;
+            border: 3px solid purple;
+        }
+        
+        caption {
+            font-family: "Waterfall" cursive;
+            padding: 20px;
+            font-style: italic;
+            caption-side: bottom;
+            color: #666;
+            text-align: right;
+            letter-spacing: 1px;
+        }
+        /* 选择第n个子元素 */
+        
+        table th:nth-child(1) {
+            width: 30%;
+        }
+        
+        table th:nth-child(2) {
+            width: 20%;
+        }
+        
+        table th:nth-child(3) {
+            width: 15%;
+        }
+        
+        table th:nth-child(4) {
+            width: 35%;
+        }
+        
+        td,
+        th {
+            padding: 20px;
+        }
+        
+        th {
+            letter-spacing: 2px;
+        }
+        
+        td {
+            letter-spacing: 1px;
+        }
+        
+        thead,
+        tfoot,
+        th,
+        td {
+            font-family: "Waterfall", cursive;
+        }
+        
+        tbody,
+        td {
+            text-align: center;
+        }
+        
+        tfoot,
+        th {
+            text-align: right;
+        }
+        
+        thead,
+        tfoot {
+            background: url('https://raw.githubusercontent.com/mdn/learning-area/main/css/styling-boxes/styling-tables/leopardskin.jpg');
+            color: white;
+            text-shadow: 1px 1px 1px black;
+        }
+        
+        thead th,
+        tfoot th,
+        tfoot td {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+            border: 3px solid purple;
+        }
+        /* 奇数行 */
+        
+        tbody tr:nth-child(odd) {
+            background-color: #ff33cc;
+        }
+        /* 偶数行 */
+        
+        tbody tr:nth-child(even) {
+            background-color: #e495e4;
+        }
+        
+        tbody,
+        tr {
+            background-image: url('https://raw.githubusercontent.com/mdn/learning-area/main/css/styling-boxes/styling-tables/noise.png');
+        }
+        
+        table {
+            background-color: #ff33cc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>A summary of the UK's most famous punk bands</caption>
+        <thead>
+            <tr>
+                <th scope="col">Band</th>
+                <th scope="col">Year formed</th>
+                <th scope="col">No. of Albums</th>
+                <th scope="col">Most famous song</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Buzzcocks</th>
+                <td>1976</td>
+                <td>9</td>
+                <td>Ever fallen in love (with someone you shouldn't've)</td>
+            </tr>
+            <tr>
+                <th scope="row">The Clash</th>
+                <td>1976</td>
+                <td>6</td>
+                <td>London Calling</td>
+            </tr>
+            <tr>
+                <th scope="row">The Damned</th>
+                <td>1976</td>
+                <td>10</td>
+                <td>Smash it up</td>
+            </tr>
+            <tr>
+                <th scope="row">Sex Pistols</th>
+                <td>1975</td>
+                <td>1</td>
+                <td>Anarchy in the UK</td>
+            </tr>
+            <tr>
+                <th scope="row">Sham 69</th>
+                <td>1976</td>
+                <td>13</td>
+                <td>If The Kids Are United</td>
+            </tr>
+            <tr>
+                <th scope="row">Siouxsie and the Banshees</th>
+                <td>1976</td>
+                <td>11</td>
+                <td>Hong Kong Garden</td>
+            </tr>
+            <tr>
+                <th scope="row">Stiff Little Fingers</th>
+                <td>1977</td>
+                <td>10</td>
+                <td>Suspect Device</td>
+            </tr>
+            <tr>
+                <th scope="row">The Stranglers</th>
+                <td>1974</td>
+                <td>17</td>
+                <td>No More Heroes</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row" colspan="2">Total albums</th>
+                <td colspan="2">77</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

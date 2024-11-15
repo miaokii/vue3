@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生表单</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid rgb(200, 200, 200);
+            letter-spacing: 1px;
+            max-width: 80%;
+        }
+        
+        td,
+        th {
+            border: 1px solid rgb(190, 190, 190);
+            padding: 10px 20px;
+        }
+        
+        th {
+            background-color: rgb(235, 235, 235);
+        }
+        
+        td {
+            text-align: left;
+        }
+        
+        tr:nth-child(even) td {
+            background-color: rgb(250, 250, 250);
+        }
+        
+        tr:nth-child(odd) td {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        caption {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>原生表单</h1>
+    <h2>通用属性</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">属性名称</th>
+                <th scope="col">默认值</th>
+                <th scope="col">描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>autofocus</td>
+                <td>false</td>
+                <td>这个布尔属性允许您指定当页面加载时元素应该自动具有输入焦点，除非用户覆盖它，例如通过键入不同的控件。文档中只有一个与表单相关的元素可以指定这个属性。</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>false</td>
+                <td>这个布尔属性表示用户不能与元素交互。如果没有指定这个属性，元素将从包含它的元素继承设置，例如&lt;fieldset&gt;;如果没有包含在设定了disabled属性的元素里，那么这个元素就是可用的。</td>
+            </tr>
+            <tr>
+                <td>form</td>
+                <td>&emsp;</td>
+                <td>小部件与之相关联的表单元素。属性值必需是同个文档中的form元素的 id属性。理论上，它允许您在form元素之外设置一个表单小部件。然而，在实践中，没有任何支持该特性的浏览器。</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>&emsp;</td>
+                <td>元素的名称;这是跟表单数据一起提交的。</td>
+            </tr>
+            <tr>
+                <td>value</td>
+                <td>&emsp;</td>
+                <td>元素的初始值。</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>文本框</h2>
+    <h3>单行文本</h3>
+
+    <div>
+        <label for="text">文本类型：</label>
+        <!-- type 输入类型 -->
+        <!-- readonly 不能修改值 -->
+        <!-- disabled 不随表单发送 -->
+        <!-- placeholder 占位 -->
+        <!-- size 物理尺寸 -->
+        <!-- maxlength 最大输入长度 -->
+        <input type="text" placeholder="请输入" size="50" maxlength="10">
+    </div>
+    <div>
+        <label for="text">E-mail：</label>
+        <!-- multiple 允许输入多个邮箱 -->
+        <input type="email" placeholder="请输入" size="50" multiple>
+    </div>
+    <div>
+        <label for="text">日期：</label>
+        <input type="date" placeholder="请输入" size="50">
+    </div>
+    <div>
+        <label for="text">日期时间：</label>
+        <input type="datetime-local" placeholder="请输入" size="50">
+    </div>
+    <div>
+        <label for="text">密码框：</label>
+        <input type="password" placeholder="请输入" size="50">
+    </div>
+    <div>
+        <label for="text">搜索框：</label>
+        <input type="search" placeholder="请输入" size="50">
+        <input type="submit" name="search" id="">
+    </div>
+    <div>
+        <label for="text">电话号码：</label>
+        <input type="tel" placeholder="请输入" size="50">
+    </div>
+    <div>
+        <label for="text">url：</label>
+        <input type="url" placeholder="请输入" size="50">
+    </div>
+    <h3>自动补全输入框</h3>
+    <div>
+        <label for="fruit">你喜欢的水果是：</label>
+        <!-- list 将数据列表绑定到文本框 -->
+        <input type="text" name="" id="fruit" list="fruit suggestion">
+        <!-- datalist 为小部件提供建议的、自动完成的值 -->
+        <datalist id="fruit suggestion">
+            <option>Apple</option>
+            <option>Blackberry</option>
+            <option>Lemon</option>
+            <option>Lychee</option>
+            <option>Pear</option>
+        </datalist>
+    </div>
+    <h3>多行文本框</h3>
+    <!-- cols 文本控件的可见宽度，平均字符宽度 -->
+    <!-- rows 控制的可见文本行数 -->
+    <!-- wrap 如何包装内容 -->
+    <!-- textarea中间可以包含任何内容，都被当作纯文本内容 -->
+    <textarea name="note" id="" cols="30" rows="10" wrap="soft"></textarea>
+
+    <h2>下拉内容</h2>
+    <h3>单选</h3>
+    <p>
+        <span>选择城市</span>
+        <select name="city" id="city">
+            <option value="chengdu">成都市</option>
+            <option value="xian">西安市</option>
+            <option value="beijing">北京市</option>
+        </select>
+    </p>
+
+    <p>
+        <span>你喜欢的水果</span>
+        <select name="" id="">
+            <!-- optgroup 将同一类型的选项放在同一组 -->
+            <optgroup label="fruits">
+                <option value="apple">Apple</option>
+                <option selected value="banana">Banana</option>
+                <option value="lemon">Lemon</option>
+            </optgroup>
+            <optgroup title="vegetables">
+                <option value="carrot">Carrot</option>
+                <option value="egg">Eggplant</option>
+                <option value="potato">Potato</option>
+            </optgroup>
+        </select>
+    </p>
+
+    <h3>多选选择框</h3>
+    <p>
+        <span>你喜欢的水果</span>
+        <!-- 按下command 可以选择多个值 -->
+        <select name="" id="" multiple>
+            <option value="Banana">Banana</option>
+            <option value="Cherry">Cherry</option>
+            <option value="Lemon">Lemon</option>
+        </select>
+    </p>
+
+    <h2>可选中项</h2>
+    <h3>复选框</h3>
+    <div>
+        <label for="sms">是否发送短信</label>
+        <input type="checkbox" name="" id="sms">
+    </div>
+    <h3>单选按钮</h3>
+    <fieldset style="width: 200px;">
+        <legend>选择你喜欢的偶像</legend>
+        <!-- 当几个选项的name相同时，相互时互斥的单选 -->
+        <!-- 当几个选项的name不相同时，可以同时选中 -->
+        <div>
+            <input type="radio" id="zhang" name="man">
+            <label for="zhang">张一鸣</label>
+        </div>
+        <div>
+            <input type="radio" name="man" id="lei">
+            <label for="lei">雷军</label>
+        </div>
+        <div>
+            <input type="radio" name="man" id="ma">
+            <label for="ma">马云</label>
+        </div>
+    </fieldset>
+
+    <h2>按钮</h2>
+    <button type="submit">提交</button>
+    <br>
+    <input type="submit" value="提交">
+    <br>
+    <button type="reset">重置</button>
+    <br>
+    <input type="reset" name="" id="" value="重置">
+    <br>
+    <button type="Anonymous">不自动生效</button>
+    <br>
+    <input type="button" name="" id="" value="不自动生效">
+
+    <h2>高级表单部件</h2>
+    <div>
+        <label for="number">数字：</label>
+        <!-- 最小值、最大值、步长 -->
+        <input type="number" name="" id="number" min="0" max="10" step="2">
+    </div>
+    <div>
+        <label for="slider">滑块：</label>
+        <input type="range" name="" id="slider" min="0" max="100" step="1" value="20">
+        <span class="beancount"></span>
+    </div>
+    <div>
+        <label for="datetime">日期时间选择</label>
+        <input type="datetime-local" name="" id="datetime">
+    </div>
+
+    <div>
+        <label for="month">月</label>
+        <input type="month" name="" id="month">
+    </div>
+
+    <div>
+        <label for="time">时间选择</label>
+        <input type="time" name="" id="month">
+    </div>
+    <div>
+        <label for="week">星期</label>
+        <input type="week" name="" id="week">
+    </div>
+    <div>
+        <label for="time">时间选择</label>
+        <input type="time" name="" id="month">
+    </div>
+    <div>
+        <label for="color">拾色器</label>
+        <input type="color" name="" id="color">
+    </div>
+
+    <h2>其他部件</h2>
+    <h3>文件选择器</h3>
+    <!-- accept 限制文件类型 -->
+    <!-- multiple 允许多选文件 -->
+    <input type="file" accept="image/*" multiple>
+    <h3>隐藏内容</h3>
+    <input type="hidden" name="value" id="" value="1222">
+    <h3>图像按钮</h3>
+    <input type="image" alt="click me" src="../multimedia/recourse/poster.png" width="40" height="40">
+    <h3>仪表和进度条</h3>
+    <div>
+        <label for="progress">进度条</label>
+        <progress max="100" value="23" id="progress">23/100</progress>
+    </div>
+    <div>
+        <label for="meter">仪表</label>
+        <meter min="0" max="100" low="33" high="66" optimum="50" value="25">25</meter>
+    </div>
+</body>
+
+<script>
+    var beans = document.querySelector('#slider');
+    var count = document.querySelector('.beancount');
+    count.textContent = beans.nodeValue;
+
+    beans.oninput = function() {
+        count.textContent = beans.value;
+    }
+</script>
+
+</html>

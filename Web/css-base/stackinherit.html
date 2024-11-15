@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>层叠和继承</title>
+</head>
+
+<body>
+    <h1>层叠与继承</h1>
+    <h2>层叠</h2>
+    <p>高优先级的规则会覆盖底优先级的规则</p>
+    <ul>
+        <li>相同优先级，顺序在后的生效</li>
+        <li>特定class属性值的元素，优先级更高</li>
+    </ul>
+    <h2>继承</h2>
+    <p>父元素的css属性可能会被子元素继承</p>
+
+    <h3>理解继承</h3>
+    <ul class="main" style="color: rebeccapurple; border: 2px solid #ccc; padding: 1em;">
+        <!-- margins, padding, 和 borders 都没有被继承 -->
+        <li>Item One</li>
+        <li>Item Two
+            <ul>
+                <li>2.1</li>
+                <li>2.2</li>
+            </ul>
+        </li>
+        <li>Item Three
+            <ul class="special" style="color: black; font-weight: bold;">
+                <li>3.1
+                    <ul>
+                        <li>3.1.1</li>
+                        <li>3.1.2</li>
+                    </ul>
+                </li>
+                <li>3.2</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>控制继承</h2>
+    <p>四个特殊的通用属性值。每个css属性都接收这些值。</p>
+    <p><strong style="background-color:#ccc; border-radius: 2;">inherit:</strong>设置该属性会使子元素属性和父元素相同。实际上，就是 "开启继承"</p>
+    <p><strong style="background-color:#ccc; border-radius: 2;">initial:</strong>设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 inherit 。</p>
+    <p><strong style="background-color:#ccc; border-radius: 2;">unset:</strong>将属性重置为自然值，也就是如果属性是自然继承那么就是 inherit，否则和 initial一样</p>
+
+    <ul style="color: green;">
+        <!-- 默认链接颜色 -->
+        <li>Default <a href="#">link</a> color</li>
+        <!-- 继承li/ul颜色 -->
+        <li class="my-class-1">Inherit the <a href="#" style="color: inherit;">link</a> color</li>
+        <!--  -->
+        <li class="my-class-2">Reset the <a href="#" style="color: initial;">link</a> color</li>
+        <!-- 不是自然继承 -->
+        <li class="my-class-3">Unset the <a href="#" style="color: unset;">link</a> color</li>
+    </ul>
+
+    <h2>选择器优先级计算</h2>
+    <p>不同类型的选择器有不同的分数值，把这些分数相加就得到特定选择器的权重，然后就可以进行匹配</p>
+    <ul>
+        <p>一个选择器的优先级可以说是由四个部分相加 (分量)，可以认为是个十百千 — 四位数的四个位数：</p>
+        <li>千位：如果声明在 style 的属性（内联样式）则该位得一分。这样的声明没有选择器，所以它得分总是1000</li>
+        <li>百位： 选择器中包含ID选择器则该位得一分。</li>
+        <li>十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。</li>
+        <li>个位：选择器中包含元素、伪元素选择器则该位得一分。</li>
+    </ul>
+</body>
+
+</html>

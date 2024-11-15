@@ -1,0 +1,171 @@
+html {
+    background-color: yellow;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+}
+
+body {
+    width: 750px;
+    border: 5px solid black;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+h1 {
+    text-align: center;
+    background: url(icons/bean_can.png) no-repeat 20% center, url(icons/bean_can.png) no-repeat 80% center;
+    font-size: 5rem;
+    background-size: 40px;
+    font-family: 'Cherry Swash', cursive;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+body>div {
+    display: flex;
+    border-top: 5px solid black;
+}
+
+
+/* 侧边栏 */
+
+aside {
+    border-right: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-wrap: wrap;
+    flex: 3;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input,
+select {
+    margin-top: 10px;
+}
+
+input {
+    height: 25px;
+    background-color: black;
+    color: yellow;
+    font-size: 1rem;
+    padding-left: 5px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.filterBtn {
+    margin-top: 30px;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: yellow;
+    padding: 5px 0px;
+    border: none;
+}
+
+
+/* 产品网格 */
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    flex: 8;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+/* 产品卡片 */
+
+section {
+    position: relative;
+    background-color: black;
+    /* height: 230px; */
+}
+
+
+/* 产品名 */
+
+section div {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section div img {
+    width: 30px;
+    padding-left: 5px;
+}
+
+
+/* 产品图片 */
+
+section>img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* 价格 */
+
+section>p {
+    color: yellow;
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 2px 2px 1px yellow;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    z-index: 2000;
+}
+
+section div p {
+    font-family: 'Cherry Swash', cursive;
+    z-index: 1500;
+    position: absolute;
+    right: 10px;
+    color: yellow;
+    margin: 5px 0px;
+    font-size: 2rem;
+    text-align: right;
+    width: 70%;
+}
+
+
+/* 脚 */
+
+footer {
+    border-top: 5px solid black;
+    padding: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 400px;
+    }
+    body>div {
+        display: block;
+    }
+    aside {
+        border: 0;
+        border-bottom: 5px solid black;
+    }
+    h1 {
+        font-size: 3rem;
+        background: url(icons/bean_can.png) no-repeat 10% center, url(icons/bean_can.png) no-repeat 90% center;
+        background-size: 30px;
+    }
+}

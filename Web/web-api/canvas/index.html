@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        /* 当canvas大小和窗口一样大时，取消body的margin和overflow属性，否则会有滚动条 */
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: darkgray;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>不支持canvas</p>
+    </canvas>
+
+    <canvas class="translateCanvas">
+        <p>不支持Canvas</p>
+    </canvas>
+</body>
+
+<script src="script.js"></script>
+
+</html>

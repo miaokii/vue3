@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewPager</title>
+
+    <style >
+        .carousel {
+            width: 600px;
+            height: 300px;
+            border: 4px solid darkgreen;
+            background-color: azure;
+        }
+
+        .carousel .container {
+            display: flex;
+            position: relative;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .container img {
+            /* 防止图片缩小，保证图片撑满整个容器 */
+            flex-shrink: 0;
+            height: 100%;
+            width: 100%;
+            /* 保持宽高比 */
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <dic class="carousel">
+        <div class="container"></div>
+    </dic>
+</body>
+
+<script type="javascript/text" src="./script.js"></script>
+</html>

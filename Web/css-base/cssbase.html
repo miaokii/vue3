@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>开始学习CSS</title>
+    <style>
+        h1 {
+            color: red;
+        }
+        
+        p,
+        li {
+            color: blue;
+        }
+        
+        li {
+            /* 取消默认li样式 */
+            list-style-type: square;
+        }
+        /* 只修改某个类的样式 */
+        
+        special {
+            color: orange;
+            font-weight: bold;
+        }
+        /* 只修改段落元素的 special类 */
+        
+        p.special {
+            color: green;
+            font-weight: bold;
+        }
+        /* 只修改li元素内的em元素样式 */
+        
+        li em {
+            color: cyan;
+        }
+        /* 相邻的两个元素设置相同的样式 */
+        
+        h1+p {
+            font-size: 200%;
+        }
+        /* 根据状态设置不同的样式 */
+        /* 链接未访问 */
+        
+        a:link {
+            color: pink;
+        }
+        /* 链接已访问 */
+        
+        a:visited {
+            color: green;
+        }
+        /* 链接鼠标悬停，移除下划线 */
+        
+        a:hover {
+            text-decoration: none;
+        }
+        
+        body h1+p .special {
+            color: yellow;
+            background-color: black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>我是一级标题</h1>
+
+    <p>这是一个段落文本. 在文本中有一个 <span class="special">span element</span> 并且还有一个 <a href="http://baidu.com">链接</a>.</p>
+
+    <p class="special">这是第二段. 包含了一个 <em>强调</em> 元素.</p>
+
+    <ul>
+        <li>项目1</li>
+        <li class="special">项目2</li>
+        <li>项目 <em>三</em></li>
+    </ul>
+
+</body>
+
+</html>

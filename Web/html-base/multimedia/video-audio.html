@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频和音频内容</title>
+</head>
+<body>
+    <h1>视频和音频内容</h1>
+    <h2>插入一条视频</h2>
+    <!-- controls：包含浏览器的原生视屏控制界面 -->
+    <!-- video 标签内内容当浏览器不支持src指定的视频时，回显示标签内的内容 -->
+    <video src="recourse/rabbit320.webm" controls>
+        <p>如果不支持HTML5视频，可点击<a href="recourse/rabbit320.mp4">此链接</a>观看</p>
+    </video>
+
+    <h2>其他Video特性</h2>
+
+    <!-- 显示控制、自动播放、循环播放、静音播放 -->
+    <!-- width、height宽高 -->
+    <video controls autoplay loop muted>
+        <source src="recourse/rabbit320.webm" type="video/webm">
+    </video>
+
+    <!-- poster 封面 -->
+    <!-- preload 缓冲 none不缓冲 auto页面加载后自动缓冲 metadata仅缓冲元数据 -->
+    <video controls poster="recourse/poster.png" preload="auto">
+        <source src="recourse/rabbit320.webm" type="video/webm">
+    </video>
+
+    <h2>音频</h2>
+    <!-- audio没有视觉控件，所以不能设置宽高 -->
+    <audio src="recourse/viper.ogg" controls>
+        <p>如果不支持HTML5音频，可点击<a href="recourse/viper.mp3">此链接</a>观看</p>
+    </audio>
+
+    <h2>js控制</h2>
+    <audio id="viper audio" controls>
+        <source src="recourse/viper.mp3" type="audio/mp3">
+    </audio>
+    <button id="play">播放</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

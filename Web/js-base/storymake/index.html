@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事生成</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="script.js"></script>
+</head>
+
+<body>
+    <h1>故事生成</h1>
+
+    <div class="form">
+        <label for="name">请输入自定义的名字：</label>
+        <input type="text" name="userName" id="name" class="nameField" placeholder="李雷">
+    </div>
+
+    <div class="form">
+        <label for="pu">公制</label>
+        <input type="radio" name="way" id="pu" class="puField" checked=ture>
+        <label for="am">美制</label>
+        <input type="radio" name="way" id="am" class="amField">
+    </div>
+    <button class="submit">随机生成故事</button>
+
+    <p class="joker"></p>
+
+</body>
+
+</html>

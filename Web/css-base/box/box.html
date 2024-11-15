@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒模型</title>
+    <style>
+        .note {
+            background-color: antiquewhite;
+            color: black;
+            font-style: italic;
+        }
+        
+        .codeblock {
+            background-color: azure;
+            border-radius: 5;
+            margin: .5em;
+            padding: .5em;
+        }
+        
+        .box {
+            border: 5px solid black;
+            background-color: lightgray;
+            padding: 40px;
+            margin: 40px;
+            width: 300px;
+            height: 150px;
+        }
+        
+        .alternateBox {
+            box-sizing: border-box;
+            width: 390px;
+            height: 240px;
+        }
+        
+        .nav {
+            border: 1px solid palegreen;
+            display: inline-flex;
+            list-style: none;
+        }
+        
+        .nav a {
+            padding: 20px;
+            display: inline-block;
+            background-color: red;
+            margin: 10px;
+            color: white;
+            text-decoration-line: none;
+        }
+        
+        .nav a:hover {
+            background-color: darkred;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>盒模型</h1>
+    <h2>块级盒子（block box）和内联盒子（inline box）</h2>
+    <p>通过display属性，设置盒子的外部显示类型</p>
+    <h3>block box</h3>
+    <ul>
+        <li>盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大数情况下意味着盒子会和父容器一样宽</li>
+        <li>每个盒子都会换行</li>
+        <li>width 和 height 属性可以发挥作用</li>
+        <li>内边距（padding）, 外边距（margin） 和 边框（border） 会将其他元素从当前盒子周围“推开”</li>
+    </ul>
+    <p>h1、p等默认为块盒子</p>
+    <h3>inline box</h3>
+    <ul>
+        <li>盒子不会换行</li>
+        <li>width 和 height 属性将不起作用。</li>
+        <li>垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开。</li>
+        <li>水平方向的内边距、外边距以及边框会被应用且会把其他处于 inline 状态的盒子推开。</li>
+    </ul>
+    <p>a、span、em、strong默认是内联盒子</p>
+
+    <h2>不同显示类型</h2>
+    <a href="test1.html">示例1</a>
+    <a href="test2.html">示例2</a>
+
+    <h2>盒模型</h2>
+    <ul>
+        <li>margin：边框对外边距</li>
+        <li>padding：边框对内边距</li>
+        <li>border：边框</li>
+        <li>content：显示区域，可设置大小width和height</li>
+    </ul>
+    <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model"><img src="https://mdn.mozillademos.org/files/16558/box-model.png" alt="盒模型"></a>
+
+    <h2>标准盒模型</h2>
+    <p>盒子的大小由margin、padding、border、widht、height共同决定</p>
+    <p class="codeblock">
+        .box { <br>&emsp; width: 350px; <br>&emsp; height: 150px; <br>&emsp; margin: 25px; <br>&emsp; padding: 25px; <br>&emsp; border: 5px solid black; <br> } <br>
+    </p>
+    <p>
+        如果使用标准模型宽度 = 410px (350 + 25 + 25 + 5 + 5)，高度 = 210px (150 + 25 + 25 + 5 + 5)，padding 加 border 再加 content box。
+    </p>
+
+    <span class="note">注: margin 不计入实际大小 —— 当然，它会影响盒子在页面所占空间，但是影响的是盒子外部空间。盒子的范围到边框为止 —— 不会延伸到margin。</span>
+
+    <h3>替代盒模型</h3>
+    <p>替代盒模型，所有宽度都是可见宽度，所以内容宽度是该宽度减去边框和填充部分</p>
+    <p class="codeblock">
+        .box {<br>&emsp;box-sizing:border-box;<br> }
+    </p>
+    <p>使用替代盒模型 width = 350px, height = 150px</p>
+
+    <p>要设置所有元素都使用替代模式，设置box-sizing 在
+        <html> 元素上，然后设置所有元素继承该属性</p>
+    <p class="codeblock">
+        html {<br>&emsp;box-sizing: border-box; <br>}<br>*, *::before, *::after {<br>&emsp;box-sizing: inherit;<br>}
+    </p>
+
+    <h2>盒模型对比</h2>
+    <div class="box">
+        标准盒模型
+    </div>
+
+    <div class="box alternateBox">
+        替换盒模型
+    </div>
+
+    <h2>盒子模型和内联盒子</h2>
+    <p style="width: 200px; border: 2px solid palevioletred;">
+        I am a paragraph and this is a <span style="margin: 10px; padding: 10px; width: 80px; height: 50px; border: 2px solid blue; background-color: lightblue;">span</span> inside that paragraph. A span is an inline element and so does not respect width
+        and height.
+    </p>
+    <span class="note">
+        span的高度和宽度被忽略，padding和margin仍然生效，但它们不会改变其他内容与内联盒子的关系，因此内边距和边框会与段落中的其他单词重叠。
+    </span>
+
+    <p><strong>使用display: inline-block</strong></p>
+    <p style="width: 200px; border: 2px solid palevioletred;">
+        I am a paragraph and this is a <span style="display: inline-block; margin: 10px; padding: 10px; width: 80px; height: 50px; border: 2px solid blue; background-color: lightblue;">span</span> inside that paragraph. A span is an inline element and
+        so does not respect width and height.
+    </p>
+    <span class="note">width和height属性生效了</span>
+
+    <p><strong>使用display: inline-block增大链接的点击区域</strong></p>
+    <nav>
+        <ul class="nav">
+            <li><a href="">Link A</a></li>
+            <li><a href="">Link B</a></li>
+            <li><a href="">Link C</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

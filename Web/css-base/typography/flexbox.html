@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒子</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        
+        body {
+            margin: 0;
+        }
+        
+        header {
+            background-color: purple;
+            height: 100px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            margin: 0;
+        }
+        
+        article {
+            padding: 10px;
+            margin: 10px;
+            background-color: aqua;
+            /* 每个文章占用宽度200px */
+            /* flex: 200px; */
+            /* 每个元素占用宽度一样 */
+            /* flex: 1; */
+            flex: 1 200px;
+        }
+        /* article:nth-of-type(3) {
+            flex: 2 200px;
+        } */
+        
+        section {
+            /* 弹性布局 */
+            display: flex;
+            /* 方向 */
+            flex-direction: row;
+            /* 溢出时换行 */
+            flex-wrap: wrap;
+            /* flex-direction和flex-wrap的缩写  */
+            flex-flow: row wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>弹性盒子</h1>
+    </header>
+    <section>
+        <article>
+            <h2>《乐府杂曲·鼓吹曲辞·临高台》</h2>
+            <p>临高台，高台迢递绝浮埃。瑶轩绮构何崔嵬， 鸾歌凤吹清且哀。俯瞰长安道，萋萋御沟草。 斜对甘泉路，苍苍茂陵树。高台四望同， 帝乡佳气郁葱葱。紫阁丹楼纷照耀，璧房锦殿相玲珑。 东弥长乐观，西指未央宫。赤城映朝日，绿树摇春风。 旗亭百隧开新市，甲第千甍分戚里。朱轮翠盖不胜春， 叠榭层楹相对起。复有青楼大道中，绣户文窗雕绮栊。 锦衾夜不襞，罗帷昼未空。歌屏朝掩翠，妆镜晚窥红。 为君安宝髻，蛾眉罢花丛。尘间狭路黯将暮， 云间月色明如素。鸳鸯池上两两飞，凤凰楼下双双度。 物色正如此，佳期那不顾。银鞍绣毂盛繁华，
+                可怜今夜宿娼家。娼家少妇不须颦，东园桃李片时春。 君看旧日高台处，柏梁铜雀生黄尘。</p>
+        </article>
+
+        <article>
+            <h2>《倬彼我系》</h2>
+            <p>倬彼我系，出自有周。分疆锡社，派别支流。 居卫仕宋，臣嬴相刘。乃武乃文，或公或侯。 晋历崩坼，衣冠扰弊。粤自太原，播徂江澨。 礼丧贤隐，时屯道闭。王室如毁，生人多殪。 伊我有器，思逢其主。自东施西，择木开宇。 田彼河曲，家乎汾浦。天未厌乱，吾将谁辅。 伊我祖德，思济九埏。不常厥所，于兹五迁。 欲及时也，夫岂愿焉。其位虽屈，其言则传。 爰述帝制，大搜王道。曰天曰人，是祖是考。 礼乐咸苦，诗书具草。贻厥孙谋，永为家宝。 伊余小子，信惭明哲。彼网有条，彼车有辙。 思屏人事，克终前烈。于嗟代网，卒余来绁。
+                来绁伊何，谓余曰仕。我瞻先达，三十方起。 夫岂不怀，高山仰止。愿言毓德，啜菽饮水。 有鸟反哺，其声嗷嗷。言念旧德，忧心忉忉。 今我不养，岁月其滔。黾俯从役，岂敢告劳。 从役伊何，薄求卑位。告劳伊何，来参卿事。 名存实爽，负信愆义。静言遐思，中心是愧。
+            </p>
+        </article>
+
+        <article>
+            <h2>《送杜少府之任蜀州》</h2>
+            <p>城阙辅三秦，风烟望五津。 与君离别意，同是宦游人。 海内存知己，天涯若比邻。 无为在歧路，儿女共沾巾。</p>
+            <p>滕王高阁临江渚， 佩玉鸣鸾罢歌舞。 画栋朝飞南浦云， 珠帘暮卷西山雨。 闲云潭影日悠悠， 物换星移几度秋。 阁中帝子今安在？ 槛外长江空自流！</p>
+        </article>
+    </section>
+
+    <h2>水平和垂直对齐</h2>
+    <!-- align-items 交叉轴对齐方式 -->
+    <!-- justify-content 主轴对齐方式 -->
+    <!-- space-around 主轴均匀分布 -->
+    <!-- space-between 不会在两端留下空间 -->
+    <div style="display: flex; align-items: center; justify-content: space-around; width: 50%; height: 50px; padding: 10px; background-color: aqua;">
+        <!-- order flex项的排序，默认0，较大的排在后面 -->
+        <button style="order: 1;">Smile</button>
+        <button>Laugh</button>
+        <button>Wink</button>
+        <button>Shrug</button>
+        <button>Blush</button>
+    </div>
+
+    <h2>flex嵌套</h2>
+    <section>
+        <article>
+            <h2>《乐府杂曲·鼓吹曲辞·临高台》</h2>
+            <p>临高台，高台迢递绝浮埃。瑶轩绮构何崔嵬， 鸾歌凤吹清且哀。俯瞰长安道，萋萋御沟草。 斜对甘泉路，苍苍茂陵树。高台四望同， 帝乡佳气郁葱葱。紫阁丹楼纷照耀，璧房锦殿相玲珑。 东弥长乐观，西指未央宫。赤城映朝日，绿树摇春风。 旗亭百隧开新市，甲第千甍分戚里。朱轮翠盖不胜春， 叠榭层楹相对起。复有青楼大道中，绣户文窗雕绮栊。 锦衾夜不襞，罗帷昼未空。歌屏朝掩翠，妆镜晚窥红。 为君安宝髻，蛾眉罢花丛。尘间狭路黯将暮， 云间月色明如素。鸳鸯池上两两飞，凤凰楼下双双度。 物色正如此，佳期那不顾。银鞍绣毂盛繁华，
+                可怜今夜宿娼家。娼家少妇不须颦，东园桃李片时春。 君看旧日高台处，柏梁铜雀生黄尘。</p>
+        </article>
+
+        <article>
+            <h2>《倬彼我系》</h2>
+            <p>倬彼我系，出自有周。分疆锡社，派别支流。 居卫仕宋，臣嬴相刘。乃武乃文，或公或侯。 晋历崩坼，衣冠扰弊。粤自太原，播徂江澨。 礼丧贤隐，时屯道闭。王室如毁，生人多殪。 伊我有器，思逢其主。自东施西，择木开宇。 田彼河曲，家乎汾浦。天未厌乱，吾将谁辅。 伊我祖德，思济九埏。不常厥所，于兹五迁。 欲及时也，夫岂愿焉。其位虽屈，其言则传。 爰述帝制，大搜王道。曰天曰人，是祖是考。 礼乐咸苦，诗书具草。贻厥孙谋，永为家宝。 伊余小子，信惭明哲。彼网有条，彼车有辙。 思屏人事，克终前烈。于嗟代网，卒余来绁。
+                来绁伊何，谓余曰仕。我瞻先达，三十方起。 夫岂不怀，高山仰止。愿言毓德，啜菽饮水。 有鸟反哺，其声嗷嗷。言念旧德，忧心忉忉。 今我不养，岁月其滔。黾俯从役，岂敢告劳。 从役伊何，薄求卑位。告劳伊何，来参卿事。 名存实爽，负信愆义。静言遐思，中心是愧。
+            </p>
+        </article>
+
+        <article style="flex: 3 200px; display: flex; flex-flow: column;">
+            <div style="display: flex; flex-flow: row wrap; align-items: center; justify-content: space-around; flex: 1 100px;">
+                <button style="flex: 1 auto; margin: 5px; font-size: 18px; line-height: 1.5;">一曲</button>
+                <button style="flex: 1 auto; margin: 5px; font-size: 18px; line-height: 1.5;">二三</button>
+                <button style="flex: 1 auto; margin: 5px; font-size: 18px; line-height: 1.5;">四五</button>
+                <button style="flex: 1 auto; margin: 5px; font-size: 18px; line-height: 1.5;">六七</button>
+                <button style="flex: 1 auto; margin: 5px; font-size: 18px; line-height: 1.5;">八九</button>
+            </div>
+
+            <div>城阙辅三秦，风烟望五津。 与君离别意，同是宦游人。 海内存知己，天涯若比邻。 无为在歧路，儿女共沾巾。</div>
+            <div>滕王高阁临江渚， 佩玉鸣鸾罢歌舞。 画栋朝飞南浦云， 珠帘暮卷西山雨。 闲云潭影日悠悠， 物换星移几度秋。 阁中帝子今安在？ 槛外长江空自流！倬彼我系，出自有周。分疆锡社，派别支流。 居卫仕宋，臣嬴相刘。乃武乃文，或公或侯。 晋历崩坼，衣冠扰弊。粤自太原，播徂江澨。 礼丧贤隐，时屯道闭。王室如毁，生人多殪。 伊我有器，思逢其主。自东施西，择木开宇。 田彼河曲，家乎汾浦。天未厌乱，吾将谁辅。 伊我祖德，思济九埏。不常厥所，于兹五迁。 欲及时也，夫岂愿焉。其位虽屈，其言则传。
+                爰述帝制，大搜王道。曰天曰人，是祖是考。 礼乐咸苦，诗书具草。贻厥孙谋，永为家宝。 伊余小子，信惭明哲。彼网有条，彼车有辙。 思屏人事，克终前烈。于嗟代网，卒余来绁。 来绁伊何，谓余曰仕。我瞻先达，三十方起。 夫岂不怀，高山仰止。愿言毓德，啜菽饮水。 有鸟反哺，其声嗷嗷。言念旧德，忧心忉忉。 今我不养，岁月其滔。黾俯从役，岂敢告劳。 从役伊何，薄求卑位。告劳伊何，来参卿事。 名存实爽，负信愆义。静言遐思，中心是愧。
+            </div>
+        </article>
+    </section>
+</body>
+
+</html>

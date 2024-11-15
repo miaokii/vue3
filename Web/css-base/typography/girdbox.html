@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网格布局</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 2em auto;
+            font: .9em/1.2 Arial;
+        }
+        
+        .container {
+            display: grid;
+            /* 列宽度比例 */
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            /* repeat重复构建三个1fr的列 */
+            /* grid-template-columns: repeat(3, 1fr); */
+            /* 列间距 */
+            column-gap: 20px;
+            /* 行间距 */
+            row-gap: 20px;
+            /* 网格大小 */
+            /* grid-auto-rows: 100px; */
+            /* 至少100px */
+            /* grid-auto-rows: minmax(40px, auto); */
+            /* 自动适应列数，宽度 */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* 至少100px高度 */
+            grid-auto-rows: minmax(100px, auto);
+        }
+        
+        .container>div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: azure;
+            color: black;
+            border: 1px solid black;
+        }
+        
+        .line_container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+        
+        header,
+        footer {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227);
+        }
+        
+        aside {
+            border-right: 1px solid #999;
+        }
+        /* 使用属性名，放置 */
+        
+        .template-area {
+            display: grid;
+            grid-template-areas: "header header" "sidebar content" "footer footer";
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>网格布局</h1>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+    </div>
+
+    <h2>元素位置</h2>
+    <div class="line_container">
+        <!-- grid-column: 1/3 元素开始和结束的列 -->
+        <!-- header在第一行，占了1、2、3共3列的位置 -->
+        <header style="grid-row: 1; grid-column: 1/3;">This is my lovely blog</header>
+        <!-- article 在第二行第二列 -->
+        <article style="grid-column: 2; grid-row: 2;">
+            <h1>My article</h1>
+            <p>Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur
+                vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam
+                nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+
+            <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus tristique elit
+                dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus.</p>
+        </article>
+        <!-- aside第1列，第1行 -->
+        <aside style="grid-row: 2; grid-column: 1;">
+            <h2>Other things</h2>
+            <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est.</p>
+        </aside>
+        <!-- footer第三行，1.2.3列 -->
+        <footer style="grid-column: 1/3; grid-row: 3;">Contact me@mysite.com</footer>
+    </div>
+
+    <h2>使用grid-template-areas属性放置元素</h2>
+    <p>命名一些网格元素并在属性中使用名字作为一个区域。使用规则如下：</p>
+    <ul>
+        <li>你需要填满网格的每个格子</li>
+        <li>对于某个横跨多个格子的元素，重复写上那个元素grid-area属性定义的区域名字</li>
+        <li>所有名字只能出现在一个连续的区域，不能在不同的位置出现</li>
+        <li>一个连续的区域必须是一个矩形</li>
+        <li>使用.符号，让一个格子留空</li>
+    </ul>
+    <div class="template-area">
+        <header style="grid-area: header;">This is my lovely blog</header>
+        <article style="grid-area: content;">
+            <h1>My article</h1>
+            <p>Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur
+                vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam
+                nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+
+            <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus tristique elit
+                dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus.</p>
+        </article>
+        <aside style="grid-area: sidebar;">
+            <h2>Other things</h2>
+            <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est.</p>
+        </aside>
+        <footer style="grid-area: footer;">Contact me@mysite.com</footer>
+    </div>
+
+    <h2>测试</h2>
+    <a href="test/gridtext.html">网格测试</a>
+</body>
+
+</html>

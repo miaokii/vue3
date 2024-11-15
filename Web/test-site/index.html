@@ -1,0 +1,152 @@
+<!-- 申明文档类型 -->
+<!DOCTYPE html>
+<!--根元素-->
+<html lang="zh-Hans">
+<!-- 对用户不可见，包含在html页面中，但不显示的内容。常用属性有搜索引擎关键词、页面描述、css样式、字符集声明等 -->
+
+<head>
+    <!-- utf8编码 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 页面标题 -->
+    <title>测试页面</title>
+    <!-- 站点图标 -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta name="author" content="miaokii">
+    <meta name="description" content="示例页面">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:description" content="网页元元素的使用">
+    <meta property="og:title" content="HTML &lt;head&gt; 元素中的元数据">
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<!-- 访问页面显示的内容 -->
+
+<body>
+    <h1 id="home">HTML基础元素</h1>
+    <img src="images/firefox.png" width="200" height="200" alt="火狐浏览器">
+    <h2>段落</h2>
+    <p>这是一个段落，段落内容是什么</p>
+    <p>又有一个段落，显示了一只狐狸抱着地球</p>
+    <span style="font-size: 320x; margin: 21px ;">这是顶级标题吗？</span>
+    <h2>列表</h2>
+    <h3>无序列表</h3>
+    <p>狐狸喜欢吃什么呢：</p>
+    <!-- 无序列表，用ul标记，列表元素用li标记 -->
+    <ul>
+        <li>小老鼠</li>
+        <li>小动物</li>
+        <li>坚果🌰？</li>
+    </ul>
+    <h3>有序列表</h3>
+    <p>将大象放入冰箱需要几步？</p>
+    <!-- 有序列表，ol标记 -->
+    <ol>
+        <li>打开冰箱门</li>
+        <li>放入大象</li>
+        <li>关上冰箱门</li>
+    </ol>
+    <h3>描述列表</h3>
+    <!-- 描述列表 -->
+    <p>Jinx技能介绍</p>
+    <dl>
+        <dt>被动：疯子</dt>
+        <dd>击杀或参与击杀6s内，获得120%的攻速和移速加成，持续6s</dd>
+        <dt>Q：枪炮切换</dt>
+        <dd>切换武器形态，机枪每次攻击增加10%攻速，最多叠加三层。炮形态增加10%范围伤害</dd>
+        <dt>W：电磁炮</dt>
+        <dd>短暂引导后，发射一枚电磁炮，减速目标</dd>
+        <dt>E：夹子</dt>
+        <dd>花费1s来布置一个陷阱，陷阱会禁锢经过的敌人1.5s，并附带魔法伤害</dd>
+        <dt>R：死神飞弹</dt>
+        <dd>全地图技能，飞行距离越远伤害越高，AOE</dd>
+    </dl>
+    <h2>链接</h2>
+    <!-- 链接 -->
+    <!-- a锚元素 -->
+    <a href="https://www.baidu.com">百度一下 你就知道</a>
+    <p>要联系某位工作人员，请访问<a href="contact.html">联系人</a>页面</p>
+    <p>如果要重新登录，请访问<a href="projects/index.html">登录</a>页面</p>
+    <p>跳转到本页<a href="#Entity references">实体引用</a>模块</p>
+    <p>跳转到本页<a href="#home">初始位置</a></p>
+    <p>如果您有疑问，请<a href="mailto:miaokii@sina.cn?cc=kk@yoc.com&subject=功能反馈">发送邮件</a>联系我们</p>
+    <h2>块元素与内联元素</h2>
+    <!-- 斜体 -->
+    <!-- 内联元素 -->
+    <em>斜体文本强调</em>
+    <!-- 强调 -->
+    <!-- 块元素 -->
+    <p>我的猫咪脾气<strong>火爆</strong></p>
+    <!-- 块级超链接 -->
+    <a href="https://www.mozilla.org/zh-CN" title="Mozilla 主页">
+        <img src="images/firefox.png" alt="链接至Mozilla" width="40" height="40">
+    </a>
+    <h2>引用</h2>
+    <h3>块引用</h3>
+    <blockquote cite="https://baike.baidu.com/item/HTML#reference-[1]-692-wrap">
+        <p>HTML的全称为超文本标记语言，是一种标记语言。它包括一系列标签．通过这些标签可以将网络上的文档格式统一，使分散的Internet资源连接为一个逻辑整体。HTML文本是由HTML命令组成的描述性文本，HTML命令可以说明文字，图形、动画、声音、表格、链接等
+        </p>
+    </blockquote>
+    <h3>行内引用</h3>
+    <p>HTML的全称为超文本标记语言，<q cite="https://baike.baidu.com/item/HTML#reference-[1]-692-wrap">是一种标记语言</q></p>
+
+    <p>According to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+            <cite>MDN blockquote page</cite></a>:
+    </p>
+
+    <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+        <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
+                Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+    </blockquote>
+
+    <p>The quote element — <code>&lt;q&gt;</code> — is <q
+            cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+            for short quotations that don't require paragraph breaks.</q> -- <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+            <cite>MDN q page</cite></a>.
+    </p>
+
+    <h3>引文</h3>
+    <p>你好！欢迎访问我的激励网页！<a href="http://www.brainyquote.com/quotes/authors/c/confucius.html"><cite>孔子</cite></a>曰：</p>
+    <blockquote cite="https://zh.wikipedia.org/zh-hans/孔子">
+        <p>譬如为山，未成一篑，止，吾止也。譬如平地，虽覆一篑，进，吾往也。</p>
+    </blockquote>
+
+    <p>要保持乐观，<q cite="http://www.affirmationsforpositivethinking.com/">不要说泄气的话</q>（源自 <a
+            href="http://www.affirmationsforpositivethinking.com/"><cite>Affirmations for Positive Thinking</cite></a>。）
+    </p>
+
+    <h2>略缩语</h2>
+    <p>我们使用<abbr title="超文本标记语言">HTML</abbr>来组织网页文档</p>
+    <p>第33届<abbr title="夏季奥林匹克运动会">奥运会</abbr>将在巴黎举行</p>
+
+    <h2>空元素</h2>
+    <!-- img元素只有一个开始标签，叫空元素 -->
+    <img src="images/firefox.png" width="100" height="100" alt="火狐浏览器">
+
+    <h2>属性</h2>
+    <h3>锚元素属性</h3>
+    <!-- href：链接地址 title：鼠标悬停显示信息 target：打开方式，_blank新建标签页打开页面 -->
+    <a href="https://www.baidu.com" title="百度一下 你就知道" target="_blank">百度一下 你就知道</a>
+    <h3>布尔属性</h3>
+    <!-- type：输入类型，text文本类型，number数字类型 -->
+    <!-- 没有值的属性：布尔属性，只能有跟它的属性名一样的属性值 -->
+    <input type="text" title="输入文本">
+    <!-- 不允许交互 -->
+    <input type="text" disabled>
+
+    <h2 id="Entity references">实体引用</h2>
+    <!-- 
+        <、>、"、'、&等字符要显示在文本中，要使用等价字符印用
+        <   &lt;   
+        >   &gt;
+        "   &quot;
+        '   &apos;
+        &   &amp;
+      -->
+    <p>在HTML中，&lt;p&gt;用来定义段落元素</p>
+</body>
+<script src="scripts/script.js"></script>
+
+</html>

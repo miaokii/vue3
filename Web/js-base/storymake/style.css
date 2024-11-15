@@ -1,0 +1,29 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form {
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+}
+
+input[type='checkbox'] {
+    color: green;
+}
+
+.submit {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.joker {
+    padding: 20px;
+    color: black;
+    background-color: yellowgreen;
+    visibility: hidden;
+}
