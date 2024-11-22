@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
     <title>css选择器</title>
     <style>
         .block {
@@ -12,111 +12,124 @@
             padding: 10px;
             color: black;
         }
-        
+
         table {
             border-collapse: collapse;
             border: 2px solid rgb(200, 200, 200);
             letter-spacing: 1px;
             font-size: 0.8rem;
         }
-        
+
         td,
-        th {
+        td {
             border: 1px solid rgb(190, 190, 190);
             padding: 10px 20px;
         }
-        
-        th {
+
+        td {
             text-align: left;
             background-color: rgb(235, 235, 235);
         }
-        
+
         td {
             text-align: left;
         }
-        
-        tr:nth-child(even) td {
+
+        tr:ntd-child(even) td {
             background-color: rgb(250, 250, 250);
         }
-        
-        tr:nth-child(odd) td {
+
+        tr:ntd-child(odd) td {
             background-color: rgb(245, 245, 245);
         }
-        
+
         caption {
             padding: 10px;
         }
+
         /* 匹配设置了class属性的li元素 */
-        
+
         li[class] {
             font-size: 200%;
         }
+
         /* 匹配了class为a的li元素 */
-        
+
         li[class="a"] {
             background-color: red;
         }
+
         /* 匹配了class正为a或者带有a的li元素 */
-        
+
         li[class~="a"] {
             color: palegoldenrod;
         }
+
         /* 匹配了class正为a或者开始为a，后面根这连字符的li元素 */
-        
+
         li[class|="a"] {
             color: pink
         }
+
         /* 匹配class以a开头的li元素 */
-        
+
         li[class^="a"] {
             font-size: 200%;
         }
+
         /* 匹配class以a结尾的li元素 */
-        
+
         li[class$="a"] {
             background-color: yellow;
         }
+
         /* 匹配class出现a的li元素 */
         /* i表示大小写不敏感 */
-        
+
         li[class*="a" i] {
             color: red;
         }
+
         /* before伪元素 */
-        
+
         .content::before {
             content: "";
             display: block;
-            width: 100px;
+            widtd: 100px;
             height: 100px;
             background-color: palegreen;
             border: 1px salmon black;
         }
+
         /* after伪元素 */
-        
+
         .content::after {
             content: "你好世界";
         }
+
         /* 后代关系选择器，div包装的第一个p元素 */
-        
+
         div p {
             color: red;
         }
+
         /* 子代关系选择器 >，子选择ul的直接子元素li*/
-        
+
         ul>li {
             border-top: 5px solid red;
         }
+
         /* 邻接兄弟选择器 */
-        
+
         h5+p {
             font-weight: bold;
             background-color: black;
             color: white;
             padding: .5em;
         }
+
         /* 通用兄弟选择器 */
-        
+
         h5~span {
             background-color: cornsilk;
             color: black;
@@ -128,66 +141,86 @@
 <body>
     <h1>css选择器</h1>
 
+    <p>行内样式>ID选择器>类选择器>元素选择器>通配选择器</p>
+    <p>计算选择器权重：</p>
+    <p>格式（a，b，c）</p>
+    <p>a：ID选择器的个数</p>
+    <p>b：类、伪类、属性选择器的个数</p>
+    <p>c：元素、伪元素选择器的个数</p>
+    <p>确定a、b、c后逐个比较</p>
+
+
     <table>
-        <tr>
+        <tr height="50px">
             <th>选择器</th>
             <th>示例</th>
+            <th>注释</th>
         </tr>
 
         <tr>
-            <th>类型选择器</th>
+            <td>元素选择器</td>
             <td>h1 {}</td>
         </tr>
 
         <tr>
-            <th>通配选择器</th>
+            <td>通配选择器</td>
             <td>* {}</td>
         </tr>
 
         <tr>
-            <th>类选择器</th>
+            <td>类选择器</td>
             <td>.box {}</td>
         </tr>
 
         <tr>
-            <th>ID选择器</th>
+            <td>ID选择器</td>
             <td>#unique {}</td>
         </tr>
 
         <tr>
-            <th>标签元素属性选择器</th>
-            <td>a[title] {}</td>
+            <td>交集选择器，选择器紧紧贴一起</td>
+            <td>p.name {}</td>
         </tr>
 
         <tr>
-            <th>伪类选择器</th>
+            <td>并级选择器，逗号连接</td>
+            <td>p,.name；.name,.child {}</td>
+        </tr>
+
+        <tr>
+            <td>伪类选择器</td>
             <td>p:first-child {}</td>
         </tr>
 
         <tr>
-            <th>伪元素选择器</th>
+            <td>伪元素选择器</td>
             <td>p::first-line {}</td>
         </tr>
 
         <tr>
-            <th>后代选择器</th>
+            <td>后代选择器</td>
             <td>article p</td>
+            <td>选中article所有后代元素p</td>
         </tr>
 
         <tr>
-            <th>子代选择器</th>
+            <td>子代选择器</td>
             <td>article > p</td>
+            <td>选中article的子元素p</td>
         </tr>
 
         <tr>
-            <th>相邻兄弟选择器</th>
+            <td>相邻兄弟选择器</td>
             <td>h1 + p</td>
+            <td>选中h1相邻的兄弟p元素</td>
         </tr>
 
         <tr>
-            <th>通用兄弟选择器</th>
+            <td>通用兄弟选择器</td>
             <td>h1 ～ p</td>
+            <td>选中h1后所有的兄弟p元素</td>
         </tr>
+
 
     </table>
 
@@ -205,11 +238,11 @@
     <br>
     <br>
     <table>
-        <thead>
-            <th>选择器</th>
-            <th>示例</th>
-            <th>描述</th>
-        </thead>
+        <tdead>
+            <td>选择器</td>
+            <td>示例</td>
+            <td>描述</td>
+        </tdead>
         <tr>
             <td>[attr]</td>
             <td>a[title]</td>
@@ -258,7 +291,7 @@
     </ul>
 
     <h3>伪类和伪元素</h3>
-    <p>伪类：样式话一个元素的特定状态</p>
+    <p>伪类：样式化一个元素的特定状态</p>
     <span class="block">a:hover {}</span>
     <p>伪元素：选择一个元素的一部分，而不是元素自己</p>
     <!-- p元素的第一行 -->
@@ -277,8 +310,8 @@
     <p>用空格组合两个选择器</p>
     <span class="block">
         .box p {
-            color: red;
-        }  
+        color: red;
+        }
     </span>
 
     <div class="box">
@@ -292,7 +325,7 @@
     <ul>
         <li>firstItem</li>
         <li>secondItem</li>
-        <li>thirdItem</li>
+        <li>tdirdItem</li>
         <li>
             <ol> 把大象放入冰箱
                 <li>打开冰箱</li>
@@ -315,7 +348,187 @@
     <div>我是渣渣辉</div>
     <span>是兄弟就来看我</span>
 
+    <h3>伪类选择器</h3>
 
+    <table>
+        <thead>
+            <tr>
+                <th>选择器</th>
+                <th>描述</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a:link</td>
+                <td>未访问过的元素</td>
+                <td rowspan="5">动态伪类</td>
+            </tr>
+            <tr>
+                <td>a:visited</td>
+                <td>访问过的元素</td>
+            </tr>
+            <tr>
+                <td>a:hover</td>
+                <td>鼠标悬浮状态的a元素</td>
+            </tr>
+            <tr>
+                <td>a:active</td>
+                <td>鼠标按下时的状态的a元素</td>
+            </tr>
+            <tr>
+                <td>input:focus</td>
+                <td>获取焦点时的input元素</td>
+            </tr>
+            <tr>
+                <td>div>p:first-child</td>
+                <td>选中div的第一个儿子p元素</td>
+                <td rowspan="15">结构伪类</td>
+            </tr>
+            <tr>
+                <td>p:first-child</td>
+                <td>选中p元素的父元素的第一个儿子p元素</td>
+            </tr>
+            <tr>
+                <td>div>p:last-child</td>
+                <td>选中div的最后一个儿子p元素</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-child(3)</td>
+                <td>选中div的第三个儿子p元素，自然计数</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-child(2n)</td>
+                <td>选中div的第偶数个的儿子p元素</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-child(-n+5)</td>
+                <td>选中div的前5个儿子p元素，an+d</td>
+            </tr>
+            <tr>
+                <td>div>p:first-of-type</td>
+                <td>选中div儿子元素的第一个p类型的元素</td>
+            </tr>
+            <tr>
+                <td>div>p:last-of-type</td>
+                <td>选中div儿子元素的最后一个p类型的元素</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-of-type(3)</td>
+                <td>选中div儿子元素的第3个p类型的元素（按所有同类型兄弟计算）</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-last-child(3)</td>
+                <td>div中倒数第3个的儿子p元素</td>
+            </tr>
+            <tr>
+                <td>div>p:nth-last-of-type(2)</td>
+                <td>div中所有儿子p元素中的倒数第二个</td>
+            </tr>
+            <tr>
+                <td>p:only-child</td>
+                <td>选中的是没有兄弟的p元素</td>
+            </tr>
+            <tr>
+                <td>p:only-of-type</td>
+                <td>选中没有同类型兄弟的p元素</td>
+            </tr>
+            <tr>
+                <td>:root</td>
+                <td>html根元素</td>
+            </tr>
+            <tr>
+                <td>div:empty</td>
+                <td>选中没有内容的div元素</td>
+            </tr>
+
+            <tr>
+                <td>div>p:not(.fail)</td>
+                <td>选中div的儿子p元素，但排除类名为fial的p元素</td>
+                <td rowspan="3">否定伪类</td>
+            </tr>
+            <tr>
+                <td>div>p:not(title^="a")</td>
+                <td>选中div的儿子p元素，但排除title以a开头的p元素</td>
+            </tr>
+            <tr>
+                <td>div>p:not(.first-child)</td>
+                <td>选中div的儿子p元素，但排除第一个儿子p元素</td>
+            </tr>
+
+            <tr>
+                <td>input:checked</td>
+                <td>input元素的选中状态，选中的是复选框或单选按钮</td>
+                <td rowspan="3">UI伪类</td>
+            </tr>
+            <tr>
+                <td>input:disabled</td>
+                <td>input元素的禁用状态</td>
+            </tr>
+            <tr>
+                <td>input:enabled</td>
+                <td>input元素的可用状态</td>
+            </tr>
+
+            <tr>
+                <td>div:target</td>
+                <td>选中锚点指向的div元素</td>
+                <td rowspan="1">目标伪类</td>
+            </tr>
+
+            <tr>
+                <td>div:lang(en)</td>
+                <td>选中lang为英文的div元素</td>
+                <td rowspan="2">语言伪类</td>
+            </tr>
+            <tr>
+                <td>:lang(en)</td>
+                <td>选中lang为英文的所有元素</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>伪元素选择器</h2>
+
+    <p>很像元素，但不是元素，是元素中的特殊位置文字</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>选择器</th>
+                <td>描述</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>div::first-letter</td>
+                <td>选中div元素中的第一个文字</td>
+            </tr>
+            <tr>
+                <td>div::first-line</td>
+                <td>选中div中的第一行文字</td>
+            </tr>
+            <tr>
+                <td>div::selction</td>
+                <td>选中div中的被鼠标选中的文字</td>
+            </tr>
+            <tr>
+                <td>input::placeholder</td>
+                <td>选中input中的提示文字</td>
+            </tr>
+            <tr>
+                <td>p::before</td>
+                <td>选中p元素前面的位置，随后创建一个子元素</td>
+            </tr>
+            <tr>
+                <td>p::after</td>
+                <td>选中p元素后面的位置， 随后创建一个子元素</td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
 </body>
 
 </html>

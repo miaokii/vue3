@@ -2,12 +2,21 @@
 <html lang="zh-CN">
 
 <head>
+    <!-- 字符编码 -->
     <meta charset="UTF-8">
+    <!-- 针对IE浏览的兼容性 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对移动端的适配 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页关键字配置 -->
+    <meta name="keyword" content="网上购物,电商购物,皮鞋,化妆品">
+    <!-- 网页描述信息 -->
+     <meta name="description" content="购物网站成立2002年">
     <title>基本元素</title>
 </head>
 
 <body>
+    <a name="home"></a>
     <h1>基本元素</h1>
     <h2>块级元素和行内元素</h2>
     <p>块级元素：独占一行的元素</p>
@@ -20,7 +29,7 @@
     <p><b>规则2：</b>行内元素中可以写只可以写行内元素，不能块级元素</p>
     <p><b>特殊规则：</b>h1-h6不能嵌套，p标签中不能写块元素</p>
 
-    <h2>文本标签</h2>
+    <h2 id="text">文本标签</h2>
 
     <p>文本标签基本都是行内元素</p>
 
@@ -48,9 +57,283 @@
     <p>i：呈现字体图标，现用于 表示图标、字符等：<i>燕子，没你我怎么活啊</i></p>
     <p>u：与正常文本有反差的内容，错单词等：<u>Helllo</u> world</p>
     <p>q：短引用：<q>其实路上本没有路</q></p>
-    <p>blockquote：长引用，块元素：<blockquote>后来，我总算学会了如何去爱，可你早已消失在茫茫人海</blockquote></p>
-    <p>address：地址信息，块元素：<address>成都市双流区双流机场</address></p>
+    <p>blockquote：长引用，块元素：
+    <blockquote>后来，我总算学会了如何去爱，可你早已消失在茫茫人海</blockquote>
+    </p>
+    <p>address：地址信息，块元素：
+    <address>成都市双流区双流机场</address>
+    </p>
 
+    <h2>图片标签</h2>
+    <img src="https://yoc.tech/images/b21.png" alt="优卡集团">
+
+    <h2>超链接</h2>
+    <a href="http://www.mi.com" target="_blank">小米</a>
+    <p>a标签可以包含除了a标签外的其他标签</p>
+    <a href="https://yoc.tech" target="_blank">
+        <img src="https://yoc.tech/images/logo-n.png" alt="">
+    </a>
+    <a href="https://yoc.tech/images/logo-n.png" download="">下载logo</a>
+    <!-- 跳转锚点 -->
+    <a href="#home">基本元素</a>
+    <a href="#text">文本标签</a>
+    <a href="#">回到顶部</a>
+    <br>
+
+    <a href="tel:10000">联系中国联通</a>
+    <a href="mailto:kk@yoc.tech">邮件联系</a>
+    <a href="sms:10086">短信联系</a>
+
+    <h2>列表</h2>
+    <h3>有序列表</h3>
+    把大象放冰箱的步骤
+    <ol>
+        <li>打开冰箱门</li>
+        <li>放进去大象</li>
+        <li>关上冰箱门</li>
+    </ol>
+    <h3>无序列表</h3>
+    新一线城市
+    <ul>
+        <li>
+            <span>成都</span>
+            <ul>
+                <li>环球中心</li>
+                <li>春熙路</li>
+                <li>杜甫草堂</li>
+                <li>大熊猫基地</li>
+            </ul>
+        </li>
+        <li>武汉</li>
+        <li>杭州</li>
+    </ul>
+    <h3>自定义列表</h3>
+    如何更好的学习
+    <dl>
+        <dt>做好笔记</dt>
+        <dd>笔记是复习的抓手</dd>
+        <dt>多加练习</dt>
+        <dd>写出来的才是自己的</dd>
+        <dt>别怕出错</dt>
+        <dd>改正后就是经验</dd>
+    </dl>
+
+    <h2>常用标签</h2>
+    <dl>
+        <dt>br：表示换行</dt>
+        <dd>日照香炉生紫烟<br>遥看瀑布挂前川</dd>
+        <dt>hr：分割，会有一条横线</dt>
+        <dd>你好
+            <hr>世界
+        </dd>
+        <dt>pre：按原文显示</dt>
+        <dd>
+            <pre>
+                I       Love        You
+                    I   Love    You
+                        Love
+            </pre>
+        </dd>
+    </dl>
+
+
+    <h2>框架标签</h2>
+
+    <p>iframe嵌套一个普通网页</p>
+    <iframe src="https://www.baidu.com" frameborder="1" width="512px" height="245"></iframe>
+
+    <br>
+    <p>与超链接的target配合使用</p>
+    <a href="https://www.taobao.com" target="tt">看淘宝</a>
+    <iframe name="tt" frameborder="1"></iframe>
+    <br>
+
+    <p>与表单的target属性配合使用</p>
+    <form action="https://so.toutiao.com/search" target="container">
+        <input type="text" name="keyword">
+        <input type="submit" value="搜索">
+    </form>
+    <iframe frameborder="1" name="container" height="300"></iframe>
+
+    <h2>字符实体</h2>
+
+    <!-- <dl>
+        <dt>&nbsp;表示空格</dt>
+        <dd>Hello &nbsp;&nbsp;&nbsp; World</dd>
+        <dt>& lt;表示<，& rt;表示></dt>
+    </dl> -->
+
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>符号</th>
+                <th>表示</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>& amp;</td>
+                <td>&</td>
+            </tr>
+            <tr>
+                <td>& nbsp;</td>
+                <td>空格</td>
+            </tr>
+            <tr>
+                <td>& lt;</td>
+                <td>
+                    << /td>
+            </tr>
+            <tr>
+                <td>& rt;</td>
+                <td>></td>
+            </tr>
+            <tr>
+                <td>& yen;</td>
+                <td>¥</td>
+            </tr>
+            <tr>
+                <td>& copy;</td>
+                <td>©️</td>
+            </tr>
+            <tr>
+                <td>& times;</td>
+                <td>×</td>
+            </tr>
+            <tr>
+                <td>& divide;</td>
+                <td>÷</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>表格</h2>
+    <!-- 单元格1像素边框，宽度400px，高度300px，单元格间距0-->
+    <table border="1px" width="400px" height=300px cellspacing="0">
+        <!-- 表格标题 -->
+        <caption>学生信息</caption>
+        <!-- 表格头部，更改头部的高度，水平垂直方向居中对齐 -->
+        <thead height="50px" align="center" valign="middle">
+            <!-- 行 -->
+            <tr>
+                <!-- 单元格 ，头部行的单元格-->
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>成绩</th>
+            </tr>
+        </thead>
+        <!-- 表格主体 -->
+        <tbody align="center">
+            <!-- 行 -->
+            <tr>
+                <!-- 单元格，主体的单元格 -->
+                <td>张三</td>
+                <td>男</td>
+                <td>12</td>
+                <td>89</td>
+            </tr>
+            <tr>
+                <td>小芳</td>
+                <td>女</td>
+                <td>15</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>小非</td>
+                <td>女</td>
+                <td>16</td>
+                <td>99</td>
+            </tr>
+        </tbody>
+        <!-- 表格脚注 -->
+        <tfoot align="center" height="50px">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>共计：3人</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- colspan=5横跨4列，rowspan=5竖跨5行 -->
+    <table cellspacing="0" width="500px" border="1px">
+        <caption>课程表</caption>
+        <thead>
+            <tr>
+                <th>项目</th>
+                <!-- 横跨5列 -->
+                <th colspan="5">上课</th>
+                <th colspan="2">活动与休息</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>星期</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+                <th>星期日</th>
+            </tr>
+            <tr>
+                <td rowspan="4">上午</td>
+                <th>语文</th>
+                <th>数学</th>
+                <th>英语</th>
+                <th>英语</th>
+                <th>物理</th>
+                <th>数学竞赛</th>
+                <th rowspan="4">休息</th>
+            </tr>
+            <tr>
+                <th>数学</th>
+                <th>语文</th>
+                <th>化学</th>
+                <th>物理</th>
+                <th>英语</th>
+                <th>篮球</th>
+            </tr>
+            <tr>
+                <th>化学</th>
+                <th>语文</th>
+                <th>体育</th>
+                <th>历史</th>
+                <th>地理</th>
+                <th>模拟考试</th>
+            </tr>
+            <tr>
+                <th>体育</th>
+                <th>化学</th>
+                <th>语文</th>
+                <th>数学</th>
+                <th>英语</th>
+                <th>社会实践</th>
+            </tr>
+            <tr>
+                <td rowspan="2">下午</td>
+                <th>语文</th>
+                <th>英语</th>
+                <th>数学</th>
+                <th>物理</th>
+                <th>生物</th>
+                <th>英语角</th>
+                <th rowspan="2">休息</th>
+            </tr>
+            <tr>
+                <th>化学</th>
+                <th>物理</th>
+                <th>生物</th>
+                <th>地理</th>
+                <th>体育</th>
+                <th>活动</th>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>

@@ -19,24 +19,24 @@
             /* 圆角 */
             border-radius: 1em;
         }
-        
+
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         form li+li {
             margin-top: 1em;
         }
-        
+
         label {
             /* 确保所有label大小相同，正确对齐 */
             display: inline-block;
             width: 90px;
             text-align: right;
         }
-        
+
         input textarea {
             /* 所有文本输入框字体相同 */
             font: 1em sans-serif;
@@ -46,25 +46,26 @@
             /* 边框样式 */
             border: 1px solid #999;
         }
+
         /* 文本输入框激活效果 */
-        
+
         input:focus,
         textarea:focus {
             border-color: #000;
         }
-        
+
         textarea {
             /* 多行文本输入框和他本的label正确对齐 */
             vertical-align: top;
             /* 给文本留下足够的空间 */
             height: 5em;
         }
-        
+
         .button {
             /* 按钮放到和文本框一样的位置 */
             padding-left: 90px;
         }
-        
+
         button {
             /* 这个外边距的大小与label和文本输入框之间的间距差不多 */
             margin-left: .5em;
@@ -76,6 +77,81 @@
     <h1>基础表单</h1>
     <!-- action 提交表单时，应该把所收集的数据送给谁(/那个模块)(URL)去处理 -->
     <!-- method 发送数据的http方法 -->
+    <p>表单用于收集用户输入的数据</p>
+
+    <form action="http://www.baidu.com/s">
+        <p>百度搜索</p>
+        <!-- type输入类型，name参数名 -->
+        <input type="text" name="wd">
+        <button>搜索</button>
+    </form>
+    <br>
+    <form action="http://search.jd.com/search" target="_self" method="get">
+        <p>京东搜索</p>
+        <input type="text" name="keyword">
+        <button>搜索</button>
+    </form>
+    <br>
+
+    <form action="https://search.jd.com/search">
+        <!-- 表单分组 -->
+        <fieldset>
+            <!-- 分组标题 -->
+            <legend>主要信息</legend>
+            <!-- 文本 -->
+            <label for="zhanghu">账户：</label>
+            <input type="text" name="account" maxlength="10" id="zhanghu">
+            <br>
+            <label for="pass">密码：</label>
+            <input type="password" name="pwd" id="pass">
+            <br>
+            备注：<input disabled type="text" name="note" max="20">
+            <br>
+            <!-- 单选 -->
+            性别：
+            <input type="radio" name="gender" value="male" id="nan">
+            <label for="nan">男</label>
+            <label><input type="radio" name="gender" value="female" checked>女</label>
+        </fieldset>
+        <fieldset>
+            <legend>附加信息</legend>
+            <!-- 多选 -->
+            爱好：
+            <input type="checkbox" name="hobby" value="smoke" checked>抽烟
+            <input type="checkbox" name="hobby" value="drink">喝酒
+            <input type="checkbox" name="hobby" value="perm">烫头
+            <br>
+            <!-- 隐藏域 -->
+            <input type="hidden" name="from" value="yoc">
+
+            其他：
+            <!-- 文本域 -->
+            <textarea name="other" id="" cols="16" rows="4"></textarea>
+            <br>
+            籍贯：
+            <!-- 选择域 -->
+            <select name="place" id="">
+                <option value="sichuan">四川</option>
+                <option value="shanxi">山西</option>
+                <option value="guangdong" selected>广东</option>
+                <option value="shanxi">陕西</option>
+            </select>
+
+        </fieldset>
+
+
+        <br>
+
+        <!-- <button type="submit">确认</button>
+        <button type="reset">重置</button> -->
+
+        <input type="submit" value="确认">
+        <input type="reset">
+        <button type="button">检测账户是否被注册</button>
+
+
+    </form>
+    <br>
     <form action="" method="post">
         <div>
             <label for="name">姓名：</label>
@@ -101,6 +177,7 @@
             <button type="submit">发送消息</button>
         </div>
     </form>
+
 </body>
 
 </html>

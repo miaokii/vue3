@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>浮动</title>
+
+    <style>
+        .h3c {
+            padding: 10px;
+        }
+
+        .outborder {
+            /* 子元素的margin-top不会作用在父元素，因为设置了border */
+            border: black 1px solid;
+            width: 300px;
+            min-height: 20px;
+        }
+
+        .inborder {
+            border: black 1px solid;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+            background-color: beige;
+        }
+
+        .ib1 {
+            float: right;
+        }
+
+        .ib2 {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>浮动布局</h1>
+    <p>元素浮动后的特点</p>
+    <ul>
+        <li><b>脱离文档流，元素的宽高默认被内容撑开</b></li>
+        <li><b>不会独占一行，也可以与其他元素共一行</b></li>
+        <li><b>不会margin合并，不会margin塌陷，完美设置padding和margin</b></li>
+        <li><b>不会像行内块一样当作文本处理（没有行内空白的问题）</b></li>
+    </ul>
+
+    <h2>浮动练习</h2>
+    <div class="h3c">
+        <div class="outborder">
+            <div class="inborder ib1">1</div>
+            <div class="inborder">2</div>
+            <div class="inborder">3</div>
+        </div>
+    </div>
+    <br>
+    <div class="h3c">
+        1浮动，2文字被挤到3的位置
+        <div class="outborder">
+            <div class="inborder ib2">1</div>
+            <div class="inborder">2</div>
+            <div class="inborder">3</div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

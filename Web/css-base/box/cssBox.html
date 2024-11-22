@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css盒模型</title>
+    <link rel="stylesheet" href="../index.css">
+    <style>
+
+        .div-inline-block {
+            font-size: 20px;
+            display: inline-block;
+        }
+
+        .px {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .em {
+            width: 10em;
+            height: 10em;
+            background-color: aquamarine;
+        }
+
+        /* html {
+            font-size: 20px;
+        } */
+
+        .rem {
+            /* 根元素html的font-size是默认的16，所以大小是160px */
+            /* 当改变html的font-size时，宽度一起变化 */
+            width: 10rem;
+            height: 10rem;
+            background-color: aquamarine;
+        }
+
+        .percent {
+            width: 50%;
+            height: 50%;
+            /* 相对于父元素150%，也就是30px */
+            /* font-size: 150%; */
+            background-color: orange;
+        }
+
+        .d1,
+        .s1 {
+            background-color: lightblue;
+        }
+
+        .d2,
+        .s2 {
+            background-color: lightcoral;
+            height: 40px;
+            width: 100px;
+        }
+
+        .d3,
+        .s3 {
+            background-color: lightcyan;
+            width: 100px;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .ablock {
+            display: block;
+            height: 50px;
+            font-size: 30px;
+            background-color: lightgoldenrodyellow;
+            margin-top: 5px;
+        }
+
+        .box {
+            /* 设置盒子内容区域的大小 */
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+
+            /* 设置盒子内容区内边距，背景颜色会扩充到内边距 */
+            padding: 20px;
+            /* 设置盒子的边框，背景颜色会扩充到边框*/
+            border: 5px black dashed;
+            /* 设置盒子的外边距 */
+            margin: 20px;
+        }
+
+        .min-size {
+            min-width: 100px;
+            min-height: 50px;
+            max-width: 200px;
+            max-height: 200px;
+            background-color: lightcyan;
+            margin-left: 10px;
+            line-break: auto;
+        }
+
+        .paddingSpan {
+            padding: 20px 20px;
+            background-color: lightcoral;
+        }
+
+        .borderDiv {
+            width: 100px;
+            height: 50px;
+            margin-left: 10px;
+            background-color: lightblue;
+
+            border-left: 5px dotted palevioletred;
+            border-right-width: 5px;
+            border-right-color: rebeccapurple;
+            border-right-style: solid;
+
+            border-top: 5px solid green;
+            border-bottom: chartreuse 5px solid;
+        }
+
+        .marginDiv {
+            width: 100px;
+            height: 30px;
+            background-color: blueviolet;
+            margin: 10px auto;
+        }
+
+        .out1 {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .in1 {
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred;
+            /* 水平居中 */
+            margin: 0 auto;
+            /* 垂直距离顶部 (200-100)/2，如果设置了borde如何padding，重新计算 */
+            margin-top: 50px;
+
+            text-align: center;
+            line-height: 100px;
+
+            overflow: hidden;
+        }
+
+        .in2 {
+            background-color: bisque;
+        }
+
+        .out2 {
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .out3 {
+            text-align: center;
+            line-height: 200px;
+            font-size: 0;
+        }
+
+        .img1 {
+            width: 50px;
+            height: 50px;
+            /* 图片垂直居中line-height */
+            vertical-align: middle;
+        }
+
+        .in3 {
+            background-color: bisque;
+            font-size: 40px;
+            vertical-align: middle;
+        }
+
+        code {
+            background-color: goldenrod;
+            border-radius: 2px;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>盒模型</h1>
+
+    <h2>长度单位</h2>
+
+    <p>px：像素</p>
+    <p>em：相对于当前元素的font-size倍数，当当前元素未设置font-size，相对于父元素</p>
+    <p>rem：相对于根元素（html元素）的font-size倍数</p>
+    <p>%：相对于父元素的百分比</p>
+
+    <div>
+        <div class="px div-inline-block">px</div>
+        <div class="em div-inline-block">em</div>
+        <div class="rem div-inline-block">rem</div>
+        <div class="px div-inline-block">
+            <div class="percent">percent</div>
+        </div>
+    </div>
+
+    <h2>元素的显示模式</h2>
+    <h3>块元素 block</h3>
+    <div class="h3c">
+        <p>又称块级元素，特点</p>
+        <ol>
+            <li>在页面中<b>独占一行</b>，不与任何元素公用一行，从上到下排列</li>
+            <li>默认宽度：撑满父元素</li>
+            <li>默认高度：由子元素内容撑开</li>
+            <li>可以通过css设置宽高</li>
+        </ol>
+
+        <div class="blockc">
+            <div class="d1">独占一行</div>
+            <div class="d2">css设置宽高</div>
+            <div class="d3">内容撑开高度，仔细看哦</div>
+        </div>
+    </div>
+
+    <h3>行内元素 inline</h3>
+    <div class="h3c">
+        <p>内联元素，特点</p>
+        <ol>
+            <li>不独占一行</li>
+            <li>默认宽度：内容撑开</li>
+            <li>默认高度：内容撑开</li>
+            <li>无法通过css设置宽高</li>
+        </ol>
+
+        <span class="s1">不独占一行</span>
+        <span class="s2">默认宽度：内容撑开，默认高度：内容撑开</span>
+        <span class="s3">无法通过css设置宽高</span>
+    </div>
+
+    <h3>行内块元素 inline-block</h3>
+    <div class="h3c">
+        <p>內联块元素，特点</p>
+        <ol>
+            <li>不独占一行，一行显示不下，继续下一行</li>
+            <li>默认宽度：内容撑开</li>
+            <li>默认高度：内容撑开</li>
+            <li>可以通过css设置宽高</li>
+        </ol>
+
+        <img class="icon" src="../favicon.ico" alt="">
+    </div>
+
+    <h2>修改元素的显示模式</h2>
+
+    <p>将div改为行内块元素</p>
+    <div class="div-inline-block px"></div>
+    <div class="div-inline-block px"></div>
+    <div class="div-inline-block px"></div>
+
+    <br>
+    <p>将行内元素改为块元素</p>
+    <a href="http://www.baidu.com" class="ablock">百度</a>
+    <a href="http://www.mi.com" class="ablock">小米</a>
+
+    <h2>盒模型组成</h2>
+
+    <p>盒子的大小=content+左右padding+左右border</p>
+    <div class="box"></div>
+
+    <h3>盒子内容区</h3>
+    <div class="h3c">
+        <p>设置盒子内容区宽度，有width，min-width，max-width等属性；相应的高度也是</p>
+        <div class="min-size">content</div>
+        <p>
+            内容区宽度，当未设置宽度时，内容区宽度为视口宽度减去margin左右减去border左右减去padding左右
+        </p>
+    </div>
+
+    <h3>盒子内边距padding</h3>
+    <div class="h3c">
+        <p>左右那边距可以单独设置</p>
+        <hr>
+        <span class="paddingSpan">设置上下margin，高度不能被撑开</span>
+        <hr>
+        <p>观察到分割线被遮挡，所以对于行内元素，设置左右内边距，元素的宽度会被撑开，设置上下边距，元素高度不会被撑开</p>
+    </div>
+
+    <h3>盒子边框border</h3>
+    <div class="h3c">
+        <p>边框的上下左右颜色，宽度，边框线风格都可以分别设置</p>
+        <div class="borderDiv"></div>
+        <p>也可以只设置一个border复合属性</p>
+    </div>
+
+    <h3>盒子外边距</h3>
+    <div class="h3c">
+        <p>外边距可以分别设置上下左右的宽度，也可以使用复合属性</p>
+        <div class="marginDiv"></div>
+        <ul>
+            <li>子元素的margin是参考父元素的content内容去计算的</li>
+            <li>上左margin，影响自己的位置，右下margin影响后面兄弟元素的位置</li>
+            <li>行内元素设左右margin可以设置，上下margin设置无效</li>
+            <li>margin值可以是auto，给一个块级元素设置左右margin为auto实现其在父元素中水平居中效果</li>
+            <li>margin的值可以是负值</li>
+        </ul>
+
+    </div>
+
+    <h3>margin塌陷</h3>
+    <div class="h3c">
+        <p>给第一个子元素添加margin-top和最后一个子元素添加margin-bottom会作用在父元素上</p>
+        <p>解决：给父元素添加overflow：hidden属性</p>
+        <p>查看 h3c类选择器样式代码 </p>
+    </div>
+
+    <h3>margin合并</h3>
+    <div class="h3c">
+        <p>上下相邻的子元素相接的margin设置会合并，并取较大值</p>
+    </div>
+
+    <h3>布局技巧</h3>
+    <div class="h3c">
+        行内元素和行内块元素，布局时可以当作父元素的文字处理 
+        <p>子元素在父元素中水平居中</p>
+        <ul>
+            <li>子元素为块元素：给子元素加上<code>margin: 0 auto</code></li>
+            <li>子元素为行内元素、行内块元素：父元素加上<code>text-align：center</code></li>
+        </ul>
+
+        <p>子元素在父元素中垂直居中</p>
+        <ul>
+            <li>子元素为块元素：设置子元素的<code>margin-top</code></li>
+            <li>子元素为行内元素、行内块元素：父元素<code>line-height=height</code> ，每个子元素加上<code>v-align：middle</code> <br>若绝对垂直居中，设置父元素<code>font-size：0</code> ，再分别设置子元素的<code class="code" >font-size</code></li>
+        </ul>
+    </div>
+    <br>
+    <div class="h3c">
+        <p>块元素在父元素中垂直居中</p>
+        <div class="out1">
+            <div class="in1">inner</div>
+        </div>
+    </div>
+    <br>
+    <div class="h3c">
+        <P>行内元素，可以被父元素当作文字处理对齐</P>
+        <div class="out1 out2">
+            <span class="in2">
+                出来玩儿
+            </span>
+        </div>
+    </div>
+    <br>
+    <div class="h3c">
+        <p>行内元素和行内块元素，当作父元素的文字处理对齐</p>
+        <div class="out1 out3">
+            <span class="in3">你好</span>
+            <img class="img1" src="../favicon.ico" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

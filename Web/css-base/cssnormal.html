@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS常用属性</title>
+
+    <style>
+        h1 {
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 40px;
+            color: #f23d33;
+        }
+
+        h3 {
+            font-size: 30px;
+            color: lightcoral;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 10px 0;
+        }
+
+        .rgb {
+            color: rgb(166, 44, 44);
+        }
+
+        .hex {
+            color: #f23d33
+        }
+
+        .hsl {
+            /* 色相、饱和度、亮度 */
+            color: hsl(0, 50%, 50%);
+        }
+
+        /* 字体 */
+        .font {
+            /* 字体大小 */
+            font-size: 40px;
+            /* 字重 */
+            font-weight: 100;
+            /* 字体族 非衬线字体 */
+            font-family: 'Courier New', Courier, monospace，sans-serif;
+            /* 字体风格 */
+            font-style: italic;
+
+            /* 字体复合属性， 字体大小和字体名必须放在最后两个*/
+            font: bold italic 100px "Courier New", sans-serif;
+        }
+
+        /* 常用文本属性 */
+        .textprops {
+            /* 颜色 */
+            color: black;
+            background-color: aqua;
+            /* 文本大小 */
+            font-size: 30px;
+            /* 文本间距 */
+            letter-spacing: 10px;
+            /* 单词间距 */
+            word-spacing: 20px;
+
+            /* 文本修饰 overline：上划线 underline：下划线 line-through：删除线*/
+            /* wav：波浪线 dotted：虚线 */
+            text-decoration: underline wavy red;
+            /* 文本缩进 60px缩进60px */
+            text-indent: 60px;
+            /* 文本对齐 */
+            text-align: center;
+
+            /* 行高 100px像素设置，normal普通 数字2：2*font-size 百分比150%：1.5*/
+            /* 1. 调整多行文字的间距，2.单行文字的垂直居中 */
+            line-height: 2;
+            /* 垂直居中，只能操作行内元素，middle，使得元素的中部对齐父元素x的中部 */
+            vertical-align: middle;
+        }
+
+        /* 列表属性 */
+        ul {
+            /* square方块 decimal序号 调整列表符号 */
+            list-style-type: decimal;
+            /* 列表符号位置 */
+            list-style-position: inside;
+            /* 自定义列表符号 */
+            list-style-image: url("./favicon.ico");
+            /* 复合属性 */
+            list-style: square outside url("./favicon.ico");
+        }
+
+        /* 表格属性 */
+        table {
+            /* border-width: 2px;
+            border-color: rebeccapurple;
+            border-style: solid; */
+            border: 1px black solid;
+            width: 500px;
+
+            /* 以下表格独有 */
+            /* 控制表格的列宽 fixed：均分 */
+            table-layout: fixed;
+            /* 单元格间距 */
+            border-spacing: 0;
+            /* 合并相邻单元格的边框 separate：不合并边框  collapse：合并相邻边框  设置后border-spacing失效*/
+            border-collapse: collapse;
+            /* 隐藏没有内容的单元格 */
+            empty-cells: hide;
+            /* 设置表格标题位置 */
+            caption-side: top;
+        }
+
+        th,
+        td {
+            border: 2px black solid;
+        }
+
+        /* 背景色相关 */
+        .bg {
+            font-size: 40px;
+            line-height: 100px;
+
+            /* 背景色 默认透明transparent */
+            background-color: cyan;
+            /* 背景图片 */
+            background-image: url(./favicon.ico);
+            /* 背景图片重复方式 */
+            background-repeat: no-repeat;
+            /* 背景图片定位 */
+            background-position: center top;
+
+            /* 背景复合属性 */
+            background: url(./favicon.ico) no-repeat lightblue 300px;
+        }
+
+        /* 鼠标相关属性 */
+        .mouse {
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: skyblue;
+            /* 鼠标放入时的显示  pointer：小手 move：拖动图标 wait：等待 help：帮助 cell：单元格选中*/
+            cursor:cell;
+            /* 自定义鼠标图标 */
+            cursor: url("./favicon.ico"), pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1>常用css属性</h1>
+
+    <h2>颜色</h2>
+    <div>颜色设置 <span class="rgb">rgb，rgba</span>，<span class="hex">hex，hexa</span>，<span class="hsl">hsl，hsla</span>
+    </div>
+
+    <h2>字体</h2>
+    <div class="font">Hello World</div>
+
+    <h2>常用文本属性</h2>
+    <p class="textprops">Hello World</p>
+
+
+    <h2>列表相关属性</h2>
+
+    <ul>
+        <li>《一夜暴富指南》</li>
+        <li>《全国富婆通讯录》</li>
+        <li>《土味情话全集》</li>
+    </ul>
+
+    <h2>表格相关属性</h2>
+
+    <h3>表格边框相关属性</h3>
+    <h3>表格独有的属性</h3>
+
+    <table>
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>政治面貌</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>小王</td>
+                <td>13</td>
+                <td>男</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小王</td>
+                <td>13</td>
+                <td>男</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>小明</td>
+                <td>19</td>
+                <td>男</td>
+                <td>党员</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>小丽</td>
+                <td>20</td>
+                <td>女</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>小非</td>
+                <td>19</td>
+                <td>女</td>
+                <td>群众</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>背景相关属性</h2>
+
+    <div class="bg">
+        Hello World
+    </div>
+
+    <h2>鼠标相关属性</h2>
+
+    <div class="mouse">把鼠标放进来看看</div>
+</body>
+
+</html>
