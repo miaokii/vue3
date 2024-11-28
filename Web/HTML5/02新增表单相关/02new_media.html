@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>新增媒体标签</title>
+
+    <style>
+        video {
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>视频标签</h2>
+    <ul>
+        <li>controls：显示控制</li>
+        <li>mute：静音</li>
+        <li>autoplay：自动播放，开启时必须开启mute</li>
+        <li>loop：循环播放</li>
+        <li>poster：封面</li>
+        <li>preload：预加载</li>
+        
+    </ul>
+    <video src="http://vjs.zencdn.net/v/oceans.mp4" controls mute loop poster="https://yoc.tech/images/b21.png" preload="metadata"></video>
+
+    <h2>音频标签</h2>
+
+    <ul>
+        <li>controls：播放控制</li>
+        <li>autoplay：自动播放</li>
+        <li>mute：静音</li>
+        <li>loop：循环播放</li>
+        <li>preload：预加载</li>
+
+    </ul>
+
+    <audio muted controls loop preload="auto" src="http://m10.music.126.net/20241128150921/a3b43a09b464223d8f51ccf475afcffe/ymusic/5353/0f0f/0358/d99739615f8e5153d77042092f07fd77.mp3"></audio>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+.container {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+/* #region顶部导航栏 */
+.topbar {
+    background-color: #ececec;
+    height: 30px;
+}
+
+.welcome {
+    height: 30px;
+    line-height: 30px;
+    font-size: 0px;
+    color: #666;
+}
+
+.welcome .hello  {
+    margin-right: 28px;
+}
+
+.welcome span,
+.welcome a {
+    font-size: 12px;
+}
+
+.welcome .login {
+    padding-right: 15px;
+    border-right: 1px solid #666;
+}
+
+.welcome .register {
+    padding-left: 15px;
+}
+
+.rightbar {
+    line-height: 30px;
+}
+
+.rightbar a {
+    padding: 0 15px;
+    border-right: 1px solid #666;
+}
+
+.rightbar a:first-child {
+    padding-left: 0;
+}
+
+.rightbar a:last-child {
+    padding-right: 0;
+    border: none;
+}
+
+/* #endregion */
+
+/* #region 头部 */
+
+.header {
+    height: 120px;
+}
+
+.header form {
+    font-size: 0;
+    margin-top: 42px;
+}
+
+.header form input {
+    height: 34px;
+    width: 510px;
+    border: 1px solid #dd302d;
+    padding: 0 10px;
+}
+
+.header form button {
+    height: 36px;
+    width: 80px;
+    background-color: #dd302d;
+    background-image: url(../../images/serch_icon.png);
+    background-repeat: no-repeat;
+    background-position: 28px 6px;
+    vertical-align: top;
+}
+
+/* #endregion */
+
+/* #region 主导航区 */
+.main-nav {
+    height: 48px;
+    border-bottom: 1px solid #dd302d;
+    font-weight: 500;
+    font-size: 16px;
+
+    line-height: 48px;
+}
+
+.main-types {
+    background-color: #dd302d;
+    color: white;
+    width: 190px;
+    text-align: center;
+}
+
+.main-nav-list a {
+    padding: 0 10px;
+}
+/* #endregion */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

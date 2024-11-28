@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>相对定位</title>
+
+    <style>
+        .h3c {
+            padding: 10px;
+        }
+
+        .outer {
+            /* 子元素的margin-top不会作用在父元素，因为设置了border */
+            border: black 1px solid;
+            width: 250px;
+            min-height: 20px;
+
+            position: relative;
+        }
+
+        .inner {
+            border: black 1px solid;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+            background-color: beige;
+        }
+
+        .relative {
+            /* 相对定位 */
+            position: relative;
+            left: 40px;
+        }
+
+        .absolute {
+            /* 绝对定位，相对于包含块（向外找的祖先元素中第一个设置定位的元素） */
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+
+        .fixed {
+            /* 固定定位，相对视口 */
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        dt {
+            background-color: black;
+            color: white;
+            position: sticky;
+            top: 0;
+            left: 10px;
+            padding: 10px 0;
+        }
+
+        .sticky {
+            width: 800px;
+            height: 500px;
+            padding: 0;
+            overflow-y: scroll;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>定位</h1>
+
+    <p>定位会越过padding</p>
+    <p>发生固定定位，绝对定位，元素变成定位元素，定位元素默认大小由子元素撑开，也可以设置大小</p>
+
+    <h2>相对定位</h2>
+    <p>相对自己原来的位置进行位移，不脱离原来的文档流</p>
+    <p>默认规则</p>
+    <ul>
+        <li>定位的元素会覆盖在普通元素之上</li>
+        <li>都发生定位的元素，后面写的元素会盖在先写的元素上</li>
+    </ul>
+    <p>left和right不能一起设置，top和bottom不能一起设置</p>
+
+    <div class="h3c">
+        <p>2是相对定位，相对自己本来应该在的位置左移40px</p>
+        <div class="outer">
+            <div class="inner">1</div>
+            <div class="inner relative">2</div>
+            <div class="inner">3</div>
+        </div>
+    </div>
+
+    <h2>绝对定位</h2>
+
+    <p>绝对定位的参考点是他的包含块</p>
+    <ul>
+        <li>对于没有脱离文档流的元素，包含块就是他的父元素</li>
+        <li>对于脱离文档流的元素：包含块是第一个拥有定位属性的祖先元素（如果所有祖先都没有定位，包含块就是整个页面）</li>
+    </ul>
+
+    <p>绝对定位元素的特点</p>
+    <ol>
+        <li>脱离文档流，会对后面的兄弟元素，父元素有影响</li>
+        <li>left和right不能一起设置，top和bottom不能一起设置</li>
+        <li>绝对定位，浮动不能同时设置，否则浮动失效</li>
+    </ol>
+
+    <div class="h3c">
+        <p>2是绝对定位，脱离了文档流，他的包含块是父元素，父元素设置了相对定位</p>
+        <div class="outer">
+            <div class="inner">1</div>
+            <div class="inner absolute">2</div>
+            <div class="inner">3</div>
+        </div>
+    </div>
+
+    <h2>固定定位</h2>
+
+    <p>固定定位相对的是视口</p>
+    <ul>
+        <li>脱离文档流，会对后面的兄弟元素，父元素有影响</li>
+        <li>left和right不能一起设置，top和bottom不能一起设置</li>
+    </ul>
+
+    <div class="h3c">
+        <p>2是固定定位，脱离了文档流，他的位置相对与视口</p>
+        <div class="outer">
+            <div class="inner">1</div>
+            <div class="inner fixed">固定定位</div>
+            <div class="inner">3</div>
+        </div>
+    </div>
+
+    <h2>粘性定位</h2>
+
+    <p>粘性定位的参考点是 离他最近的一个有滚动机制的祖先元素</p>
+
+    <ol>
+        <li>不会脱离文档流，专门用于窗口滚动的定位方式</li>
+        <li>最常用的值是top</li>
+        <li>可以和浮动同时设置，但不推荐这么做</li>
+    </ol>
+
+    <div class="h3c sticky">
+        <dl>
+            <dt>A</dt>
+            <dd>Apple</dd>
+            <dd>Ant</dd>
+            <dd>Altimeter</dd>
+            <dd>Airplane</dd>
+            <dt>B</dt>
+            <dd>Bird</dd>
+            <dd>Buzzard</dd>
+            <dd>Bee</dd>
+            <dd>Banana</dd>
+            <dd>Beanstalk</dd>
+            <dt>C</dt>
+            <dd>Calculator</dd>
+            <dd>Cane</dd>
+            <dd>Camera</dd>
+            <dd>Camel</dd>
+            <dt>D</dt>
+            <dd>Duck</dd>
+            <dd>Dime</dd>
+            <dd>Dipstick</dd>
+            <dd>Drone</dd>
+            <dt>E</dt>
+            <dd>Egg</dd>
+            <dd>Elephant</dd>
+            <dd>Egret</dd>
+            <dt>A</dt>
+            <dd>Apple</dd>
+            <dd>Ant</dd>
+            <dd>Altimeter</dd>
+            <dd>Airplane</dd>
+            <dt>B</dt>
+            <dd>Bird</dd>
+            <dd>Buzzard</dd>
+            <dd>Bee</dd>
+            <dd>Banana</dd>
+            <dd>Beanstalk</dd>
+            <dt>C</dt>
+            <dd>Calculator</dd>
+            <dd>Cane</dd>
+            <dd>Camera</dd>
+            <dd>Camel</dd>
+            <dt>D</dt>
+            <dd>Duck</dd>
+            <dd>Dime</dd>
+            <dd>Dipstick</dd>
+            <dd>Drone</dd>
+            <dt>E</dt>
+            <dd>Egg</dd>
+            <dd>Elephant</dd>
+            <dd>Egret</dd>
+        </dl>
+    </div>
+
+
+</body>
+
+</html>

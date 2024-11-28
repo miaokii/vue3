@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动练习1</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .leftfix {
+            float: left;
+        }
+
+        .rightfix {
+            float: right;
+        }
+
+        /* 清除浮动 */
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .container {
+            width: 960px;
+            min-height: 40px;
+            /* 居中 */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo,
+        .banner1,
+        .banner2 {
+            background-color: #ccc;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .logo {
+            width: 200px;
+        }
+
+        .banner1 {
+            width: 540px;
+            margin: 0 10px;
+        }
+
+        .banner2 {
+            width: 200px;
+        }
+
+        .menu {
+            background-color: #ccc;
+            margin: 10px 0;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .item {
+            border: 1px black solid;
+        }
+
+        .item1,
+        .item2 {
+            width: 368px;
+            height: 198px;
+            line-height: 198px;
+        }
+
+        .item1 {
+            margin-right: 10px;
+        }
+
+        .item3,
+        .item4,
+        .item5,
+        .item6 {
+            width: 178px;
+            height: 198px;
+            margin-top: 10px;
+            margin-right: 10px;
+            line-height: 200px;
+        }
+
+        .item6 {
+            margin-right: 0;
+        }
+
+        .item7,
+        .item8,
+        .item9 {
+            width: 200px;
+            height: 128px;
+            line-height: 128px;
+        }
+
+        .item8 {
+            margin: 10px 0;
+        }
+
+        .tail {
+            height: 60px;
+            line-height: 60px;
+            background-color: #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="page-header clearfix">
+            <div class="logo leftfix">logo</div>
+            <div class="banner1 leftfix">banner1</div>
+            <div class="banner2 leftfix">banner2</div>
+        </div>
+
+        <!-- 菜单 -->
+        <div class="menu">菜单</div>
+
+        <!-- 内容区域 -->
+        <div class="content clearfix">
+            <!-- 左侧 -->
+            <div class="left leftfix">
+                <div class="top clearfix">
+                    <div class="item item1 leftfix">栏目一</div>
+                    <div class="item item2 leftfix">栏目二</div>
+                </div>
+                <div class="bottom">
+                    <div class="item item3 leftfix">栏目三</div>
+                    <div class="item item4 leftfix">栏目四</div>
+                    <div class="item item5 leftfix">栏目五</div>
+                    <div class="item item6 leftfix">栏目六</div>
+                </div>
+            </div>
+            <div class="right rightfix">
+                <div>
+                    <div class="item item7">栏目七</div>
+                    <div class="item item8">栏目八</div>
+                    <div class="item item9">栏目九</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 尾部 -->
+        <div class="tail">尾部</div>
+
+    </div>
+</body>
+
+</html>

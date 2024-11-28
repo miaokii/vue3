@@ -1,0 +1,33 @@
+h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 10px 0;
+    color: #f23d33;
+}
+
+h3 {
+    font-size: 30px;
+    color: lightcoral;
+    margin-left: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.h3c {
+    margin-left: 80px;
+    background-color: #00000010;
+    overflow: hidden;
+    padding: 10px;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+li {
+    list-style-position: inside;
+}

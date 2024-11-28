@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>状态标签</title>
+
+    <style>
+        .note {
+            border-radius: 10px;
+            background-color: beige;
+            padding: 10px;
+            margin: 10px 50px 10px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>状态标签</h1>
+
+    <h2>meter 已知范围的标量测量</h2>
+    <div>
+        <span>手机电量50：</span>
+        <meter value="50" max="100" min="0" low="20" high="80"></meter>
+        <br>
+        <span>手机电量8：</span>
+        <meter value="8" max="100" min="0" low="10" optimum="90" high="20"></meter>
+    </div>
+
+    <div class="note">
+        <div>当value超出low和high时，默认是异样状态，显示黄色，否则显示绿色</div>
+        <div>设置optimum属性，value在min和low之间时，显示红色，low和high之间，显示黄色，之外显示绿色</div>
+    </div>
+
+    <h2>progress进度</h2>
+    <div>
+        <span>当前进度44%</span>
+        <progress max="100" value="44"></progress>
+    </div>
+
+</body>
+
+</html>

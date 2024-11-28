@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>盒子属性</title>
+
+    <style>
+        .size200 {
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .border20 {
+            border: 20px solid black;
+        }
+
+        .content-box {
+            box-sizing: content-box;
+        }
+
+        .border-box {
+            box-sizing: border-box;
+        }
+
+        .resizeBox-father {
+            resize: both;
+            overflow: auto;
+        }
+
+        .resizeBox-son {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+
+        .box-shadow {
+            margin: 40px;
+            line-height: 200px;
+            text-align: center;
+
+            /* 水平位置，垂直位置，阴影颜色 */
+            box-shadow: 20px 20px black;
+
+            /* 水平位置，垂直位置，阴影颜色，阴影模糊程度*/
+            box-shadow: 20px 20px 20px;
+
+            /* 水平位置，垂直位置，阴影颜色，阴影模糊程度，阴影颜色*/
+            box-shadow: 20px 20px 20px blue;
+
+            /* 水平位置，垂直位置，阴影颜色，阴影模糊程度，阴影外沿，阴影颜色*/
+            box-shadow: 20px 20px 20px 20px black;
+
+            /* 水平位置，垂直位置，阴影颜色，阴影模糊程度，阴影外沿，阴影颜色，内阴影*/
+            box-shadow: 20px 20px 20px 20px black inset;
+        }
+
+        .shadow-inner {
+            margin: 40px;
+            line-height: 200px;
+            text-align: center;
+            background-color: yellow;
+            border-radius: 10px;
+            box-shadow: 0 0 50px red inset;
+        }
+
+        .hover-box-shadow {
+            margin: 40px;
+            line-height: 200px;
+            text-align: center;
+            border: 1px solid darkgray;
+            transition: 0.1s linear;
+        }
+
+        .hover-box-shadow:hover {
+            box-shadow: 0 10px 10px darkgray;
+            transform: translateY(-2px);
+        }
+
+        .opacity-box {
+            background-color: black;
+            color: white;
+            /* 0透明，1不透明  */
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>box-sizing盒模型</h2>
+
+    <p>使用box-sizing设置盒模型类型</p>
+    <ul>
+        <li>content-box（标准盒模型）：width和height设置的是内容去的大小（默认值）</li>
+        <li>border-box（怪异盒模型）：width和height设置的是整个盒子的大小</li>
+    </ul>
+
+    <div class="h3c">
+        <span class="size200 border20 content-box">content-box</span>
+        <span class="size200 border20 border-box">border-box</span>
+    </div>
+
+    <h2>resize</h2>
+    <p>重新设置盒子大小，必须和overflow配合使用</p>
+
+    <div class="h3c">
+        <div class="size200 resizeBox-father">
+            <div class="resizeBox-son">son</div>
+        </div>
+    </div>
+
+    <h2>box-shaodw阴影</h2>
+    <p>设置盒子的阴影</p>
+    <p>box-shaodw: h-shadow水平方向，v-shadow垂直方向，blur模糊距离，spread阴影外延，color阴影颜色，inset内部阴影</p>
+
+    <div class="h3c">
+        <div class="size200 box-shadow">box-shaodw</div>
+        <div class="size200 shadow-inner">shadow-inner</div>
+        <div class="size200 hover-box-shadow">鼠标放进来看看</div>
+    </div>
+
+    <h2>opacity透明</h2>
+
+    <p>opacity为整个元素设置透明度</p>
+    <div class="h3c">
+        <div class="size200 opacity-box">opacity</div>
+    </div>
+
+
+</body>
+
+</html>

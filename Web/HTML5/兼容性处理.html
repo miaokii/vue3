@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>兼容性处理</title>
+
+    <!-- 给ie看 ie浏览器用edge内核渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 给双核浏览器看  使用webkit渲染 -->
+    <meta name="render" content="webkit">
+
+    <!-- 如果浏览器版本低于ie9，就引入html5shiv.js -->
+    <!--[if lt ie 9]>
+    <script src="./html5shiv.js"></script>
+    <![endif] -->
+
+    <style>
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .h3c {
+            padding: 10px;
+        }
+
+        li b {
+            margin-right: 10px;
+            padding: 0 10px;
+            background-color: antiquewhite;
+            font-weight: bold;
+        }
+
+        footer {
+            height: 100px;
+            background-color:antiquewhite;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        .h3c header {
+            background-color: antiquewhite;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>新增布局标签</h2>
+
+    <ul>
+        <li><b>header:</b>整个页面，或部分区域的头部</li>
+        <li><b>footer:</b>整个页面，或部分区域的底部</li>
+        <li><b>nav:</b>导航</li>
+        <li><b>article:</b>文章，帖子，杂志，新闻，博客，评论等</li>
+        <li><b>section:</b>页面某段文字，或文章中的某段文字（里面文字通常包含标题）</li>
+        <li><b>aside:</b>侧边栏</li>
+    </ul>
+
+    <p>关于<b>article</b>和<b>section</b></p>
+    <div class="h3c">
+        <div>1. article里面可以有多个section</div>
+        <div>2. section强调分段或分块，如果将一块内容分成几段，可以用section</div>
+        <div>3. article比section更强调独立性，一块内容如果比较独立，完整，用article元素</div>
+    </div>
+
+    <h3>新标签使用</h3>
+
+    <div class="h3c">
+
+        <header>尚品汇</header>
+        <nav>
+            <a href="">首页</a>
+            <a href="">订单</a>
+            <a href="">购物车</a>
+            <a href="">我的</a>
+        </nav>
+
+        <div class="main">
+            <aside style="float:right">
+                <nav>
+                    <ul>
+                        <li><a href="#">秒杀</a></li>
+                        <li><a href="#">会员</a></li>
+                        <li><a href="#">品牌</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <article>
+                <h2>文章标题</h2>
+                <section>
+                    <p>北国风光，千里冰封，万里雪飘</p>
+                </section>
+                <section>
+                    <p>望长城内外，唯余莽莽</p>
+                </section>
+            </article>
+        </div>
+
+        <footer>
+            <nav>
+                <a href="#">友情链接</a>
+                <a href="#">社会责任</a>
+                <a href="#">联系我们</a>
+            </nav>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

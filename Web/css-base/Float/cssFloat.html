@@ -15,7 +15,7 @@
         .outborder {
             /* 子元素的margin-top不会作用在父元素，因为设置了border */
             border: black 1px solid;
-            width: 300px;
+            width: 220px;
             min-height: 20px;
         }
 
@@ -36,6 +36,14 @@
         .ib2 {
             float: left;
         }
+
+        .ib3 {
+            float: left
+        }
+
+    .ib4 {
+        height: 100px;
+    }
     </style>
 </head>
 
@@ -51,6 +59,7 @@
 
     <h2>浮动练习</h2>
     <div class="h3c">
+        <p>1浮动到右边</p>
         <div class="outborder">
             <div class="inborder ib1">1</div>
             <div class="inborder">2</div>
@@ -59,13 +68,66 @@
     </div>
     <br>
     <div class="h3c">
-        1浮动，2文字被挤到3的位置
+        <p>1浮动，2文字被挤到3的位置</p>
         <div class="outborder">
             <div class="inborder ib2">1</div>
             <div class="inborder">2</div>
             <div class="inborder">3</div>
         </div>
     </div>
+    <br>
+    <div class="h3c">
+        <p>都浮动，父元素仍会限制子元素宽度，子元素都浮动时，父元素没有高度</p>
+        <div class="outborder">
+            <div class="inborder ib3">1</div>
+            <div class="inborder ib3">2</div>
+            <div class="inborder ib3">3</div>
+        </div>
+    </div>
+
+    <br>
+    <div class="h3c">
+        <p>都浮动，父元素仍会限制子元素宽度，子元素都浮动时，父元素没有高度</p>
+        <div class="outborder">
+            <div class="inborder ib3 ib4">1</div>
+            <div class="inborder ib3">2</div>
+            <div class="inborder ib3">3</div>
+        </div>
+    </div>
+
+    <h2>元素浮动的影响</h2>
+    <div>
+        <p>元素浮动后，会对父元素和兄弟元素产生影戏哪个</p>
+        <ul>
+            <li><b>对兄弟元素：</b>后面的兄弟元素，会占据浮动元素之前的位置</li>
+            <li><b>对父元素：</b>不能撑起父元素的高度，导致父元素高度塌陷，但父元素宽度仍然束缚浮动元素</li>
+        </ul>
+    </div>
+
+    <h3>解决元素浮动影响</h3>
+    <div class="h3c">
+        <ol>
+            <li>方案1：给父元素设置高度</li>
+            <li>方案2：给父元素设置浮动，带来其他影响</li>
+            <li>方案3：给父元素设置overflow：hidden</li>
+            <li>方案4：给左右浮动元素后面，添加一个块元素，给该元素设置clear：both（清除前面兄弟元素左右浮动的影响）</li>
+            <li><b>方案5：</b>给父元素设置伪元素，通过伪元素清楚浮动，原理同方案四
+                <div style="background-color: antiquewhite;">
+                    <code >
+                        .parent::after {
+                            content: '';
+                            display: block;
+                            clear: both
+                        }
+                    </code>
+                </div>
+            
+            </li>
+        </ol>
+
+        浮动原则：<b>设置浮动时，兄弟元素要么全浮动，要么全不浮动</b>
+    </div>
+
 
 
 </body>

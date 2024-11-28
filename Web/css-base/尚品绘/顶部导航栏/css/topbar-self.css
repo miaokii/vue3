@@ -1,0 +1,51 @@
+.container {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+.topbar {
+    background-color: #ececec;
+    height: 30px;
+}
+
+.leftbar {
+    line-height: 30px;
+    font-size: 0px;
+    color: #666;
+}
+
+.leftbar .welcome {
+    margin-right: 28px;
+}
+
+.leftbar span,
+.leftbar a {
+    font-size: 12px;
+}
+
+.leftbar .login {
+    padding-right: 15px;
+    border-right: 1px solid #666;
+}
+
+.leftbar .register {
+    padding-left: 15px;
+}
+
+.rightbar {
+    line-height: 30px;
+}
+
+.rightbar a {
+    padding: 0 15px;
+    border-right: 1px solid #666;
+}
+
+.rightbar a:first-child {
+    padding-left: 0;
+}
+
+.rightbar a:last-child {
+    padding-right: 0;
+    border: none;
+}

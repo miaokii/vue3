@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>新增长度单位</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .px {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .vw {
+            width: 50vw;
+            height: 20vh;
+            background-color: skyblue;
+        }
+
+        .vmax {
+            height: 20vmax;
+            width: 20vmin;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>像素px</h2>
+    <div class="px">px</div>
+
+    <h2>视口的百分比vw, vh</h2>
+    <div>vw视口宽度的百分比，vh视口高度的百分比</div>
+    <div class="vw">vw、vh</div>
+
+    <h2>vmax，vmin</h2>
+    <div>vmax视口宽高较大的百分比，vmin视口宽高较小的百分比</div>
+    <div class="vmax">vmax</div>
+</body>
+
+</html>

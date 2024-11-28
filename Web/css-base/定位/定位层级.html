@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位层级</title>
+    <link rel="stylesheet" href="../index.css">
+    <style>
+        .h3c {
+            padding: 10px;
+        }
+
+        .outer {
+            /* 子元素的margin-top不会作用在父元素，因为设置了border */
+            border: black 1px solid;
+            width: 500px;
+            min-height: 20px;
+
+            position: relative;
+        }
+
+        .inner {
+            border: black 1px solid;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            background-color: beige;
+        }
+
+        .box1 {
+            background-color: antiquewhite;
+        }
+
+        .box2 {
+            background-color: aqua;
+            position: relative;
+            left: 30px;
+            bottom: 60px;
+            z-index: 20;
+        }
+
+        .box3 {
+            background-color: aquamarine;
+            position: absolute;
+            left: 60px;
+            top: 60px;
+        }
+
+        .box4 {
+            background-color: cadetblue;
+            position: fixed;
+            left: 180px;
+            top: 230px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>定位层级</h2>
+
+    <div class="h3c">
+        <p>可以通过z-index调整层级，box2设置了z-index：20，所以在最上面</p>
+        <div class="outer">
+            <div class="inner box1">不定位</div>
+            <div class="inner box2">相对定位</div>
+            <div class="inner box3">绝对定位</div>
+            <div class="inner box4">固定定位</div>
+        </div>
+    </div>
+</body>
+
+</html>

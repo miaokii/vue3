@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>新增表单相关</title>
+
+    <style>
+        li {
+            font-size: 20px;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        b {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>新增表单控件属性</h2>
+
+    <ul>
+        <li><b>placeholder：</b>输入文字控件的提示文本</li>
+        <li><b>required：</b>必填字段</li>
+        <li><b>autofocus：</b>自动对焦，只能生效一个</li>
+        <li><b>autocomplete：</b>自动完成，需要开启浏览器保存地址和密码等信息功能，用在正常的文本输入控件</li>
+        <li><b>pattern：</b>正则表达式，限制输入类型控件，多行输入除外，必须设置required属性</li>
+    </ul>
+
+    <div class="h3c">
+        <form action="">
+            账号：<input type="text" name="account" placeholder="请输入账号" required autofocus autocomplete="on"
+                pattern="\w{6}">
+            <br>
+            密码：<input type="password" name="pwd" placeholder="请输入密码" required>
+            <br>
+            性别：
+            <input type="radio" value="male" name="gender" required>男
+            <input type="radio" value="female" name="gender" required>女
+            <br>
+            爱好：
+            <input type="checkbox" value="smoke" name="hobby">抽烟
+            <input type="checkbox" value="drink" name="hobby">喝酒
+            <input type="checkbox" value="perm" name="hobby">烫头
+            <br>
+            其他：
+            <textarea name="other" id="" required></textarea>
+            <br>
+            <button>提交</button>
+        </form>
+    </div>
+
+    <h2>input新增的类型</h2>
+
+    <ul>
+        <li><b>email：</b>邮箱类型</li>
+        <li><b>url：</b>网址类型</li>
+        <li><b>number：</b>数值类型</li>
+        <li><b>search：</b>搜索类型</li>
+        <li><b>tel：</b>电话</li>
+        <li><b>range：</b>范围选择</li>
+        <li><b>color：</b>颜色选择</li>
+        <li><b>date：month：time：</b>日期时间选择</li>
+
+    </ul>
+
+    <div>
+        form表单新增属性novalidate，表示不进行表单校验
+    </div>
+
+    <div class="h3c">
+        <!-- 表单不进行验证 -->
+        <form action="" >
+            邮箱：<input type="email" name="email">
+            <br>
+            URL：<input type="url" name="url">
+            <br>
+            数值：<input type="number" name="number" step="2" max="100" min="20">
+            <br>
+            搜索：<input type="search" name="searchKey">
+            <br>
+            电话：<input type="tel" name="tel">
+            <br>
+            范围选择：<input type="range" name="rang" min="0" max="100" value="80">
+            <br>
+            颜色选择：<input type="color" name="color" >
+            <br>
+            日期选择：<input type="date" name="date" >
+            <br>
+            月份选择：<input type="month" name="month" >
+            <br>
+            周选择：<input type="week" name="week" >
+            <br>
+            时间选择：<input type="time" name="time" >
+            <br>
+            日期时间选择：<input type="datetime-local" name="dateTime" >
+            <br> 
+            <input type="submit">
+        </form>
+
+    </div>
+
+</body>
+
+</html>
