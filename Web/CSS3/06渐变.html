@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            display: inline-block;
+            margin-right: 10px;
+
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .linear-gradient {
+            background-image: linear-gradient(red, yellow, green);
+        }
+
+        .top-bottom {
+            
+        }
+
+        .ltr {
+            background-image: linear-gradient(to right, red, yellow, green);
+        }
+
+        .lefttop-rightbottom {
+            background-image: linear-gradient(to right bottom, red, yellow, green);
+        }
+
+        .deg {
+            background-image: linear-gradient(20deg, red, yellow, green);
+        }
+
+        .gradient-px {
+            background-image: linear-gradient(red 80px, yellow 100px, green 150px);   
+        }
+
+        .color-text {
+            color: transparent;
+            font-size: 50px;
+            vertical-align: top;
+            background-image: linear-gradient(90deg, red, yellow, green);   
+            -webkit-background-clip: text;
+        }
+
+        .radial-gradient {
+            background-image: radial-gradient(red, yellow, green);
+        }
+
+        .radial-gradient-position {
+            background-image: radial-gradient(at left top, red, yellow, green);
+        }
+
+        .radial-gradient-position-px {
+            background-image: radial-gradient(at 100px 0px, red, yellow, green);
+        }
+        
+        .radial-gradient-ellipse {
+            background-image: radial-gradient(200px 100px, red, yellow, green);
+        }
+
+        .radial-gradient-lenght {
+            background-image: radial-gradient(red 10px, yellow 100px, green 120px);
+        }
+
+        .radial-gradient-all {
+            background-image: radial-gradient(100px 50px at 50px 50px, red 20px, yellow 100px, green 150px);
+        }
+
+        .repeating-linear-gradient {
+            background-image: repeating-linear-gradient(red 80px, yellow 100px, green 150px);   
+        }
+
+        .repeating-radial-gradient {
+            background-image: repeating-radial-gradient(red 50px, yellow 80px, green 110px);
+        }
+
+        .noteBook {
+            width: 300px;
+            height: 500px;
+            border: 1px solid gray;
+            padding: 40px;
+            background-clip: content-box;
+            display: inline-block;
+
+            background-image: repeating-linear-gradient(transparent 0px, transparent 25px, gray 26px);
+        }
+
+        .ball {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 40px;
+            background-image: radial-gradient(at 100px 100px, white, gray);
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>线性渐变</h2>
+    <p>设置背景图片为linear-gradient，线性渐变</p>
+    <div class="h3c">
+        <p>红-黄-绿</p>
+        <div class="box linear-gradient ">上到下</div>
+        <div class="box ltr">左到右</div>
+        <div class="box lefttop-rightbottom">左上-右下</div>
+        <div class="box deg">角度旋转</div>
+        <div class="box gradient-px">渐变长度</div>
+        <div class="box color-text">五彩文字</div>
+    </div>
+
+    <h2>径向渐变</h2>
+    <p>设置背景图片为radial-gradient，经向渐变</p>
+    <div class="h3c">
+        <p>红-黄-绿</p>
+        <div class="box radial-gradient">内到外</div>
+        <div class="box radial-gradient-position">更改圆心(关键词)</div>
+        <div class="box radial-gradient-position-px">更改圆心(px)</div>
+        <div class="box radial-gradient-ellipse">更改为椭圆</div>
+        <div class="box radial-gradient-lenght">渐变长度</div>
+        <div class="box radial-gradient-all">混合设置</div>
+    </div>
+
+    <h2>重复渐变</h2>
+    <p>在没有渐变的区域重复渐变</p>
+    <div class="h3c">
+        <p>红-黄-绿</p>
+        <div class="box repeating-linear-gradient">重复线性渐变</div>
+        <div class="box repeating-radial-gradient">重复经向渐变</div>
+    </div>
+
+    <h2>案例</h2>
+
+    <div class="h3c">
+        <div class="noteBook"></div>
+        <div class="ball"></div>
+    </div>
+
+</body>
+
+</html>

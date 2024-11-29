@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        .h3c {
+            padding: 20px;
+            background-color: transparent;
+            border: 1px solid black;
+            vertical-align: top;
+        }
+
+        .box {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .box span {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .size200 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        .bigtext {
+            font-size: 80px;
+            color: black;
+            border: 1px solid blue;
+            margin-right: 10px;
+            padding: 0 10px;
+        }
+
+        .text-shadow-black {
+            text-shadow: 5px 5px 10px gray;
+        }
+
+        .text-shadow-white {
+            color: white;
+            text-shadow: 0 0 10px gray;
+        }
+
+        .text-shadow-red {
+            background-color: black;
+            color: white;
+            text-shadow: 0 0 20px red;
+        }
+
+        .code {
+            background-color: beige;
+            border-radius: 20px;
+            color: black;
+            padding: 20px;
+            margin-left: 50px;
+            font-size: 20px;
+            white-space: pre-line;
+        }
+
+        .white-pre {
+            white-space: pre;
+        }
+
+        .white-pre-wrap {
+            white-space: pre-wrap;
+        }
+
+        .white-pre-line {
+            white-space: pre-line;
+        }
+
+        .white-nowrap {
+            white-space: nowrap;
+        }
+
+
+        /* 文本溢出 */
+
+        .news {
+            border: 1px solid gray;
+            padding: 20px;
+            margin-top: 20px;
+            margin-left: 50px;
+            width: 300px;
+            list-style: decimal;
+        }
+
+        .news li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            white-space: nowrap;
+            text-overflow: clip;
+            overflow: hidden;
+        }
+
+        .news :last-child {
+            text-overflow: ellipsis;
+            color: rebeccapurple;
+        }
+
+
+        /* 文本修饰 */
+
+        .decoration {
+            font-size: 50px;
+            /* text-decoration-line: underline;
+            text-decoration-color: red;
+            text-decoration-style: wavy; */
+
+            /* safari中设置无效 */
+            text-decoration: overline dashed rebeccapurple;
+        }
+
+        /* 文本描边 */
+        .stroke {
+            -webkit-text-stroke-color: red;
+            -webkit-text-stroke-width: 5px;
+            font-size: 80px;
+            font-weight: 500;
+        }
+    </style>
+    <title>边框属性</title>
+</head>
+
+<body>
+
+    <h2>文本阴影</h2>
+
+    <div class="h3c">
+        <span class="bigtext text-shadow-black">Hello 世界</span>
+        <span class="bigtext text-shadow-white">Hello 世界</span>
+        <span class="bigtext text-shadow-red">Hello 世界</span>
+    </div>
+
+    <h2>white-space文本换行</h2>
+
+    <p>white-space控制文本换行方式</p>
+
+    <ul>
+        <li>normal：文本超出边界自动换行，文本的换行被识别为一个空格（默认值）</li>
+        <li>pre：按原样输出</li>
+        <li>pre-wrap：在pre基础上，超出边界自动换行</li>
+        <li>pre-line：在pre基础上，超出边界自动换行，且只识别文本中的换行，空格会忽略</li>
+        <li>nowrap：强制不换行</li>
+    </ul>
+
+    <div class="h3c">
+        <div class="box">
+            <span>normal</span>
+            <div class="size200">
+                山回路转不见君
+                雪上空留马行处
+            </div>
+        </div>
+        <div class="box">
+            <span>pre</span>
+            <div class="size200 white-pre">
+                山回路转不见君
+                雪上空留马行处
+            </div>
+        </div>
+        <div class="box">
+            <span>pre-wrap</span>
+            <div class="size200 white-pre-wrap">
+                山回路转不见君
+                雪上空留马行处
+            </div>
+        </div>
+        <div class="box">
+            <span>pre-line</span>
+            <div class="size200 white-pre-line">
+                山回路转不见君
+                雪上空留马行处
+            </div>
+        </div>
+        <div class="box">
+            <span>nowrap</span>
+            <div class="size200 white-nowrap">
+                山回路转不见君
+                雪上空留马行处
+            </div>
+        </div>
+    </div>
+
+    <h2>text-overflow文本溢出</h2>
+
+    <p>text-overflow设置文本溢出时的呈现方式</p>
+
+    <ul>
+        <li>clip：溢出的部分裁切掉</li>
+        <li>ellipsis：溢出的部分裁...</li>
+    </ul>
+
+    <div class="code">如果要使text-overflow生效，块容器的overflow为非visible值，white-space为nowrap值</div>
+
+    <ul class="news">
+        <li>增加"无形良田" 节粮减损粮食储存保鲜精度到毫米级</li>
+        <li>运行稳定、性能优异、精度高！看中国北斗有多强</li>
+        <li>以链会友 合作共赢</li>
+        <li>端砚：石上山河 笔墨春秋</li>
+        <li>习近平对新时代马克思主义理论研究和建设工程作出指示，习近平《在全国民族团结进步表彰大会上的讲话》 讲习所</li>
+    </ul>
+
+    <h2>text-decoration文本修饰</h2>
+    <p>可以分开设置颜色、风格、位置，也可以使用复合设置</p>
+    <div class="h3c">
+        <span class="decoration">Hello World</span>
+    </div>
+
+    <h2>文本描边</h2>
+    <p>可以设置描边颜色和宽度</p>
+    <div class="h3c">
+        <span class="stroke">描边</span>
+    </div>
+
+
+
+</body>
+
+</html>

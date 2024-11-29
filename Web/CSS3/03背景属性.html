@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>背景属性</title>
+
+    <style>
+        .h3c {
+            padding: 20px;
+        }
+
+        .size200 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            padding: 20px;
+            margin-right: 20px;
+            color: red;
+            line-height: 200px;
+            text-align: center;
+
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+
+        .border20 {
+            border: 20px dashed lightcoral;
+        }
+
+        .small-bg {
+            background-image: url(./images/bg_small.jpg);
+        }
+
+        .big-bg {
+            background-image: url(./images/bg_big.jpg);
+        }
+
+        .large-bg {
+            background-image: url(./images/bg_large.jpeg);
+        }
+
+        li {
+            margin-top: 5px;
+        }
+
+        .bg-origin-content {
+            background-origin: content-box;
+        }
+
+        .bg-origin-border {
+            background-origin: border-box;
+        }
+
+        .clip-border {
+            background-clip: border-box;
+        }
+
+        .clip-padding {
+            background-clip: padding-box;
+        }
+
+        .clip-content {
+            background-clip: content-box;
+        }
+
+        .clip-text {
+            font-size: 80px;
+            font-weight: 1000;
+            vertical-align: top;
+            color: transparent;
+            /* 设置文字剪切时，必须设置文字透明 */
+            -webkit-background-clip: text;
+        }
+
+
+        .bg-size-auto {
+            background-size: auto;
+        }
+
+        .bg-size-px {
+            background-size: 200px 200px;
+        }
+
+        .bg-size-percent {
+            background-size: 100% 100%;
+        }
+
+        .bg-size-contain {
+            background-size: contain;
+        }
+
+        .bg-size-cover {
+            background-size: cover;
+        }
+
+        .background-all {
+            /* 背景颜色，背景url，是否重复，位置/大小，原点，裁切方式 */
+            background: skyblue url(./images/bg_large.jpeg) no-repeat 0 0 / cover border-box border-box;
+        }
+
+        .backgrounds {
+            background: url(./favicon.ico) no-repeat left top,
+                url(./favicon.ico) no-repeat left bottom,
+                url(./favicon.ico) no-repeat right top,
+                url(./favicon.ico) no-repeat right bottom;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>background-origin</h2>
+
+    <p>background-origin设置背景图片的原点</p>
+    <ul>
+        <li>padding-box：从padding区域开始显示背景图，默认值</li>
+        <li>border-box：从border区域开始显示背景图</li>
+        <li>content-box：从content区域开始显示背景图</li>
+    </ul>
+
+    <div class="h3c">
+        <div class="size200 border20 small-bg">padding-box</div>
+        <div class="size200 border20 small-bg bg-origin-content">content-box</div>
+        <div class="size200 border20 small-bg bg-origin-border">border-box</div>
+    </div>
+
+    <h2>backgorund-clip</h2>
+    <p>设置背景图，背景颜色的裁切模式</p>
+    <ul>
+        <li>border-box：从border区域开始向外裁切，默认值</li>
+        <li>padding-box：从padding区域向外裁切</li>
+        <li>content-box：从content区域向外裁切</li>
+        <li>text：背景只呈现在文字上，需设置文字透明</li>
+    </ul>
+    <div class="h3c">
+        <div class="size200 border20 big-bg clip-padding">padding-box</div>
+        <div class="size200 border20 big-bg clip-border">border-box</div>
+        <div class="size200 border20 big-bg clip-content">content-box</div>
+        <div class="size200 border20 big-bg clip-text">Text</div>
+    </div>
+
+    <h2>background-size</h2>
+
+    <p>设置背景图尺寸</p>
+    <ul>
+        <li>尺寸px，em等，指定大小，不允许负值</li>
+        <li>百分比原图片大小，不允许负值</li>
+        <li>auto：图片真实大小，默认值</li>
+        <li>contain：图片等比例缩放，直到宽或者高与容器相等，可能部分区域没有背景，设置background-repeat</li>
+        <li>cover：图片等比例缩放，图片尽可能全显示在容器上，但图片可能不完整</li>
+    </ul>
+
+    <div class="h3c">
+        <div class="size200 large-bg bg-size-auto">auto</div>
+        <div class="size200 large-bg bg-size-px">px 200px</div>
+        <div class="size200 large-bg bg-size-percent">percent 100%</div>
+        <div class="size200 large-bg bg-size-contain">contain</div>
+        <div class="size200 large-bg bg-size-cover">cover</div>
+    </div>
+
+    <h2>background复合属性</h2>
+    <p>复合属性的顺序为：背景颜色，背景url，是否重复，位置/大小，原点，裁切方式</p>
+    <p>位置必须在大小前面，中间用/分割</p>
+    <div class="h3c">
+        <div class="size200 border20 large-bg background-all">auto</div>
+    </div>
+
+    <h2>多背景图</h2>
+    <div class="h3c">
+        <div class="size200 backgrounds">多个背景图</div>
+    </div>
+
+</body>
+
+</html>

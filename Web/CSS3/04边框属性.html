@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        .h3c {
+            padding: 20px;
+        }
+
+        .size200 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            padding: 20px;
+            margin-right: 20px;
+            color: red;
+            line-height: 200px;
+            text-align: center;
+
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+
+        .border20 {
+            border: 20px dashed lightcoral;
+        }
+
+        .radius20 {
+            border-radius: 20px;
+            /* border-radius: 50%; */
+        }
+
+        .radius-corner {
+            border-top-left-radius: 0;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 60px;
+            border-bottom-left-radius: 40px;
+        }
+
+        .radius-ellipse {
+            border-top-left-radius: 100px 20px;
+            border-top-right-radius: 20px 100px;
+            border-bottom-right-radius: 50px 5px;
+            border-bottom-left-radius: 100px 100px;
+        }
+
+        .radius-all {
+            /* 左上 右上 右下 左下 x / 左上 右上 右下 左下 y*/
+            border-radius: 100px 20px 50px 100px / 20px 100px 5px 100px;
+        }
+
+        .border-out-line {
+            outline-width: 10px;
+            outline-color: black;
+            outline-style: solid;
+            /* outline-offset: 10px; */
+
+            outline: 10px green solid;
+        }
+    </style>
+    <title>边框属性</title>
+</head>
+
+<body>
+
+    <h2>border-radius边框圆角</h2>
+
+    <p>设置边框的圆角</p>
+
+    <div class="h3c">
+        <div class="size200 border20 radius20">radius20px</div>
+        <div class="size200 border20 radius-corner">不同角不同半径</div>
+        <div class="size200 border20 radius-ellipse">不同角椭圆</div>
+        <div class="size200 border20 radius-all">复合，左上角开始顺时针</div>
+    </div>
+
+
+    <p>边框外轮廓</p>
+    <p>设置边框的外轮廓，不常用</p>
+    <div class="h3c">
+        <div class="size200 border20 border-out-line">radius20px</div>
+    </div>c
+
+</body>
+
+</html>
