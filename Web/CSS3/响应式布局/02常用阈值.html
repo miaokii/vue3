@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>媒体查询</title>
+
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        } */
+
+        .media-normal {
+            height: 100px;
+            background-color: gray;
+            text-align: center;
+            font-size: 50px;
+            line-height: 100px;
+        }
+
+        /* 超小屏幕 */
+        @media screen and (max-width:768px) {
+            .media-normal {
+                background-color: orange;
+            }
+        }
+
+        @media screen and (min-width:768px) and (max-width:992px) {
+            .media-normal {
+                background-color: green;
+            }
+        }
+
+        @media screen and (min-width:992px) and (max-width:1200px) {
+            .media-normal {
+                background-color: deepskyblue;
+            }
+        }
+
+        @media screen and (min-width:1200px) {
+            .media-normal {
+                background-color: pink ;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="media-normal">
+        Hello World，你好世界
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>媒体查询</title>
+
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        } */
+
+        .colorful {
+            margin: 0 auto;
+            width: 300px;
+            height: 200px;
+            background-image: linear-gradient(blue, black, red);
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            line-height: 200px;
+            text-shadow: 0 0 10px gray;
+        }
+
+        .box {
+            height: 100px;
+            background-color: lightgray;
+            text-align: center;
+        }
+
+        .media-and {
+            font-size: 50px;
+            line-height: 100px;
+        }
+
+        /* 媒体类型为打印机，只有在打印机或打印预览的样式 */
+        @media print {
+            .colorful {
+                background: transparent;
+            }
+        }
+
+        /* 媒体类型为屏幕 */
+        @media screen {
+            .colorful {
+                font-family: '楷体-简';
+            }
+        }
+
+        @media all {
+            .colorful {
+                font-size: 55px;
+            }
+        }
+
+        /* 检测视口的宽度 */
+        @media (max-width: 700px) {
+            .backcolor {
+                background-color: orange;
+            }
+        }
+
+        @media (width: 800px) {
+            .backcolor {
+                background-color: green;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .backcolor {
+                background-color: red;
+            }
+        }
+
+        /* 且 屏幕设备 视口宽度介于700和800之间 */
+        @media screen and (min-width: 700px) and (max-width: 800px) {
+            .media-and {
+                font-family: "楷体-简";
+            }
+        }
+
+        /* 或 */
+        @media (max-width: 700px) or (min-width:800px) {
+            .media-and {
+                font-family: "娃娃体-简";
+            }
+        }
+
+        /* 否定 */
+        @media not print {
+            .media-and {
+                color: blue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>媒体类型</h2>
+    <p>媒体查询可以检查设备类型</p>
+    <ul>
+        <li><b>all：</b>所有设备</li>
+        <li><b>screen：</b>检测电子屏幕，包括电脑屏幕、手机屏幕等</li>
+        <li><b>print：</b>检测打印机</li>
+    </ul>
+    <p>新年快乐的部分在打印机和屏幕上显示不一样</p>
+    <p>媒体查询不改变css优先级</p>
+    <div class="colorful">
+        新年快乐
+    </div>
+
+    <h2>媒体特性</h2>
+    <ul>
+        <li><b>width：</b>检测视口宽度</li>
+        <li><b>min-width：</b>检测视口最小宽度</li>
+        <li><b>max-width：</b>检测视口最大宽度</li>
+        <li><b>height：</b>检测视口高度</li>
+        <li><b>min-height：</b>检测视口最小高度</li>
+        <li><b>max-heithg：</b>检测视口最大高度</li>
+        <li><b>device-width：</b>检测设备屏幕宽度</li>
+        <li><b>max-device-width：</b>检测设备最大屏幕宽度</li>
+        <li><b>min-device-width：</b>检测设备最小屏幕宽度</li>
+        <li><b>orientation：</b>检测视口方向
+        <ol>
+            <li><b>portrait：纵向，高度大于宽度</b></li>
+            <li><b>landscape：横向，高度小于宽度</b></li>
+        </ol></li>
+    </ul>
+    <div class="box backcolor">
+        视口width<=700橙色 width=800绿色 width>=900红色，其他灰色
+    </div>
+
+    <h2>媒体查询运算符</h2>
+    <p>视口宽度700-800之间时，为楷体-简字体</p>
+    <p>视口宽度小于700或大于800时，为娃娃体-简字体</p>
+    <p>不是打印机时，字体为蓝色</p>
+    <div class="box media-and">
+        新年快乐
+    </div>
+
+</body>
+
+</html>

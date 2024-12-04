@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>3D变换</title>
+
+    <style>
+        .code {
+            margin-top: 20px;
+        }
+
+        .outer {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            display: inline-block;
+            position: relative;
+            margin: 40px 100px;
+
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 191, 255, 0.7);
+            box-shadow: 0 0 10px black;
+        }
+
+        .inner100 {
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 50px;
+            position: absolute;
+            line-height: 100px;
+            text-align: center;
+            background-color: skyblue;
+        }
+
+        .transform3d-rotate {
+            transform: rotateX(30deg)
+        }
+
+        /* 调整透视点位置 */
+        .perspectove-origin {
+            /* 设置透视点的位置 */
+            perspective-origin: 300px 100px;
+        }
+
+        /* 向z轴正向移动 */
+        .translateZ {
+            /* translateZ不能写百分比 */
+            transform: translateZ(50px);
+            /* transform: translate3d(50px, 50px, 100px); */
+        }
+
+        .rotate3d {
+            /* 顺时针旋转 */
+            /* transform: rotateX(30deg); */
+            /* 前三个表示坐标轴，第4个表示旋转角度，x，y分别旋转30度 */
+            transform: rotate3d(1, 1, 0, 30deg)
+        }
+
+        .scale3d {
+            transform: scale3d(1, 1, 4) rotateY(20deg);
+        }
+
+        .transform3d-all {
+            /* 变换原点 */
+            /* transform-origin: left; */
+            /* transform-origin: 200px 0px; */
+            /* 绕y轴旋转 */
+            /* transform: rotateY(45deg); */
+
+            /* 多重变换 */
+            transform: translateZ(100px) scaleZ(3) rotateY(45);
+        }
+
+        .backfacehide {
+            backface-visibility: hidden;
+            transform: rotateY(140deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>3D控件与景深</h2>
+    <p>元素进行3D变换，父元素要开启3D空间，并且设置景深</p>
+    <p>景深：观察者距离z=0平面的距离</p>
+    <div class="outer">
+        <div class="inner  transform3d-rotate">3D变换</div>
+    </div>
+
+    <h2>3D透视点（观察者）的位置</h2>
+
+    <p>在父容器中设置透视点的位置</p>
+    <div class="outer perspectove-origin">
+        <div class="inner transform3d-rotate">3D变换</div>
+    </div>
+
+    <h2>3D位移</h2>
+    <p>z轴的位移不能写百分比，x和y轴可以写百分比</p>
+    <div class="outer">
+        <div class="inner translateZ">
+            z轴正向位移
+        </div>
+    </div>
+
+    <h2>3D旋转</h2>
+    <p>在2d的基础上，让元素沿x，y轴旋转</p>
+    <p>rotate3d有4个参数，前三个表示坐标轴，第4个表示旋转角度</p>
+    <div class="outer">
+        <div class="inner rotate3d">旋转</div>
+    </div>
+
+    <h2>3D缩放</h2>
+    <p>sacelZ设置z轴方向的比例</p>
+    <div class="outer">
+        <div class="inner scale3d">
+            缩放
+        </div>
+    </div>
+
+    <h2>多重变换</h2>
+    <p>多重 变换将旋转放在最后</p>
+    <div class="outer">
+        <div class="inner transform3d-all">
+            多重变换
+        </div>
+    </div>
+
+    <h2>背部不显示</h2>
+    <p>旋转到背部时，不显示了</p>
+    <div class="outer">
+        <div class="inner backfacehide">背部隐藏</div>
+    </div>
+
+</body>
+
+</html>

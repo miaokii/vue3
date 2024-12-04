@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4767130 */
+  src: url('iconfont.woff2?t=1733124368712') format('woff2'),
+       url('iconfont.woff?t=1733124368712') format('woff'),
+       url('iconfont.ttf?t=1733124368712') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sanmingzhi-01:before {
+  content: "\e605";
+}
+
+.icon-baozi-01:before {
+  content: "\e607";
+}
+
+.icon-baomihua-01:before {
+  content: "\e608";
+}
+
+.icon-dangao-01:before {
+  content: "\e60c";
+}
+
+.icon-fantuan-01:before {
+  content: "\e612";
+}
+
+.icon-jitui-01:before {
+  content: "\e618";
+}
+
+.icon-jiaozi-01:before {
+  content: "\e61c";
+}
+
+.icon-kaoya-01:before {
+  content: "\e61e";
+}
+
+.icon-pisa-01:before {
+  content: "\e629";
+}
+
+.icon-take-01:before {
+  content: "\e62f";
+}
+
+.icon-tanghulu-01:before {
+  content: "\e631";
+}
+
+.icon-xuegao-01:before {
+  content: "\e635";
+}
+
+.icon-yimian-01:before {
+  content: "\e636";
+}
+
+.icon-zongzi-01:before {
+  content: "\e637";
+}
+

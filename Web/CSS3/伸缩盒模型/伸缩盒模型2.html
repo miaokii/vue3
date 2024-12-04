@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>伸缩盒模型</title>
+
+    <style>
+        .inner {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: antiquewhite;
+            border: 1px solid black;
+
+            /* 从border开始计算宽高 */
+            box-sizing: border-box;
+        }
+
+        .outer {
+            width: 1000px;
+            height: 200px;
+            border: 1px solid black;
+
+            margin: 0;
+
+            /* 成为伸缩容器 */
+            display: flex;
+
+            /* 伸缩盒模型相关属性 */
+
+            /* 设置主轴方向 row:左到右，row-reverse：右到左，column：上到下 column-reverse：下到上*/
+            flex-direction: row;
+
+            /* 换行方式 */
+            /* nowrap：不换行，wrap：换行 wrap-reverse：反向换行*/
+            flex-wrap: wrap;
+
+            /* 复合属性，设置方向和换行 */
+            /* flex-flow: row wrap; */
+
+            /* 主轴的对齐方式 */
+            /* flex-start：主轴的起始位置  flex-end：主轴的结束位置  center：居中 */
+            /* space-around：项目均匀分布在一行中，项目之间的距离是项目与容器距离的2倍*/
+            /* space-between：项目均匀分布在一行中，项目之间的距离相等，项目与容器边缘没有间距*/
+            /* space-evenly：项目均匀分布在一行中*/
+            justify-content: space-evenly;
+
+            /* 侧轴的对齐方式 一行项目 */
+            /* flex-start：轴的起始位置  flex-end：轴的结束位置  center：轴居中  baseline：基线对齐  stretch：拉伸到整个父容器（默认值）（伸缩项目没有高度时生效）*/
+            align-items: center;
+
+            /* 侧轴的对齐方式  多行项目 */
+            /* flex-start：轴的起始位置  flex-end：轴的结束位置  center：轴居中*/
+            /* space-around：项目之间的距离相等，且时边缘距离的2倍 */
+            /* space-between: 项目之间的距离相等，且时边缘没有距离 */
+            /* space-evenly：项目之间距离和距离边缘相等 */
+            /* stretch：拉伸（项目高度不能指定） */
+            /* align-content: end; */
+        }
+
+        .flex-basis {
+            /* 设置项目在主轴方向的长度，若主轴是横向，项目宽度失效，主轴是纵向，项目高度失效 */
+            flex-basis: 300px;
+        }
+
+        .flex-grow1 {
+            /* 父元素宽度有剩余，按比例分给项目 */
+            flex-grow: 1;
+        }
+
+        .flex-grow2 {
+            flex-grow: 2;
+        }
+
+        .nowrap {
+            margin-top: 20px;
+            flex-wrap: nowrap;
+            width: 400px;
+            padding: none;
+        }
+
+        .flex-shrink1 {
+            /* 父元素宽度不够，项目每个都减少 */
+            flex-shrink: 1;
+            width: 200px;
+        }
+
+        .flex-shrink2 {
+            flex-shrink: 2;
+            width: 300px;
+        }
+
+        .flex-shrink3 {
+            flex-shrink: 3;
+            width: 200px;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        .inner-flex {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+            /* 拉伸 */
+            /* flex-grow: 1; */
+            /* 压缩 */
+            /* flex-shrink: 1; */
+            /* 基准长度 */
+            /* flex-basis: 100px; */
+
+            /* 复合属性，必须按照flex-grow，flex-shrink，flex-basis顺序设置 */
+            /* flex: 1 1 100px; */
+            /* 简写形式，等于flex：1 1 auto */
+            /* flex: auto; */
+
+            /* 可以拉伸，可以压缩，基准长度0 ，可以写作flex：1*/
+            flex: 1 1 0;
+            /* flex: 1; */
+
+            /* 不拉伸，不压缩，不设置基准长度，可以写作flex：none */
+            /* flex: 0 0 auto; */
+            /* flex: none; */
+
+            /* 不拉伸，可以压缩，不设置基准长度，写作flex：0 auto */
+            /* flex: 0 1 auto;
+            flex: 0 auto; */
+        }
+
+        .inner2 {
+            order: -1;
+        }
+
+        .inner3 {
+            order: -2;
+        }
+
+        .outer400 {
+            height: 400px;
+            align-items: start;
+        }
+
+        .align-bottom {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>基准长度</h2>
+    <p>flex-basis设置主轴方向上项目的长度，会让项目宽度或高度失效</p>
+    <p>浏览器根据这个值，计算主轴上是否有多余的空间，默认auto，伸缩项目的宽和高</p>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner flex-basis">2</div>
+        <div class="inner">3</div>
+    </div>
+
+    <h2>伸缩性-伸</h2>
+    <p><b>flex-grow</b>定义项目的拉伸比例，当主轴空间有剩余时，按照flex-grow定义的比例瓜分剩余空间</p>
+    <p>若三个项目的flex-grow为1，2，1，分别瓜分剩余空间的1/4，1/2，1/4</p>
+    <div class="outer">
+        <div class="inner flex-grow1">1</div>
+        <div class="inner flex-grow2">2</div>
+        <div class="inner flex-grow1">3</div>
+    </div>
+
+    <h2>伸缩性-缩</h2>
+    <p><b>flex-shrink</b>定义项目压缩比例，空间不足的时候，项目会压缩</p>
+    <p>压缩的计算</p>
+    <div class="code">
+        <p>三个项目的宽度分别为200、300、200，flex-shrink分别为1、2、3，若要刚放的下三个项目，容器宽度为700，但容器只有400时，还差300，所以需要把每个项目都收缩一下</p>
+        <ol>
+            <li>计算分母：200*1 + 300*2 + 200*3 = 1400</li>
+            <li>计算比例：
+                <ul>
+                    <li>项目1: 200*1 / 1400 = 比例1</li>
+                    <li>项目2: 300*2 / 1400 = 比例2</li>
+                    <li>项目3: 200*3 / 1400 = 比例3</li>
+                </ul>
+            </li>
+            <li>计算收缩大小：</li>
+            <ul>
+                <li>项目1需要收缩：比例1*300</li>
+                <li>项目2需要收缩：比例2*300</li>
+                <li>项目3需要收缩：比例3*300</li>
+            </ul>
+        </ol>
+    </div>
+    <div class="outer nowrap">
+        <div class="inner flex-shrink1">1</div>
+        <div class="inner flex-shrink2">2</div>
+        <div class="inner flex-shrink3">3</div>
+    </div>
+
+    <h2>flex复合属性</h2>
+    <p><b>flex</b>复合属性，必须按照flex-grow，flex-shrink，flex-basis顺序设置，默认0 1 auto</p>
+    <ul>
+        <li>flex: 1 1 auto -> flex:auto</li>
+        <li>flex: 1 1 0 -> flex:1</li>
+        <li>flex: 0 0 auto -> flex:none</li>
+        <li>flex: 0 1 auto -> flex:0 auto （默认值）</li>
+    </ul>
+    <div class="outer nowrap">
+        <div class="inner-flex">1</div>
+        <div class="inner-flex">2</div>
+        <div class="inner-flex">3</div>
+    </div>
+
+    <h2>项目排序</h2>
+    <p>项目order属性用于排序，默认是0，越小越排在前面</p>
+    <div class="outer nowrap">
+        <div class="inner-flex">1</div>
+        <div class="inner-flex inner2">2</div>
+        <div class="inner-flex inner3">3</div>
+    </div>
+
+    <h2>单独对齐</h2>
+    <p>伸缩项目的align-self属性，用于设置项目单独对齐方式</p>
+    <div class="outer outer400">
+        <div class="inner-flex">1</div>
+        <div class="inner-flex align-bottom">2</div>
+        <div class="inner-flex">3</div>
+    </div>
+
+</body>
+
+</html>

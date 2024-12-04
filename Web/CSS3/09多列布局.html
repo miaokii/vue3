@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>多列布局</title>
+
+    <style>
+
+        h2{
+            color: black;
+            /* 跨所有列 */
+            column-span: all;
+            text-align: center;
+            font-size: 50px;
+        }
+        .outer {
+            border: 1px solid black;
+            width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 0px;
+
+            /* 指定列数 */
+            column-count: 4;
+            /* 指定宽度 */
+            /* columns: 300px; */
+            /* 指定列间距 */
+            column-gap: 40px;
+
+            column-rule-width: 2px;
+            column-rule-style: dashed;
+            column-rule-color: black;
+
+            column-rule: 2px dashed black;
+        }
+
+
+        .images {
+            border: none;
+        }
+
+        .images img {
+            width: 100%;
+            transition: 0.2s ease;
+            border-radius: 10px;
+        }
+
+        .images {
+            column-count: 5;
+            column-rule: none;
+            column-gap: 10px;
+            padding: 0;
+        }
+
+        .images img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, tenetur. Minus saepe amet omnis aperiam minima voluptatem qui nam eius, quas, quia libero autem? Itaque possimus nostrum quidem placeat rem iure adipisci porro deleniti. Autem, obcaecati amet? Porro, praesentium quia.</p>
+        <img src="./images/bg_large.jpeg" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores necessitatibus numquam quisquam obcaecati repellendus praesentium? Eaque, sunt a. Laudantium placeat numquam repellendus soluta cumque! Labore minima accusamus maiores voluptatum quae.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eius beatae molestias fuga neque corrupti ipsa hic quia laudantium fugit atque deserunt distinctio totam mollitia, necessitatibus dolorum minima quas commodi nesciunt, expedita a similique suscipit, laborum dolor! Aspernatur iure et maiores nulla recusandae ea cum, doloribus illum voluptate eligendi debitis.</p>
+        <img src="./images/ikun.JPEG" alt="">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas, nemo animi repellendus officia, neque voluptatibus nihil minus doloribus illo ex minima temporibus, magnam optio. Sapiente minima at perspiciatis delectus illum aliquam repellat. Sapiente quam perspiciatis vero molestias aliquid assumenda architecto, facilis ex corporis? Dolorem id, quis totam ad a est quae quidem officia accusantium incidunt animi. Libero quaerat sint, suscipit nesciunt optio excepturi sit hic, similique qui, debitis facere dolorum odio inventore? Quia aliquam, velit porro sunt facere dignissimos vitae accusamus repudiandae? Id laborum adipisci repellendus minus, numquam dolore mollitia voluptatum rerum magni, earum debitis. Sint earum quidem iste expedita non at, a vel repudiandae fuga. Quos libero saepe fugit repudiandae corporis adipisci necessitatibus maiores, architecto enim accusantium voluptas ab totam dolor maxime a? Vero ullam ipsum obcaecati odio eius libero pariatur molestias modi, neque nesciunt itaque aliquam. Beatae qui, ratione cum obcaecati rem natus, quaerat ducimus quod, itaque eum facere blanditiis veniam? Ex, aliquid cum? Quasi pariatur alias nisi ratione et quos vero nostrum, nam aliquid, magni expedita ea doloremque! Rem, perferendis. Aperiam aliquid optio distinctio odit unde enim provident non est corporis similique magni sunt, consectetur nobis sint repellendus possimus, illum iure exercitationem consequuntur sit delectus neque voluptatibus? Corrupti maxime ratione cumque, assumenda nam cupiditate consequatur rerum dolores amet tempore suscipit natus et architecto id numquam voluptatem culpa fuga! Consequuntur sit aperiam reiciendis sequi harum nostrum eum dolores sapiente. Aspernatur beatae iste earum atque? Hic nemo officiis, quia voluptates maiores laborum aut et neque iusto laudantium voluptatum sunt temporibus accusamus assumenda aperiam obcaecati inventore in, magnam quo nesciunt iure. Nemo hic corrupti accusamus obcaecati illum fuga aperiam illo enim itaque, facere quidem fugiat? Dolore commodi aliquid in at quam voluptatum beatae odio totam, explicabo repudiandae possimus omnis delectus architecto, tempore minus illo reprehenderit, dolorum minima ad molestiae ullam ab similique. Ex cupiditate enim veritatis tempora alias corporis? Reiciendis enim dolores in quas, error libero animi maiores at esse quibusdam, ut aliquid earum assumenda. Adipisci incidunt omnis quam provident quidem delectus corrupti nulla, quas quod, qui commodi eaque aut libero ratione cupiditate, architecto dolore assumenda sit ex culpa autem in maxime sed possimus? Dolore, temporibus porro expedita illo at sint incidunt nemo quaerat dolorum. Quos iste ad totam impedit asperiores voluptatem laborum velit possimus dicta quod minus ipsum alias eaque, nemo hic illum saepe. Consequuntur nesciunt, eum, pariatur accusantium placeat voluptate nisi blanditiis amet sed, rem ea dignissimos. Eius recusandae facere ratione vitae, ut laudantium eum maxime praesentium error. Impedit velit ipsa, suscipit illum autem, tempora odit dignissimos libero temporibus quam laudantium eum molestias optio hic nisi minus aliquid quidem. Ipsam, voluptatem excepturi! Necessitatibus laudantium itaque aut minus sint quae quaerat cumque nesciunt beatae unde at excepturi, quisquam accusantium molestiae? Quae nobis explicabo cumque obcaecati recusandae rerum aliquid doloremque error ut neque aut voluptatibus, minus totam sapiente, quaerat quis laboriosam sint at nihil dolor laudantium dolorem perspiciatis? Veniam totam reprehenderit sint dicta non accusamus odit nobis, at cum recusandae nulla laboriosam, necessitatibus harum dolorum explicabo. Assumenda debitis suscipit quibusdam.</p>
+    </div>
+</body>
+
+
+<h2>多列图片</h2>
+<div class="outer images">
+    <img src="./images/bg_big.jpg" alt="">
+    <img src="./images/bg_large.jpeg" alt="">
+    <img src="./images/bg_small.jpg" alt="">
+    <img src="./images/ikun_ball.JPEG" alt="">
+    <img src="./images/ikun.JPEG" alt="">
+
+    <img src="./images/bg_big.jpg" alt="">
+    <img src="./images/bg_large.jpeg" alt="">
+    <img src="./images/bg_small.jpg" alt="">
+    <img src="./images/ikun_ball.JPEG" alt="">
+    <img src="./images/ikun.JPEG" alt="">
+
+    <img src="./images/bg_big.jpg" alt="">
+    <img src="./images/bg_large.jpeg" alt="">
+    <img src="./images/bg_small.jpg" alt="">
+    <img src="./images/ikun_ball.JPEG" alt="">
+    <img src="./images/ikun.JPEG" alt="">
+</div>
+
+</html>

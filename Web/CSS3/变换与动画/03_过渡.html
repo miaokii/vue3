@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>过渡</title>
+    <style>
+        .box {
+            background-color: orange;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+
+            /* 过渡属性 */
+            /* transition-property: height width; */
+            /* 所有能过渡的属性 */
+            transition-property: all;
+            /* 过渡时长 */
+            transition-duration: 200ms;
+        }
+
+        .box:hover {
+            height: 300px;
+            width: 250px;
+            background-color: green;
+            opacity: 0.5;
+            transform: rotate(45deg);
+            box-shadow: 0 0 20px black;
+        }
+
+        .outer {
+            width: 1200px;
+            border: 2px solid black;
+        }
+
+        .outer:hover .inner {
+            width: 100%;
+        }
+
+        .inner {
+            width: 300px;
+            height: 80px;
+            /* 过渡属性 */
+            /* transition-property: height width; */
+            /* 所有能过渡的属性 */
+            transition-property: all;
+            /* 过渡时长 */
+            transition-duration: 500ms;
+        }
+
+        .inner1 {
+            background-color: red;
+            transition-timing-function: ease;
+        }
+
+        .inner2 {
+            background-color: orange;
+            transition-timing-function: linear;
+        }
+
+        .inner3 {
+            background-color: yellow;
+            transition-timing-function: ease-in;
+        }
+
+        .inner4 {
+            background-color: green;
+            transition-timing-function: ease-out;
+        }
+
+        .inner5 {
+            background-color: palevioletred;
+            transition-timing-function: ease-in-out;
+        }
+
+        .inner6 {
+            background-color: blue;
+            transition-timing-function: step-start;
+        }
+
+        .inner7 {
+            background-color: purple;
+            transition-timing-function: step-end;
+        }
+
+        .inner8 {
+            background-color: darkcyan;
+            transition-timing-function: steps(20px);
+        }
+
+        .inner9 {
+            background-color: tomato;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .translation-all {
+            line-height: 80px;
+            background-color: blueviolet;
+            transition: 1s all 0 ease;
+        }
+
+        .outback {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .outback img {
+            transition-duration: 500ms;
+            transition-property: all;
+        }
+
+        .mask {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            opacity: 0;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 300px;
+            font-size: 100px;
+            text-align: center;
+            transition-duration: 500ms;
+            transition-property: all;
+        }
+
+        .outback:hover {
+            cursor: pointer;
+        }
+
+        .outback:hover img {
+            /* 旋转放最后 */
+            transform: scale(1.5) rotate(30deg);
+        }
+
+        .outback:hover .mask {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>过渡基本</h2>
+
+    <div class="box">
+        鼠标放进来看看
+    </div>
+
+    <h2>过渡高级使用</h2>
+    <div class="outer">
+        <div class="inner inner1">ease（慢-快-慢）</div>
+        <div class="inner inner2">linner （线性，匀速）</div>
+        <div class="inner inner3">ease-in （慢-快）</div>
+        <div class="inner inner4">ease-out （块-慢）</div>
+        <div class="inner inner5">ease-in-out （慢-块-慢）</div>
+        <div class="inner inner6">step-start （等同与 steps（1，start））</div>
+        <div class="inner inner7">step-end （等同与 steps（1，end））</div>
+        <div class="inner inner8">steps(int, start/end)（步进，每一步法身的时间点，默认end）</div>
+        <div class="inner inner9">cubic-bezie（被塞尔曲线）</div>
+    </div>
+
+    <h2>过渡复合</h2>
+
+    <div class="outer">
+        <div class="inner translation-all">transition: 1s all 0 ease</div>
+    </div>
+
+    <h2>案例</h2>
+
+    <div class="outback">
+        <img src="../images/bg_big.jpg" alt="">
+        <div class="mask">成都</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>伸缩盒模型</title>
+
+    <style>
+        .inner {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background-color: antiquewhite;
+            border: 1px solid black;
+
+            /* 从border开始计算宽高 */
+            box-sizing: border-box;
+        }
+
+        .inner100 {
+            height: 100px;
+        }
+
+        .inner50 {
+            height: 50px;
+        }
+
+        .inner300 {
+            height: 300px;
+        }
+
+        .outer1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner1 {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            /* margin: auto; */
+        }
+
+        .outer {
+            width: 1000px;
+            height: 900px;
+            border: 1px solid black;
+
+            margin: 0 auto;
+
+            /* 成为伸缩容器 */
+            display: flex;
+
+            /* 伸缩盒模型相关属性 */
+
+            /* 设置主轴方向 row:左到右，row-reverse：右到左，column：上到下 column-reverse：下到上*/
+            flex-direction: row;
+
+            /* 换行方式 */
+            /* nowrap：不换行，wrap：换行 wrap-reverse：反向换行*/
+            flex-wrap: wrap;
+
+            /* 复合属性，设置方向和换行 */
+            /* flex-flow: row wrap; */
+
+            /* 主轴的对齐方式 */
+            /* flex-start：主轴的起始位置  flex-end：主轴的结束位置  center：居中 */
+            /* space-around：项目均匀分布在一行中，项目之间的距离是项目与容器距离的2倍*/ 
+            /* space-between：项目均匀分布在一行中，项目之间的距离相等，项目与容器边缘没有间距*/
+            /* space-evenly：项目均匀分布在一行中*/
+            justify-content: flex-start;
+
+            /* 侧轴的对齐方式 一行项目 */
+            /* flex-start：轴的起始位置  flex-end：轴的结束位置  center：轴居中  baseline：基线对齐  stretch：拉伸到整个父容器（默认值）（伸缩项目没有高度时生效）*/
+            /* align-items: flex-start; */
+
+            /* 侧轴的对齐方式  多行项目 */
+            /* flex-start：轴的起始位置  flex-end：轴的结束位置  center：轴居中*/
+            /* space-around：项目之间的距离相等，且时边缘距离的2倍 */
+            /* space-between: 项目之间的距离相等，且时边缘没有距离 */
+            /* space-evenly：项目之间距离和距离边缘相等 */
+            /* stretch：拉伸（项目高度不能指定） */
+            align-content: end;
+
+        }
+    </style>
+</head>
+ 
+<body>
+    <h2>容器与项目</h2>
+
+    <p>开启了flex的元素，就是伸缩容器</p>
+    <p>伸缩容器的子元素就是伸缩项目，无论原来是那种元素，成了伸缩项目，就都会块状话</p>
+
+    <h2>主轴</h2>
+    <p>伸缩项目沿着主轴排列，通过flex-direction设置主轴方向，垂直于主轴的方向为侧轴</p>
+    <p>flex-direction： row:左到右，row-reverse：右到左，column：上到下 column-reverse：下到上</p>
+
+    <h2>主轴换行方式</h2>
+    <p>flex-wrap控制主轴的换行方式</p>
+    <p>nowrap：不换行，wrap：换行 wrap-reverse：反向换行</p>
+
+    <h2>flex-flow</h2>
+    <p>flex-flow复合属性，用于设置主轴方向和换行方式，不常用</p>
+
+    <h2>主轴对齐方式</h2>
+    <p>justify-content用于设置项目在主轴上的对齐方式</p>
+    <ul>
+        <li><b>flex-start：</b>主轴的起始位置</li>
+        <li><b>flex-end：</b>主轴的结束位置</li>
+        <li><b>center：</b>居中</li>
+        <li><b>space-around：</b>项目均匀分布在一行中，项目之间的距离是项目与容器距离的2倍</li>
+        <li><b>space-between：</b>项目均匀分布在一行中，项目之间的距离相等，项目与容器边缘没有间距</li>
+        <li><b>space-around：</b>项目均匀分布在一行中，项目之间的距离等于项目与容器边缘的距离</li>
+    </ul>
+
+    <h2>侧轴对齐方式</h2>
+    <p><b>align-items</b>控制一行项目时的侧轴对齐方式</p>
+    <ul>
+        <li><b>flex-start：</b>侧轴的起始位置</li>
+        <li><b>flex-end：</b>侧轴的结束位置</li>
+        <li><b>center：</b>侧轴居中</li>
+        <li><b>baseline：</b>基线对齐</li>
+        <li><b>stretch：</b>拉伸到整个父容器（默认值）（伸缩项目没有高度时生效）</li>
+    </ul>
+
+    <p><b>align-content</b>控制多行项目时的侧轴对齐方式</p>
+    <ul>
+        <li><b>flex-start：</b>侧轴的起始位置</li>
+        <li><b>flex-end：</b>侧轴的结束位置</li>
+        <li><b>center：</b>侧轴居中</li>
+        <li><b>space-around：</b>项目之间的距离相等，且时边缘距离的2倍</li>
+        <li><b>space-between：</b>项目之间的距离相等，且时边缘没有距离</li>
+        <li><b>space-evenly：</b>项目之间距离和距离边缘相等</li>
+        <li><b>stretch：</b>拉伸（项目高度不能指定）</li>
+    </ul>
+
+    <h2>元素水平垂直居中</h2>
+    <div class="outer1">
+        <div class="inner1"></div>
+    </div>
+
+
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner inner100">2</div>
+        <div class="inner inner50">3</div>
+        <div class="inner inner300">5</div>
+        <div class="inner">6</div>
+        <div class="inner inner300">7</div>
+        <div class="inner inner50">8</div>
+        <div class="inner inner100">9</div>
+        <div class="inner">10</div>
+
+        <div class="inner inner100">11</div>
+        <div class="inner">12</div>
+    </div>
+</body>
+
+</html>

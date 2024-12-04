@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <style>
+        .outer {
+            width: 1500px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+
+        .inner-to-right {
+            /* 设置动画 */
+            animation-name: move-to-right-2;
+            /* 动画时长 */
+            animation-duration: 2s;
+        }
+
+        /* 定义动画 ---  第一种 */
+        @keyframes move-to-right {
+            form {}
+
+            to {
+                transform: translate(1400px) rotate(180deg);
+                background-color: red;
+                border-radius: 50px;
+            }
+        }
+
+        /* 定义动画---第二种方法 */
+        @keyframes move-to-right-2 {
+            0% {}
+
+            30% {
+                background-color: yellow;
+            }
+
+            50% {
+                background-color: green;
+            }
+
+            75% {
+                background-color: lightcoral;
+            }
+
+            100% {
+                transform: translate(1400px);
+                background-color: red;
+            }
+        }
+
+        .inner-animation-other {
+            animation-name: move-to-right;
+            /* 动画持续时间 */
+            animation-duration: 2s;
+
+            /* 动画延迟 */
+            animation-delay: 0s;
+            /* 动画效果函数 */
+            animation-timing-function: ease;
+            /* 动画次数 */
+            animation-iteration-count: unset;
+            /* 动画方向 */
+            animation-direction: normal;
+
+            /* 动画以外的状态 （不发生动画时在哪里） */
+            /* 停在forwards最后一侦位置 */
+            animation-fill-mode: forwards;
+            /* 动画状态 */
+            animation-play-state: running;
+        }
+
+        .outer:hover .inner-animation-other {
+            animation-play-state: paused;
+        }
+
+        .animation-all {
+            /* name duration delay  timing-function iteration-count direction fill-mode play-state */
+            /* 动画名 动画时长 延迟时间  动画效果函数 重复次数 动画方向 往复运动 不暂停*/
+            animation: move-to-right 2s 0s ease 2 alternate-reverse forwards;
+        }
+
+
+        /* 动画和过渡的区别 */
+
+        /* 过渡实现 */
+        .translate-right {
+            transition: 2s ease;
+        }
+
+        .outer:hover .translate-right {
+            transform: translate(1400px);
+        }
+
+        .animation-right {
+            animation: animation-to-right 2s;
+        }
+
+        @keyframes animation-to-right {
+            from {}
+
+            to {
+                transform: translate(1400px);
+            }
+        }
+    </style>
+    <title>动画</title>
+</head>
+
+<body>
+    <h2>基本动画</h2>
+    <p>从左往右移动</p>
+    <div class="outer">
+        <div class="inner inner-to-right">
+        </div>
+    </div>
+
+    <h2>动画其他属性</h2>
+    <div class="outer">
+        <div class="inner inner-animation-other">
+        </div>
+    </div>
+
+    <h2>动画复合属性</h2>
+    <div class="outer">
+        <div class="inner animation-all">
+
+        </div>
+    </div>
+
+    <h2>动画和过渡的区别</h2>
+    <p>过渡结束后不会回到初始位置，动画需要设置属性</p>
+    <p>过渡不能精细控制，只能设置开始和结束的状态，动画可以精细控制</p>
+    <div class="outer">
+        <div class="inner translate-right"></div>
+    </div>
+    <div class="outer">
+        <div class="inner animation-right"></div>
+    </div>
+</body>
+
+</html>

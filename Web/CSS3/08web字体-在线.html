@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+
+    <!-- 在线使用font-class -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4767130_hd9hwg7wkx5.css">
+
+    <!-- 在线使用symbol -->
+    <script src="//at.alicdn.com/t/c/font_4767130_hd9hwg7wkx5.js"></script>
+
+    <style>
+        /* 在线使用iconfont unicode */
+        /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+        @font-face {
+            font-family: 'iconfont';
+            /* Project id 4767130 */
+            src: url('//at.alicdn.com/t/c/font_4767130_hd9hwg7wkx5.woff2?t=1733126305887') format('woff2'),
+                url('//at.alicdn.com/t/c/font_4767130_hd9hwg7wkx5.woff?t=1733126305887') format('woff'),
+                url('//at.alicdn.com/t/c/font_4767130_hd9hwg7wkx5.ttf?t=1733126305887') format('truetype');
+        }
+
+        /* symbol字体 */
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .code {
+            font-size: 30px;
+            line-height: 30px;
+        }
+        .iconfont-unicode {
+            font-family: 'iconfont';
+        }
+    </style>
+    <title>web字体</title>
+</head>
+
+<body>
+    <h2>在线引用web字体</h2>
+    <div class="h3c">
+        <h4>通过unicode引入，单色图标，不支持多色</h4>
+        <div class="code iconfont-unicode">
+            三明治：&#xe605;
+        </div>
+        <div class="code iconfont-unicode">
+            包子：&#xe607;
+        </div>
+        <div class="code iconfont-unicode">
+            爆米花：&#xe608;
+        </div>
+        <div class="code iconfont-unicode">
+            糖葫芦：&#xe631;
+        </div>
+    </div>
+    <br>
+    <div class="h3c">
+        <h4>通过font-class引用</h4>
+        <p>font-class是unicode的变种，解决后者语义不明确的问题</p>
+        <div class="code iconfont icon-sanmingzhi-01">三明治</div>
+        <div class="code iconfont icon-baozi-01">包子</div>
+        <div class="code iconfont icon-baomihua-01">爆米花</div>
+        <div class="code iconfont icon-tanghulu-01">糖葫芦</div>
+    </div>
+
+    <div class="h3c">
+        <h4>通过symbol引用</h4>
+        <p>symbol可以吃值多色图标，可以设置大小，颜色等</p>
+        <div class="code">
+            三明治
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-sanmingzhi-01"></use>
+            </svg>
+        </div>
+        <div class="code">
+            包子
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-baozi-01"></use>
+            </svg>
+        </div>
+        <div class="code">
+            爆米花
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-baomihua-01"></use>
+            </svg>
+        </div>
+        <div class="code">
+            糖葫芦
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-tanghulu-01"></use>
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>

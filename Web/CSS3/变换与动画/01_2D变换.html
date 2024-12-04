@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <style>
+        .code {
+            margin-top: 20px;
+        }
+
+        .outer {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            display: inline-block;
+            margin-right: 150px;
+            position: relative;
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .inner100 {
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 50px;
+            position: absolute;
+            line-height: 100px;
+            text-align: center;
+            background-color: skyblue;
+        }
+
+        .inner-transform {
+            transform: translate(80px, 80px);
+        }
+
+        .inner-center {
+            background-color: skyblue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            /* 相对父元素的百分比 */
+            left: 50%;
+            top: 50%;
+            /* 相对自己的百分比 */
+            transform: translate(-50%, -50%);
+        }
+
+        .inner-scale {
+            /* transform: scaleX(50%); */
+            /* transform: scaleY(50%); */
+            /* transform: scale(0.8, 0.8); */
+            transform: scale(50%, 50%);
+            transform: scale(0.6);
+        }
+
+        .inner-rotate {
+            transform: rotate(30deg);
+            transform: translateZ(30deg);
+        }
+
+        .inner-skew {
+            transform: skewX(30deg);
+        }
+
+        .inner-transform-all {
+            transform: translate(100px, 10px) scale(0.5) rotate(30deg);
+        }
+
+        .inner-zero-point {
+            /* 关键词调整原点： 左上角原点 */
+            /* transform-origin: left top; */
+
+            /* 像素值调整 */
+            /* transform-origin: 50px, 50px; */
+
+            /* 百分比调整原点 */
+            transform-origin: 25% 25%;
+            /* 变换远点对位移没有影响 */
+            transform: translate(20px, 20px);
+            /* 变换原点，对选装有影响 */
+            transform: rotate(30deg);
+            /* 变换原点，对缩放有影响 */
+            transform: scale(40%);
+
+        }
+    </style>
+    <title>2D变换</title>
+</head>
+
+<body>
+    <h2>位移</h2>
+    <div class="h3c">
+        <p>子元素向右移动80px，向下移动80px，超出的部分被遮挡</p>
+        <div class="outer">
+            <div class="inner inner-transform">
+                内元素
+            </div>
+        </div>
+    </div>
+    <div class="code">
+        位移不能放在行内元素上
+    </div>
+
+    <div class="h3c">
+        <p>使用位移居中元素，位移相对定位的优先级更高</p>
+        <div class="outer">
+            <div class="inner-center">
+                内元素
+            </div>
+        </div>
+    </div>
+
+    <h2>缩放</h2>
+    <div class="h3c">
+        <p>缩放没有单位，内部文字和子元素也会被缩放</p>
+        <div class="outer">
+            <div class="inner inner-scale">内元素</div>
+        </div>
+    </div>
+
+    <div class="code">
+        缩放不能放在行内元素上
+    </div>
+
+
+    <h2>变换</h2>
+
+    <div class="h3c">
+        <div class="outer">
+            <div class="inner100 inner-rotate">
+                旋转
+            </div>
+        </div>
+    </div>
+
+    <h2>扭曲</h2>
+    <div class="h3c">
+        <div class="outer">
+            <div class="inner100 inner-skew">
+                扭曲
+            </div>
+        </div>
+    </div>
+
+    <h2>多重变换</h2>
+
+    <div class="h3c">
+        <p>将旋转放最后，缩放其次</p>
+        <div class="outer">
+            <div class="inner inner-transform-all">
+                内元素
+            </div>
+        </div>
+    </div>
+
+    <h2>变换原点</h2>
+    <div>变换原点，对缩放和旋转有影响，对位移无影响</div>
+    
+    <div class="h3c">
+        <div class="outer">
+            <div class="inner inner-zero-point">
+                内元素
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

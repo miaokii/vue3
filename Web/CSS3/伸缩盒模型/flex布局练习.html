@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//at.alicdn.com/t/c/font_4767130_o40l3ak7sca.js"></script>
+    <title>flex布局练习</title>
+
+    <style>
+        header {
+            height: 50px;
+            background-color: #4F4F4F;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .school {
+            display: flex;
+
+        }
+
+        .school span {
+            border: 1px solid white;
+            color: white;
+            font-size: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        main {
+            height: 800px;
+            /* background-image: url(../images/bg_large.jpeg); */
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .content .item {
+            width: 150px; 
+            height: 300px;
+            color:white ;
+            margin-right: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+            cursor: pointer;
+
+            transition: ease 0.25s;
+        }
+
+        .content .item:hover {
+            box-shadow: 0 0 20px gray;
+            transform: translateY(-10px) scale(1.1)
+        }
+
+        .item span {
+            flex-basis: 150px;    
+            line-height: 150px;
+        }
+
+        .content .item:last-child {
+            margin-right: 0;
+        }
+
+        .item1 {
+            background-color:#6766A6;
+        }
+        .item2 {
+            background-color:#E1AD5F;
+        }
+        .item3 {
+            background-color:#7CACD9;
+        }
+        .item4 {
+            background-color:#476793;
+        }
+        .item5 {
+            background-color:#8FC65A;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <svg class="icon logo" aria-hidden="true">
+            <use xlink:href="#icon-zhifubao"></use>
+        </svg>
+        <div class="school">
+            <span>国内校区</span>
+            <span>缅甸校区</span>
+            <span>非洲校区</span>
+            <span>美洲校区</span>
+        </div>
+    </header>
+
+    <main>
+       <div class="content">
+        <div class="item item1" >
+            <svg class="icon logo" aria-hidden="true">
+                <use xlink:href="#icon-apple"></use>
+            </svg>
+            <span>我的邮箱</span>
+        </div>
+        <div class="item item2">
+            <svg class="icon logo" aria-hidden="true">
+                <use xlink:href="#icon-cloudupload"></use>
+            </svg>
+            <span>云服务</span>
+        </div>
+        <div class="item item3">
+            <svg class="icon logo" aria-hidden="true">
+                <use xlink:href="#icon-smile-circle"></use>
+            </svg>
+            <span>手机课堂</span>
+        </div>
+        <div class="item item4">
+            <svg class="icon logo" aria-hidden="true">
+                <use xlink:href="#icon-aliwangwang"></use>
+            </svg>
+            <span>微信服务</span>
+        </div>
+        <div class="item item5">
+            <svg class="icon logo" aria-hidden="true">
+                <use xlink:href="#icon-chrome"></use>
+            </svg>
+            <span>在线客服</span>
+        </div>
+       </div>
+    </main>
+</body>
+
+</html>

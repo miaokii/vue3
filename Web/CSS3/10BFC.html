@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* display: flex; */
+        }
+
+        .outer {
+            width: 400px;
+            background-color: aliceblue;
+
+            /* float: left;
+            position: absolute;
+            display: inline-block;
+            display: table;
+            overflow: auto;
+            column-count: 1;
+            display: flow-root; */
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+        }
+
+        .inner1 {
+            background-color: orange;
+        }
+
+        .inner2 {
+            background-color: blue;
+        }
+
+        .inner3 {
+            background-color: pink;
+        }
+    </style>
+    <title>BFC</title>
+</head>
+
+<body>
+    <h2>BFC概念</h2>
+    <p>BFC（block formatting context）是块级格式上下文，理解为一个元素的特意功能</p>
+    <p>该特异功能默认状态下处于关闭状态，当元素满足了某些条件后，特异功能被激活</p>
+    <p>激活特异功能：该元素创建了BFC</p>
+
+    <h2>开启BFC解决什么问题</h2>
+    <ol>
+        <li>元素开启BFC，其子元素不会产生margin塌陷问题</li>
+        <li>元素开启BFC，自己不会被其他浮动元素覆盖</li>
+        <li>元素开启BFC，就算其子元素都浮动，元素自身高度也不会塌陷</li>
+    </ol>
+
+    <h2>开启BFC</h2>
+    <ul>
+        <li>根元素</li>
+        <li>浮动元素</li>
+        <li>绝对定位元素、固定定位元素</li>
+        <li>行内块元素</li>
+        <li>表格单元格：table、thead、tbody、tfoot、th、td、tr、caption</li>
+        <li>overflow部位visible的块元素</li>
+        <li>伸缩项目</li>
+        <li>多列容器</li>
+        <li>column-span为nil的元素（即使该元素没有包裹在多列容器中）</li>
+        <li>dispaly的值为flow-row</li>
+    </ul>
+
+    <h2>BFC解决塌陷</h2>
+
+    <div class="outer">
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+        <div class="inner inner3"></div>
+    </div>
+</body>
+
+</html>

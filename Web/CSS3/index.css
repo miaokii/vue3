@@ -22,12 +22,32 @@ h3 {
     background-color: #00000010;
     overflow: hidden;
     padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
-ul, ol {
+ul{
     list-style-type: none;
 }
 
 li {
     list-style-position: inside;
+}
+
+.code {
+    background-color: beige;
+    border-radius: 20px;
+    color: black;
+    padding: 20px;
+    margin-left: 50px;
+    font-size: 20px;
+    /* white-space: pre-line; */
+    display: inline-block;
+    max-width: 90%;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
 }
