@@ -1,0 +1,12 @@
+@import './base.css';
+
+body {
+  color: var(--vt-c-black);
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.4s;
+  color: inherit;
+}

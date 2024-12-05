@@ -197,7 +197,7 @@ function changeFullName() {
 
 #### 2.2.6 watch监视
 
-**watch**用于监视数据的变化，vue3中的**watch**只能监视4中数据的变化
+**watch**用于监视数据的变化，vue3中的**watch**只能监视4种数据的变化
 
 - **ref**定义的数据
 - **reactive**定义的数据
