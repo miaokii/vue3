@@ -16,7 +16,7 @@ const router = createRouter({
     routes: [
         {
             path:'/home',
-            component: YocHome,
+            component: YocHome
         },
         {
             path:'/work',

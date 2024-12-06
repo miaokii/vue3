@@ -27,7 +27,8 @@ import { RouterView } from 'vue-router';
   align-items: center;
   position: fixed;
   box-shadow: 0 10px 20px lightgray;
-  background: var(--vt-c-white);
+  background: var(--color-background);
+  backdrop-filter: blur(10px);
 }
 
 .yoc-nav {

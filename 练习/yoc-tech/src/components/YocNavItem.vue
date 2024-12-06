@@ -18,12 +18,12 @@ defineProps<{
 }
 
 .head-nav-list-active {
-    color: var(--color-selected);
+    color: var(--color-main);
 }
 
 .head-nav-list-active::before {
     content: ' ';
-    border-left: 3px solid var(--color-selected);
+    border-left: 3px solid var(--color-main);
     font-size: 0.9em;
     line-height: 0.9em;
 }

@@ -1,7 +1,6 @@
 <template>
     <div class="head-nav">
         <a class="logo" href="https://www.yoc.tech"><img src="@/assets/logo.png" alt="logo"></a>
-
         <div class="head-nav-list">
             <!-- 通过字符串跳转 -->
             <RouterLink to="/home" active-class="head-nav-list-active">首页</RouterLink>
@@ -22,7 +21,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--vt-c-white);
 }
 
 .head-nav-list a {
@@ -35,22 +33,42 @@
 }
 
 .head-nav-list a:hover {
-    color: var(--color-selected);
+    color: var(--color-main);
 }
 
 .head-nav-list-active {
-    color: var(--color-selected);
+    color: var(--color-main);
     position: relative;
 }
 
 .head-nav-list-active::before {
     content: ' ';
     position: absolute;
-    background: var(--color-selected);
+    background: var(--color-main);
     display: block;
     left: -10px;
     width: 4px;
     height: 1em;
     bottom: 1px;
+}
+
+@media (max-width: 800px) {
+    .logo img {
+        height: calc(var(--navigation-height) - 30px)
+    }
+
+    .logo {
+        vertical-align: middle;
+    }
+
+    .head-nav-list a {
+        padding-right: 1rem;
+        font-size: 1rem;
+    }
+
+    .head-nav-list-active::before {
+        content: none;
+    }
+
 }
 </style>

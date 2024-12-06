@@ -33,10 +33,7 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
-  --color-main: #2B6DC3;
-
   --section-gap: 160px;
-  --navigation-height: 6.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,10 +47,6 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
-  }
-
-  img {
-    filter: brightness(0.5);
   }
 }
 
@@ -69,13 +62,11 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
-  font-size: 15px;
   transition:
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Microsoft YaHei,
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -88,16 +79,8 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
+  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (max-width: 800px) {
-  html {
-    font-size: 16px;
-  }
-  :root {
-    --navigation-height: 4rem;
-  }
 }
