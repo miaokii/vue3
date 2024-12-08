@@ -5,13 +5,14 @@ import zhCN from "./locales/zh-CN.ts";
 import { computed } from "vue";
 
 const messages = {
-    'en-US': enUS,
-    'zh-CH': zhCN
+    '简体中文': zhCN,
+    'English': enUS
 }
 
 const i18n = createI18n({
     // 默认语言
-    locale: 'zh-CN',
+    locale: '简体中文',
+    // locale: 'en-US',
     // 组合式api
     legacy: false,
     // 语言包
