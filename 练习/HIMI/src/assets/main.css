@@ -1,0 +1,19 @@
+@import './base.css';
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-main);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+a:hover {
+  color: #998ea8;
+}
+
