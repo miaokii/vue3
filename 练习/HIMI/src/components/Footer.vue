@@ -11,8 +11,9 @@
             <span>{{ $t('footer.address') }}</span>
         </div>
 
-        <div class="enquire-now">{{ $t('footer.enquireNow') }}</div>
-        <div>{{ $t('footer.copyright') }}</div>
+        <button class="border-button enquire-now">{{ $t('footer.enquireNow') }}</button>
+        <!-- <div class="footer-copyright">{{ $t('footer.copyright') }}</div> -->
+        <div class="footer-copyright">{{ $t('footer.copyright') }} @ {{ $t('footer.copyrightContent') }}</div>
     </div>
 </template>
 
@@ -21,10 +22,9 @@
 </script>
 
 <style scoped>
-
 .footer-body {
     background-color: var(--color-main);
-    padding: 0 1rem;
+    padding: 0 1rem 2rem 1rem;
     color: white;
 
     display: flex;
@@ -34,7 +34,7 @@
 
 .footer-policies a {
     color: inherit;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     padding-right: 10px;
 }
@@ -44,14 +44,20 @@
 }
 
 .footer-body div {
-    padding: 15px 0;
+    padding: 1rem 0;
+}
+
+.footer-address {
+    font-size: 1.5rem;
 }
 
 .enquire-now {
-    border: 1px solid white;
-    border-radius: 20px;
-    height: 40px;
-    line-height: 40px;
+    border: 2px solid white;
+    color: inherit;
 }
 
+.footer-copyright {
+    color: var(--color-background-soft);
+    letter-spacing: 1px;
+}
 </style>

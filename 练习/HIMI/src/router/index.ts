@@ -1,4 +1,4 @@
-import Home from '@/pages/Home.vue'
+import Home from '@/pages/Home/Home.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -10,19 +10,19 @@ const router = createRouter({
     },
     {
       path: '/aboutus',
-      component: () => import('@/pages/AboutUS.vue'),
+      component: () => import('@/pages/AboutUS/AboutUS.vue'),
     },
     {
       path: '/services',
-      component: () => import('@/pages/Services.vue'),
+      component: () => import('@/pages/Services/Services.vue'),
     },
     {
       path: '/joinus',
-      component: () => import('@/pages/JoinUS.vue'),
+      component: () => import('@/pages/JoinUS/JoinUS.vue'),
     },
     {
       path: '/contactus',
-      component: () => import('@/pages/ContactUS.vue'),
+      component: () => import('@/pages/ContactUS/ContactUS.vue'),
     },
     {
       path: '/teamsAndPolicies',

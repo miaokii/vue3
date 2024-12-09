@@ -11,7 +11,7 @@ const messages = {
 
 const i18n = createI18n({
     // 默认语言
-    locale: '简体中文',
+    locale: 'ENGLISH',
     // 组合式api
     legacy: false,
     // 语言包

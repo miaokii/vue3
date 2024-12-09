@@ -34,6 +34,7 @@
   --color-text: var(--vt-c-text-light-1);
 
   --color-main: #081359;
+  --color-main-hover: #8A8EA6;
 
   --section-gap: 160px;
 }
@@ -62,7 +63,8 @@
 }
 
 html {
-  font-size: 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 body {
@@ -72,7 +74,9 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
+  line-height: 1.5;
   font-family:
+    futura-pt,
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -88,4 +92,19 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: futura-pt;
+  src: url('@/assets/fonts/futura.ttf')
+}
+
+@font-face {
+  font-family: futura-pt-weight;
+  src: url('@/assets/fonts/12671.ttf');
+}
+
+@font-face {
+  font-family: hypatia-sans-pro;
+  src: url('@/assets/fonts/hypatia-sans-pro.ttf');
 }

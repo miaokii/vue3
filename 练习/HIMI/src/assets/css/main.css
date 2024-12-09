@@ -1,0 +1,45 @@
+@import './base.css';
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-main);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+a:hover {
+  color: var(--color-main-hover);
+}
+
+.border-button {
+  border: 2px solid var(--color-main);
+  border-radius: 22px;
+  height: 44px;
+
+  background-color: transparent;
+  color: var(--color-main);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  padding: 0 2.5rem;
+  margin: 1rem 0;
+}
+
+/* 文字部分，边距 */
+.body-m {
+  margin: auto 7vw;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 1em 0;
+}

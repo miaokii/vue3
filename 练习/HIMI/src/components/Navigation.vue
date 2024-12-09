@@ -1,13 +1,13 @@
 <template>
     <div class="nav-body">
-        <span class="nav-logo">HIMI CONSULTING</span>
+        <span class="nav-logo"><span class="nav-himi">HIMI</span> CONSULTING</span>
 
         <div class="nav-list">
             <RouterLink to="/home" active-class="nav-list-active">{{ $t('nav.home') }}</RouterLink>
+            <RouterLink to="/aboutus" active-class="nav-list-active">{{ $t('nav.aboutus') }}</RouterLink>
             <RouterLink to="/services" active-class="nav-list-active">{{ $t('nav.services') }}</RouterLink>
             <RouterLink to="/joinus" active-class="nav-list-active">{{ $t('nav.joinus') }}</RouterLink>
             <RouterLink to="/contactus" active-class="nav-list-active">{{ $t('nav.contactus') }}</RouterLink>
-            <RouterLink to="/teamsAndPolicies" active-class="nav-list-active">{{ $t('nav.aboutus') }}</RouterLink>
 
             <select class="nav-list-langs" v-model="$i18n.locale">
                 <option v-for="local in $i18n.availableLocales" :key="'local-${local}'" :value="local">
@@ -40,15 +40,18 @@
     letter-spacing: 2px;
 }
 
+.nav-himi {
+    color: var(--color-main-hover);
+}
+
 .nav-list a {
     margin-right: 20px;
     font-weight: bold;
 }
 
 .nav-list-active {
-  color: #998ea8;
+  color: var(--color-main-hover);
 }
-
 
 .nav-list-langs {
     border: none;
@@ -56,6 +59,8 @@
     color: inherit;
     font-size: inherit;
     font-weight: bold;
+
+    appearance: none;
 }
 
 .nav-list-langs::after {
