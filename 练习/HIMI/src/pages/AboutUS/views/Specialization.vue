@@ -4,7 +4,7 @@
         <div class="specialization-list">
             <div class="specialization-item" v-for="(json, idx) in bizinitiatives" :key="idx">
                 <!-- TODO 更改图片路径 -->
-                <img src="../../../assets/images/aboutus/s1.png" alt="">
+                <img :src="getAssetsImages(`aboutus/${json.image}`)" alt="">
                 <div class="specialization-title">{{ json.title }}</div>
                 <div class="specialization-content">{{ json.content }}</div>
             </div>
@@ -14,6 +14,7 @@
 
 <script setup lang="ts" name="specialization">
 import { t } from '@/i18n';
+import getAssetsImages from '@/utils/pubUse';
 import { computed } from 'vue';
 
 

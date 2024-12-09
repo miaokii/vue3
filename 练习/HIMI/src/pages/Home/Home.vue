@@ -1,7 +1,7 @@
 <template>
     <Welcome />
     <Introduce />
-    <ServiceList/>
+    <ServiceList :in-home="true"/>
     <HomeAbout/>
 </template>
 
@@ -16,5 +16,9 @@ import HomeAbout from './views/HomeAbout.vue'
 <style scoped>
 .home-body {
     min-height: 80vh;
+}
+
+.services-item-content {
+    border-left: none;
 }
 </style>

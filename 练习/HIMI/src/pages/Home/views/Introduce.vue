@@ -8,7 +8,7 @@
         <div class="introduce-list">
             <div class="introduce-item" v-for="(json, idx) in introduce_jsons" :key="idx">
                 <!-- TODO: 更改图片路径 -->
-                <img src='../../../assets/images/home/image00002.png' alt="">
+                 <img :src='getAssetsImages(json.image)' alt="">
                 <span class="introduce-item-title">{{ json.title }}</span>
                 <span class="introduce-item-content">{{ json.content }}</span>
             </div>
@@ -23,10 +23,10 @@ import { computed, reactive } from 'vue';
 
 let introduce_jsons = computed(() => {
     return [
-        { image: 'image00001.png', title: t('home.introduce_international_title'), content: t('home.introduce_international_content') },
-        { image: 'image00002.png', title: t('home.introduce_area_title'), content: t('home.introduce_area_content') },
-        { image: 'image00003.png', title: t('home.introduce_commitment_title'), content: t('home.introduce_commitment_content') },
-        { image: 'image00004.png', title: t('home.introduce_industry_title'), content: t('home.introduce_industry_content') },
+        { image: 'home/in1.png', title: t('home.introduce_international_title'), content: t('home.introduce_international_content') },
+        { image: 'home/in2.png', title: t('home.introduce_area_title'), content: t('home.introduce_area_content') },
+        { image: 'home/in3.png', title: t('home.introduce_commitment_title'), content: t('home.introduce_commitment_content') },
+        { image: 'home/in4.png', title: t('home.introduce_industry_title'), content: t('home.introduce_industry_content') },
     ]
 })
 
@@ -36,6 +36,7 @@ let introduce_jsons = computed(() => {
 .introduce-body {
     margin-top: 40px;
     margin-bottom: 40px;
+    text-align: start;
 }
 
 .introduce-head {
@@ -44,7 +45,7 @@ let introduce_jsons = computed(() => {
 }
 
 .introduce-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-family: futura-pt-weight;
     width: 50%;
     text-align: center;
@@ -52,6 +53,7 @@ let introduce_jsons = computed(() => {
 }
 
 .introduce-content {
+    padding-left: 1em;
     width: 50%;
 }
 
@@ -70,7 +72,9 @@ let introduce_jsons = computed(() => {
 }
 
 .introduce-item img {
-    width: 50px;
+    width: 45%;
+    max-width: 130px;
+    min-width: 50px;
 }
 
 .introduce-item-title {

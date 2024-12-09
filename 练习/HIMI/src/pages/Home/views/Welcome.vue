@@ -17,7 +17,8 @@
     background-image: url("@/assets/images/home/welcome.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 70vh;
+    background-position: 0;
+    height: 75vh;
     color: var(--color-background);
 
     display: flex;
