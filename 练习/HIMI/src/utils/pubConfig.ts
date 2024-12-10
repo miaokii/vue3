@@ -13,12 +13,12 @@ const himiConfig = {
         zh: '星期一至五9:00至18:30，公众假期除外'
     },
 
-    lat: 0,
-    lng: 0,
+    lat: 1.27830,
+    lng: 103.84791,
 
     map: {
-        mapId: '',
-        zoom: 4,
+        mapId: '2d7b4a3b1064ec86',
+        zoom: 17,
     }
 }
 

@@ -1,11 +1,17 @@
 <template>
     <div class="welcome-body">
         <span>{{ $t('home.welcome_home') }}</span>
-        <button class="border-button welcome_find_more">{{ $t('home.find_more') }}</button>
+        <button class="border-button" @click="pushServices">{{ $t('home.find_more') }}</button>
     </div>
 </template>
 
 <script setup lang="ts" name="welcome">
+import { useRouter } from 'vue-router';
+
+let router = useRouter()
+function pushServices() {
+    router.push('/services')
+}
 
 </script>
 
@@ -35,11 +41,15 @@
     text-align: center;
 }
 
-.welcome_find_more {
+.border-button {
     border: none;
     background-color: var(--color-main);
     color: inherit;
     height: 60px;
     border-radius: 30px;
+}
+
+.border-button:hover {
+    opacity: 0.9;
 }
 </style>

@@ -3,21 +3,29 @@
         <div class="home-about-content">
             <h2>{{ $t('home.about_us') }}</h2>
             <div class="about-us-content">{{ $t('home.about_us_content') }}</div>
-            <button class="border-button">{{ $t('home.read_more') }}</button>
+            <button class="border-button" @click="pushAboutUS">{{ $t('home.read_more') }}</button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts" name="homeAbout">
+import { useRouter } from 'vue-router';
+
+let router = useRouter()
+
+function pushAboutUS() {
+    router.push('/aboutus')
+}
 
 </script>
 
 <style scoped>
 .home-about-body {
-    height: 56vw;
+    min-height: 70vh;
     background-image: url('@/assets/images/home/about.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 0;
     color: var(--color-background);
 
     display: flex;
@@ -36,6 +44,7 @@ h2 {
     font-weight: bold;
     margin-bottom: 0;
     text-align: right;
+    margin-top: 5rem;
 }
 
 .about-us-content {
@@ -48,10 +57,18 @@ h2 {
 .border-button {
     color: inherit;
     border: 2px solid currentColor;
+    margin-bottom: 5rem;
+}
+
+.border-button:hover {
+    background-color: var(--color-background);
+    color: var(--color-main);
+    border-color: var(--color-background);
 }
 
 @media (max-width: 650px) {
     .home-about-body {
+        min-height: auto;
         height: auto;
         color: var(--color-background);
         display: block;
@@ -72,6 +89,10 @@ h2 {
         font-size: 1em;
         padding-left: 20px;
         border-left: none;
+    }
+
+    .border-button {
+        margin-bottom: 0;
     }
 }
 </style>

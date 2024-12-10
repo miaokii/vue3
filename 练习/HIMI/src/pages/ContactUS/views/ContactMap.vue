@@ -1,6 +1,8 @@
 <template>
     <div class="body-m contact-map-body">
-        <div class="contact-map"></div>
+        <div class="contact-map">
+            <HIMIMap />
+        </div>
         <div class="contact-content">
             <h2>{{ $t('contact.des') }}</h2>
             <div class="contact-list">
@@ -10,12 +12,12 @@
                 </div>
                 <div class="contact-email">
                     <div class="contact-list-title">{{ $t('contact.email') }}</div>
-                    <div class="contact-list-content">{{ himiConfig.email }} </div>
+                    <Mail class="contact-list-content" :from="himiConfig.email"/>
                 </div>
                 <div class="contact-number">
                     <div class="contact-list-title">{{ $t('contact.contact_number') }}</div>
                     <div class="contact-list-content">
-                        <span class="contact-phone" v-for="(phone, idx) in himiConfig.contact_number" :key="idx" @click="call(phone)">{{ phone }}</span>
+                        <Phone class="contact-phone" v-for="(phone, idx) in himiConfig.contact_number" :key="idx" :phone="phone"/>
                     </div>
                 </div>
                 <div class="business-hour">
@@ -28,6 +30,9 @@
 </template>
 
 <script setup lang="ts" name="contactMap">
+import HIMIMap from '@/components/HIMIMap.vue';
+import Mail from '@/components/Mail.vue';
+import Phone from '@/components/Phone.vue';
 import himiConfig from '@/utils/pubConfig';
 
 function call(phone: string) {
@@ -38,7 +43,8 @@ function call(phone: string) {
 
 <style scoped>
 .contact-map-body {
-    margin: 4rem auto; 
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     display: flex;
 }
 
@@ -91,5 +97,4 @@ function call(phone: string) {
         margin-top: 2rem;
     }
 }
-
 </style>

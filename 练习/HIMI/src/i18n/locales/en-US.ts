@@ -91,7 +91,7 @@ export default {
         join_today: 'Come Join Us Today!',
 
         name: 'Name',
-        email: 'Email',
+        phone: 'Telephone number',
         subject: 'Subject',
         message: 'Message',
         submit: 'SUBMIT',

@@ -7,7 +7,6 @@
             <div>{{ $t('join.join_content') }}</div>
         </div>
     </div>
-    <div class="divider"></div>
 </template>
 
 <script setup lang="ts" name="joinHead">
@@ -28,9 +27,11 @@ import getAssetsImages from '@/utils/pubUse';
 }
 
 .join-body {
-    margin: 0 7rem;
     display: flex;
     align-items: flex-start;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .join-body img {
@@ -43,9 +44,21 @@ import getAssetsImages from '@/utils/pubUse';
     text-align: start;
 }
 
-.divider {
-    margin: 2rem 7rem;
-    height: 1px;
-    background-color: var(--color-border);
+@media (max-width: 650px) {
+    .join-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .join-body img {
+        width: 50%;
+    }
+
+    .join-body div {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
 }
 </style>

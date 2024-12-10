@@ -86,7 +86,7 @@ export default {
         join_today: '今天就加入我们的团队吧！',
 
         name: '姓名',
-        email: '电邮',
+        phone: '电话号码',
         subject: '事项',
         message: '内容',
         submit: '提交',

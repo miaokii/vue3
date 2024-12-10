@@ -6,26 +6,29 @@
             <div>{{ $t('join.internship_content') }}</div>
             <h3>{{ $t('join.parttime') }}</h3>
             <div>{{ $t('join.parttime_content') }}</div>
-            <div>{{ $t('join.send_mail') }} <span class="join-email" @click="sendEmail"> {{himiConfig.email}} </span></div>
+            <div>{{ $t('join.send_mail') }}
+                <Mail class="join-email" :from="himiConfig.email"/>
+            </div>
         </div>
         <div class="join-right-body">
             <h3>{{ $t('join.join_today') }}</h3>
-            <form action="#">
+            <form :action="url">
                 <div>
+                    <!-- mailto:sample@fly63.com?subject=test&cc=sample@hotmail.com&subject=主题&body=内容 -->
                     <label for="name">{{ $t('join.name') }}</label>
-                    <input type="text" name='name' id="name" maxlength="10">
+                    <input type="text" name='name' id="name" maxlength="10" required :value="name">
                 </div>
                 <div>
-                    <label for="email">{{ $t('join.email') }}</label>
-                    <input type="email" name='email' id="email">
+                    <label for="phone">{{ $t('join.phone') }}</label>
+                    <input type="tel" name='email' id="email" required :value="phone">
                 </div>
                 <div>
                     <label for="subject">{{ $t('join.subject') }}</label>
-                    <input type="text" name='subject' id="subject">
+                    <input type="text" name='subject' id="subject" required :value="subject">
                 </div>
                 <div>
                     <label for="message">{{ $t('join.message') }}</label>
-                    <textarea name="message" id="message"></textarea>
+                    <textarea name="message" id="message" required :value="message"></textarea>
                 </div>
                 <input type="submit" class="border-button" :value="$t('join.submit')">
             </form>
@@ -34,16 +37,24 @@
 </template>
 
 <script setup lang="ts" name="joinForm">
+import Mail from '@/components/Mail.vue';
+import { t } from '@/i18n';
 import himiConfig from '@/utils/pubConfig';
+import { computed, ref } from 'vue';
 
-function sendEmail() {
+let name = ref('')
+let phone = ref('')
+let subject = ref('')
+let message = ref('')
 
-}
+let url = computed(()=>{
+    let body = t('join.name') + ':' + name + '\n' + t('join.phone') + ':' + phone
+    return `mailto:${himiConfig.email}?subject=${subject}&body=${body}`
+})
 
 </script>
 
 <style scoped>
-
 .join-form-body {
     display: flex;
     text-align: start;
@@ -125,5 +136,26 @@ form textarea {
     padding: 1rem 3rem;
     width: auto;
     height: auto;
+}
+
+@media (max-width: 650px) {
+    .join-form-body {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .join-left-body,
+    .join-right-body {
+        width: 100%;
+        margin: 0;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    form label {
+        text-align: start;
+    }
 }
 </style>
