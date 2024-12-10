@@ -30,11 +30,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .footer-policies a {
     color: inherit;
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: bold;
     padding-right: 10px;
 }
@@ -48,6 +49,7 @@
 }
 
 .footer-address {
+    text-align: center;
     font-size: 1.5rem;
 }
 
@@ -59,5 +61,17 @@
 .footer-copyright {
     color: var(--color-background-soft);
     letter-spacing: 1px;
+}
+
+@media (max-width: 650px) {
+    .enquire-now {
+        border: 2px solid white;
+        color: inherit;
+    }
+
+    .footer-copyright {
+        color: var(--color-background-soft);
+        letter-spacing: 1px;
+    }
 }
 </style>

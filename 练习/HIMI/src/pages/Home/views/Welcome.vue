@@ -30,8 +30,9 @@
 .welcome-body span {
     font-size: 2rem;
     font-family: futura-pt-weight;
-    /* text-shadow: 0 0 10px lightgray; */
+    margin: 0 1rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .welcome_find_more {

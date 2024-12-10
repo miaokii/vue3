@@ -8,7 +8,7 @@
         <div class="introduce-list">
             <div class="introduce-item" v-for="(json, idx) in introduce_jsons" :key="idx">
                 <!-- TODO: 更改图片路径 -->
-                 <img :src='getAssetsImages(json.image)' alt="">
+                <img :src='getAssetsImages(json.image)' alt="">
                 <span class="introduce-item-title">{{ json.title }}</span>
                 <span class="introduce-item-content">{{ json.content }}</span>
             </div>
@@ -53,7 +53,7 @@ let introduce_jsons = computed(() => {
 }
 
 .introduce-content {
-    padding-left: 1em;
+    padding-left: 1rem;
     width: 50%;
 }
 
@@ -80,6 +80,51 @@ let introduce_jsons = computed(() => {
 .introduce-item-title {
     font-weight: bold;
     letter-spacing: 0;
-    margin: 1.5em 0;
+    margin: 1.5rem 0;
+}
+
+@media (max-width:650px) {
+
+    .introduce-head {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .introduce-title {
+        font-size: 1.5rem;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .introduce-content {
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .introduce-list {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .introduce-item {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    .introduce-item img {
+        width: 20%;
+    }
+
+    .introduce-item-title {
+        margin: 0.5rem 0;
+    }
+
+    .introduce-item-content {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
 }
 </style>

@@ -50,4 +50,28 @@ h2 {
     border: 2px solid currentColor;
 }
 
+@media (max-width: 650px) {
+    .home-about-body {
+        height: auto;
+        color: var(--color-background);
+        display: block;
+    }
+
+    .home-about-content {
+        width: 100%;
+        padding: 3rem 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 0;
+    }
+
+    .about-us-content {
+        margin: 1em 0;
+        font-size: 1em;
+        padding-left: 20px;
+        border-left: none;
+    }
+}
 </style>

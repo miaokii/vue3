@@ -1,3 +1,5 @@
+import himiConfig from "@/utils/pubConfig";
+
 export default {
     nav: {
         home: 'HOME',
@@ -12,7 +14,7 @@ export default {
         aboutus: 'About Us',
         teamspolicies: 'Terms & Conditions',
         landlineNumber: '+65 6904 8356 ',
-        address: '160 Robinson Road, #26-09, Singapore 068914',
+        address: himiConfig.address.en,
         enquireNow: 'ENQUIRE NOW',
         copyright: 'Copyright',
         copyrightContent: '2024 HIMI Consulting Pte. Ltd. All Rights Reserved.'
@@ -78,6 +80,28 @@ export default {
 
     join: {
         join_us: 'Join Us',
-        join_content: 'In the past 20 years, we have helped individuals achieve significant results and achievements in career planning and transformation of small and medium-sized enterprises. We welcome elites from all walks of life to join our team.'
+        join_content: 'In the past 20 years, we have helped individuals achieve significant results and achievements in career planning and transformation of small and medium-sized enterprises. We welcome elites from all walks of life to join our team.',
+        join_need: 'If there is a space for everyone, we are certain there will be a space for you with us here too.  We are more than pleased to welcome dynamic individuals with pleasant working attitude who want to be part of the HIMI CONSULTING journey.',
+        internship: 'Internship',
+        internship_content: 'We believe the course of learning matures when one steps into the corporate world.  Whether you are still studying, finishing school or have recently graduated from your institutions, we look forward to discussing your career start with us.',
+        parttime: 'Part-time or Full-time Employment',
+        parttime_content: 'If you already have working experience and you are looking to expand your horizon in a supportive working environment, drop us a note and we  shall explore our opportunities together be it a part-time or full-time employment.',
+        send_mail: 'For interested applicants, you may send your CV to',
+
+        join_today: 'Come Join Us Today!',
+
+        name: 'Name',
+        email: 'Email',
+        subject: 'Subject',
+        message: 'Message',
+        submit: 'SUBMIT',
+    },
+
+    contact: {
+        des: 'Conveniently located in the heart of Singapore’s Central Business District',
+        address: 'Address:',
+        email: 'Email:',
+        contact_number: 'Contact Number:',
+        business_hours: 'Business Hours :'
     }
 }

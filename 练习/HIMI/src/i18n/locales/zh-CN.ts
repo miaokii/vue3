@@ -1,3 +1,5 @@
+import himiConfig from "@/utils/pubConfig";
+
 export default {
     nav: {
         home: '主页',
@@ -12,7 +14,7 @@ export default {
         aboutus: '关于我们',
         teamspolicies: '条款',
         landlineNumber: '+65 6904 8356 ',
-        address: '160 Robinson Road, #26-09, Singapore 068914',
+        address: himiConfig.address.zh,
         enquireNow: '立刻咨询',
         copyright: '版权所有',
         copyrightContent: '2024 HIMI Consulting Pte. Ltd. 保留所有权利'
@@ -73,7 +75,28 @@ export default {
     },
     join: {
         join_us: '加入我们',
-        join_content: 'In the past 20 years, we have helped individuals achieve significant results and achievements in career planning and transformation of small and medium-sized enterprises. We welcome elites from all walks of life to join our team.'
+        join_content: '在新二十余年，我们已经先后帮助个人在职场规划，以及中小型企业转型中取得明显成绩和成就。欢迎各界精英人士加入我们的团队。',
+        join_need: '如果这里有每个人的空间，我们相信这里也会有你的空间。我们非常欢迎充满活力、工作态度愉快的人士加入嗨米咨询之旅。',
+        internship: '实习',
+        internship_content: '我们相信，当一个人踏入企业世界时，学习的过程就成熟了。无论您是仍在学习，完成学业还是刚刚从您的机构毕业，我们都期待着与我们讨论您的职业生涯开始。',
+        parttime: '兼职或全职工作',
+        parttime_content: '如果你已经有了工作经验，并且希望在一个支持性的工作环境中拓展你的视野，请给我们留言，我们将一起寻找机会，无论是兼职还是全职工作。',
+        send_mail: '有意者可将简历发送至',
 
+        join_today: '今天就加入我们的团队吧！',
+
+        name: '姓名',
+        email: '电邮',
+        subject: '事项',
+        message: '内容',
+        submit: '提交',
+    },
+
+    contact: {
+        des: '交通便利，位于新加坡中央商务区的心脏地带',
+        address: '地址:',
+        email: '电子邮件:',
+        contact_number: '联系电话:',
+        business_hours: '工作时间:'
     }
 }

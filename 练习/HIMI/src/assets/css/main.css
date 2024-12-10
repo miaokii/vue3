@@ -18,18 +18,21 @@ a:hover {
 }
 
 .border-button {
+  margin: 1rem 0;
   border: 2px solid var(--color-main);
-  border-radius: 22px;
-  height: 44px;
-
+  border-radius: 100px;
+  padding: 1rem 3rem;
   background-color: transparent;
+
   color: var(--color-main);
   font-size: 0.9rem;
   font-weight: bold;
   letter-spacing: 2px;
+}
 
-  padding: 0 2.5rem;
-  margin: 1rem 0;
+.border-button:hover {
+  background-color: var(--color-main);
+  color: var(--color-background);
 }
 
 /* 文字部分，边距 */
@@ -45,9 +48,15 @@ h2 {
   margin: 1em 0;
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1400px) {
   .body-m {
-    margin: auto;
-    max-width: 1500px;
+    margin: auto calc((100% - 1200px) / 2);
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 650px) {
+  .body-m {
+    margin: auto 20px;
   }
 }

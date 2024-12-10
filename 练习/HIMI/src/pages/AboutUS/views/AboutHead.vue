@@ -15,22 +15,26 @@
 </script>
 
 <style scoped>
-
 .about-head-body {
     text-align: center;
 }
 
 .head-back {
     background-image: url('@/assets/images/aboutus/aboutus.png');
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 0 -200px;
+    background-position: 0;
     height: 26vw;
 }
 
 .who-body div {
-    margin-bottom: 2em;
-    
+    margin-bottom: 2rem;
 }
 
+@media (max-width: 650px) {
+
+    .who-body div {
+        margin-bottom: 1rem;
+    }
+}
 </style>

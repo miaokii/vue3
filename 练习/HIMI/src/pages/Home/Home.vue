@@ -14,11 +14,4 @@ import HomeAbout from './views/HomeAbout.vue'
 </script>
 
 <style scoped>
-.home-body {
-    min-height: 80vh;
-}
-
-.services-item-content {
-    border-left: none;
-}
 </style>
