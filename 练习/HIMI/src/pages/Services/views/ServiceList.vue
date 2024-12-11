@@ -1,37 +1,32 @@
 <template>
     <h2>{{ $t('services.our_services') }}</h2>
     <div class="body-m services-body">
-        <div class="services-item" v-for="(json, idx) in services_jsons" :key="idx">
+        <div class="services-item" v-for="(service_type, idx) in service_types" :key="idx">
             <!-- TODO: 设置图片路径 -->
             <!-- <img src="../../../assets/images/services/serverse01.jpg" alt=""> -->
-            <img :src="getAssetsImages(`services/${json.image}`)" alt="">
-            <span class="services-item-title">{{ json.title }}</span>
-            <span :class="['services-item-content', inHome ? '' : 'service-item-content-left-border']">{{ json.content
+            <img :src="getAssetsImages(`services/${service_map[service_type].image}`)" alt="">
+            <span class="services-item-title">{{ service_map[service_type].title }}</span>
+            <span :class="['services-item-content', inHome ? '' : 'service-item-content-left-border']">{{ service_map[service_type].content
                 }}</span>
-            <button class="border-button">{{ $t('services.read_more') }}</button>
+            <button class="border-button" @click="pushServiceDetail(service_type)">{{ $t('services.read_more') }}</button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts" name="services">
-import { t } from '@/i18n';
+import { service_map, service_types, ServiceType } from '@/types/service';
 import getAssetsImages from '@/utils/pubUse';
-import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 defineProps<{
     inHome?: boolean
 }>()
 
-let services_jsons = computed(() => {
-    return [
-        { image: 'serverse01.png', title: t('services.incorporation'), content: t('services.incorporation_content') },
-        { image: 'serverse02.png', title: t('services.secretarial'), content: t('services.secretarial_content') },
-        { image: 'serverse03.png', title: t('services.taxation'), content: t('services.taxation_content') },
-        { image: 'serverse04.png', title: t('services.advisory'), content: t('services.advisory_content') },
-        { image: 'serverse05.png', title: t('services.agency'), content: t('services.agency_content') },
-        { image: 'serverse06.png', title: t('services.incubator'), content: t('services.incubator_content') },
-    ]
-})
+let router = useRouter()
+
+function pushServiceDetail(type: ServiceType) {
+    router.push(`/service_detail/${type}`)
+}
 
 </script>
 

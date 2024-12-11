@@ -29,6 +29,10 @@ const router = createRouter({
       component: () => import('@/pages/Disclaimer.vue'),
     },
     {
+      path: '/service_detail/:service_type',
+      component: () => import('@/pages/Services/views/ServiceDetail.vue'),
+    },
+    {
       path: '/',
       redirect: '/home'
     },

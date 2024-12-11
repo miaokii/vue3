@@ -17,8 +17,6 @@ import HIMIMap from '@/components/HIMIMap.vue';
 
 <style scoped>
 .map-body {
-
-    background-color: aquamarine;
     padding: 1rem 7vw 0.5em 7vw;
     aspect-ratio: 1.6;
 }

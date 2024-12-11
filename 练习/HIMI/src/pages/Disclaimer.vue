@@ -17,7 +17,6 @@
 </script>
 
 <style scoped>
-
 .disclaimer-body {
     padding: 0 3rem;
     margin-bottom: 3rem
@@ -44,4 +43,21 @@ p {
     text-indent: 2em;
 }
 
+@media (max-width:650px) {
+
+    .disclaimer-body {
+        padding: 0 ;
+        margin-bottom: 2rem
+    }
+
+    p {
+        font-size: 1rem
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin: 2rem;
+    }
+
+}
 </style>
