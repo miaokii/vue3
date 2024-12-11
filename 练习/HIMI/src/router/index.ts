@@ -25,8 +25,8 @@ const router = createRouter({
       component: () => import('@/pages/ContactUS/ContactUS.vue'),
     },
     {
-      path: '/teamsAndPolicies',
-      component: () => import('@/pages/Political.vue'),
+      path: '/disclaimer',
+      component: () => import('@/pages/Disclaimer.vue'),
     },
     {
       path: '/',

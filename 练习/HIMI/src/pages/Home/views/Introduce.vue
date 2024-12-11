@@ -58,22 +58,21 @@ let introduce_jsons = computed(() => {
 }
 
 .introduce-list {
-    display: flex;
+    display: grid;
     margin-top: 2rem;
-    justify-content: space-between;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
 }
 
 .introduce-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
-    padding: 0 20px;
 }
 
 .introduce-item img {
     width: 45%;
-    max-width: 130px;
+    max-width: 120px;
     min-width: 50px;
 }
 
@@ -81,6 +80,12 @@ let introduce_jsons = computed(() => {
     font-weight: bold;
     letter-spacing: 0;
     margin: 1.5rem 0;
+}
+
+@media (max-width: 900px) {
+    .introduce-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width:650px) {
@@ -104,8 +109,7 @@ let introduce_jsons = computed(() => {
 
     .introduce-list {
         margin: 0;
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .introduce-item {
@@ -123,7 +127,6 @@ let introduce_jsons = computed(() => {
     }
 
     .introduce-item-content {
-        margin-bottom: 1rem;
         text-align: center;
     }
 }

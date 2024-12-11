@@ -76,14 +76,12 @@ onUnmounted(() => {
 })
 
 function checkScreenSize() {
-    console.log('平米宽度：', window.innerWidth);
-
     // 查询屏幕宽度
     showNavMenus.value = window.innerWidth <= 650
 }
 
 function changeTab(path: string) {
-    if (activePath != path) {
+    if (activePath.value != path) {
         router.push(path)
     }
 
@@ -113,8 +111,8 @@ checkScreenSize();
 
 /* 测划入的导航页面 */
 .nav-slide-menu {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;

@@ -29,7 +29,12 @@ a:hover {
   font-weight: bold;
   letter-spacing: 2px;
 
-  transition: 0.2s ;
+  transition: 0.2s;
+}
+
+.border-white-button {
+  color: var(--color-background);
+  border-color: currentColor;
 }
 
 .border-button:hover {
@@ -37,10 +42,15 @@ a:hover {
   color: var(--color-background);
 }
 
-/* 文字部分，边距 */
+.border-white-button:hover {
+  color: var(--color-main);
+  border-color: var(--color-background);
+  background-color: var(--color-background);
+}
+
 .body-m {
-  margin: auto 7vw;
-  text-align: center;
+  width: 90vw;
+  margin: 0 auto;
 }
 
 h2 {
@@ -50,10 +60,10 @@ h2 {
   margin: 1em 0;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1300px) {
   .body-m {
-    margin: auto calc((100% - 1200px) / 2);
-    max-width: 1200px;
+    width: 1200px;
+    margin: 0 auto;
   }
 }
 

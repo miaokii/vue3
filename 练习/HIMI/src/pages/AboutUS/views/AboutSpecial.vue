@@ -21,8 +21,8 @@ let bizinitiatives = computed(() => {
     return [
         { image: 's1.png', title: t('about.services'), content: t('about.services_content') },
         { image: 's2.png', title: t('about.license_apply'), content: t('about.license_apply_content') },
-        { image: 's3.png', title: t('about.hr'), content: t('about.hr_content') },
         { image: 's4.png', title: t('about.tradingdd'), content: t('about.tradingdd_content') },
+        { image: 's3.png', title: t('about.hr'), content: t('about.hr_content') },
         { image: 's5.png', title: t('about.logistics'), content: t('about.logistics_content') },
         { image: 's6.png', title: t('about.incubator'), content: t('about.incubator_content') }
     ]
@@ -63,13 +63,30 @@ h2 {
 
 .specialization-item img {
     width: 60%;
-    max-width: 100px;
     aspect-ratio: 1;
+    max-width: 100px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 3px 5px 10px black;
-    border: 10px solid white;
+    border: 8px solid white;
     margin-bottom: 1rem;
+}
+
+@media (max-width: 1000px) {
+
+    .specialization-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .specialization-content {
+        text-align: center;
+    }
+
+    .specialization-item img {
+        width: 50%;
+        border: 7px solid white;
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 650px) {
@@ -88,13 +105,8 @@ h2 {
         margin: 0.5rem 0;
     }
 
-    .specialization-content {
-        text-align: center;
-    }
-
     .specialization-item img {
-        width: 20%;
-        min-width: 70px;
+        width: 100px;
         border: 5px solid white;
         margin-bottom: 0;
     }

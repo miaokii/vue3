@@ -1,6 +1,8 @@
 <template>
     <div class="copy-right">
-        <span>Copyright © 2017 - 2024 Yoc.tech All Rights Reserved. 成都优卡数信信息科技有限公司 版权所有</span>
+        <!-- <span>Copyright © 2017 - 2024 Yoc.tech All Rights Reserved. 成都优卡数信信息科技有限公司 版权所有</span> -->
+        <span>成都优卡数信信息科技有限公司 版权所有</span>
+        <span>协议</span>
         <div class="domain">
             <span class="domain-element">中国 · 成都 · 天府软件园C-6-3</span>
             <a class="domain-element domain-no" target="_blank" href="https://beian.mps.gov.cn"><img

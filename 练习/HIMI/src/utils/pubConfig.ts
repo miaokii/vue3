@@ -10,7 +10,7 @@ const himiConfig = {
     },
     business_hours: {
         en: '9.00AM to 6.30PM. Monday to Friday, excluding Public Holiday',
-        zh: '星期一至五9:00至18:30，公众假期除外'
+        zh: '周一至周五9:00-18:30，公众假期除外'
     },
 
     lat: 1.27830,

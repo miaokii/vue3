@@ -1,26 +1,25 @@
 <template>
-    <a :href="url">{{ mail.from }}</a>
+    <a :href="url">{{ mail.to }}</a>
 </template>
 
 <script setup lang="ts" name="mail">
 import { computed } from 'vue';
 
-let mail = defineProps<{
-    from:string,
-    to?: string,
-    subject?:string,
-    body?:string
-}>()
-
-let url = computed(()=>{
-    return `mailto:${mail.to}?subject=${mail.subject}&body=${mail.body}`
+let mail = withDefaults(defineProps<{
+    to: string,
+    from?: string,
+    subject?: string,
+    body?: string
+}>(), {
+    from: '',
+    subject: '',
+    body: ''
 })
 
-function sendMail() {
-    // <a href="mailto:sample@fly63.com?subject=test&cc=sample@hotmail.com&subject=主题&body=内容">send mail</a>
-}
+
+let url = computed(() => {
+    return `mailto:${mail.to}?subject=${mail.subject}&body=${mail.body}`
+})
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

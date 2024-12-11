@@ -1,5 +1,5 @@
 <template>
-    <a :href="url"></a>
+    <a :href="url">{{ phone }}</a>
 </template>
 
 <script setup lang="ts" name="name">

@@ -13,7 +13,6 @@ export default {
         contactus: 'Contact Us',
         aboutus: 'About Us',
         teamspolicies: 'Terms & Conditions',
-        landlineNumber: '+65 6904 8356 ',
         address: himiConfig.address.en,
         enquireNow: 'ENQUIRE NOW',
         copyright: 'Copyright',
@@ -64,16 +63,81 @@ export default {
         our_services: 'Our Services',
         incorporation: 'Business Incorporation',
         incorporation_content: 'We provide full source of support from registration of business and company in Singapore, including sole proprietorship, LLP, Private Limited.',
+        incorporation_des: 'We provide full source of support from registration of business and company in Singapore, including sole proprietorship, LLP, Private Limited. We assist in the preparation of setting up local companies registered in ACRA. ',
+        incorporation_des_title: 'To set up a local company, ACRA requires below steps:',
+        incorporation_steps: [
+            'Choosing a Company Name',
+            'Determining the Company Type',
+            'Deciding on a Financial Year End',
+            'Appointing Directors, Company Secretary and Other Key Personnel',
+            'Share Capital',
+            'Shares and Shareholders',
+            'Constitution',
+            'Application ',
+            'Other Obligations'
+        ],
+        service_step_title: 'Our services include:',
+
         secretarial: 'Corporate Secretarial Services',
         secretarial_content: 'We are Singapore Registered Filing Agent.',
+        secretarial_des: 'We are Singapore Registered Filing Agent. Our clients from individuals to SME, and MNC. ',
+        secretarial_steps: [
+            'Preparation & Holding of AGM',
+            'Preparation & Filing of Annual Return',
+            'Share capital reduction, shares allotment and transfer',
+            'Declare & Distribute dividends',
+            'Appoint & Register director/corporate secretary/auditor',
+            'Filing Register of Registrable Controllers (RORC) and Date Protection Officer (DPO)',
+            'CorpPass Registration',
+            'Other changes',
+        ],
+
         taxation: 'Accounting & Taxation',
         taxation_content: 'We provide accounting and taxation consultation services.',
+        taxation_des: 'We provide accounting and taxation consultation services.',
+        taxation_steps: [
+            'Bookkeeping',
+            'Bank Reconciliation',
+            'Accounting System Set-up',
+            'Account Transaction Recording',
+            'Monthly, Quarterly, Yearly Review & Reporting',
+            'Management Reports',
+            'Ratio Analysis',
+            'Income Tax Computation and Filing',
+        ],
+
         advisory: 'Business Advisory',
         advisory_content: 'We are a professional business advisory firm.',
+        advisory_des: 'We are a professional business advisory firm. Our expertise are experience professionals in mainly educational advice, import & export trading, banking and financing industry.',
+        advisory_steps: [
+            'Onboarding service on new hires to your company',
+            'Workflows Optimization',
+            'Payroll Advisory',
+            'Costing',
+            'Team Management',
+            'System Customization ',
+            'Bespoke Business Solution',
+        ],
+
         agency: 'Employment Agency Work',
         agency_content: 'We provide professional immigration agency services',
+        agency_des: 'We have license from Minister of Manpower for immigration work and work pass application. We also have experienced licenser who attended court for disputes in business.',
+        agency_steps: [
+            'Apply Work Pass',
+            'Preparation of Submission to MOM',
+            'Recruitment Work',
+            'Migration Service',
+        ],
+
         incubator: 'Business Incubator',
         incubator_content: 'We are client base business incubator.',
+        incubator_des: 'We are client base business incubator. We give your startup business a fighting chance to build a network in Singapore. Among our valuable source of support, contracts, and advice to your business, you will benefit from our guidance, mentorship, and other add-on services. We are specialize in funding, recruitment, product marketing, business modelling and other government grands application.',
+        incubator_steps: [
+            'Structural Acceleration',
+            'Business Fundamental Resourcing ',
+            'Shared Workspace Support',
+            'Evaluating Programs',
+        ],
 
         read_more: 'READ MORE',
     },
@@ -91,7 +155,7 @@ export default {
         join_today: 'Come Join Us Today!',
 
         name: 'Name',
-        phone: 'Telephone number',
+        phone: 'Telephone',
         subject: 'Subject',
         message: 'Message',
         submit: 'SUBMIT',
@@ -102,6 +166,13 @@ export default {
         address: 'Address:',
         email: 'Email:',
         contact_number: 'Contact Number:',
-        business_hours: 'Business Hours :'
+        business_hours: 'Business Hours :',
+        business_hours_content: himiConfig.business_hours.en
+    },
+
+    disclaimer: {
+        title: 'WEBSITE DISCLAIMER',
+        page1: 'The information provided by us on www.himisg.com (the “Site) is for general information purpose only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.',
+        page2: 'UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMAITON ON THE SITE IS SOLELY AT YOUR OWN RISK.'
     }
 }

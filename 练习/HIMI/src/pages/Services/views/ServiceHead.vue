@@ -1,16 +1,10 @@
 <template>
-    <div class="service-head"></div>
+    <ImageHead :path="getAssetsImages(`services/back.png`)" />
 </template>
 
 <script setup lang="ts" name="serviceHead">
-
+import ImageHead from '@/components/ImageHead.vue';
+import getAssetsImages from '@/utils/pubUse';
 </script>
 
-<style scoped>
-.service-head {
-    height: 26vw;
-    background-image: url('@/assets/images/services/back.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-</style>
+<style scoped></style>

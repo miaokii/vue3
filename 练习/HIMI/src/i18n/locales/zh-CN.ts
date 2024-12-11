@@ -8,12 +8,11 @@ export default {
         joinus: '加入我们',
         contactus: '联系我们'
     },
-    
+
     footer: {
         contactus: '联系我们',
         aboutus: '关于我们',
         teamspolicies: '条款',
-        landlineNumber: '+65 6904 8356 ',
         address: himiConfig.address.zh,
         enquireNow: '立刻咨询',
         copyright: '版权所有',
@@ -60,16 +59,82 @@ export default {
         our_services: '我们的服务',
         incorporation: '企业注册',
         incorporation_content: '我们致力于注册本土企业包括独资企业，有限责任合伙企业，私人有限公司。',
+
+        incorporation_des: '我们提供新加坡商业和公司注册的全方位支持，包括独资企业、有限责任合伙企业、私人有限公司。我们协助准备在新加坡会计与企业管理局 (ACRA) 注册的本地公司。',
+        incorporation_des_title: '要设立本地公司，ACRA 要求以下步骤：',
+        incorporation_steps: [
+            '选择公司名称',
+            '确定公司类型',
+            '确定财政年度结束日期',
+            '任命董事、公司秘书和其他关键人员',
+            '股本',
+            '股份和股东',
+            '章程',
+            '申请',
+            '其他义务'
+        ],
+        service_step_title: '我们的服务包括：',
+
         secretarial: '企业秘书服务',
         secretarial_content: '我们是新加坡持牌注册秘书公司。',
+        secretarial_des: '我们是新加坡持牌注册秘书公司。我们是新加坡注册备案代理。我们的客户包括个人、中小企业和跨国公司。',
+        secretarial_steps: [
+            '准备和召开年度股东大会',
+            '准备和提交年度申报表',
+            '股本削减、股份分配和转让',
+            '宣布和分配股息',
+            '任命和登记董事/公司秘书/审计师',
+            '提交可注册控制人登记册 (RORC) 和日期保护官 (DPO)',
+            'CorpPass 注册',
+            '其他变更',
+        ],
+
         taxation: '财会税务',
         taxation_content: '我们提供财务和税务专业咨询服务。',
+        taxation_des: '我们提供财务和税务专业咨询服务。',
+        taxation_steps: [
+            '簿记',
+            '银行对账',
+            '会计系统设置',
+            '账户交易记录',
+            '月度、季度、年度审查和报告',
+            '管理报告',
+            '比率分析',
+            '所得税计算和申报',
+        ],
+
         advisory: '商业顾问',
         advisory_content: '我们是专业金融企业咨询公司。',
+        advisory_des: '我们是一家专业的商业咨询公司。我们的专业领域主要是教育咨询、进出口贸易、银行和融资行业。',
+        advisory_steps: [
+            '为贵公司新员工提供入职服务',
+            '工作流程优化',
+            '薪资咨询',
+            '成本核算',
+            '团队管理',
+            '系统定制',
+            '定制业务解决方案',
+        ],
+
         agency: '移民中介',
         agency_content: '我们提供专业的移民中介服务',
+        agency_des: '我们拥有人力部颁发的移民工作和工作准证申请许可。我们也有经验丰富的持证人曾出庭处理商业纠纷。',
+        agency_steps: [
+            '申请工作准证',
+            '准备向 MOM 提交申请',
+            '招聘工作',
+            '移民服务'
+        ],
+
         incubator: '企业孵化器',
         incubator_content: '我们是客户本体化企业孵化器。',
+        incubator_des: '我们是一家以客户为基础的企业孵化器。我们为您的初创企业提供在新加坡建立网络的机会。除了我们为您的企业提供的宝贵支持、合同和建议之外，您还将受益于我们的指导、辅导和其他附加服务。我们专注于融资、招聘、产品营销、业务建模和其他政府补助金申请。',
+        incubator_steps: [
+            '结构加速',
+            '业务基础资源配置',
+            '共享工作空间支持',
+            '评估项目',
+        ],
 
         read_more: '了解更多',
     },
@@ -97,6 +162,13 @@ export default {
         address: '地址:',
         email: '电子邮件:',
         contact_number: '联系电话:',
-        business_hours: '工作时间:'
+        business_hours: '工作时间:',
+        business_hours_content: himiConfig.business_hours.zh
+    },
+
+    disclaimer: {
+        title: '网站免责声明',
+        page1: '我们在 www.himisg.com (以下简称“网站”) 上提供的信息仅供一般参考。网站上的所有信息均是诚心提供的，但我们不对网站上任何信息的准确性、充分性、有效性、可靠性、可用性或完整性做出任何明示或暗示的陈述或保证。',
+        page2: '在任何情况下，对于因使用本网站或依赖本网站提供的任何信息而导致的任何损失或损害，我们均不承担任何责任。您对本网站的使用以及对本网站上任何信息的依赖均由您自行承担风险。'
     }
 }

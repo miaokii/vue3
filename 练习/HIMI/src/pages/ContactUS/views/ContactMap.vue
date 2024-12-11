@@ -12,17 +12,18 @@
                 </div>
                 <div class="contact-email">
                     <div class="contact-list-title">{{ $t('contact.email') }}</div>
-                    <Mail class="contact-list-content" :from="himiConfig.email"/>
+                    <Mail class="contact-list-content" :to="himiConfig.email" />
                 </div>
                 <div class="contact-number">
                     <div class="contact-list-title">{{ $t('contact.contact_number') }}</div>
                     <div class="contact-list-content">
-                        <Phone class="contact-phone" v-for="(phone, idx) in himiConfig.contact_number" :key="idx" :phone="phone"/>
+                        <Phone class="contact-phone" v-for="(phone, idx) in himiConfig.contact_number" :key="idx"
+                            :phone="phone" />
                     </div>
                 </div>
                 <div class="business-hour">
                     <div class="contact-list-title">{{ $t('contact.business_hours') }}</div>
-                    <div class="contact-list-content">9.00AM to 6.30PM. Monday to Friday, excluding Public Holiday</div>
+                    <div class="contact-list-content"> {{ $t('contact.business_hours_content') }}</div>
                 </div>
             </div>
         </div>
@@ -49,12 +50,12 @@ function call(phone: string) {
 }
 
 .contact-map {
-    width: 100vw;
-    height: 70vh;
+    width: 50%;
     background-color: var(--color-border);
 }
 
 .contact-content {
+    width: 50%;
     margin-left: 2rem;
     text-align: start;
 }
@@ -62,7 +63,7 @@ function call(phone: string) {
 .contact-content h2 {
     line-height: 1.2;
     text-align: start;
-    font-weight: 100;
+    font-weight: bold;
     font-family: futura-pt-weight;
     font-size: 1.9rem;
     margin: 0;
@@ -72,6 +73,7 @@ function call(phone: string) {
 .contact-list-title {
     font-family: futura-pt-weight;
     font-size: 1.2rem;
+    font-weight: bold;
     margin-top: 1.5rem;
 }
 
@@ -88,9 +90,20 @@ function call(phone: string) {
     margin-top: 2rem;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
     .contact-map-body {
         flex-direction: column;
+    }
+
+    .contact-map {
+        width: 100%;
+        aspect-ratio: 1.6;
+    }
+
+    .contact-content {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
     }
 
     .contact-content h2 {

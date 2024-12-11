@@ -7,30 +7,32 @@
             <h3>{{ $t('join.parttime') }}</h3>
             <div>{{ $t('join.parttime_content') }}</div>
             <div>{{ $t('join.send_mail') }}
-                <Mail class="join-email" :from="himiConfig.email"/>
+                <Mail class="join-email" :to="himiConfig.email" />
             </div>
         </div>
         <div class="join-right-body">
             <h3>{{ $t('join.join_today') }}</h3>
-            <form :action="url">
+            <form :action="`mailto:${himiConfig.email}&body=${mailBody}`" name="sendMail">
                 <div>
                     <!-- mailto:sample@fly63.com?subject=test&cc=sample@hotmail.com&subject=主题&body=内容 -->
                     <label for="name">{{ $t('join.name') }}</label>
-                    <input type="text" name='name' id="name" maxlength="10" required :value="name">
+                    <input type="text" maxlength="10" required v-model="name" form="">
                 </div>
                 <div>
                     <label for="phone">{{ $t('join.phone') }}</label>
-                    <input type="tel" name='email' id="email" required :value="phone">
+                    <input type="tel" required v-model="phone" form="">
                 </div>
                 <div>
                     <label for="subject">{{ $t('join.subject') }}</label>
-                    <input type="text" name='subject' id="subject" required :value="subject">
+                    <input type="text" name='subject' id="subject" required>
                 </div>
                 <div>
                     <label for="message">{{ $t('join.message') }}</label>
-                    <textarea name="message" id="message" required :value="message"></textarea>
+                    <textarea required v-model="message" form=""></textarea>
                 </div>
-                <input type="submit" class="border-button" :value="$t('join.submit')">
+
+                <textarea name="body" id="body" v-model="mailBody" v-show="false"></textarea>
+                <button type="submit" class="border-button">{{ $t('join.submit') }}</button>
             </form>
         </div>
     </div>
@@ -44,12 +46,10 @@ import { computed, ref } from 'vue';
 
 let name = ref('')
 let phone = ref('')
-let subject = ref('')
 let message = ref('')
 
-let url = computed(()=>{
-    let body = t('join.name') + ':' + name + '\n' + t('join.phone') + ':' + phone
-    return `mailto:${himiConfig.email}?subject=${subject}&body=${body}`
+let mailBody = computed(() => {
+    return `${t('join.name')}:${name.value}\n${t('join.phone')}:${phone.value}\n${message.value}`
 })
 
 </script>
@@ -125,17 +125,12 @@ form input:focus {
 
 form textarea {
     font-size: 1.2rem;
+    resize: vertical;
+    color: inherit;
     width: 100%;
     height: 80px;
     border: 1px solid var(--color-border);
     padding: 0.5rem 1rem;
-}
-
-.border-button {
-    border: 2px solid var(--color-main);
-    padding: 1rem 3rem;
-    width: auto;
-    height: auto;
 }
 
 @media (max-width: 650px) {

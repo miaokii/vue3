@@ -56,7 +56,7 @@ let services_jsons = computed(() => {
 }
 
 .services-item-content {
-    margin: 2rem 0;
+    margin: 1rem 0;
     text-align: start;
 }
 
@@ -74,6 +74,13 @@ let services_jsons = computed(() => {
 .border-button {
     margin: 0 auto;
     /* padding: 0 20px; */
+}
+
+@media (max-width: 900px) {
+    .services-body {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
 }
 
 @media (max-width: 650px) {

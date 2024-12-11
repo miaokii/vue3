@@ -1,17 +1,10 @@
 <template>
-    <div class="contact-back"></div>
+    <ImageHead :path="getAssetsImages(`contact/back.png`)" />
 </template>
 
 <script setup lang="ts" name="contactHead">
-
+import ImageHead from '@/components/ImageHead.vue';
+import getAssetsImages from '@/utils/pubUse';
 </script>
 
-<style scoped>
-.contact-back {
-    height: 26vw;
-    background-image: url('@/assets/images/contact/back.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-</style>
+<style scoped></style>

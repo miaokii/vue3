@@ -1,8 +1,7 @@
 <template>
-    <div class="join-head-body">
-        <div class="join-back"></div>
+    <div class="body-m join-head-body">
         <h2>{{ $t('join.join_us') }}</h2>
-        <div class="body-m join-body">
+        <div class="join-body">
             <img :src="getAssetsImages(`joinus/needyou.png`)" alt="">
             <div>{{ $t('join.join_content') }}</div>
         </div>
@@ -15,12 +14,6 @@ import getAssetsImages from '@/utils/pubUse';
 </script>
 
 <style scoped>
-.join-back {
-    height: 26vw;
-    background-image: url('@/assets/images/joinus/back.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .join-head-body {
     text-align: center;
@@ -29,8 +22,9 @@ import getAssetsImages from '@/utils/pubUse';
 .join-body {
     display: flex;
     align-items: flex-start;
-    border-bottom: 1px solid var(--color-border);
+    justify-content: center;
     padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
     margin-bottom: 3rem;
 }
 
@@ -50,9 +44,9 @@ import getAssetsImages from '@/utils/pubUse';
         align-items: center;
     }
 
-
     .join-body img {
         width: 50%;
+        margin-bottom: 1rem;
     }
 
     .join-body div {

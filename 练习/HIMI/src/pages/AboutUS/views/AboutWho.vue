@@ -1,8 +1,7 @@
 <template>
-    <div class="about-head-body">
-        <div class="head-back"></div>
+    <div class="body-m about-who-body">
         <h2>{{ $t('about.who') }}</h2>
-        <div class="body-m who-body">
+        <div class="who-body">
             <div>{{ $t('about.who_content_1') }}</div>
             <div>{{ $t('about.who_content_2') }}</div>
             <div>{{ $t('about.who_content_3') }}</div>
@@ -15,16 +14,8 @@
 </script>
 
 <style scoped>
-.about-head-body {
+.about-who-body {
     text-align: center;
-}
-
-.head-back {
-    background-image: url('@/assets/images/aboutus/aboutus.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0;
-    height: 26vw;
 }
 
 .who-body div {

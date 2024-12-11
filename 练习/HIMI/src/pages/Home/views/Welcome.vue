@@ -25,6 +25,7 @@ function pushServices() {
     background-size: cover;
     background-position: 0;
     height: 75vh;
+    width: 100%;
     color: var(--color-background);
 
     display: flex;

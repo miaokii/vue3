@@ -3,7 +3,7 @@
         <div class="home-about-content">
             <h2>{{ $t('home.about_us') }}</h2>
             <div class="about-us-content">{{ $t('home.about_us_content') }}</div>
-            <button class="border-button" @click="pushAboutUS">{{ $t('home.read_more') }}</button>
+            <button class="border-button border-white-button" @click="pushAboutUS">{{ $t('home.read_more') }}</button>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@ function pushAboutUS() {
 <style scoped>
 .home-about-body {
     min-height: 70vh;
+    width: 100%;
     background-image: url('@/assets/images/home/about.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -52,18 +53,6 @@ h2 {
     font-size: 1.2em;
     padding-left: 1.5em;
     border-left: 1px solid currentColor;
-}
-
-.border-button {
-    color: inherit;
-    border: 2px solid currentColor;
-    margin-bottom: 5rem;
-}
-
-.border-button:hover {
-    background-color: var(--color-background);
-    color: var(--color-main);
-    border-color: var(--color-background);
 }
 
 @media (max-width: 650px) {

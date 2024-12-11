@@ -17,7 +17,8 @@ import HIMIMap from '@/components/HIMIMap.vue';
 
 <style scoped>
 .map-body {
-    margin: 0;
+
+    background-color: aquamarine;
     padding: 1rem 7vw 0.5em 7vw;
     aspect-ratio: 1.6;
 }
@@ -27,12 +28,4 @@ import HIMIMap from '@/components/HIMIMap.vue';
         padding: 1rem;
     }
 }
-
-/* @media (min-width: 1400px) {
-    .body-m {
-        margin: auto calc((100% - 1200px) / 2);
-        max-width: 1200px;
-    }
-} */
-
 </style>
