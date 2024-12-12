@@ -1,16 +1,16 @@
 <template>
     <div class="body-m service-detail-body">
-        <h1>{{ serviceJson.title }}</h1>
-        <img :src="getAssetsImages(`services/${serviceJson.detailImage}`)" :alt="serviceJson.title">
+        <h1>{{ serviceModel.title }}</h1>
+        <img :src="getAssetsImages(`services/${serviceModel.detailImage}`)" :alt="serviceModel.title">
         <article>
             <section>
-                <h3>{{ serviceJson.title }}</h3>
-                <p>{{ serviceJson.description }}</p>
+                <h3>{{ serviceModel.title }}</h3>
+                <p>{{ serviceModel.description }}</p>
             </section>
             <section>
-                <h3>{{ serviceJson.stepTitle }}</h3>
+                <h3>{{ serviceModel.stepTitle }}</h3>
                 <ul>
-                    <li v-for="(item, idx) in serviceJson.steps.split(';')" :key="idx">{{ item }}</li>
+                    <li v-for="(item, idx) in serviceModel.steps.split(';')" :key="idx">{{ item }}</li>
                 </ul>
             </section>
         </article>
@@ -18,15 +18,14 @@
 </template>
 
 <script setup lang="ts" name="name">
-import { service_map, ServiceType } from '@/types/service';
+import { service_map } from '@/types/service';
 import getAssetsImages from '@/utils/pubUse';
 import { computed } from '@vue/reactivity';
-import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 let route = useRoute()
-let serviceJson = computed(() => {
-    let service_type: ServiceType = route.params.service_type
+let serviceModel = computed(() => {
+    let service_type = route.params.service_type as string
     return service_map.value[service_type]
 })
 

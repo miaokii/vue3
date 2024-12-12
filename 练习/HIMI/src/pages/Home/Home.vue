@@ -18,7 +18,8 @@ import HIMIMap from '@/components/HIMIMap.vue';
 <style scoped>
 .map-body {
     padding: 1rem 7vw 0.5em 7vw;
-    aspect-ratio: 1.6;
+    aspect-ratio: 2.2;
+    min-height: 35vh;
 }
 
 @media (max-width: 650px) {

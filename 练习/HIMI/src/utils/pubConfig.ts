@@ -13,13 +13,13 @@ const himiConfig = {
         zh: '周一至周五9:00-18:30，公众假期除外'
     },
 
-    lat: 1.27830,
-    lng: 103.84791,
+    // lat: 1.27830,
+    // lng: 103.84791,
 
-    map: {
-        mapId: '2d7b4a3b1064ec86',
-        zoom: 17,
-    }
+    // map: {
+    //     mapId: '2d7b4a3b1064ec86',
+    //     zoom: 17,
+    // }
 }
 
 export default himiConfig

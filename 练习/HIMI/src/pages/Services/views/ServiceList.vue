@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts" name="services">
-import { service_map, service_types, ServiceType } from '@/types/service';
+import { service_map, service_types } from '@/types/service';
 import getAssetsImages from '@/utils/pubUse';
 import { useRouter } from 'vue-router';
 
@@ -24,7 +24,7 @@ defineProps<{
 
 let router = useRouter()
 
-function pushServiceDetail(type: ServiceType) {
+function pushServiceDetail(type: string) {
     router.push(`/service_detail/${type}`)
 }
 

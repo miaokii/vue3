@@ -12,26 +12,24 @@
         </div>
         <div class="join-right-body">
             <h3>{{ $t('join.join_today') }}</h3>
-            <form :action="`mailto:${himiConfig.email}&body=${mailBody}`" name="sendMail">
+            <form :action="`mailto:${himiConfig.email}`">
                 <div>
-                    <!-- mailto:sample@fly63.com?subject=test&cc=sample@hotmail.com&subject=主题&body=内容 -->
                     <label for="name">{{ $t('join.name') }}</label>
-                    <input type="text" maxlength="10" required v-model="name" form="">
+                    <input type="text" maxlength="10" required v-model="name">
                 </div>
                 <div>
                     <label for="phone">{{ $t('join.phone') }}</label>
-                    <input type="tel" required v-model="phone" form="">
+                    <input type="tel" required v-model="phone">
                 </div>
                 <div>
                     <label for="subject">{{ $t('join.subject') }}</label>
-                    <input type="text" name='subject' id="subject" required>
+                    <input type="text" name='subject' required>
                 </div>
                 <div>
                     <label for="message">{{ $t('join.message') }}</label>
-                    <textarea required v-model="message" form=""></textarea>
+                    <textarea required v-model="message"></textarea>
+                    <textarea required v-model="mailBody" v-show="false" name="body"></textarea>
                 </div>
-
-                <textarea name="body" id="body" v-model="mailBody" v-show="false"></textarea>
                 <button type="submit" class="border-button">{{ $t('join.submit') }}</button>
             </form>
         </div>
@@ -42,7 +40,7 @@
 import Mail from '@/components/Mail.vue';
 import { t } from '@/i18n';
 import himiConfig from '@/utils/pubConfig';
-import { computed, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 let name = ref('')
 let phone = ref('')

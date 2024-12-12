@@ -1,12 +1,14 @@
 <template>
+    <!-- 小屏导航栏 -->
     <div class="nav-menu-body" v-if="showNavMenus">
         <img class="nav-menu-item" :src="getAssetsImages(`nav/view-list.png`)" alt="nav-menu"
             @click="showAsideMenu = true">
-        <span class="nav-logo"><span class="nav-himi">HIMI</span> CONSULTING</span>
+        <span class="nav-logo" @click="pushHome"><span class="nav-himi">HIMI</span> CONSULTING</span>
         <div></div>
     </div>
+    <!-- 宽屏导航  -->
     <div class="nav-body" v-if="!showNavMenus">
-        <span class="nav-logo"><span class="nav-himi">HIMI</span> CONSULTING</span>
+        <span class="nav-logo" @click="pushHome"><span class="nav-himi">HIMI</span> CONSULTING</span>
         <div class="nav-list">
             <!-- 导航item -->
             <span :class="activePath===item.path ? 'nav-list-active':''" v-for="(item, idx) in nav_list" :key="idx" @click="changeTab(item.path)">{{ item.title }}</span>
@@ -62,7 +64,10 @@ let showAsideMenu = ref(false)
 let activePath = computed(()=>{
     return route.path
 })
-// const activeTab = computed(()=>route.path.replace('/', '').toUpperCase())
+
+function pushHome() {
+    router.push('/')
+}
 
 
 // 监听屏幕变化
@@ -106,7 +111,8 @@ checkScreenSize();
 }
 
 .nav-menu-item {
-    width: 40px;
+    width: 30px;
+    color: var(--color-main);
 }
 
 /* 测划入的导航页面 */
@@ -156,24 +162,6 @@ checkScreenSize();
     visibility: hidden;
 }
 
-@keyframes nav-slide-show {
-    form {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: none;   
-    }
-}
-
-@keyframes nav-slide-hide {
-    form {
-        transform: none;
-    }
-    to {
-        transform: translateX(-100%);   
-    }
-}
-
 /* 正常状态的导航栏 */
 .nav-body {
     height: 70px;
@@ -188,6 +176,7 @@ checkScreenSize();
     font-size: 2rem;
     letter-spacing: 2px;
     line-height: 1;
+    cursor: pointer;
 }
 
 .nav-himi {
