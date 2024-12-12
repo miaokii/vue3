@@ -1,19 +1,20 @@
 <template>
     <!-- 小屏导航栏 -->
     <div class="nav-menu-body" v-if="showNavMenus">
-        <img class="nav-menu-item" :src="getAssetsImages(`nav/view-list.png`)" alt="nav-menu"
-            @click="showAsideMenu = true">
-        <span class="nav-logo" @click="pushHome"><span class="nav-himi">HIMI</span> CONSULTING</span>
+        <img class="nav-menu-item" :src="getAssetsImages(`nav/menu.png`)" alt="nav-menu"
+            @click="showAsideMenu = true" />
+        <div class="nav-logo" @click="pushHome"></div>
         <div></div>
     </div>
     <!-- 宽屏导航  -->
     <div class="nav-body" v-if="!showNavMenus">
-        <span class="nav-logo" @click="pushHome"><span class="nav-himi">HIMI</span> CONSULTING</span>
+        <div class="nav-logo" @click="pushHome"></div>
         <div class="nav-list">
             <!-- 导航item -->
-            <span :class="activePath===item.path ? 'nav-list-active':''" v-for="(item, idx) in nav_list" :key="idx" @click="changeTab(item.path)">{{ item.title }}</span>
+            <span :class="activePath === item.path ? 'nav-list-active' : ''" v-for="(item, idx) in nav_list" :key="idx"
+                @click="changeTab(item.path)">{{ item.title }}</span>
             <!-- 切换语言 -->
-            <select class="nav-list-langs" v-model="$i18n.locale">
+            <select class="nav-list-langs" v-model="nowlocal">
                 <option v-for="local in $i18n.availableLocales" :key="'local-${local}'" :value="local">
                     {{ local }}
                 </option>
@@ -22,13 +23,13 @@
     </div>
 
     <!-- 侧面划入的导航页面 -->
-    <div :class="['nav-slide-menu', showAsideMenu ? 'nav-slide-open' : 'nav-slide-close']" v-if="showNavMenus">
+    <div :class="['nav-slide-menu', showAsideMenu ? 'nav-slide-open' : 'nav-slide-close']" v-if="showNavMenus" @click="showAsideMenu = false">
         <div class="nav-slide-menu-body">
-
             <!-- 导航item -->
-            <span :class="activePath===item.path ? 'nav-list-active':''" v-for="(item, idx) in nav_list" :key="idx" @click="changeTab(item.path)">{{ item.title }}</span>
+            <span :class="activePath === item.path ? 'nav-list-active' : ''" v-for="(item, idx) in nav_list" :key="idx"
+                @click="changeTab(item.path)">{{ item.title }}</span>
             <!-- 切换语言 -->
-            <select class="nav-list-langs" v-model="$i18n.locale" @change="showAsideMenu=false">
+            <select class="nav-list-langs" v-model="nowlocal" @change="showAsideMenu = false">
                 <option v-for="local in $i18n.availableLocales" :key="'local-${local}'" :value="local">
                     {{ local }}
                 </option>
@@ -40,7 +41,7 @@
 </template>
 
 <script setup lang="ts" name="navigation">
-import { t } from '@/i18n';
+import { nowlocal, t } from '@/i18n';
 import getAssetsImages from '@/utils/pubUse';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -61,7 +62,7 @@ let nav_list = computed(() => {
 let showNavMenus = ref(false)
 let showAsideMenu = ref(false)
 
-let activePath = computed(()=>{
+let activePath = computed(() => {
     return route.path
 })
 
@@ -100,7 +101,6 @@ checkScreenSize();
 </script>
 
 <style scoped>
-
 /* 小屏幕的导航栏 */
 .nav-menu-body {
     height: 70px;
@@ -111,8 +111,8 @@ checkScreenSize();
 }
 
 .nav-menu-item {
-    width: 30px;
-    color: var(--color-main);
+    width: 35px;
+    cursor: pointer;
 }
 
 /* 测划入的导航页面 */
@@ -139,12 +139,14 @@ checkScreenSize();
 
 .nav-slide-menu-body span,
 .nav-slide-menu-body select {
-    padding: 5px 0;
+    padding: 10px 0;
+    font-size: 1.1rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .nav-slide-menu-close {
-    width: 30px;
+    width: 40px;
     margin: 0 calc((15% - 30px) / 2);
     margin-top: 20px;
 }
@@ -156,8 +158,8 @@ checkScreenSize();
 }
 
 .nav-slide-close {
-    transition: 0.25s ease; 
-    transform: translateX(-100%);  
+    transition: 0.25s ease;
+    transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
 }
@@ -173,14 +175,13 @@ checkScreenSize();
 }
 
 .nav-logo {
-    font-size: 2rem;
-    letter-spacing: 2px;
-    line-height: 1;
+    background-image: url('@/assets/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0;
+    height: 70%;
+    width: 180px;
     cursor: pointer;
-}
-
-.nav-himi {
-    color: var(--color-main-hover);
 }
 
 .nav-list {
@@ -240,7 +241,7 @@ checkScreenSize();
 
 @media (max-width: 1000px) {
     .nav-logo {
-        font-size: 1.5rem;
+        height: 60%;
     }
 
     .nav-list span {

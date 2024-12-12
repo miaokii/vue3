@@ -8,7 +8,7 @@
         <div class="introduce-list">
             <div class="introduce-item" v-for="(json, idx) in introduce_jsons" :key="idx">
                 <!-- TODO: 更改图片路径 -->
-                <img :src='getAssetsImages(json.image)' alt="">
+                <img class="introduce-img" :src='getAssetsImages(json.image)' alt="">
                 <span class="introduce-item-title">{{ json.title }}</span>
                 <span class="introduce-item-content">{{ json.content }}</span>
             </div>
@@ -74,6 +74,8 @@ let introduce_jsons = computed(() => {
     width: 45%;
     max-width: 120px;
     min-width: 50px;
+
+    filter: hue-rotate(90deg);
 }
 
 .introduce-item-title {

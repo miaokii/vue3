@@ -11,7 +11,7 @@ const messages = {
 
 const i18n = createI18n({
     // 默认语言
-    locale: 'ENGLISH',
+    locale: localStorage.getItem('himi_langs') || 'ENGLISH',
     // 组合式api
     legacy: false,
     // 语言包
@@ -23,15 +23,14 @@ const i18n = createI18n({
 // 导出全局t方法
 export const t = i18n.global.t
 
-export function useLocal() {
-    return computed({
-        get() {
-            return i18n.global.locale.value
-        },
-        set(value) {
-            i18n.global.locale.value = value
-        }
-    })
-}
+export let nowlocal = computed({
+    get() {
+        return i18n.global.locale.value
+    },
+    set(value) {
+        localStorage.setItem('himi_langs', value)
+        i18n.global.locale.value = value
+    }
+})
 
 export default i18n

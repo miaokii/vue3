@@ -31,7 +31,7 @@ export let service_map: ComputedRef<{ [key: string]: ServiceModel }> = computed(
             image: 'serverse01.png',
             title: t('services.incorporation'),
             content: t('services.incorporation_content'),
-            detailImage: 'sd1.png',
+            detailImage: 'serverse01.png',
             description: t('services.incorporation_des'),
             stepTitle: t('services.incorporation_des_title'),
             steps: t('services.incorporation_steps')

@@ -30,15 +30,15 @@ export default defineConfig({
     //   }
     // },
     rollupOptions:{
-        output: {
-          // entry部分的文件命名，我们这里是spa,所以entry写死也没事,多入口的话需要注意了
-          entryFileNames: "assets/js/[name]-[hash].js",
-          // 自定义chunk如何命名法，包含懒加载或者自定义分包的一些内容的命名
-          chunkFileNames: "assets/js/[name]-[hash].js",
-          // 除js之外其他资源的存放
-          assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
-          // 这里注意一下中括号里面的东西都是占位符
-        }
+        // output: {
+        //   // entry部分的文件命名，我们这里是spa,所以entry写死也没事,多入口的话需要注意了
+        //   entryFileNames: "assets/js/[name]-[hash].js",
+        //   // 自定义chunk如何命名法，包含懒加载或者自定义分包的一些内容的命名
+        //   chunkFileNames: "assets/js/[name]-[hash].js",
+        //   // 除js之外其他资源的存放
+        //   assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
+        //   // 这里注意一下中括号里面的东西都是占位符
+        // }
     }
 }
 })
