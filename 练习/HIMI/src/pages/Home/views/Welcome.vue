@@ -18,7 +18,7 @@ function pushServices() {
 <style scoped>
 /* 首页背景 */
 .welcome-body {
-    background-image: url("@/assets/images/home/welcome.png");
+    background-image: url("/images/home/welcome.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0;

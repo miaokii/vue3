@@ -79,8 +79,11 @@ function call(phone: string) {
 }
 
 .contact-phone {
-    margin-right: 2rem;
     cursor: pointer;
+}
+
+.contact-list-content .contact-phone:first-child {
+    margin-right: 2rem;
 }
 
 .contact-phone:hover {

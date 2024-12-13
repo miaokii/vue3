@@ -23,7 +23,7 @@ function pushAboutUS() {
 .home-about-body {
     min-height: 70vh;
     width: 100%;
-    background-image: url('@/assets/images/home/about.png');
+    background-image: url('/images/home/about.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0;

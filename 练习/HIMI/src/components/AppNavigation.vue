@@ -2,7 +2,7 @@
     <!-- 小屏导航栏 -->
     <div class="nav-menu-body" v-if="showNavMenus">
         <img class="nav-menu-item" :src="getAssetsImages(`nav/menu.png`)" alt="nav-menu"
-            @click="showAsideMenu = true" />
+            @click="switchAsideMenu(true)" />
         <div class="nav-logo" @click="pushHome"></div>
         <div></div>
     </div>
@@ -29,16 +29,16 @@
             <span :class="activePath === item.path ? 'nav-list-active' : ''" v-for="(item, idx) in nav_list" :key="idx"
                 @click="changeTab(item.path)">{{ item.title }}</span>
             <!-- 切换语言 -->
-            <select class="nav-list-langs" v-model="nowlocal" @change="showAsideMenu = false">
+            <select class="nav-list-langs" v-model="nowlocal" @change="switchAsideMenu(false)">
                 <option v-for="local in $i18n.availableLocales" :key="'local-${local}'" :value="local">
                     {{ local }}
                 </option>
             </select>
-            <div class="black-area" @click="showAsideMenu = false">
+            <div class="black-area" @click="switchAsideMenu(false)">
 
             </div>
         </div>
-        <div class="nav-slide-close-body" @click="showAsideMenu = false">
+        <div class="nav-slide-close-body" @click="switchAsideMenu(false)">
             <img class="nav-slide-menu-close" :src="getAssetsImages(`nav/close.png`)" alt="nav-slide-close">
         </div>
     </div>
@@ -74,6 +74,14 @@ function pushHome() {
     router.push('/')
 }
 
+function switchAsideMenu(show: boolean) {
+    showAsideMenu.value = show
+    if (show) {
+        document.body.className= 'no-scroll'
+    } else {
+        document.body.className = ''
+    }  
+}
 
 // 监听屏幕变化
 onMounted(() => {
@@ -96,7 +104,7 @@ function changeTab(path: string) {
     }
 
     if (showAsideMenu) {
-        showAsideMenu.value = false
+        switchAsideMenu(false)
     }
 }
 
@@ -115,7 +123,7 @@ checkScreenSize();
 }
 
 .nav-menu-item {
-    width: 35px;
+    width: 30px;
     cursor: pointer;
 }
 
@@ -189,7 +197,7 @@ checkScreenSize();
 }
 
 .nav-logo {
-    background-image: url('@/assets/images/logo.png');
+    background-image: url('/images/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0;
