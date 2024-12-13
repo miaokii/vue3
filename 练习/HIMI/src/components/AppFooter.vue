@@ -34,7 +34,7 @@ function pushJoinUS() {
 <style scoped>
 .footer-body {
     background-color: var(--color-main);
-    padding: 0 1rem 2rem 1rem;
+    padding: 1rem 1rem 2rem 1rem;
     color: white;
 
     display: flex;

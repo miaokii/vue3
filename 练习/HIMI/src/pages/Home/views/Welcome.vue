@@ -16,7 +16,6 @@ function pushServices() {
 </script>
 
 <style scoped>
-
 /* 首页背景 */
 .welcome-body {
     background-image: url("@/assets/images/home/welcome.png");
@@ -51,5 +50,12 @@ function pushServices() {
 
 .border-button:hover {
     opacity: 0.9;
+}
+
+@media (max-width: 650px) {
+    .welcome-body span {
+        margin: 0 2rem;
+        text-shadow: 0 0 20px var(--color-main);
+    }
 }
 </style>

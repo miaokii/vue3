@@ -1,5 +1,5 @@
 <template>
-  <div class="center-line"></div>
+  <!-- <div class="center-line"></div> -->
   <AppNavigation />
   <div class="router-body">
   <RouterView />

@@ -23,7 +23,7 @@
     </div>
 
     <!-- 侧面划入的导航页面 -->
-    <div :class="['nav-slide-menu', showAsideMenu ? 'nav-slide-open' : 'nav-slide-close']" v-if="showNavMenus" @click="showAsideMenu = false">
+    <div :class="['nav-slide-menu', showAsideMenu ? 'nav-slide-open' : 'nav-slide-close']" v-if="showNavMenus">
         <div class="nav-slide-menu-body">
             <!-- 导航item -->
             <span :class="activePath === item.path ? 'nav-list-active' : ''" v-for="(item, idx) in nav_list" :key="idx"
@@ -34,9 +34,13 @@
                     {{ local }}
                 </option>
             </select>
+            <div class="black-area" @click="showAsideMenu = false">
+
+            </div>
         </div>
-        <img class="nav-slide-menu-close" :src="getAssetsImages(`nav/close.png`)" alt="nav-slide-close"
-            @click="showAsideMenu = false">
+        <div class="nav-slide-close-body" @click="showAsideMenu = false">
+            <img class="nav-slide-menu-close" :src="getAssetsImages(`nav/close.png`)" alt="nav-slide-close">
+        </div>
     </div>
 </template>
 
@@ -124,7 +128,6 @@ checkScreenSize();
     left: 0;
     background-color: var(--color-main);
     display: flex;
-    align-items: start;
 }
 
 .nav-slide-menu-body {
@@ -139,15 +142,26 @@ checkScreenSize();
 
 .nav-slide-menu-body span,
 .nav-slide-menu-body select {
-    padding: 10px 0;
+    padding: 1rem 0;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
 }
 
+.black-area {
+    /* 填充剩余的宽度 */
+    flex: 1;
+}
+
+.nav-slide-close-body {
+    width: 15%;
+    height: 100%;
+    text-align: center;
+}
+
 .nav-slide-menu-close {
     width: 40px;
-    margin: 0 calc((15% - 30px) / 2);
+    /* margin: 0 calc((15% - 30px) / 2); */
     margin-top: 20px;
 }
 

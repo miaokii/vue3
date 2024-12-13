@@ -67,7 +67,8 @@ function call(phone: string) {
     font-family: futura-pt-weight;
     font-size: 1.9rem;
     margin: 0;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    text-align: inherit;
 }
 
 .contact-list-title {
