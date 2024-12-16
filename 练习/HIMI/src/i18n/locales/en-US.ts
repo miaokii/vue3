@@ -36,7 +36,7 @@ export default {
         read_more: 'READ MORE',
 
         about_us: 'About Us',
-        about_us_content: 'HIMI Consulting Pte. Ltd. is a group of professionals in accounting, tax, HR and immigration service. Our group is serving more than 1000 clients in Singapore and Southeast Asia. Our aim is to provide professional advisories to individual and corporation.'
+        about_us_content: 'HIMI Consulting Pte. Ltd. is a group of professionals in accounting, tax, HR and immigration service. Our group is serving more than 1000 clients in Singapore and Southeast Asia. Our aim is to provide professional advisories to individual and corporation'
     },
 
     about: {
