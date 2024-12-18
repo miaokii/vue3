@@ -1,5 +1,5 @@
 const himiConfig = {
-    email: 'info@himiconsulting.com',
+    email: 'himiconsultingsg@gmail.com',
     contact_number: [
         '+65 6904 8356',
         '+65 8083 8186'

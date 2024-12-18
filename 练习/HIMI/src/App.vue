@@ -13,6 +13,23 @@
 import AppNavigation from "@/components/AppNavigation.vue"
 import AppFooter from "@/components/AppFooter.vue"
 
+// import { onMounted, onUnmounted } from "vue";
+
+// // 不允许调试
+// function preventContextMenu(event: Event) {
+//   event.preventDefault()
+// }
+
+// // 监听屏幕变化
+// onMounted(() => {
+//     window.addEventListener('contextmenu', preventContextMenu)
+// })
+
+// // 清理监听事件
+// onUnmounted(() => {
+//     window.removeEventListener('contextmenu', preventContextMenu)
+// })
+
 </script>
 
 <style scoped>
