@@ -319,29 +319,244 @@
  * 属性遮蔽
  */
 
-class Person {
-    name: string
-    age: number
-     static school: string
-    constructor(name: string, age: number) { 
-        this.name = name
-        this.age = age
-    }
-}
+// class Person {
+//     name: string
+//     age: number
+//      static school: string
+//     constructor(name: string, age: number) { 
+//         this.name = name
+//         this.age = age
+//     }
+// }
 
 
-let value = 90
-// 使用defineProperty给Person添加age属性，并配置对应的get与set
-Object.defineProperty(Person.prototype, 'age', {
-    get() {
-        return value
-    },
-    set(val) {
-        value = val
-    }
-})
-const p = new Person('xiaoming', 20)
+// let value = 90
+// // 使用defineProperty给Person添加age属性，并配置对应的get与set
+// Object.defineProperty(Person.prototype, 'age', {
+//     get() {
+//         return value
+//     },
+//     set(val) {
+//         value = val
+//     }
+// })
+// const p = new Person('xiaoming', 20)
 
 
-console.log(p.age);
-console.log(Person.prototype.age);
+/**
+ * 定义一个State属性装饰器，监视属性的修改
+ */
+
+// function State(target: object, propertyKey: string) {
+//     let key = `__${propertyKey}`
+//     Object.defineProperty(target, propertyKey, {
+//         get() {
+//             return this[key]
+//         }, set(v) {
+//             console.log(`${propertyKey}的最新值为: ${v}`);
+//             this[key] = v
+//         },
+//         // 可枚举
+//         enumerable: true,
+//         // 可配置性
+//         configurable: true
+//     }) 
+// }
+
+// class Person {
+//     name: string
+//     @State age: number
+//     static school: string
+//     constructor(name: string, age: number) { 
+//         this.name = name
+//         this.age = age
+//     }
+// }
+
+// const p = new Person('Hello', 12)
+
+
+/**
+ * 方法装饰器
+ */
+
+// /**
+//  * 方法装饰器
+//  * @param target 对于实例方法，是类的原型对象 ，对于类方法，是类本身
+//  * @param propertyKey 方法名
+//  * @param descriptor 方法的描述对象，其中value属性是被装饰的方法
+//  */
+// function Demo(target: object, propertyKey: string, descriptor:any) {
+//     console.log(target, propertyKey, descriptor);
+
+// }
+
+// class Person {
+//     constructor(
+//         public name: string, 
+//         public age: number
+//     ) { }
+
+//     @Demo speak() {
+//         console.log(`I'm ${this.name}, I'm ${this.age} years old`);
+//     }
+
+//     @Demo static isAdult(age: number) {
+//         return age >= 18
+//     }
+// }
+
+
+/**
+ * 方法装饰器使用
+ */
+
+// // 方法调用前后打印
+// function Logger(target: object, propertyKey: string, descriptor: PropertyDescriptor) {
+//     // 存储原始方法
+//     const originnal = descriptor.value
+//     // 替换原始方法
+//     descriptor.value = function (...args: any[]) {
+//         let date1 = new Date()
+//         console.log(`${propertyKey}方法开始执行`);
+//         // 调用原始方法，call一个一个传递参数
+//         let result = originnal.call(this, ...args)
+//         console.log(`${propertyKey}方法执行完毕`);
+//         let date2 = new Date()
+
+//         let ms = date2.getMilliseconds() - date1.getMilliseconds()
+//         console.log(`${propertyKey}方法执行时长：${ms}ms`);
+
+//         return result
+//     }
+// }
+
+// // 验证数据
+// function Validate(maxValue: number) {
+//     return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
+//         // 保存原始方法
+//         let originnal = descriptor.value
+//         // 替换原始方法
+//         descriptor.value = function(...args: any[]) {
+//             // 验证逻辑
+//             if (args[0] > maxValue) {
+//                 throw new Error('年龄非法')
+//             } 
+//             // 调用原始方法，apply传递一个数组参数
+//             return originnal.apply(this, args)
+//         }
+//     }
+// }
+
+// class Person {
+//     constructor(
+//         public name: string,
+//         public age: number
+//     ) { }
+
+//     @Logger speak() {
+//         console.log(`I'm ${this.name}, I'm ${this.age} years old`);
+//     }
+
+//     @Validate(120) static isAdult(age: number) {
+//         return age >= 18
+//     }
+// }
+
+// let p = new Person('xiaoming', 19)
+// p.speak()
+// console.log(Person.isAdult(20));
+// console.log(Person.isAdult(122));
+
+
+// /**
+//  * 访问器装饰器
+//  * @param target 对于实例访问器，值是类的原型对象，对于静态访问器，值是所属类
+//  * @param propertyKey 访问器名称
+//  * @param descriptor 描述对象
+//  */
+// function Demo(target: object, propertyKey: string, descriptor: PropertyDescriptor) {
+
+// }
+
+// class Person {
+//     get adderss() {
+//         return '天府软件园'
+//     }
+
+//     static get country() {
+//         return '中国'
+//     }
+// }
+
+
+/**
+ * 访问器装饰器应用
+ * 对Weather类的temp属性的set访问器进行限制，最低温迪-50度，最高温度50度
+ */
+
+
+// function RangeValidate(max: number, min: number) {
+//     return function (target: object, propertyKey: string, descriptor: PropertyDescriptor)  {
+//         // 原始setter
+//         const originnalSetter = descriptor.set
+//         // 重写setter
+//         descriptor.set = function(value: number) {
+//             // 值不在范围内，抛出异常
+//             if (value < min || value > min) {
+//                 throw new Error(`${propertyKey}的值应该在${min}和${max}之间`)
+//             } 
+//             // 复合范围，调用原始setter
+//             if (originnalSetter) {
+//                 originnalSetter.call(this, value)
+//             }
+//         }
+//     }
+// }
+
+// class Weather {
+//     private _temp: number
+//     constructor(_temp: number) {
+//         this._temp = _temp
+//     } 
+
+//     @RangeValidate(-50, 50)
+//     set temp(value) {
+//         this._temp = value
+//     }
+
+//     get temp() {
+//         return this._temp
+//     }
+//  }
+
+// const w = new Weather(20)
+// w.temp = 200
+
+
+/**
+ * 参数装饰器
+ */
+
+// /**
+//  * 参数装饰器
+//  * @param target 如果修饰的是实例方法的参数，target为类的原型对象，如果修饰的是静态方法的参数，target值为类本身
+//  * @param propertyKey 参数所在方法的名称
+//  * @param parameterIndex 参数在函数参数列表中的索引
+//  */
+// function Demo(target: object, propertyKey: string, parameterIndex: number) {
+
+// }
+
+// class Person {
+//     constructor(public name: string) {}
+//     speak(@Demo msg1: any, msg2: any) {
+//         console.log(`${this.name} say：${msg1}, ${msg2}`);
+//     }
+// }
+
+
+/**
+ * 定义方法装饰器Validate，同时搭配参数装饰器NotNumber，对speak的参数类型进行限制
+ * 
+ */
