@@ -4,11 +4,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { ActionBar, ActionBarButton, ActionBarIcon, AddressEdit, AddressList, Button, Card, Cell, CellGroup, Checkbox, CheckboxGroup, ContactCard, Dialog, Divider, Field, Form, Icon, List, Loading, Overlay, Popup, PullRefresh, Skeleton, Stepper, SubmitBar, Swipe, SwipeCell, Tab, Toast } from 'vant'
-import { appConfig } from './common/config'
 import APIClient from './utils/APIClient'
+import { createPinia } from 'pinia'
+
+import 'vant/es/toast/style'
+import Swiper from './components/Swiper.vue'
 
 let app = createApp(App)
 app.use(router)
+app.use(createPinia())
 
 // vant组件
 app.use(ActionBarButton)

@@ -10,10 +10,12 @@ import { showFailToast } from "vant";
 import { get } from "vant/lib/utils";
 
 class APIClient {
-    private service: APIServer;
+    readonly service: APIServer;
 
     private static instance: APIClient;
     private static services: APIServer[]
+
+    static readonly currentService = () => this.instance.service;
 
     private constructor(service: APIServer) {
         this.service = service;

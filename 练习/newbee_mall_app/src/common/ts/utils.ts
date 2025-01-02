@@ -1,4 +1,6 @@
+import { APIServcers } from "@/utils/APIServer"
 import { appConfig } from "../config"
+import APIClient from "@/utils/APIClient"
 
 /**
  * 设置本地存储
@@ -45,7 +47,7 @@ export const prefix = (url: string) => {
     if (url && url.startsWith('http')) {
         return url
     } else {
-        url = `${appConfig.api}${url}`
+        url = `${APIClient.currentService().baseUrl}${url}`
         return url
     }
 }

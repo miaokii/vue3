@@ -1,6 +1,7 @@
 @import './base.less';
-@primary: #1890ff;
+@primary: #1baeae;
 @orange: #fa8c16;
+@divider: #f9f9f9;
 @bc: #f7f7f7;
 @fc: #fff;
 
@@ -19,6 +20,7 @@
 // 1px边框
 .border-1px(@color) {
     position: relative;
+    // & 表示当前选择器的父级
     &:after {
         display: block;
         position: absolute;
@@ -36,3 +38,42 @@
     top: 0;
     right: 0;
 }
+
+// 定位上下居中
+.ct {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+// 定位左右居中
+.cl {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// 宽高
+.wh(@width, @height) {
+    width: @width;
+    height: @height;
+}
+
+// 字体大小，颜色
+.fc(@size, @color) {
+    font-size: @size;
+    color: @color;
+}
+
+// flex布局, 子元素对齐方式
+.fj(@type: space-between) {
+    display: flex;
+    justify-content: @type;
+}
+
+.boxSizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
