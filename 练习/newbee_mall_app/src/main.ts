@@ -8,7 +8,7 @@ import APIClient from './utils/APIClient'
 import { createPinia } from 'pinia'
 
 import 'vant/es/toast/style'
-import Swiper from './components/Swiper.vue'
+import './common/style/theme.css'
 
 let app = createApp(App)
 app.use(router)
@@ -26,12 +26,12 @@ app.use(Dialog)
 app.use(Toast)
 app.use(ContactCard)
 app.use(Form)
-app.use(AddressEdit)
-app.use(AddressList)
 app.use(Field)
-app.use(CellGroup)
 app.use(Cell)
 app.use(SwipeCell)
+app.use(CellGroup)
+app.use(AddressEdit)
+app.use(AddressList)
 app.use(Icon)
 app.use(Card)
 app.use(Button)

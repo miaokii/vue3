@@ -7,11 +7,9 @@ import axios from "axios";
 import { getLocal, setLocal } from "@/common/ts/utils";
 import router from "@/router";
 import { showFailToast } from "vant";
-import { get } from "vant/lib/utils";
 
 class APIClient {
-    readonly service: APIServer;
-
+    private service: APIServer;
     private static instance: APIClient;
     private static services: APIServer[]
 
@@ -154,6 +152,10 @@ class APIClient {
 
     public static post<T = any>(url: URLEnum, param?: object) {
         return this.request<T>(url, RequstMethod.POST, param);
+    }
+
+    public static put<T = any>(url: URLEnum, param?: object) {
+        return this.request<T>(url, RequstMethod.PUT, param);
     }
 }
 

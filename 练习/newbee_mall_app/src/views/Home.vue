@@ -87,7 +87,7 @@
 <script setup lang="ts" name="home">
 import { closeToast, showDialog, showLoadingToast, showToast, Swipe } from 'vant';
 import { onMounted, reactive, nextTick } from 'vue';
-import { getHome } from '@/services/home';
+import { getHome } from '@/service/home';
 import navBar from '@/components/NavBar.vue';
 import swiper from '@/components/Swiper.vue';
 import type { Goods, HomeCarousel } from '@/interfaces/Home';

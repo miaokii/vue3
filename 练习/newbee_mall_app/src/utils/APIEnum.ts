@@ -5,8 +5,8 @@
 export const enum RequstMethod {
     GET = 'GET',
     POST = 'POST',
+    PUT = 'PUT'
 }
-
 
 /**
  * @description: API地址枚举
@@ -18,5 +18,14 @@ export const enum URLEnum {
 
     // 购物车
     shop_cart = '/shop-cart',
+
+    // 用户信息
+    user_info = '/user/info',
+    // 登录
+    user_login = '/user/login',
+    // 登出
+    user_logout = '/user/logout',
+    // 注册
+    user_register = '/user/register'
 
 }
