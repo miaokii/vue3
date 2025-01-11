@@ -7,6 +7,7 @@ import { ActionBar, ActionBarButton, ActionBarIcon, AddressEdit, AddressList, Bu
 import APIClient from './utils/APIClient'
 import { createPinia } from 'pinia'
 
+import 'vant/lib/index.css';
 import 'vant/es/toast/style'
 import './common/style/theme.css'
 

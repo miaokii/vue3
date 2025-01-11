@@ -1,19 +1,19 @@
 <template>
     <div class="nav-bar van-hairline--top">
         <ul class="nav-list">
-            <RouterLink class="nav-list-item active" to="home">
+            <RouterLink class="nav-list-item" to="home">
                 <i><van-icon name="wap-home-o"/></i>
                 <span>首页</span>
             </RouterLink>
-            <RouterLink class="nav-list-item" to="home">
+            <RouterLink class="nav-list-item" to="categroy">
                 <i><van-icon name="apps-o" /></i>
                 <span>分类</span>
             </RouterLink>
-            <RouterLink class="nav-list-item" to="home">
+            <RouterLink class="nav-list-item" to="shopcart">
                 <i><van-icon name="shopping-cart-o" :badge="!cart.count ? '' : cart.count"></van-icon></i>
                 <span>购物车</span>
             </RouterLink>
-            <RouterLink class="nav-list-item" to="home">
+            <RouterLink class="nav-list-item" to="user">
                 <i><van-icon name="user-circle-o" /></i>
                 <span>我的</span>
             </RouterLink>

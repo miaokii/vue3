@@ -18,7 +18,7 @@ const router = createRouter({
         },
         {
             path: "/home",
-            name: "Home",
+            name: "home",
             component: Home,
             meta: {
                 index: 1
@@ -26,8 +26,48 @@ const router = createRouter({
         },
         {   
             path: "/login",
-            name: "Login",
+            name: "login",
             component: () => import("@/views/Login.vue"),
+            meta: {
+                index: 1
+            }
+        },
+        {   
+            path: "/user",
+            name: "user",
+            component: () => import("@/views/User.vue"),
+            meta: {
+                index: 1
+            }
+        },
+        {   
+            path: "/product-list",
+            name: "product-list",
+            component: () => import("@/views/ProductList.vue"),
+            meta: {
+                index: 2
+            }
+        },
+        {   
+            path: "/category",
+            name: "category",
+            component: () => import("@/views/Category.vue"),
+            meta: {
+                index: 1
+            }
+        },
+        {   
+            path: "/product/:id",
+            name: "product",
+            component: () => import("@/views/ProductDetail.vue"),
+            meta: {
+                index: 3
+            }
+        },
+        {   
+            path: "/cart",
+            name: "cart",
+            component: () => import("@/views/Cart.vue"),
             meta: {
                 index: 1
             }

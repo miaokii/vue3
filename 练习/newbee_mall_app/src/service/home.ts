@@ -5,7 +5,7 @@ import { type Response } from "@/utils/Response";
 import home_info from "./home_info";
 
 export function getHome() {
-  // return APIClient.get<Response<HomeInfos>>(URLEnum.home_index_infos)
+  // return APIClient.get<HomeInfos>(URLEnum.home_index_infos)
   return new Promise<Response<HomeInfos>>((resolve) => {
     setTimeout(() => {
       resolve(home_info);

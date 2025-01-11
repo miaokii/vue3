@@ -56,9 +56,9 @@ class APIClient {
      * @param param     请求参数
      * @returns         返回请求结果
      */
-    static async request<T = any>(url: URLEnum,
+    static async request<T = any>(url: URLEnum | string, 
         method: RequstMethod,
-        param: object | string | number | undefined) {
+        param: object | string | number | undefined): Promise<T> {
 
         let config: AxiosRequestConfig = {
             url: url,
@@ -71,14 +71,14 @@ class APIClient {
             config.data = param;
         }
 
-        if (this.instance.service.start) {
-            config = this.instance.service.start(config);
-        }
+        // if (this.instance.service.start) {
+        //     config = this.instance.service.start(config);
+        // }
 
         // 添加token
         axios.interceptors.request.use(config => {
             if (getLocal('token')) {
-                config.headers.Authorization = localStorage.getItem('token') || '';
+                config.headers['Token'] = getLocal('token')
             }
             return config
         }, error => {
@@ -101,7 +101,7 @@ class APIClient {
                 }
                 return Promise.reject(res.data);
             }
-            return res.data
+            return res
         }, error => {
             let message = '';
             switch (error.response.resultCode) {
@@ -143,18 +143,18 @@ class APIClient {
             }
             return Promise.reject(message);
         })
-        return (await axios.request<Response<T>>(config)).data
+        return (await axios.request<Response<T>>(config)).data.data
     }
 
-    public static get<T = any>(url: URLEnum, param?: object) {
+    public static get<T = any>(url: URLEnum | string, param?: object) {
         return this.request<T>(url, RequstMethod.GET, param);
     }
 
-    public static post<T = any>(url: URLEnum, param?: object) {
+    public static post<T = any>(url: URLEnum | string, param?: object) {
         return this.request<T>(url, RequstMethod.POST, param);
     }
 
-    public static put<T = any>(url: URLEnum, param?: object) {
+    public static put<T = any>(url: URLEnum | string, param?: object) {
         return this.request<T>(url, RequstMethod.PUT, param);
     }
 }

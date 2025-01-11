@@ -26,6 +26,9 @@ export const enum URLEnum {
     // 登出
     user_logout = '/user/logout',
     // 注册
-    user_register = '/user/register'
+    user_register = '/user/register',
+
+    // 商品详情
+    good_detail = '/goods/detail'
 
 }

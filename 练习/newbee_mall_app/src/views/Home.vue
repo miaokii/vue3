@@ -92,7 +92,11 @@ import navBar from '@/components/NavBar.vue';
 import swiper from '@/components/Swiper.vue';
 import type { Goods, HomeCarousel } from '@/interfaces/Home';
 import { prefix } from '@/common/ts/utils';
+import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
+const cart = useCartStore()
 const state = reactive({
     isLogin: false,
     // 轮播图
@@ -158,6 +162,7 @@ onMounted(async () => {
     const token = localStorage.getItem('token');
     if (token) {
         state.isLogin = true
+        cart.updateCart()
     }
 
     showLoadingToast({
@@ -190,10 +195,7 @@ function tips() {
 }
 
 function goToDetail(good: Goods) {
-    showDialog({
-        title: '提示',
-        message: '功能暂未开放，敬请期待'
-    })
+    router.push({path: `/product/${good.goodsId}`})
 }
 
 </script>
@@ -221,10 +223,6 @@ function goToDetail(good: Goods) {
     z-index: 10000;
     color: @primary;
     background: rgba(255, 255, 255, 0.7);
-
-    .van-icon {
-        // font-size: 25px;
-    }
 
     // 嵌套类
     .nbmenu2 {

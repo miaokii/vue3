@@ -39,6 +39,7 @@ const goBack = () => {
     top: 0;
     left: 0;
     z-index: 10000;
+    padding: 0 10px;
     .fj();
     .wh(100%, 50px);
     line-height: 44px;
@@ -47,7 +48,7 @@ const goBack = () => {
     background: #fff;
 
     .simple-header-name {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 

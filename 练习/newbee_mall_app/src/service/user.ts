@@ -1,8 +1,9 @@
 import APIClient from "@/utils/APIClient";
 import { URLEnum } from "@/utils/APIEnum";
+import { type UserInfo } from "@/interfaces/User";
 
 export function getUserInfo() {
-    return APIClient.get(URLEnum.user_info)
+    return APIClient.get<UserInfo>(URLEnum.user_info)
 }
 
 export function editUserInfo(param: object) {
@@ -10,7 +11,7 @@ export function editUserInfo(param: object) {
 }
 
 export function login(param: object) {
-    return APIClient.post(URLEnum.user_login, param)
+    return APIClient.post<string>(URLEnum.user_login, param)
 }
 
 export function logout() {

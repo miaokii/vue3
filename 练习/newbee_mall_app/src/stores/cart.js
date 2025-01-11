@@ -3,17 +3,13 @@ import { ref } from "vue";
 import { getCart } from "@/service/cart";
 
 // 定义一个名为cart的store，并导出
-export const useCartStore = defineStore('cart', {
-    actions: {
-        async updateCart() {
-            const data = await getCart()
-            // this表示当前store实例
-            this.count = data.length
-        }
-    },  
-    getters: {
-    },
-    state: () => ({
-        count: ref(0),
-    })
+export const useCartStore = defineStore('cart', () => {
+    // 购物车商品数量
+    const count = ref(0)
+    // 更新购物车
+    async function updateCart() {
+        const { data = [] } = await getCart()
+        count.value = data.count
+    }
+    return {count, updateCart}
 })

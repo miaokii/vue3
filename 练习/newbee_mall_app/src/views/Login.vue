@@ -31,8 +31,8 @@ import { reactive, ref } from 'vue';
 import { showSuccessToast, showFailToast } from 'vant'
 import ImageVerify from '@/components/ImageVerify.vue';
 import { Md5 } from 'ts-md5';
-import { login } from '@/service/user';
-import { register } from '@/service/user';
+import { login, register } from '@/service/user';
+import { setLocal } from '@/common/ts/utils';
 
 const verifyRef = ref()
 const state = reactive({
@@ -56,13 +56,13 @@ async function onSubmit() {
 
     // 登录
     if (type_login.value) {
+        // data就是token字符串
         const data = await login({
             'loginName': state.username,
             'passwordMd5': Md5.hashStr(state.password)
         })
-
-        console.log(data);
-
+        // 保存token
+        setLocal('token', data)
         window.location.href = '/'
     } 
     // 注册
@@ -71,7 +71,6 @@ async function onSubmit() {
             'loginName': state.username,
             'password': state.password
         })
-
         showSuccessToast('注册成功')
         toggleLogin()
     }

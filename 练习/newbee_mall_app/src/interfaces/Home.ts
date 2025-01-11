@@ -21,3 +21,17 @@ export interface HomeInfos {
     newGoodses: Goods[]
     recommendGoodses: Goods[]
 }
+
+// 商品详情
+export interface GoodsDetail {
+    goodsId: string
+    goodsName: string
+    goodsIntro: string
+    goodsCoverImg: string
+    sellingPrice: string
+    tag: string
+    goodsCarouselList: string[]
+    originalPrice: number
+    goodsDetailContent: string
+
+}
