@@ -1,23 +1,11 @@
 <template>
-    <div class="nav-bar van-hairline--top">
-        <ul class="nav-list">
-            <RouterLink class="nav-list-item" to="home">
-                <i><van-icon name="wap-home-o"/></i>
-                <span>首页</span>
-            </RouterLink>
-            <RouterLink class="nav-list-item" to="categroy">
-                <i><van-icon name="apps-o" /></i>
-                <span>分类</span>
-            </RouterLink>
-            <RouterLink class="nav-list-item" to="shopcart">
-                <i><van-icon name="shopping-cart-o" :badge="!cart.count ? '' : cart.count"></van-icon></i>
-                <span>购物车</span>
-            </RouterLink>
-            <RouterLink class="nav-list-item" to="user">
-                <i><van-icon name="user-circle-o" /></i>
-                <span>我的</span>
-            </RouterLink>
-        </ul>
+    <div class="nav-bar">
+        <van-tabbar route active-color="#1baeae">
+            <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item replace to="/categroy" icon="apps-o">分类</van-tabbar-item>
+            <van-tabbar-item replace to="/cart" icon="shopping-cart-o" :badge="cart.count">购物车</van-tabbar-item>
+            <van-tabbar-item replace to="/user" icon="user-circle-o">我的</van-tabbar-item>
+        </van-tabbar>
     </div>
 </template>
 
@@ -49,39 +37,9 @@ onMounted(() => {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 5px 0;
     z-index: 1000;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     background-color: white;
-    
-    .nav-list {
-        width: 100%;
-        .fj();
-        flex-direction: row;
-        padding: 0;
-        .nav-list-item {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            text-align: center;
-            color: #666;
-            &.router-link-active {
-                color: @primary;
-            }
-            i {
-                text-align: center;
-                font-size: 22px;
-            }
-            span {
-                font-size: 12px;
-            }
-            .van-icon-shopping-cart-o {
-                margin: 0 auto;
-                margin-bottom: 2px;
-            }
-        }
-    }
 }
-
 </style>

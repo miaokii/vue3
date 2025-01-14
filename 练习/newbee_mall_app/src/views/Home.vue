@@ -266,7 +266,6 @@ function goToDetail(good: Goods) {
     }
 }
 
-
 .category-list {
     display: flex;
     // 不允许缩小
@@ -275,7 +274,6 @@ function goToDetail(good: Goods) {
     flex-wrap: wrap;
     width: 100%;
     margin-bottom: 10px;
-    margin-top: 50px;
 
     div {
         display: flex;

@@ -33,5 +33,14 @@ export interface GoodsDetail {
     goodsCarouselList: string[]
     originalPrice: number
     goodsDetailContent: string
+}
 
+/// 购物车
+export interface CartObj {
+    cartItemId: string
+    goodsId: string
+    goodsCount: string
+    goodsName: string
+    goodsCoverImg: string
+    sellingPrice: string
 }

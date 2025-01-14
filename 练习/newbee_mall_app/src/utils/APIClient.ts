@@ -58,7 +58,7 @@ class APIClient {
      */
     static async request<T = any>(url: URLEnum | string, 
         method: RequstMethod,
-        param: object | string | number | undefined): Promise<T> {
+        param: object | string | number | undefined): Promise<Response<T>> {
 
         let config: AxiosRequestConfig = {
             url: url,
@@ -143,7 +143,7 @@ class APIClient {
             }
             return Promise.reject(message);
         })
-        return (await axios.request<Response<T>>(config)).data.data
+        return (await axios.request<Response<T>>(config)).data
     }
 
     public static get<T = any>(url: URLEnum | string, param?: object) {
@@ -154,9 +154,15 @@ class APIClient {
         return this.request<T>(url, RequstMethod.POST, param);
     }
 
-    public static put<T = any>(url: URLEnum | string, param?: object) {
-        return this.request<T>(url, RequstMethod.PUT, param);
-    }
+    // public static put<T = any>(url: URLEnum | string, param?: object) {
+    //     return this.request<T>(url, RequstMethod.PUT, param);
+    // }
+
+    // public static delete<T = any>(url: URLEnum | string, param?: object) {
+    //     return this.request<T>(url, RequstMethod.DELETE, param);
+    // }
+
+    
 }
 
 export default APIClient;

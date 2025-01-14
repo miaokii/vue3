@@ -3,7 +3,12 @@
         <simple-header name="商品详情" />
         <div class="detail-content">
             <div class="detail-swipe-wrap">
-
+                <van-swipe class="my-swipe" indicator-color="#1baeae">
+                    <van-swipe-item class="my-swipe-item" v-for="(item, idx) in state.detail.goodsCarouselList"
+                        :key="idx">
+                        <img :src="item" alt="">
+                    </van-swipe-item>
+                </van-swipe>
             </div>
             <div class="product-info">
                 <div class="product-title">{{ state.detail.goodsName }}</div>
@@ -25,11 +30,11 @@
             </div>
         </div>
 
-        <van-action-bar :safe-area-inset-bottom="true">
-            <van-action-bar-icon icon="chat-o" text="客服"/>
+        <van-action-bar>
+            <van-action-bar-icon icon="chat-o" text="客服" />
             <van-action-bar-icon icon="cart-o" :badge="!cart.count ? '' : cart.count" @click="gotoCart" text="购物车" />
-            <van-action-bar-button type="warning" text="加入购物车" @click="addToCart" />
-            <van-action-bar-button type="danger" text="立即购买" @click="" />
+            <van-action-bar-button type="warning" @click="addToCart" text="加入购物车" />
+            <van-action-bar-button type="danger" @click="buyNow" text="立即购买" />
         </van-action-bar>
     </div>
 </template>
@@ -40,8 +45,9 @@ import { goodDetail } from '@/service/goods';
 import { onMounted, reactive, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { type GoodsDetail } from '@/interfaces/Home';
-import { prefix } from '@/common/ts/utils';
 import { useCartStore } from '@/stores/cart'
+import { addCart } from '@/service/cart';
+import { showSuccessToast } from 'vant';
 
 const cart = useCartStore()
 const route = useRoute()
@@ -52,17 +58,30 @@ const state = reactive({
 
 onMounted(async () => {
     const { id } = route.params
-    const data = await goodDetail(id as string)
-
-    state.detail = data
+    const result = await goodDetail(id as string)
+    state.detail = result.data
 })
 
-function gotoCart() {
-
+async function gotoCart() {
+    router.push('/cart')
 }
 
-function addToCart() {
+// 添加到购物车
+async function addToCart() {
+    // 添加购物车
+    let result = await addCart({goodsCount: 1, goodsId: state.detail.goodsId})
+    // 更新购物车
+    if (result.resultCode == 200) {
+        showSuccessToast('添加成功')
+    }
+    cart.updateCart()
+}
 
+// 立即购买
+async function buyNow() {
+    await addCart({goodsCount: 1, goodsId: state.detail.goodsId})
+    cart.updateCart()
+    router.push('/cart')
 }
 
 </script>
@@ -75,6 +94,12 @@ function addToCart() {
         height: calc(100vh - 50px);
         overflow: hidden;
         overflow-y: auto;
+
+        .detail-swipe-wrap {
+            img {
+                width: 100%;
+            }
+        }
 
         .product-info {
             padding: 0 10px;

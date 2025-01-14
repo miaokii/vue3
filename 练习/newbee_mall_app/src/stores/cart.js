@@ -8,8 +8,8 @@ export const useCartStore = defineStore('cart', () => {
     const count = ref(0)
     // 更新购物车
     async function updateCart() {
-        const { data = [] } = await getCart()
-        count.value = data.count
+        const result = await getCart()
+        count.value = result.data.length
     }
-    return {count, updateCart}
+    return { count, updateCart }
 })

@@ -5,7 +5,8 @@
 export const enum RequstMethod {
     GET = 'GET',
     POST = 'POST',
-    PUT = 'PUT'
+    PUT = 'POST',
+    DELETE = 'POST'
 }
 
 /**
