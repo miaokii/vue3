@@ -2,8 +2,8 @@
     <div class="nav-bar">
         <van-tabbar route active-color="#1baeae">
             <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
-            <van-tabbar-item replace to="/categroy" icon="apps-o">分类</van-tabbar-item>
-            <van-tabbar-item replace to="/cart" icon="shopping-cart-o" :badge="cart.count">购物车</van-tabbar-item>
+            <van-tabbar-item replace to="/category" icon="apps-o">分类</van-tabbar-item>
+            <van-tabbar-item replace to="/cart" icon="shopping-cart-o" :badge="cart.count ? cart.count : ''">购物车</van-tabbar-item>
             <van-tabbar-item replace to="/user" icon="user-circle-o">我的</van-tabbar-item>
         </van-tabbar>
     </div>

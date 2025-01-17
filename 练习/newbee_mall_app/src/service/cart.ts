@@ -1,9 +1,9 @@
-import type { CartObj } from "@/interfaces/Home";
+import type { CartGoods } from "@/interfaces/Home";
 import APIClient from "@/utils/APIClient";
 import { URLEnum } from "@/utils/APIEnum";
 
-export function getCart(params: any) {
-    return APIClient.get<CartObj[]>(URLEnum.shop_cart, params);
+export function getCart(params: any = null) {
+    return APIClient.get<CartGoods[]>(URLEnum.shop_cart, params);
 }
 
 export function addCart(params: any) {
@@ -11,5 +11,13 @@ export function addCart(params: any) {
 }
 
 export function deleteCart(id: string | number) {
-    return APIClient.post(URLEnum.shop_cart+`/${id}`)
+    return APIClient.delete(URLEnum.shop_cart+`/${id}`)
+}
+
+export function modifyCart(param: object) {
+    return APIClient.put(URLEnum.shop_cart, param)
+}
+
+export function getByCartItemIds(cartItemIds: string) {
+    return APIClient.get<CartGoods[]>(URLEnum.shop_cart_settle, {cartItemIds} );
 }

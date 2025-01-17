@@ -154,13 +154,13 @@ class APIClient {
         return this.request<T>(url, RequstMethod.POST, param);
     }
 
-    // public static put<T = any>(url: URLEnum | string, param?: object) {
-    //     return this.request<T>(url, RequstMethod.PUT, param);
-    // }
+    public static put<T = any>(url: URLEnum | string, param?: object) {
+        return this.request<T>(url, RequstMethod.PUT, param);
+    }
 
-    // public static delete<T = any>(url: URLEnum | string, param?: object) {
-    //     return this.request<T>(url, RequstMethod.DELETE, param);
-    // }
+    public static delete<T = any>(url: URLEnum | string, param?: object) {
+        return this.request<T>(url, RequstMethod.DELETE, param);
+    }
 
     
 }

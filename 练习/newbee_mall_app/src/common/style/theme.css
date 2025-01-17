@@ -1,3 +1,8 @@
 :root:root {
     --van-primary-color: #1baeae;
+    --van-tabbar-height: 60px;
+    
+    .icon20 {
+        font-size: 20px;
+    }
 }

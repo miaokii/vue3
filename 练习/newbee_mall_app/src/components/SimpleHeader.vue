@@ -1,9 +1,9 @@
 <template>
     <header class="simple-header van-hairline--bottom">
-        <i v-if="!isBack" class="nbicon nbfanhui" @click="goBack"></i>
-        <i v-else>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+        <van-icon v-if="!isBack" class="icon20" name="arrow-left" @click="goBack"/>
+        <span v-else></span>
         <div class="simple-header-name">{{ name }}</div>
-        <i class="nbicon nbmore"></i>
+        <van-icon class="icon20" name="ellipsis" />
     </header>
     <div class="block"></div>
 </template>
@@ -11,7 +11,6 @@
 <script setup lang="ts" name="sipmle_header">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
 
 const props = defineProps<{
     name?: string,
@@ -21,12 +20,14 @@ const props = defineProps<{
 
 const isBack = ref(props.noback || false)
 const router = useRouter()
+const emit = defineEmits(['callback'])
 const goBack = () => {
     if (!props.back) {
         router.go(-1)
     } else {
         router.push(props.back)
     }
+    emit('callback')
 }
 
 </script>
@@ -41,6 +42,7 @@ const goBack = () => {
     z-index: 10000;
     padding: 0 10px;
     .fj();
+    align-items: center;
     .wh(100%, 50px);
     line-height: 44px;
     .boxSizing();

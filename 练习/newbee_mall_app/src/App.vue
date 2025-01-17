@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <RouterView />
+    <!-- 结构component -->
+    <router-view v-slot="{ Component }">
+      <keep-alive  :include="cachedComponents">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
-<script setup lang="ts" name="name">
-import { reactive } from 'vue';
-import { useRouter } from 'vue-router';
+<script setup lang="ts">
+import { computed, KeepAlive, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 let router = useRouter();
 let state = reactive({
   transitionName: 'slide-left'
 });
+
+const route = useRoute()
+const cachedComponents = computed(() => {
+  return router.options.routes.filter(item => item.meta?.keepAlive).map(route => route.name).join(',')
+})
 
 router.beforeEach((to, from) => {
   if (to.meta.index > from.meta.index) {
@@ -89,5 +99,4 @@ body {
 .van-badge--fixed {
   z-index: 1000;
 }
-
 </style>

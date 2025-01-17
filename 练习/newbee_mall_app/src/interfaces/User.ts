@@ -6,5 +6,13 @@ export interface UserInfo {
 }
 
 export interface UserAddress {
-    
+    addressId: string
+    userId: string
+    userName: string
+    userPhone: string
+    defaultFlag: boolean
+    provinceName: string
+    cityName: string
+    regionName: string
+    detailAddress: string
 }

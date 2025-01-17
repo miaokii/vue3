@@ -36,11 +36,11 @@ export interface GoodsDetail {
 }
 
 /// 购物车
-export interface CartObj {
+export interface CartGoods {
     cartItemId: string
     goodsId: string
-    goodsCount: string
+    goodsCount: number
     goodsName: string
     goodsCoverImg: string
-    sellingPrice: string
+    sellingPrice: number
 }

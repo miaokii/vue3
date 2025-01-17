@@ -31,8 +31,9 @@
         </div>
 
         <van-action-bar>
-            <van-action-bar-icon icon="chat-o" text="客服" />
-            <van-action-bar-icon icon="cart-o" :badge="!cart.count ? '' : cart.count" @click="gotoCart" text="购物车" />
+            <van-action-bar-icon class="action-icon" icon="chat-o" text="客服" />
+            <van-action-bar-icon class="action-icon" icon="cart-o" :badge="!cart.count ? '' : cart.count"
+                @click="gotoCart" text="购物车" />
             <van-action-bar-button type="warning" @click="addToCart" text="加入购物车" />
             <van-action-bar-button type="danger" @click="buyNow" text="立即购买" />
         </van-action-bar>
@@ -69,7 +70,7 @@ async function gotoCart() {
 // 添加到购物车
 async function addToCart() {
     // 添加购物车
-    let result = await addCart({goodsCount: 1, goodsId: state.detail.goodsId})
+    let result = await addCart({ goodsCount: 1, goodsId: state.detail.goodsId })
     // 更新购物车
     if (result.resultCode == 200) {
         showSuccessToast('添加成功')
@@ -79,7 +80,7 @@ async function addToCart() {
 
 // 立即购买
 async function buyNow() {
-    await addCart({goodsCount: 1, goodsId: state.detail.goodsId})
+    await addCart({ goodsCount: 1, goodsId: state.detail.goodsId })
     cart.updateCart()
     router.push('/cart')
 }
@@ -157,15 +158,23 @@ async function buyNow() {
                     }
                 }
             }
-
-            .product-content {
-                padding: 0 20px;
-
-                img {
-                    width: 100%;
-                }
-            }
         }
+    }
+}
+
+.product-content {
+    padding: 0 20px;
+
+    /deep/ img {
+        width: 100%;
+    }
+}
+
+.action-icon {
+
+    // 深度监听
+    /deep/ .van-icon {
+        font-size: 20px;
     }
 }
 </style>

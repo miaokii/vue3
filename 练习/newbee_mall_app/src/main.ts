@@ -51,7 +51,6 @@ app.use(ActionBarButton)
 .use(Tabbar)
 .use(TabbarItem)
 
-
 APIClient.initialize()
 
 // 全局过滤器

@@ -3,7 +3,7 @@
         <!-- 导航栏 -->
         <header class="home-header wrap" :class="{ 'active': state.headerScroll }">
             <!-- 菜单按钮 -->
-            <RouterLink tag="i" to="./category"><van-icon name="wap-nav" /></RouterLink>
+            <RouterLink tag="i" to="./category"><van-icon class="icon20" name="wap-nav" /></RouterLink>
             <!-- 搜索框 -->
             <div class="header-search">
                 <span class="app-name">新蜂商城</span>
@@ -13,7 +13,7 @@
             <RouterLink class="login" tag="span" to="./login" v-if="!state.isLogin">登录</RouterLink>
             <!-- 用户信息按钮 -->
             <RouterLink class="login" tag="span" to="./user" v-else>
-                <van-icon name="manager-o"></van-icon>
+                <van-icon class="icon20" name="manager-o"></van-icon>
             </RouterLink>
         </header>
 
@@ -86,14 +86,18 @@
 
 <script setup lang="ts" name="home">
 import { closeToast, showDialog, showLoadingToast, showToast, Swipe } from 'vant';
-import { onMounted, reactive, nextTick } from 'vue';
+import { onMounted, reactive, nextTick, onActivated } from 'vue';
 import { getHome } from '@/service/home';
 import navBar from '@/components/NavBar.vue';
 import swiper from '@/components/Swiper.vue';
 import type { Goods, HomeCarousel } from '@/interfaces/Home';
 import { prefix } from '@/common/ts/utils';
-import { useCartStore } from '@/stores/cart'
+import { useCartStore } from '@/stores/cart';
 import { useRouter } from 'vue-router';
+
+defineOptions({
+    name: 'home'
+})
 
 const router = useRouter()
 const cart = useCartStore()
@@ -159,6 +163,22 @@ const state = reactive({
 
 // 判断token是否存在
 onMounted(async () => {
+
+});
+
+onActivated(() => {
+    requestHome()
+})
+
+nextTick(() => {
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        scrollTop > 100 ? state.headerScroll = true : state.headerScroll = false
+    })
+})
+
+async function requestHome() {
+
     const token = localStorage.getItem('token');
     if (token) {
         state.isLogin = true
@@ -170,7 +190,7 @@ onMounted(async () => {
         forbidClick: true,
     });
 
-    const data = await getHome()
+    const { data } = await getHome()
 
     state.swipeList = data.carousels
     state.hots = data.hotGoodses
@@ -179,23 +199,14 @@ onMounted(async () => {
     state.loading = false
 
     closeToast()
-});
-
-nextTick(() => {
-    window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        scrollTop > 100 ? state.headerScroll = true : state.headerScroll = false
-        console.log('hahha ');
-
-    })
-})
+}
 
 function tips() {
     showToast('功能暂未开放，敬请期待')
 }
 
 function goToDetail(good: Goods) {
-    router.push({path: `/product/${good.goodsId}`})
+    router.push({ path: `/product/${good.goodsId}` })
 }
 
 </script>

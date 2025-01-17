@@ -13,44 +13,64 @@
         </van-skeleton>
 
         <ul class="user-list">
-            <li class="van-hairline--bottom" @click="">
+            <li class="van-hairline--bottom" @click="gotoOrder">
                 <span>我的订单</span>
                 <van-icon name="arrow" />
             </li>
-            <li class="van-hairline--bottom" @click="">
+            <li class="van-hairline--bottom" @click="gotoSetting">
                 <span>账号管理</span>
                 <van-icon name="arrow" />
             </li>
-            <li class="van-hairline--bottom" @click="">
+            <li class="van-hairline--bottom" @click="gotoAddress">
                 <span>地址管理</span>
                 <van-icon name="arrow" />
             </li>
-            <li class="van-hairline--bottom" @click="">
+            <li class="van-hairline--bottom" @click="gotoAboutus">
                 <span>关于我们</span>
                 <van-icon name="arrow" />
             </li>
         </ul>
+        <nav-bar/>
     </div>
 </template>
 
 <script setup lang="ts" name="user">
 import SimpleHeader from '@/components/SimpleHeader.vue';
-import { onMounted, reactive } from 'vue';
+import { onActivated, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { type UserInfo } from '@/interfaces/User';
 import { getUserInfo } from '@/service/user';
+import NavBar from '@/components/NavBar.vue';
+defineOptions({
+  name: 'user'
+})
 const router = useRouter()
-
 const state = reactive({
     loading: true,
     user: {} as UserInfo,
 })
 
-onMounted(async () => {
-    const data = await getUserInfo()
+onActivated(async () => {
+    const {data} = await getUserInfo()
     state.user = data
     state.loading = false
 })
+
+function gotoAddress() {
+    router.push({path:'/address', query: {from: 'mine'}})
+}
+
+function gotoOrder() {
+    router.push({path:'/order'})
+}
+
+function gotoSetting() {
+    router.push('/setting')
+}
+
+function gotoAboutus() {
+    router.push('/about')
+}
 
 </script>
 

@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@vant/area-data": "^2.0.0",
     "axios": "^1.7.9",
     "better-scroll": "^2.5.1",
     "pinia": "^2.3.0",

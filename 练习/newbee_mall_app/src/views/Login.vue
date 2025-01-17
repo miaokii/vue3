@@ -36,8 +36,8 @@ import { setLocal } from '@/common/ts/utils';
 
 const verifyRef = ref()
 const state = reactive({
-    username: '',
-    password: '',
+    username: '18084828888',
+    password: '111111',
     username1: '',
     password1: '',
     imgCode: '',
@@ -57,7 +57,7 @@ async function onSubmit() {
     // 登录
     if (type_login.value) {
         // data就是token字符串
-        const data = await login({
+        const {data} = await login({
             'loginName': state.username,
             'passwordMd5': Md5.hashStr(state.password)
         })
