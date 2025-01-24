@@ -88,7 +88,7 @@
 import { closeToast, showDialog, showLoadingToast, showToast, Swipe } from 'vant';
 import { onMounted, reactive, nextTick, onActivated } from 'vue';
 import { getHome } from '@/service/home';
-import navBar from '@/components/NavBar.vue';
+import navBar from '@/components/Tabbar.vue';
 import swiper from '@/components/Swiper.vue';
 import type { Goods, HomeCarousel } from '@/interfaces/Home';
 import { prefix } from '@/common/ts/utils';

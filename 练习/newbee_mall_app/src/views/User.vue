@@ -35,12 +35,12 @@
 </template>
 
 <script setup lang="ts" name="user">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import { onActivated, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { type UserInfo } from '@/interfaces/User';
 import { getUserInfo } from '@/service/user';
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/Tabbar.vue';
 defineOptions({
   name: 'user'
 })

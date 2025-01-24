@@ -1,5 +1,3 @@
-import { APIServcers } from "@/utils/APIServer"
-import { appConfig } from "../config"
 import APIClient from "@/utils/APIClient"
 
 /**

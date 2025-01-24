@@ -43,8 +43,8 @@
 
 <script setup lang="ts" name="cart">
 import { prefix } from '@/common/ts/utils';
-import NavBar from '@/components/NavBar.vue';
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import NavBar from '@/components/Tabbar.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import type { CartGoods } from '@/interfaces/Home';
 import { deleteCart, getCart, modifyCart } from '@/service/cart';
 import { closeToast, showFailToast, showLoadingToast } from 'vant';

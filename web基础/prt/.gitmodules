@@ -1,0 +1,4 @@
+[submodule "deploy_rxk"]
+    path = deploy_rxk
+    url = ../../devops_deploy/deploy_rxk
+    branch = master

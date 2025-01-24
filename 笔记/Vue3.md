@@ -49,7 +49,6 @@ npm run dev
 
 ![picture 10](./assets/1726736091666.png)  
 
-
 #### 2.1.2 Composition API优势
 
 可以用函数的方式，将代码更合理的组合起来，让相关功能的代码有序组织在一起
@@ -195,6 +194,7 @@ function changeFullName() {
     fullName.value = '李-四'
 }
 ```
+
 计算属性与方法的区别在于计算属性的值会基于响应式依赖被缓存，如果依赖更新时，计算属性才会重新计算，否则不会重复执行`getter`函数
 
 #### 2.2.6 watch监视
@@ -409,6 +409,7 @@ watchEffect(() => {
 - ref用在组件标签上，获取到的是组件的实例对象
 
 用在普通DOM标签上
+
 ```html
 <template>
     <h2 ref="title2">标题2</h2>
@@ -620,12 +621,11 @@ import { RouterView, RouterLink } from 'vue-router';
 ### 2.3.1 路由器工作模式
 
 - `history`模式
-    - `URL`更美观，不带有`#`，更接近传统网站的`URL`
-    - 后期项目上线，需要服务端配合处理路径问题，否则刷新会有404错误
+  - `URL`更美观，不带有`#`，更接近传统网站的`URL`
+  - 后期项目上线，需要服务端配合处理路径问题，否则刷新会有404错误
 - `hash`模式
-    - 兼容性更好，不需要服务端处理路径
-    - `URL`带有`#`，不美观，且`SEO`优化方面相对较差
-
+  - 兼容性更好，不需要服务端处理路径
+  - `URL`带有`#`，不美观，且`SEO`优化方面相对较差
 
 ### 2.3.2 路由跳转方式
 
@@ -651,6 +651,7 @@ const router = createRouter({
     ]
 })
 ```
+
 路由跳转时，有三种写法
 
 ```html
@@ -661,7 +662,6 @@ const router = createRouter({
 <!-- 通过对象路径跳转 -->
 <RouterLink :to="{path: '/about'}" active-class="active">关于</RouterLink>
 ```
-
 
 ### 2.3.4 路由传参
 
@@ -683,6 +683,7 @@ const router = createRouter({
     ]
 }
 ```
+
 `query`传参，可以将参数直接拼接到`url`后面，也可以使用`query`参数传入对象
 
 ```html
@@ -742,6 +743,7 @@ let {query} = toRefs(route)
     ]
 }
 ```
+
 使用路由
 
 ```html
@@ -928,6 +930,7 @@ countStore.increment(1)
 // storeToRefs只会关注state里面的数据，不会对方法进行ref包裹
 let {num, option, name} = storeToRefs(countStore)
 ```
+
 ### 3.5 组合式store
 
 ```ts
@@ -958,6 +961,7 @@ export const useLoveStore = defineStore('love', () => {
 - 子组件传父组件：属性值是**函数**
 
 父组件
+
 ```html
 <template>
     <Child :car="car" :sendToy="getToy"></Child>
@@ -996,6 +1000,7 @@ let toy = ref('托宝战士')
 ### 4.2 自定义事件
 
 自定义事件常用语父组件向子组件传递事件，注意区分原生事件和自定义事件
+
 - 原生事件：
   - 事件名是特定的（`click`、`input`等）
   - 事件对象`$event`：是包含事件相关信息的对象（`pageX`、`pageY`、`target`、`keyCode`）
@@ -1010,6 +1015,7 @@ let toy = ref('托宝战士')
 ```
 
 子组件通过`emit`执行自定义事件
+
 ```html
 <template>
     <button @click="emit('send-toy', toy)">传出玩具</button>
@@ -1098,6 +1104,7 @@ let toy = ref('旋风冲锋')
 <CusInput :modelValue="userName" @update:modelValue="userName = $event"></CusInput>
 
 ```
+
 其中`modelValue`是默认的参数名，`update:modelValue`是默认的方法名
 
 在`CusInput`组件中
@@ -1127,6 +1134,7 @@ let emit = defineEmits(['update:modelValue'])
 <!-- Input定义了mingzi和mima两个属性 -->
 <Input v-model:mingzi="userName" v-model:mima="passWord"></Input>
 ```
+
 在`Input`组件中
 
 ```html
@@ -1151,11 +1159,13 @@ let emit = defineEmits(['update:mingzi', 'update:mima'])
 > `$attra`会自动排除props中申明的属性
 
 父组件
+
 ```html
 <Child :a="a" :b="b" v-bind="{'c':100, 'd':90}" :changeA="changeA"/>
 ```
 
 子组件
+
 ```html
 <template>
     <!-- $attra中不包括a属性 -->
@@ -1169,6 +1179,7 @@ defineProps(['a'])
 ```
 
 孙组件
+
 ```html
 <template>
     <h5>【b：{{b}}】【c：{{c}}】</h5>
@@ -1247,6 +1258,7 @@ defineProps(['title'])
     <video :src="videoUrl" controls></video>
 </Category>
 ```
+
 默认插槽也是有名字的，名字是`default`
 
 #### 4.8.2 具名插槽
@@ -1356,21 +1368,24 @@ let student = shallowReactive({
 
 1. 作用：`readonly`用于创建一个对象的只读副本
 2. 使用
+
    ```ts
    let n = shallowRef(20)
    let num = readonly(n)
    ```
+
 3. 特点：
    1. 创建后对象嵌套的所有属性都将变为只读
    2. 任何尝试修改对象的操作都会被阻止
 4. 场景
    1. 创建不可变的状态快照
    2. 保护全局状态或配置不被修改
-   
+
 `shallowReadonly`
 
 1. 作用：与`readonly`类似，但制作用于对象的顶层属性
 2. 用法：
+
    ```ts
    let c = reactive({
     'brand': '宝马',
@@ -1386,6 +1401,7 @@ let student = shallowReactive({
     // 允许修改
     car.option.color = 'green'
    ```
+
 3. 特点：
    1. 只将对象的顶层属性设置为只读，对象内部的嵌套仍然是可变的
    2. 适用于只需保护对象顶层属性的场景
@@ -1426,6 +1442,7 @@ console.log(reactiveCities);
 customRef用于创建自定义ref，并对齐依赖项跟踪和更新触发进行逻辑控制
 
 实现防抖效果控制`useMsgRef.ts`
+
 ```ts
 import { customRef } from "vue"
 // customRef定义响应式数据

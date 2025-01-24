@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts" name="login">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import { reactive, ref } from 'vue';
 import { showSuccessToast, showFailToast } from 'vant'
 import ImageVerify from '@/components/ImageVerify.vue';

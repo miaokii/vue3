@@ -14,7 +14,7 @@
 
 <script setup lang="ts" name="setting">
 import { setLocal } from '@/common/ts/utils';
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import { editUserInfo, getUserInfo, logout } from '@/service/user';
 import { Md5 } from 'ts-md5';
 import { showConfirmDialog, showSuccessToast } from 'vant';

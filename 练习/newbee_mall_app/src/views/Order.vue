@@ -33,7 +33,7 @@
 
 <script setup lang="ts" name="name">
 import { prefix } from '@/common/ts/utils';
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import type { OrderItem } from '@/interfaces/Order';
 import { order } from '@/service/order';
 import { reactive } from 'vue';

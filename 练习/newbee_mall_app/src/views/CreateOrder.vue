@@ -47,7 +47,7 @@
 
 <script setup lang="ts" name="createOrder">
 import { prefix } from '@/common/ts/utils';
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import type { CartGoods } from '@/interfaces/Home';
 import type { UserAddress } from '@/interfaces/User';
 import { getByCartItemIds } from '@/service/cart';

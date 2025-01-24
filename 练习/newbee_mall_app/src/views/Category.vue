@@ -46,7 +46,7 @@
 
 <script setup lang="ts" name="category">
 import ListScroll from '@/components/ListScroll.vue';
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/Tabbar.vue';
 import type { Category, GoodsCategory } from '@/interfaces/Category';
 import { getCategory } from '@/service/goods';
 import { closeToast, showLoadingToast } from 'vant';

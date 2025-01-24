@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts" name="address">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import type { UserAddress } from '@/interfaces/User';
 import { address } from '@/service/user';
 import { onMounted, reactive } from 'vue';

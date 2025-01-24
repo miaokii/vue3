@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts" name="addressEdit">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import { address, addressDelete, addressDetail, addressEdit, addressNew } from '@/service/user';
 import { areaList } from '@vant/area-data';
 import { showToast, type AddressEditInfo } from 'vant';

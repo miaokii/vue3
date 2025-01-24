@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts" name="ProductDetail">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 import { goodDetail } from '@/service/goods';
 import { onMounted, reactive, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';

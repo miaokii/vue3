@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts" name="About">
-import SimpleHeader from '@/components/SimpleHeader.vue';
+import SimpleHeader from '@/components/NavBar.vue';
 </script>
 
 
