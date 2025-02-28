@@ -7,6 +7,8 @@ import App from './App.vue'
 import router from './router'
 import { getLocal } from './common/ts/utils'
 
+import 'leaflet/dist/leaflet.css'
+
 const app = createApp(App)
 
 app.use(createPinia())

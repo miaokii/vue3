@@ -2,189 +2,132 @@
     <div ref="mapView" class="map-body"></div>
 </template>
 
-<script setup name="name">
+<script setup lang="ts" name="name">
 
 import { nextTick, ref } from "vue";
+import worldJson from '@/common/worldGeo.json'
+import * as L from 'leaflet';
+
 const mapView = ref()
 
+// geojson
 // https://geojson-maps.kyd.au/
 // https://github.com/Surbowl/world-geo-json-zh
+
+// 着重显示的国家
+const havySovereignts = ['United States of America', 'Algeria', 'Netherlands', 'Guatemala', 'Canada', 'Mexico', 'Panama', 'The Bahamas', 'France',
+    'Grenada', 'China', 'Australia', 'New Zealand', 'Samoa', 'Philippines', 'Malaysia', 'Singapore', 'Indonesia', 'Maldives', 'India', 'Kyrgyzstan', 'Iraq', 'Afghanistan', 'Egypt', 'Uganda', 'Zambia', 'Colombia', 'Brazil', 'Argentina', 'Russia', 'Iceland']
 // 页面渲染完成
 nextTick(() => {
-    // 设置地图，中心点和缩放级别
-    const map = L.map(mapView.value).setView([37.8, -96], 4);
 
-	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
+    let mapOptions: L.MapOptions = {
+        // 不显示缩放控件
+        zoomControl: false,
+        // 不显示版权信息
+        attributionControl: false,
+        // 缩放倍数
+        zoomSnap: 0.2,
+        // 不允许拖动
+        dragging: false,
+        // 不允许双击放大
+        doubleClickZoom: false,
+        // 不允许滚轮放大
+        scrollWheelZoom: false,
+        // 不允许键盘操作
+        keyboard: false,
+    }
 
-	// control that shows state info on hover
-	const info = L.control();
+    // 设置地图元素，中心点和缩放级别
+    const map = L.map(mapView.value, mapOptions).setView([45, 0], 2);
 
-	info.onAdd = function (map) {
-		this._div = L.DomUtil.create('div', 'info');
-		this.update();
-		return this._div;
-	};
+    // 瓦片
+    // const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // 	maxZoom: 19,
+    // 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    // }).addTo(map);
 
-	info.update = function (props) {
-		const contents = props ? `<b>${props.name}</b><br />${props.density} people / mi<sup>2</sup>` : 'Hover over a state';
-		this._div.innerHTML = `<h4>US Population Density</h4>${contents}`;
-	};
+    let geoObj = worldJson as GeoJSON.GeoJsonObject
+    // geojson图层
+    const geoJsonLayer = L.geoJson(geoObj, { style, onEachFeature}).addTo(map);
 
-	info.addTo(map);
+    // const info = L.control();
+    // info.onAdd = function (map: L.Map) {
+    //     this._div = L.DomUtil.create('div', 'info');
+    //     this.update();
+    //     return this._div;
+    // };
 
+    // info.update = function (props) {
+    //     const contents = props ? `<b>${props.name}</b><br />${props.density} people / mi<sup>2</sup>` : 'Hover over a state';
+    //     this._div.innerHTML = `<h4>US Population Density</h4>${contents}`;
+    // };
 
-	// get color depending on population density value
-	function getColor(d) {
-		return d > 1000 ? '#800026' :
-			d > 500  ? '#BD0026' :
-			d > 200  ? '#E31A1C' :
-			d > 100  ? '#FC4E2A' :
-			d > 50   ? '#FD8D3C' :
-			d > 20   ? '#FEB24C' :
-			d > 10   ? '#FED976' : '#FFEDA0';
-	}
+    // info.addTo(map);
 
-	function style(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'white',
-			dashArray: '3',
-			fillOpacity: 0.7,
-			fillColor: getColor(feature.properties.density)
-		};
-	}
+    // 鼠标悬停时的高亮事件
+    function highlightFeature(e: L.LeafletMouseEvent) {
+        // 悬停的图层
+        let layer = e.target as L.Path
+        // 图层样式
+        layer.setStyle({
+            fillColor: '#f3f4fe',
+            fillOpacity: 0.7
+        });
+    }
 
-	function highlightFeature(e) {
-		const layer = e.target;
+    // 鼠标离开时的重置事件
+    function resetHighlight(e: L.LeafletMouseEvent) {
+        // 重设图层样式到默认状态
+        geoJsonLayer.resetStyle(e.target);
+    }
 
-		layer.setStyle({
-			weight: 5,
-			color: '#666',
-			dashArray: '',
-			fillOpacity: 0.7
-		});
+    function clickFeature(e: L.LeafletMouseEvent) {
+        let layer = e.target
+        let name_zh = layer.feature.properties.name_zh ?? ''
+        map.openPopup(name_zh, e.latlng)
+    }
 
-		layer.bringToFront();
-
-		info.update(layer.feature.properties);
-	}
-
-	/* global statesData */
-	const geojson = L.geoJson(statesData, {
-		style,
-		onEachFeature
-	}).addTo(map);
-
-	function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-		info.update();
-	}
-
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
-
-	function onEachFeature(feature, layer) {
-		layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-			click: zoomToFeature
-		});
-	}
-
-	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
-
-	const legend = L.control({position: 'bottomright'});
-
-	legend.onAdd = function (map) {
-
-		const div = L.DomUtil.create('div', 'info legend');
-		const grades = [0, 10, 20, 50, 100, 200, 500, 1000];
-		const labels = [];
-		let from, to;
-
-		for (let i = 0; i < grades.length; i++) {
-			from = grades[i];
-			to = grades[i + 1];
-
-			labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
-		}
-
-		div.innerHTML = labels.join('<br>');
-		return div;
-	};
-
-	legend.addTo(map);
-
-
-
+    // 每个图层设置
+    function onEachFeature(feature: GeoJSON.Feature, layer: L.Layer) {
+        layer.on({
+            // 高亮
+            mouseover: highlightFeature,
+            // 重置
+            mouseout: resetHighlight,
+            // 点击了图层
+            click: clickFeature
+        })
+    }
 })
 
+// 填充颜色为黑色的区域
+function style(feature: GeoJSON.Feature | undefined) {
+    // 国家
+    let sovereignt = feature?.properties?.sovereignt as string || ''
+    let contained = havySovereignts.includes(sovereignt)
+    return {
+        // 填充颜色
+        fillColor: contained ? '#5c5b61' : '#d4dade',
+        // 边框线线宽
+        weight: 1.5,
+        // 边框透明度
+        opacity: 1,
+        // 边框颜色
+        color: '#c4c4c4',
+        // 虚线样式
+        // dashArray: '3',
+        // 填充透明度
+        fillOpacity: 0.7
+    };
+}
 
 </script>
 
 <style scoped>
 .map-body {
-    height: 100%;
-}
-
-#map {
+    /* cursor: url('/mifeng.png'), auto; */
     width: 100%;
     height: 100%;
+    background: #fff;
 }
 </style>
-
-
-
-<!-- 
-// 页面渲染完成
-nextTick(() => {
-    // 设置地图，中心点和缩放级别
-    const map = L.map(mapView.value).setView([51.505, -0.09], 2);
-
-    // 添加openstreetmap瓦片
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    // 添加一个marker
-    const marker = L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
-    // 添加一个圆圈
-    const circle = L.circle([51.508, -0.11], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(map).bindPopup('I am a circle.');
-
-    // 添加一个三角形
-    const polygon = L.polygon([
-        [51.509, -0.08],
-        [51.503, -0.06],
-        [51.51, -0.047]
-    ]).addTo(map).bindPopup('I am a polygon.');
-
-    const popup = L.popup()
-        .setLatLng([51.513, -0.09])
-        .setContent('I am a standalone popup.')
-        .openOn(map);
-
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(`You clicked the map at ${e.latlng.toString()}`)
-            .openOn(map);
-    }
-
-    map.on('click', onMapClick);
-
-})
--->
