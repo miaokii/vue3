@@ -17,8 +17,11 @@ const mapView = ref()
 // 着重显示的国家
 const havySovereignts = ['United States of America', 'Algeria', 'Netherlands', 'Guatemala', 'Canada', 'Mexico', 'Panama', 'The Bahamas', 'France',
     'Grenada', 'China', 'Australia', 'New Zealand', 'Samoa', 'Philippines', 'Malaysia', 'Singapore', 'Indonesia', 'Maldives', 'India', 'Kyrgyzstan', 'Iraq', 'Afghanistan', 'Egypt', 'Uganda', 'Zambia', 'Colombia', 'Brazil', 'Argentina', 'Russia', 'Iceland']
-// 页面渲染完成
+// 页面渲染完成，dom渲染完成执行
 nextTick(() => {
+
+    console.log('tick');
+    
 
     let mapOptions: L.MapOptions = {
         // 不显示缩放控件
@@ -48,21 +51,7 @@ nextTick(() => {
 
     let geoObj = worldJson as GeoJSON.GeoJsonObject
     // geojson图层
-    const geoJsonLayer = L.geoJson(geoObj, { style, onEachFeature}).addTo(map);
-
-    // const info = L.control();
-    // info.onAdd = function (map: L.Map) {
-    //     this._div = L.DomUtil.create('div', 'info');
-    //     this.update();
-    //     return this._div;
-    // };
-
-    // info.update = function (props) {
-    //     const contents = props ? `<b>${props.name}</b><br />${props.density} people / mi<sup>2</sup>` : 'Hover over a state';
-    //     this._div.innerHTML = `<h4>US Population Density</h4>${contents}`;
-    // };
-
-    // info.addTo(map);
+    const geoJsonLayer = L.geoJson(geoObj, { style, onEachFeature }).addTo(map);
 
     // 鼠标悬停时的高亮事件
     function highlightFeature(e: L.LeafletMouseEvent) {
@@ -84,7 +73,21 @@ nextTick(() => {
     function clickFeature(e: L.LeafletMouseEvent) {
         let layer = e.target
         let name_zh = layer.feature.properties.name_zh ?? ''
-        map.openPopup(name_zh, e.latlng)
+        // map.openPopup(name_zh, e.latlng)
+
+        // 弹窗设置
+        let popOptions: L.PopupOptions = {
+            // 自动关闭
+            autoClose: true,
+            // 不展示关闭
+            closeButton: false,
+            // pop类名
+            className: 'popup'
+        }
+        L.popup(popOptions)
+            .setLatLng(e.latlng)
+            .setContent(`<p>Hello ${name_zh}!<br />This is a nice popup.</p>`)
+            .openOn(map);
     }
 
     // 每个图层设置
@@ -109,7 +112,7 @@ function style(feature: GeoJSON.Feature | undefined) {
         // 填充颜色
         fillColor: contained ? '#5c5b61' : '#d4dade',
         // 边框线线宽
-        weight: 1.5,
+        weight: 1,
         // 边框透明度
         opacity: 1,
         // 边框颜色
@@ -129,5 +132,9 @@ function style(feature: GeoJSON.Feature | undefined) {
     width: 100%;
     height: 100%;
     background: #fff;
+}
+
+.popup {
+    background: red;
 }
 </style>

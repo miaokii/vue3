@@ -1,7 +1,7 @@
 <template>
     <div class="home-body">
         <nav class="home-nav">
-            <img class="nav-logo" src="/public/logo.png" alt="">
+            <img class="nav-logo" :src="utils.getImage('logo.png')" alt="">
             <ul class="nav-list">
                 <li v-for="(item, idx) in navlist" :key="idx" @click="push(idx)"
                     :class="[idx == state.idx ? 'nav-list-selected' : '']">{{ item.title }}</li>
@@ -17,7 +17,7 @@
                     <li>设置</li>
                     <li @click="exitLogin">退出</li>
                     <li>
-                        <img src="/public/image.png" alt="">
+                        <img :src="utils.getImage('image.png')" alt="">
                     </li>
                 </ul>
             </header>
@@ -65,7 +65,7 @@ function exitLogin() {
     display: flex;
 
     .home-nav {
-        width: 100px;
+        width: var(--nav-width);
         height: 100%;
         background: var(--color-main);
         display: flex;
@@ -101,7 +101,7 @@ function exitLogin() {
         .home-header {
             background: white;
             width: 100%;
-            height: 80px;
+            height: var(--header-height);
             display: flex;
             justify-content: space-between;
             align-items: center;

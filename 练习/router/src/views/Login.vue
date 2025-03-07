@@ -30,7 +30,7 @@
                 <div class="create-account">Don't have an account? Create one here</div>
             </div>
         </div>
-        <img class="right-image" src="/public/image.png" alt="">
+        <img class="right-image" :src="utils.getImage('image.png')" alt="">
     </div>
 </template>
 

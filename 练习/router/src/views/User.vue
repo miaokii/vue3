@@ -1,6 +1,6 @@
 <template>
     <div class="user-body">
-        <img src="/public/image.png" alt="">
+        <img :src="utils.getImage('image.png')" alt="">
         <div class="user-name">{{ getLocal('token') }}</div>
         <div class="user-welcome">Hello, Welcome To My Page!</div>
     </div>
