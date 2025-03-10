@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts" name="Home">
-import { removeLocal, setLocal } from '@/common/ts/utils';
+import { removeLocal } from '@/common/ts/utils';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -43,7 +43,8 @@ const navlist = [
     { title: '用户', name: 'user' },
     { title: '工作台', name: 'work' },
     { title: '地图', name: 'map' },
-    { title: '小蜜蜂', name: 'bee'}
+    { title: '小蜜蜂', name: 'bee'},
+    { title: '关于', name: 'about'}
 ]
 
 function push(idx: number) {
