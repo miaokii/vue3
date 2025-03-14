@@ -9,6 +9,13 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@use "@/assets/element-var.scss" as *;`,
+  //     },
+  //   },
+  // },
   plugins: [
     vue(),
     // vueDevTools(),
@@ -16,7 +23,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({importStyle : "sass"})],
     }),
   ],
   resolve: {

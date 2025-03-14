@@ -51,9 +51,8 @@ const loginDisable = computed(() => {
 })
 
 function loginAction() {
-    console.log('login');
     setLocal('token', state.account)
-    router.push({name:'home'})
+    window.location.href = '/'
 }
 
 </script>
@@ -61,7 +60,7 @@ function loginAction() {
 <style scoped lang="less">
 .login-body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: row;
 }

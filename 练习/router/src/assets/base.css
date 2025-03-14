@@ -18,16 +18,10 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-
-  --nav-width: 100px;
-  --header-height: 80px;
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-main: #366DED;
-  --color-main-heavy: #0f3da9;
-
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -37,8 +31,23 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+}
 
-  --section-gap: 160px;
+:root {
+  --color-primary: #001a89;
+  --color-primary-rgb: 0, 30, 117;
+  --height-nav: 100px;
+}
+
+/* 覆盖element plus主题色 */
+:root {
+  --el-color-primary: var(--color-primary) !important;
+  --el-color-primary-light-3: rgba(var(--color-primary-rgb), 0.8) !important;
+  --el-color-primary-light-5: rgba(var(--color-primary-rgb), 0.7) !important;
+  --el-color-primary-light-7: rgba(var(--color-primary-rgb), 0.5) !important;
+  --el-color-primary-light-8: rgba(var(--color-primary-rgb), 0.35) !important;
+  --el-color-primary-light-9: rgba(var(--color-primary-rgb), 0.2) !important;
+  --el-color-primary-dark-2: rgba(0, 20, 66, 1) !important;
 }
 
 @media (prefers-color-scheme: dark) {

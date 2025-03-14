@@ -1,140 +1,89 @@
 <template>
     <div class="home-body">
-        <nav class="home-nav">
-            <img class="nav-logo" :src="utils.getImage('logo.png')" alt="">
-            <ul class="nav-list">
-                <li v-for="(item, idx) in navlist" :key="idx" @click="push(idx)"
-                    :class="[idx == state.idx ? 'nav-list-selected' : '']">{{ item.title }}</li>
-            </ul>
-        </nav>
-        <div class="home-header-main">
-            <header class="home-header">
-                <div class="home-title">首页</div>
-                <ul class="home-user">
-                    <li>导航</li>
-                    <li>手册</li>
-                    <li>消息</li>
-                    <li>设置</li>
-                    <li @click="exitLogin">退出</li>
-                    <li>
-                        <img :src="utils.getImage('image.png')" alt="">
-                    </li>
-                </ul>
-            </header>
-            <main class="home-main">
-                <RouterView />
-            </main>
+        <div class="home-title">Lorem ipsum dolor sit amet.</div>
+        <div class="home-list">
+            <div data-aos="fade-up" class="home-body-item" v-for="(item, idx) in workConfig.contentList" :key="idx">
+                <img v-if="idx % 2 == 1" :src="utils.getImage(`${item.image}`)" alt="">
+                <div class="home-item-desc">
+                    <div class="home-item-title">{{ item.title }}</div>
+                    <div class="home-item-content">{{ item.content }}</div>
+                </div>
+                <img v-if="idx % 2 == 0" :src="utils.getImage(`${item.image}`)" alt="">
+            </div>
         </div>
-
     </div>
+
+    <el-backtop :bottom="100">
+        <div style="display: flex; align-items: center; ">
+            <div>ScrollToTop</div>
+            <el-icon>
+                <Top />
+            </el-icon>
+        </div>
+    </el-backtop>
+
 </template>
 
-<script setup lang="ts" name="Home">
-import { removeLocal } from '@/common/ts/utils';
-import { reactive } from 'vue';
-import { useRouter } from 'vue-router';
+<script setup lang="ts" name="name">
+import workConfig from '@/common/ts/workConfig';
+import { getCurrentInstance, onMounted } from 'vue';
+import { Top } from '@element-plus/icons-vue';
 
-const state = reactive({
-    idx: 0
+const { proxy } = getCurrentInstance() as any;
+
+console.log(proxy.utils.appConfig);
+
+onMounted(() => {
+    console.log(proxy.utils.getImage('image.png'));
 })
-
-const router = useRouter()
-const navlist = [
-    { title: '用户', name: 'user' },
-    { title: '工作台', name: 'work' },
-    { title: '地图', name: 'map' },
-    { title: '小蜜蜂', name: 'bee'},
-    { title: '关于', name: 'about'}
-]
-
-function push(idx: number) {
-    let name = navlist[idx].name || ''
-    router.push({ name })
-    state.idx = idx
-}
-
-function exitLogin() {
-    removeLocal('token')
-    router.push({name: 'login'})
-}
 
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="scss">
 .home-body {
-    height: 100%;
-    display: flex;
-
-    .home-nav {
-        width: var(--nav-width);
-        height: 100%;
-        background: var(--color-main);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .nav-logo {
-            padding: 15px 0;
-            width: 50%;
-        }
-
-        .nav-list {
-            width: 100%;
-            color: white;
-
-            li {
-                padding: 15px;
-                cursor: pointer;
-            }
-        }
-
-        .nav-list-selected {
-            background: var(--color-main-heavy);
-        }
+    .home-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 4rem;
     }
 
-    .home-header-main {
-        width: 100%;
+    .home-list {
         display: flex;
         flex-direction: column;
-        position: relative;
+        gap: 4rem;
 
-        .home-header {
-            background: white;
-            width: 100%;
-            height: var(--header-height);
+        .home-body-item {
             display: flex;
-            justify-content: space-between;
+            gap: 4rem;
             align-items: center;
-            padding: 0 1rem;
 
-            .home-title {
-                font-size: 1.1rem;
-                font-weight: bold;
-            }
+            .home-item-desc {
+                .home-item-title {
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    padding-bottom: 1rem;
+                }
 
-            .home-user {
-                display: flex;
-                align-items: center;
-
-                li {
-                    padding: 0 1rem;
-                    cursor: pointer;
+                .home-item-content {
+                    font-size: 1.1rem;
                 }
             }
 
-            .home-user img {
-                width: 50px;
-                height: 50px;
+            img {
                 object-fit: cover;
-                border-radius: 25px;
+                width: 45%;
+                border-radius: 10px;
+                box-shadow: 5px 5px 10px gray;
             }
-        }
 
-        .home-main {
-            background: #F6F7F9;
-            flex: 1;
         }
     }
+}
+
+.el-backtop {
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 20px;
 }
 </style>
