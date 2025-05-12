@@ -1,0 +1,33 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#app {
+    max-width: 1000px;
+    padding: 0 4rem;
+    margin: 0 auto;
+    /* background-color: lightcyan */
+}
+
+
+
+body::-webkit-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+}
