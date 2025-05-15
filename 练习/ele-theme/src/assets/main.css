@@ -1,26 +1,100 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
 }
 
+a {
+  text-decoration: none;
+  color: var(--color-main);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+a:hover {
+  color: darkgray;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 2cqb white;
+}
+
 h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 20px white;
+}
+
+h3 {
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+/* 渐变背景 */
+.gradient-card {
+  background: linear-gradient(45deg, #FAF4E8 0%, #FAF4E8 100%);
+  border-radius: 5px;
+  padding: 2rem;
+}
+
+/* 充满整个背景 */
+.full-bg {
+  width: 100%;
+  background-color: #f8f7f3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.flex-row {
+  display: flex;
+  gap: 4rem;
+}
+
+/* 多屏幕适配 */
+.body-m {
+  max-width: min(85%, 1280px);
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 650px) {
+  :root {
+    --nav-height: 60px;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  html {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    line-height: 1.2;
+  }
+
+  h2 {
+    line-height: 1.2;
+  }
+
+  .body-m {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .flex-row {
+    flex-direction: column;
+    gap: 2rem;
   }
 }

@@ -1,6 +1,16 @@
 <template>
   <div class="app-body">
-    <section>
+
+    <section class="full-bg app-head" :style="{ backgroundImage: `url(${getImage('app_head_bg.png')})` }">
+      <div class="bg-content body-m">
+        <h1>Hello Vue</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum autem consequatur at quae quasi
+          quibusdam. Quae ullam asperiores corrupti temporibus quisquam vitae laboriosam.</p>
+      </div>
+    </section>
+
+    <!-- 按钮 -->
+    <section class="buttons body-m">
       <h2>Button</h2>
       <div class="buttons">
         <el-button type="primary">Primary</el-button>
@@ -20,7 +30,7 @@
     </section>
 
     <!-- menu折叠 -->
-    <section class="menu">
+    <section class="menu body-m">
       <h2>Menu</h2>
       <el-menu :default-active="state.menuIdx" class="el-menu-demo" mode="horizontal" @select="menuHandleSelect"
         active-text-color="#ffd04b" background-color="#545c64" text-color="#fff">
@@ -49,16 +59,16 @@
     </section>
 
     <!-- 表单 -->
-    <section class="form">
+    <section class="form body-m">
       <h2>Form</h2>
-      <el-form label-position="top" label-width="100px" class="demo-form-inline">
+      <el-form label-position="top" label-width="100px">
         <el-form-item label="Name">
           <el-input v-model="state.formName" />
         </el-form-item>
         <el-form-item label="Activity zone">
           <el-input v-model="state.formRegion" />
         </el-form-item>
-        <el-form-item label="Activity form" class="activity-input">
+        <el-form-item label="Activity form">
           <el-input v-model="state.formType" />
         </el-form-item>
         <el-form-item class="form-buttons">
@@ -69,7 +79,7 @@
     </section>
 
     <!-- collapse -->
-    <section class="collapse">
+    <section class="collapse body-m">
       <h2>collapse</h2>
       <el-collapse v-model="state.activeCollapse">
         <el-collapse-item title="Consistency" name="1">
@@ -125,6 +135,7 @@
 
 import { Delete, Search } from '@element-plus/icons-vue'
 import { reactive } from 'vue';
+import { getImage } from './Utils/pubUse';
 
 const state = reactive({
   formName: '',
@@ -148,20 +159,43 @@ const menuHandleSelect = (key: string, keyPath: string[]) => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 4rem 0;
+  padding-bottom: 4rem;
+}
+
+.app-head {
+  // height: 100vh;
+  aspect-ratio: 16/9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .bg-content {
+    color: white;
+    h1 {
+      text-shadow: none;
+    }
+  }
 }
 
 h2 {
+  text-align: left;
   padding-bottom: 1rem;
 }
 
 .buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .menu {
+
   :deep(.el-menu--horizontal) {
+    // li {
+    //   padding: 0;
+    // }
+
     .el-sub-menu {
       &.is-active {
         .el-sub-menu__title {
@@ -169,25 +203,17 @@ h2 {
         }
       }
     }
+
     .el-menu-item {
       &.is-active {
         border-bottom-color: transparent;
+        background-color: transparent;
       }
     }
   }
-}
 
-.form {
-  .demo-form-inline .el-input {
-    --el-input-width: 30vw;
-  }
-
-  .demo-form-inline .activity-input {
-    --el-select-width: 100px;
-  }
-
-  .form-buttons {
-    display: block;
+  :deep(.el-menu--vertical) {
+    border: none;
   }
 }
 </style>

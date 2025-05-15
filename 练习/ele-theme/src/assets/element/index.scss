@@ -1,14 +1,14 @@
 // 更改elementui的主题颜色
-$primary-color: #f5d623;
+$primary-color: #2b6dc3;
 
 /* 只需要重写你需要的即可 */
 @forward 'element-plus/theme-chalk/src/common/var.scss' with ($colors: (
     "primary": ("base": $primary-color),
-    "success": ("base": #71d46f),
-    "warning": ("base": #e6a23c),
-    "danger": ("base": #E34D59),
-    "error": ("base": #E34D59),
-    "info": ("base": #E7E7E7)
+    // "success": ("base": #71d46f),
+    // "warning": ("base": #e6a23c),
+    // "danger": ("base": #E34D59),
+    // "error": ("base": #E34D59),
+    // "info": ("base": #E7E7E7)
   ) 
 );
 
@@ -41,13 +41,13 @@ $primary-color: #f5d623;
   border: none;
 }
 
-.el-button {
-  color: black;
-}
+// .el-button {
+//   color: black;
+// }
 
-.el-button:hover {
-  color: gray;
-}
+// .el-button:hover {
+//   color: gray;
+// }
 
 
 // 如果只是按需导入，则可以忽略以下内容。
