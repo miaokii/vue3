@@ -1,5 +1,5 @@
 <template>
-  <div class="app-body">
+  <div class="app-body" ref="appBody">
 
     <section class="full-bg app-head" :style="{ backgroundImage: `url(${getImage('app_head_bg.png')})` }">
       <div class="bg-content body-m">
@@ -136,6 +136,63 @@
 import { Delete, Search } from '@element-plus/icons-vue'
 import { reactive } from 'vue';
 import { getImage } from './Utils/pubUse';
+import { nextTick, onMounted, ref, watch } from 'vue';
+import AOS from 'aos';
+
+const appBody = ref()
+
+onMounted(() => {
+  addAosToSections()
+  initAOS()
+})
+
+function initAOS() {
+  // AOS.init({
+  //   offset: 120,      // 偏移（px）
+  //   delay: 0,         // 延迟（ms）
+  //   duration: 200,    // 动画时长（ms）
+  //   easing: 'ease',   // 缓动函数
+  //   once: false,      // 是否只执行一次
+  // })
+
+
+AOS.init({
+    // Global settings:
+    disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+    startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+    initClassName: 'aos-init', // class applied after initialization
+    animatedClassName: 'aos-animate', // class applied on animation
+    useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+    disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+    debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+    throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+    // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+    offset: 120, // offset (in px) from the original trigger point
+    delay: 0, // values from 0 to 3000, with step 50ms
+    duration: 400, // values from 0 to 3000, with step 50ms
+    easing: 'ease', // default easing for AOS animations
+    once: false, // whether animation should happen only once - while scrolling down
+    mirror: false, // whether elements should animate out while scrolling past them
+});
+}
+
+// 为所有 section 添加动画属性
+function addAosToSections() {
+  // 等待dom更新完成
+  nextTick(() => {
+
+    const pageRootDiv = appBody.value    
+    const sections = pageRootDiv.querySelectorAll('section')
+    sections.forEach((section: HTMLElement, idx: number) => {
+      section.setAttribute('data-aos', 'fade-up')
+      // 按顺序延迟
+      // section.setAttribute('data-aos-delay', `${idx * 100}`)
+    });
+
+    AOS.refreshHard()
+  })
+}
 
 const state = reactive({
   formName: '',
@@ -165,6 +222,7 @@ const menuHandleSelect = (key: string, keyPath: string[]) => {
 .app-head {
   // height: 100vh;
   aspect-ratio: 16/9;
+  max-height: 100vh;
 
   display: flex;
   align-items: center;
@@ -172,6 +230,7 @@ const menuHandleSelect = (key: string, keyPath: string[]) => {
 
   .bg-content {
     color: white;
+
     h1 {
       text-shadow: none;
     }
