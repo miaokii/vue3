@@ -5,7 +5,21 @@ export default defineNuxtConfig({
   // 自动导入app/components下的组件
   components: [
     {
-      path: '~/app/components', pathPrefix: false
+      path: '~/components', pathPrefix: false
     }
-  ]
+  ],
+  // 加载全局样式
+  css: [
+    '~/assets/css/main.scss'
+  ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // 让每个组件样式<style lang="scss">自动注入全局变量
+          additionalData: `@use '~/assets/css/variables.scss' as *;`
+        }
+      }
+    }
+  }
 })

@@ -1,20 +1,20 @@
 export const feedsInfo = {
     news: {
-        title: 'News', page: 10
+        title: 'News', pages: 10
     },
     newest: {
-        title: 'Newest', page: 12
+        title: 'Newest', pages: 12
     },
     ask: {
-        title: 'Ask', page: 2
+        title: 'Ask', pages: 2
     },
     show: {
-        title: 'Show', page: 2
+        title: 'Show', pages: 2
     },
     jobs: {
-        title: 'Jobs', page: 1
+        title: 'Jobs', pages: 1
     },    
 }
 
 /// 获取所有有效的 feeds
-// export const validFeeds = Object.keys(feedsInfo)
+export const validFeeds = Object.keys(feedsInfo)
