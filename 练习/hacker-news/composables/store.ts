@@ -1,34 +1,105 @@
 import type { WritableComputedOptions } from "vue";
 import type { Item, User } from "~/types";
 
+// store存储的类型
 export interface StoreState {
+    // 以数字为键，Item为值的对象类型
     items: Record<number, Item>,
     comments: Record<number, Item[]>,
     users: Record<number, User>,
-    feeds: Record<number, Record<number, number[]>>,
+    feeds: Record<string, Record<number, number[]>>,
 }
 
-export const useStore = () => useState<StoreState> ('state', ()=>({
+/**
+ * useStore 是一个自定义的全局状态管理钩子函数。
+ * 
+ * 作用：
+ *   - 用于在 Nuxt 应用中创建和访问全局响应式状态（StoreState 类型）。
+ *   - 通过 useState API 保证全局唯一性和响应式。
+ * 
+ * 具体实现：
+ *   - useState<StoreState>('state', ...) 创建名为 'state' 的全局状态，类型为 StoreState。
+ *   - 初始值为一个对象，包含：
+ *       - items: 以数字为键、Item 为值的对象，初始为空。
+ *       - comments: 以数字为键、Item 数组为值的对象，初始为空。
+ *       - users: 以数字为键、User 为值的对象，初始为空。
+ *       - feeds: 以 validFeeds 数组中的每个 key 为键，值为一个空对象。这样可以为每个 feed 类型预先分配一个空的页码-列表映射表。
+ *   - Object.fromEntries(validFeeds.map(key => [key, {}])) 的作用是把 validFeeds（如 ['top', 'new', ...]）转为 { top: {}, new: {}, ... }。
+ * 
+ * 用法：
+ *   - 组件或其他逻辑中调用 useStore()，即可获得全局响应式的 state 对象。
+ */
+export const useStore = () => useState<StoreState>('state', () => ({
     items: {},
     comments: {},
     users: {},
-    feeds: Object.fromEntries(validFeeds.map(i=>[i, {}])),
+    // 初始化 feeds 对象，以 validFeeds 中的每个 key 为键，值为一个空对象
+    feeds: Object.fromEntries(validFeeds.map(key => [key, {}])),
 }))
 
+// 查询参数
 interface FeedQuery {
     feed: string,
     page: number
 }
 
+/**
+ * getFeed 函数用于根据给定的 feed 名称和页码，从全局状态 state 中获取对应的 Item 列表。
+ * 
+ * 参数:
+ *   - state: StoreState 类型，包含所有的 items、feeds 等数据。
+ *   - {feed, page}: FeedQuery 类型，指定要查询的 feed 名称和页码。
+ * 
+ * 实现逻辑:
+ *   1. 通过 state.feeds[feed][page] 获取当前 feed 和页码下的所有 item id 数组。
+ *   2. 如果 id 数组存在且长度大于 0，则通过 id 映射到 state.items，返回对应的 Item 数组。
+ *   3. 如果没有找到对应的 id 数组或为空，则返回 undefined。
+ */
 export function getFeed(state: StoreState, {feed, page}: FeedQuery) {
-
+    const ids = state.feeds[feed][page]
+    // const ids = state.feeds?.[feed]?.[page]
+    if (ids?.length) {
+        return ids.map(i=>state.items[i])
+    }
+    return undefined
 }
 
+/**
+ * fetchFeed 函数用于根据传入的 query（包含 feed 名称和页码）获取对应的 feed 数据，并将其存入全局状态。
+ * 
+ * 实现流程如下：
+ * 1. 通过 useStore() 获取全局响应式状态 state。
+ * 2. 调用 reactiveLoad<Item[]>，实现数据的响应式加载和缓存。
+ *    - 第一个参数：一个函数，返回当前 state 中该 feed/page 下的 items（通过 getFeed 实现）。
+ *    - 第二个参数：一个函数，接收新获取到的 items 数组，将其 id 列表存入 state.feeds[feed][page]，并将每个 item 合并或写入 state.items。
+ *    - 第三个参数：一个异步函数，实际发起网络请求，调用 $fetch('api/hn/feeds', {params: query}) 获取数据。
+ *    - 第四个参数：初始值，若 state.feeds[feed][page] 已有 id 列表，则将其映射为对应的 item 对象数组作为初始值。
+ * 
+ * 这样，fetchFeed 实现了：
+ * - 优先从本地 state 获取数据，若无则发起网络请求。
+ * - 获取到数据后自动写入全局 state，并保证响应式更新。
+ */
 export function fetchFeed(query: FeedQuery) {
     const state = useStore()
     const {feed, page} = query
-}
 
+    return reactiveLoad<Item[]>(
+        ()=>getFeed(state.value, query),
+        (items) => {
+            const ids = items.map(item=>item.id)
+            state.value.feeds[feed][page] = ids
+            items.filter(Boolean).forEach((item)=>{
+                if (state.value.items[item.id]) {
+                    Object.assign(state.value.items[item.id], item)
+                } else {
+                    state.value.items[item.id] = item
+                }
+            })
+        },
+        () => $fetch('/api/hn/feeds', {params: query}),
+        (state.value.feeds[feed][page] || []).map(id => state.value.items[id])
+    )
+}
 
 // 定义一个异步函数reactiveLoad，泛型T
 export async function reactiveLoad<T>(
@@ -97,7 +168,7 @@ export async function reactiveLoad<T>(
 
 
 // 优化和完善后的reactiveLoad实现
-export async function reactiveLoad2<T>(
+export async function reactiveLoadOptimization<T>(
     get: () => T | undefined,         // 获取数据
     set: (data: T) => void,           // 设置数据
     fetch: () => Promise<T>,          // 异步获取数据
