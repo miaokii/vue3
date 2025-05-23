@@ -64,7 +64,7 @@ export async function fetchItem(id: string, withComments = false): Promise<Item>
  * 总结：当有请求到达 `/api/hn/item` 路径时，Nuxt/Nitro 会自动调用这个 handler，返回指定 id 的条目详情及其评论，并自动处理缓存。
  */
 
-defineCachedEventHandler((event)=> {
+export default defineCachedEventHandler((event)=> {
     const { id } = getQuery(event) as {id? : string}
     console.log(id);
      

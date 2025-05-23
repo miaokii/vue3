@@ -55,11 +55,11 @@ interface FeedQuery {
  *   2. 如果 id 数组存在且长度大于 0，则通过 id 映射到 state.items，返回对应的 Item 数组。
  *   3. 如果没有找到对应的 id 数组或为空，则返回 undefined。
  */
-export function getFeed(state: StoreState, {feed, page}: FeedQuery) {
+export function getFeed(state: StoreState, { feed, page }: FeedQuery) {
     const ids = state.feeds[feed][page]
     // const ids = state.feeds?.[feed]?.[page]
     if (ids?.length) {
-        return ids.map(i=>state.items[i])
+        return ids.map(i => state.items[i])
     }
     return undefined
 }
@@ -81,14 +81,14 @@ export function getFeed(state: StoreState, {feed, page}: FeedQuery) {
  */
 export function fetchFeed(query: FeedQuery) {
     const state = useStore()
-    const {feed, page} = query
+    const { feed, page } = query
 
     return reactiveLoad<Item[]>(
-        ()=>getFeed(state.value, query),
+        () => getFeed(state.value, query),
         (items) => {
-            const ids = items.map(item=>item.id)
+            const ids = items.map(item => item.id)
             state.value.feeds[feed][page] = ids
-            items.filter(Boolean).forEach((item)=>{
+            items.filter(Boolean).forEach((item) => {
                 if (state.value.items[item.id]) {
                     Object.assign(state.value.items[item.id], item)
                 } else {
@@ -96,7 +96,7 @@ export function fetchFeed(query: FeedQuery) {
                 }
             })
         },
-        () => $fetch('/api/hn/feeds', {params: query}),
+        () => $fetch('/api/hn/feeds', { params: query }),
         (state.value.feeds[feed][page] || []).map(id => state.value.items[id])
     )
 }
@@ -105,9 +105,9 @@ export function fetchFeed(query: FeedQuery) {
 export function fetchItem(id: number) {
     const state = useStore()
     return reactiveLoad<Item>(
-        ()=>state.value.items[id],
-        (item)=>{state.value.items[id] = item},
-        () => $fetch('/api/hn/item', { params: {id} })
+        () => state.value.items[id],
+        (item) => { state.value.items[id] = item },
+        () => $fetch('/api/hn/item', { params: { id } })
     )
 }
 
@@ -116,29 +116,29 @@ export function fetchComments(id: number) {
     const state = useStore()
     return reactiveLoad<Item[]>(
         () => state.value.comments[id],
-        (comments) => {state.value.comments[id] = comments},
-        () => $fetch('/api/hn/item', { params: { id} }).then(i => i.comments!)
+        (comments) => { state.value.comments[id] = comments },
+        () => $fetch('/api/hn/item', { params: { id } }).then(i => i.comments!)
     )
 }
 
 // 定义一个异步函数reactiveLoad，泛型T
 export async function reactiveLoad<T>(
-    get: ()=>T | undefined,         // get函数，用于获取数据
-    set: (data: T)=>void,           // set函数，用于设置数据
-    fetch: ()=>Promise<T>,          // fetch函数，返回Promise，用于异步获取数据
-    init?:T                         // 可选的初始值
+    get: () => T | undefined,         // get函数，用于获取数据
+    set: (data: T) => void,           // set函数，用于设置数据
+    fetch: () => Promise<T>,          // fetch函数，返回Promise，用于异步获取数据
+    init?: T                         // 可选的初始值
 ) {
     // 创建一个computed响应式数据data，get/set由参数传入
     const data = computed({
         get,
         set
-    } as WritableComputedOptions<T | undefined>)  
-    
+    } as WritableComputedOptions<T | undefined>)
+
     // 创建一个响应式的loading标志，初始为false
     const loading = ref(false)
 
     // 如果data当前值为null或undefined
-    if(data.value == null) {
+    if (data.value == null) {
         // 如果传入了初始值init，则先赋值
         if (init != null) {
             data.value = init
@@ -148,9 +148,8 @@ export async function reactiveLoad<T>(
         const task = async () => {
             try {
                 loading.value = true      // 开始加载，设置loading为true
-                const fetched = await fetch()   // 调用fetch获取数据
-                console.log('!!!!s',fetched);
-                
+                // 调用fetch获取数据
+                const fetched = await fetch()
                 // 如果data已经有值，则合并新数据到已有数据
                 if (data.value != null) {
                     data.value = Object.assign(data.value, fetched)
@@ -159,8 +158,8 @@ export async function reactiveLoad<T>(
                 else {
                     data.value = fetched
                 }
-            } 
-            catch(e) {
+            }
+            catch (e) {
                 // 捕获异常，打印错误，并将data设为undefined
                 console.error(e)
                 data.value = undefined
