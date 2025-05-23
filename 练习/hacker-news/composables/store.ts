@@ -101,6 +101,26 @@ export function fetchFeed(query: FeedQuery) {
     )
 }
 
+// 根据id加载Item
+export function fetchItem(id: number) {
+    const state = useStore()
+    return reactiveLoad<Item>(
+        ()=>state.value.items[id],
+        (item)=>{state.value.items[id] = item},
+        () => $fetch('/api/hn/item', { params: {id} })
+    )
+}
+
+// 根据id加载的评论
+export function fetchComments(id: number) {
+    const state = useStore()
+    return reactiveLoad<Item[]>(
+        () => state.value.comments[id],
+        (comments) => {state.value.comments[id] = comments},
+        () => $fetch('/api/hn/item', { params: { id} }).then(i => i.comments!)
+    )
+}
+
 // 定义一个异步函数reactiveLoad，泛型T
 export async function reactiveLoad<T>(
     get: ()=>T | undefined,         // get函数，用于获取数据
@@ -129,7 +149,8 @@ export async function reactiveLoad<T>(
             try {
                 loading.value = true      // 开始加载，设置loading为true
                 const fetched = await fetch()   // 调用fetch获取数据
-
+                console.log('!!!!s',fetched);
+                
                 // 如果data已经有值，则合并新数据到已有数据
                 if (data.value != null) {
                     data.value = Object.assign(data.value, fetched)
@@ -165,7 +186,6 @@ export async function reactiveLoad<T>(
         data
     })
 }
-
 
 // 优化和完善后的reactiveLoad实现
 export async function reactiveLoadOptimization<T>(

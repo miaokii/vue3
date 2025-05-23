@@ -26,6 +26,10 @@ a {
     text-decoration: none;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .center-body {
     max-width: 800px;
     margin: 0 auto;
@@ -33,12 +37,12 @@ a {
 
 @media (max-width: 860px) {
     .center-body {
-        padding: 2rem;
+        padding: 0 2rem;
     }
 }
 
 @media (max-width: 600px) {
     .center-body {
-        padding: 1rem;
+        padding: 0 1rem;
     }
 }

@@ -6,7 +6,7 @@ export interface Item {
     points: number
     user: string
     content?: string
-    time: string
+    time: number
     comments_count?: number
     comments?: Item[]
     loading?: boolean

@@ -11,6 +11,11 @@ const feedUrls: Record<keyof typeof feedsInfo, string> = {
 }
 
 /**
+ * 业务逻辑：通过 https://hacker-news.firebaseio.com/v0/${feedUrls[feed]}.json获取到的为对应feed的id集合
+ * 通过https://hacker-news.firebaseio.com/v0/item/${id}.json获取item或者评论详情
+ */
+
+/**
  * fetchFeed 函数用于获取指定 feed 类型（如 news、ask、jobs 等）和页码的内容列表。
  * 
  * 主要流程如下：
@@ -27,9 +32,10 @@ const feedUrls: Record<keyof typeof feedsInfo, string> = {
 async function fetchFeed(feed: keyof typeof feedsInfo, page = '1') {
     const { fetchItem } = await import('./item.get')
     const url = `${BASE_URL}/${feedUrls[feed]}.json`
-    console.log(url);
-
+    console.log(`----request url: ${url} feed: ${feed} page: ${page} ----`);
+    // 截取对应分页的id集合
     const entries = (await $fetch<string[]>(url)).slice((+page - 1) * 10, +page * 10)
+    // 去获取item的详细信息
     return Promise.all(entries.map(id => fetchItem(id)))
 }
 
@@ -73,6 +79,7 @@ export default defineCachedEventHandler((event) => {
         })
     }
     // 4
+
     return fetchFeed(feed, page)
 }, {
     name: 'api/hn',

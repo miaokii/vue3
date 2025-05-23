@@ -1,20 +1,8 @@
-<template>
-    <!-- 分页 -->
-    <div class="page-view">
-        <pagination :page="page" :max-page="maxPage" :feed="feed" />
-        <div :key="displayedPage" class="news-list">
-            <div v-if="loading" class="loading"></div>
-            <ul>
-                <div v-for="item in items" :key="item.id">{{ item.title }}</div>
-            </ul>
-        </div>
-    </div>
-</template>
 
 <script setup lang="ts">
 
 definePageMeta({
-    // 中间件
+    // 中间件，路由跳转
     middleware: 'feed'
 })
 
@@ -60,7 +48,7 @@ function pageChanged(to: number) {
     if (!isValidFeed.value) { return }
 
     // 如果目标页码小于等于0，或者大于等于最大页码，则重定向到第一页
-    if (to <= 0 || to >= maxPage.value) {
+    if (to <= 0 || to > maxPage.value) {
         router.replace(`/${feed.value}/1`)
         return
     }
@@ -68,9 +56,9 @@ function pageChanged(to: number) {
     // 拉取新页的数据
     fetchFeed({
         feed: feed.value,
-        page: page.value + 1
+        page: page.value
     })
-    .catch(()=>{}) // 忽略错误
+    .catch(() => { }) // 忽略错误
 
     // 更新当前展示的页码
     displayedPage.value = to
@@ -79,7 +67,7 @@ function pageChanged(to: number) {
 // onMounted 钩子会在组件挂载到页面后执行一次。
 // 当页面首次加载时，调用 pageChanged(page.value)，
 // 以确保根据当前的页码参数加载对应的数据。
-onMounted(()=>{
+onMounted(() => {
     pageChanged(page.value)
 })
 
@@ -88,4 +76,35 @@ watch(page, to => pageChanged(to))
 
 </script>
 
-<style lang="scss" scoped></style>
+<template>
+    <!-- 分页 -->
+    <div class="page-view">
+        <pagination :page="page" :max-page="maxPage" :feed="feed" />
+        <div :key="displayedPage" class="center-body news-list">
+            <load-spinner v-if="loading"/>
+            <div v-else>
+                <ul class="item-list">
+                    <PostItem v-for="item in items" :key="item.id" :item="item" />
+                </ul>
+                <pagination :page="page" :max-page="maxPage" :feed="feed" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+
+.page-view {
+
+    .news-list {
+        background-color: white;
+        border-top: 2.5px solid $color-background;
+    }
+
+    .item-list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+</style>

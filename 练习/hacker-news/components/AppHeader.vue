@@ -69,7 +69,6 @@ import { feedsInfo } from '~/utils/api';
         }
 
         .nav-github {
-            margin: auto;
             text-align: right;
             flex-grow: 1;
         }
