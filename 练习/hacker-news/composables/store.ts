@@ -6,7 +6,7 @@ export interface StoreState {
     // 以数字为键，Item为值的对象类型
     items: Record<number, Item>,
     comments: Record<number, Item[]>,
-    users: Record<number, User>,
+    users: Record<string, User>,
     feeds: Record<string, Record<number, number[]>>,
 }
 
@@ -118,6 +118,15 @@ export function fetchComments(id: number) {
         () => state.value.comments[id],
         (comments) => { state.value.comments[id] = comments },
         () => $fetch('/api/hn/item', { params: { id } }).then(i => i.comments!)
+    )
+}
+
+export function fetchUser(id: string) {
+    const status = useStore()
+    return reactiveLoad<User>(
+        ()=>status.value.users[id],
+        (user) => {status.value.users[id] = user},
+        () => $fetch('/api/hn/user', {params: {id}})
     )
 }
 

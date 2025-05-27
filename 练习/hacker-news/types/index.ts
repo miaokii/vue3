@@ -15,6 +15,7 @@ export interface Item {
 export interface User {
     id: string,
     create_time: string,
+    created: string,
     karma: number,
     about: string,
     loading?: boolean
