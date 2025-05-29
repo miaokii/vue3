@@ -17,5 +17,36 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  // 自动导入app/components下的组件
+  components: [
+    {
+      path: '~/components', pathPrefix: false
+    }
+  ],
+  modules: [
+    '@nuxtjs/i18n',
+  ],
+  i18n: {
+    // 默认语言
+    defaultLocale: 'en',
+    // 支持的语言
+    locales: [ 
+      { code: 'en', name: 'English'},
+      { code: 'zh', name: '中文'},
+    ],
+    // url策略，添加路由前缀的方式
+    // strategy: 'prefix_except_default',
+    // 不添加路由前缀
+    strategy: 'no_prefix',
+    vueI18n: '~/i18n/i18n.config.ts',
+    // 检测浏览器语言
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // 在根路径时重定向
+      alwaysRedirect: false, // 不总是重定向
+      fallbackLocale: 'en' // 如果检测失败，使用默认语言
+    }
   }
 })
