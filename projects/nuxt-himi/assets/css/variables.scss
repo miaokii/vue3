@@ -1,6 +1,67 @@
-$color-primary: #64d88a;
+$color-main: #D63B30;
+$color-main-hover: #f3c7c3;
 $color-text-main: #020420;
 $color-background: #F4F4F5;
 
 $height-navbar: 70px;
 $height-navbar-mobile: 60px;
+
+
+// 定义可接收颜色参数的 mixin
+@mixin button-border($color, $bgColor) {
+    color: $color; // 文字颜色
+    border: 2px solid $color; // 边框颜色
+    background-color: $bgColor; // 背景色
+    padding: 8px 16px;
+    border-radius: 100px;
+    padding: 1em 3em;
+    cursor: pointer;
+
+    // 可选：添加悬停效果
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &:active {
+        opacity: 0.5;
+    }
+
+    transition: all 0.3s ease; // 添加过渡效果
+}
+
+// 定义可接收颜色参数的 mixin
+@mixin button-fill($color, $bgColor) {
+    color: $color; // 文字颜色
+    background-color: $bgColor; // 背景色
+    padding: 1em 2em;
+    border-radius: 100px;
+    border: none;
+    padding: 1em 3em;
+    cursor: pointer;
+
+    // 可选：添加悬停效果
+    // 可选：添加悬停效果
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+
+    transition: all 0.3s ease; // 添加过渡效果
+}
+
+// 生成一个具体的按钮类
+.button-border-main {
+    @include button-border($color-main, transparent); // 传入颜色参数
+}
+
+.button-border-white {
+    @include button-border(white, transparent);
+}
+
+// 生成一个具体的按钮类
+.button-fill-main {
+    @include button-fill(white, $color-main); // 传入颜色参数
+}

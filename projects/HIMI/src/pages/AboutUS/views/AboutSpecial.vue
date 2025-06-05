@@ -110,6 +110,6 @@ h2 {
         border: 5px solid white;
         margin-bottom: 0;
     }
-
 }
+
 </style>

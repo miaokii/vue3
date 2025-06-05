@@ -9,9 +9,10 @@
 }
 
 html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: futura-pt, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 16px;
+    letter-spacing: 1px;
     background-color: $color-background;
     color: $color-text-main;
     overflow-y: scroll;
@@ -19,6 +20,8 @@ html {
 
 body {
     min-height: 100vh;
+    color: $color-main;
+    line-height: 1.5;
 }
 
 a {
@@ -31,10 +34,35 @@ ul {
 }
 
 .center-body {
-    max-width: calc(1024px + 3em);
+    max-width: calc(1200px + 3em);
     padding: 0 3em;
     margin: 0 auto;
 }
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+@font-face {
+    font-family: futura-pt;
+    src: url('@/assets/fonts/futura.ttf')
+}
+
+@font-face {
+    font-family: futura-pt-weight;
+    src: url('@/assets/fonts/12671.ttf');
+}
+
+@font-face {
+    font-family: hypatia-sans-pro;
+    src: url('@/assets/fonts/hypatia-sans-pro.ttf');
+}
+
 
 @media (max-width: 860px) {
     .center-body {

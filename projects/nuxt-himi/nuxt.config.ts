@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     // 支持的语言
     locales: [ 
-      { code: 'en', name: 'English'},
+      { code: 'en', name: 'ENGLISH'},
       { code: 'zh', name: '中文'},
     ],
     // url策略，添加路由前缀的方式

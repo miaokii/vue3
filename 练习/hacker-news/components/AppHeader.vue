@@ -46,7 +46,6 @@ import { feedsInfo } from '~/utils/api';
 
         .nav-item {
             color: white;
-            color: white;
             transition: color 0.15s ease;
             display: inline-block;
             vertical-align: middle;
