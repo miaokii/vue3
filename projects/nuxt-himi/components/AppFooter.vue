@@ -3,22 +3,21 @@ import { himiConfig } from '~/data/himi-config';
 </script>
 
 <template>
-
     <div class="app-footer">
         <div class="center-body">
             <div class="links">
-                <nuxt-link to="/contactus">{{ $t('footer.contactus') }}</nuxt-link>
-                <nuxt-link to="/aboutus">{{ $t('footer.aboutus') }}</nuxt-link>
-                <nuxt-link to="/disclaimer">{{ $t('footer.teamspolicies') }}</nuxt-link>
+                <nuxt-link to="/contactus">{{ t('footer.contactus') }}</nuxt-link>
+                <nuxt-link to="/aboutus">{{ t('footer.aboutus') }}</nuxt-link>
+                <nuxt-link to="/disclaimer">{{ t('footer.teamspolicies') }}</nuxt-link>
             </div>
 
             <div class="phones">
                 <AppPhone class="contact-phone" v-for="(phone, idx) in himiConfig.contact_number" :key="idx"
                     :phone="phone" />
             </div>
-            <div class="address">{{ $t('footer.address') }}</div>
-            <nuxt-link class="button-border-white" to="/joinus">{{ $t('footer.enquireNow') }}</nuxt-link>
-            <div class="copyright">{{ $t('footer.copyright') }} @ {{ $t('footer.copyrightContent') }}</div>
+            <div class="address">{{ t('footer.address') }}</div>
+            <nuxt-link class="button-border-white" to="/joinus">{{ t('footer.enquireNow') }}</nuxt-link>
+            <div class="copyright">{{ t('footer.copyright') }} @ {{ t('footer.copyrightContent') }}</div>
         </div>
     </div>
 

@@ -38,11 +38,11 @@ const activePath = computed(() => {
 })
 
 const menuList = computed(() => [
-    { title: $t('nav.home'), path: '/home' },
-    { title: $t('nav.aboutus'), path: '/aboutus' },
-    { title: $t('nav.services'), path: '/services' },
-    { title: $t('nav.joinus'), path: '/joinus' },
-    { title: $t('nav.contactus'), path: '/contactus' },
+    { title: t('nav.home'), path: '/home' },
+    { title: t('nav.aboutus'), path: '/aboutus' },
+    { title: t('nav.services'), path: '/services' },
+    { title: t('nav.joinus'), path: '/joinus' },
+    { title: t('nav.contactus'), path: '/contactus' },
 ])
 
 function switchAsideMenu(show: boolean) {

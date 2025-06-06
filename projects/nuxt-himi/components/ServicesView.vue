@@ -1,6 +1,6 @@
 <template>
     <section class="center-body service-view">
-        <h2>{{ $t('services.our_services') }}</h2>
+        <h2>{{ t('services.our_services') }}</h2>
         <div class="services">
             <div class="item" v-for="(item, idx) in service_map" :key="idx">
                 <div class="desc">
@@ -10,7 +10,7 @@
                         item.content
                         }}</span>
                 </div>
-                <button class="button-border-main" @click="pushServiceDetail(item.title)">{{ $t('services.read_more')
+                <button class="button-border-main" @click="pushServiceDetail(item.type)">{{ t('services.read_more')
                 }}</button>
             </div>
         </div>
@@ -26,7 +26,7 @@ defineProps<{
 }>()
 
 function pushServiceDetail(type: string) {
-    // router.push(`/service_detail/${type}`)
+    navigateTo(`/services/${type}`);
 }
 
 </script>

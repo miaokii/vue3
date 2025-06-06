@@ -4,7 +4,7 @@
             <nuxt-link to="/home" class="app-logo"></nuxt-link>
             <div class="app-menu">
                 <nuxt-link v-for="(item, idx) in menuList" :key="idx" :to="item.path"
-                    :class="['app-menu-item', { 'app-menu-item-active': $route.path.startsWith(`/${item.path}`) }]">
+                    :class="['app-menu-item', { 'item-active': $route.path.startsWith(item.path) }]">
                     {{ item.title }}
                 </nuxt-link>
                 <select class="langs" v-model="locale" @change="setLocale(locale)">
@@ -21,11 +21,11 @@
 const { locales, locale, setLocale } = useI18n()
 
 const menuList = computed(() => [
-    { title: $t('nav.home'), path: '/home' },
-    { title: $t('nav.aboutus'), path: '/aboutus' },
-    { title: $t('nav.services'), path: '/services' },
-    { title: $t('nav.joinus'), path: '/joinus' },
-    { title: $t('nav.contactus'), path: '/contactus' },
+    { title: t('nav.home'), path: '/home' },
+    { title: t('nav.aboutus'), path: '/aboutus' },
+    { title: t('nav.services'), path: '/services' },
+    { title: t('nav.joinus'), path: '/joinus' },
+    { title: t('nav.contactus'), path: '/contactus' },
 ])
 
 </script>
@@ -63,10 +63,10 @@ const menuList = computed(() => [
                 &:hover {
                     color: $color-main-hover;
                 }
+            }
 
-                &-active {
-                    color: $color-main-hover;
-                }
+            .item-active {
+                color: $color-main-hover;
             }
 
             .langs {

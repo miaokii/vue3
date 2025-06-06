@@ -3,16 +3,16 @@
         <page-head :path="getImage(`aboutus/aboutus.png`)" />
 
         <section class="center-body about">
-            <h2>{{ $t('about.who') }}</h2>
+            <h2>{{ t('about.who') }}</h2>
             <div class="who">
-                <div>{{ $t('about.who_content_1') }}</div>
-                <div>{{ $t('about.who_content_2') }}</div>
-                <div>{{ $t('about.who_content_3') }}</div>
+                <div>{{ t('about.who_content_1') }}</div>
+                <div>{{ t('about.who_content_2') }}</div>
+                <div>{{ t('about.who_content_3') }}</div>
             </div>
         </section>
 
         <section class="center-body specialization">
-            <h2>{{ $t('about.specialization') }}</h2>
+            <h2>{{ t('about.specialization') }}</h2>
             <div class="list">
                 <div class="item" v-for="(json, idx) in bizinitiatives" :key="idx">
                     <img :src="getImage(`aboutus/${json.image}`)" alt="">
@@ -28,12 +28,12 @@
 
 let bizinitiatives = computed(() => {
     return [
-        { image: 's1.png', title: $t('about.services'), content: $t('about.services_content') },
-        { image: 's2.png', title: $t('about.license_apply'), content: $t('about.license_apply_content') },
-        { image: 's4.png', title: $t('about.tradingdd'), content: $t('about.tradingdd_content') },
-        { image: 's3.png', title: $t('about.hr'), content: $t('about.hr_content') },
-        { image: 's5.png', title: $t('about.logistics'), content: $t('about.logistics_content') },
-        { image: 's6.png', title: $t('about.incubator'), content: $t('about.incubator_content') }
+        { image: 's1.png', title: t('about.services'), content: t('about.services_content') },
+        { image: 's2.png', title: t('about.license_apply'), content: t('about.license_apply_content') },
+        { image: 's4.png', title: t('about.tradingdd'), content: t('about.tradingdd_content') },
+        { image: 's3.png', title: t('about.hr'), content: t('about.hr_content') },
+        { image: 's5.png', title: t('about.logistics'), content: t('about.logistics_content') },
+        { image: 's6.png', title: t('about.incubator'), content: t('about.incubator_content') }
     ]
 })
 </script>

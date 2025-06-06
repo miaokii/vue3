@@ -1,14 +1,14 @@
 <template>
     <div class="home-page">
         <section class="welcome">
-            <span>{{ $t('home.welcome_home') }}</span>
-            <button class="button-fill-main" @click="navigateTo('services')">{{ $t('home.find_more') }}</button>
+            <span>{{ t('home.welcome_home') }}</span>
+            <button class="button-fill-main" @click="navigateTo('services')">{{ t('home.find_more') }}</button>
         </section>
 
         <section class="center-body introduce">
             <div class="head">
-                <span class="title">{{ $t('home.introduce_himi_title') }}</span>
-                <span class="content">{{ $t('home.introduce_himi_content') }}</span>
+                <span class="title">{{ t('home.introduce_himi_title') }}</span>
+                <span class="content">{{ t('home.introduce_himi_content') }}</span>
             </div>
 
             <div class="list">
@@ -24,26 +24,24 @@
 
         <section class="about">
             <div class="content">
-                <h2>{{ $t('home.about_us') }}</h2>
-                <div class="desc">{{ $t('home.about_us_content') }}</div>
-                <button class="button-border-white" @click="navigateTo('aboutus')">{{ $t('home.read_more')
+                <h2>{{ t('home.about_us') }}</h2>
+                <div class="desc">{{ t('home.about_us_content') }}</div>
+                <button class="button-border-white" @click="navigateTo('aboutus')">{{ t('home.read_more')
                 }}</button>
             </div>
         </section>
 
-        <section class="map">
-
-        </section>
+        <HIMIMap class="map-body center-body" />
     </div>
 </template>
 
 <script setup lang="ts" name="Home">
 const introduce_jsons = computed(() => {
     return [
-        { image: 'home/in1.svg', title: $t('home.introduce_international_title'), content: $t('home.introduce_international_content') },
-        { image: 'home/in2.svg', title: $t('home.introduce_area_title'), content: $t('home.introduce_area_content') },
-        { image: 'home/in3.svg', title: $t('home.introduce_commitment_title'), content: $t('home.introduce_commitment_content') },
-        { image: 'home/in4.svg', title: $t('home.introduce_industry_title'), content: $t('home.introduce_industry_content') },
+        { image: 'home/in1.svg', title: t('home.introduce_international_title'), content: t('home.introduce_international_content') },
+        { image: 'home/in2.svg', title: t('home.introduce_area_title'), content: t('home.introduce_area_content') },
+        { image: 'home/in3.svg', title: t('home.introduce_commitment_title'), content: t('home.introduce_commitment_content') },
+        { image: 'home/in4.svg', title: t('home.introduce_industry_title'), content: t('home.introduce_industry_content') },
     ]
 })
 </script>
@@ -175,9 +173,9 @@ const introduce_jsons = computed(() => {
     }
 }
 
-.map {
-    height: 50vh;
-    width: 100%;
+.map-body {
+    aspect-ratio: 2.2;
+    min-height: 50vh;
 }
 
 @media (max-width: 900px) {
@@ -198,6 +196,7 @@ const introduce_jsons = computed(() => {
 
     .about {
         padding: 0 2em;
+
         .content {
             text-align: center;
             direction: ltr;
@@ -223,6 +222,10 @@ const introduce_jsons = computed(() => {
         .list {
             grid-template-columns: repeat(1, 1fr);
         }
+    }
+
+    .map-body {
+        padding: 1rem;
     }
 }
 </style>
